@@ -23,6 +23,7 @@ public class verificarSerial extends javax.swing.JFrame {
      */
     public verificarSerial() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

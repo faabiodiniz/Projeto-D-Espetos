@@ -17,6 +17,7 @@ public class cadastroClientes extends javax.swing.JFrame {
      */
     public cadastroClientes() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

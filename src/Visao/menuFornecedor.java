@@ -16,6 +16,7 @@ public class menuFornecedor extends javax.swing.JFrame {
      */
     public menuFornecedor() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

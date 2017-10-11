@@ -16,6 +16,7 @@ public class cadastroFornecedor extends javax.swing.JFrame {
      */
     public cadastroFornecedor() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
