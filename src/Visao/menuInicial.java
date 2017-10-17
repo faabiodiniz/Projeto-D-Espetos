@@ -37,6 +37,7 @@ public class menuInicial extends javax.swing.JFrame {
         jLabelFundoMenus = new javax.swing.JLabel();
         barraMenu = new javax.swing.JMenuBar();
         menuPrincipal = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
         menuClientes = new javax.swing.JMenu();
         menuItemCadastroCliente = new javax.swing.JMenuItem();
         menuItemListarClientes = new javax.swing.JMenuItem();
@@ -96,6 +97,15 @@ public class menuInicial extends javax.swing.JFrame {
         jLabelFundoMenus.setBounds(-10, -20, 750, 490);
 
         menuPrincipal.setText("Menu Principal");
+
+        jMenuItem3.setText("Menu Principal");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        menuPrincipal.add(jMenuItem3);
+
         barraMenu.add(menuPrincipal);
 
         menuClientes.setText("Clientes");
@@ -203,6 +213,12 @@ public class menuInicial extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jMenuItemSairActionPerformed
 
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        menuInicial principal = new menuInicial();
+        principal.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -248,6 +264,7 @@ public class menuInicial extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuFornecedores;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItemSair;
     private javax.swing.JMenu jMenuSair;
     private javax.swing.JMenu menuClientes;

@@ -9,12 +9,15 @@ package d.espetos;
  *
  * @author faad2
  */
-public class Cliente{
+public class Cliente{    
     private String nomeCliente;
-    private final String cpfCliente;
+    private String cpfCliente;
     private String telefoneCliente;
     private String emailCliente;
     private String endereco;
+
+    public Cliente() {
+    }
     
     public Cliente(String nome, String cpf, String telefone, String email, String endereco){
         this.cpfCliente = cpf;
@@ -23,6 +26,7 @@ public class Cliente{
         this.nomeCliente = nome;
         this.telefoneCliente = telefone;
     }
+    
     public String getCpf(){
         return this.cpfCliente;
     }
@@ -43,17 +47,27 @@ public class Cliente{
         return this.endereco;
     }
     
-    private void setTelefone(String telefone){
+    public void setTelefone(String telefone){
         this.telefoneCliente = telefone;
     }
     
-    private void setEndereco(String endereco){
+    public void setEndereco(String endereco){
         this.endereco = endereco;
     }
     
-    private void setEmail(String email){
+    public void setEmail(String email){
         this.emailCliente = email;
     }
+
+    public void setNomeCliente(String nomeCliente) {
+        this.nomeCliente = nomeCliente;
+    }
+
+    public void setCpf(String cpfCliente) {
+        this.cpfCliente = cpfCliente;
+    }
+    
+    
     
     
 }

@@ -34,6 +34,7 @@ public class menuFornecedor extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         barraMenu = new javax.swing.JMenuBar();
         menuPrincipal = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
         menuClientes = new javax.swing.JMenu();
         menuItemCadastroCliente = new javax.swing.JMenuItem();
         menuItemListarClientes = new javax.swing.JMenuItem();
@@ -45,6 +46,8 @@ public class menuFornecedor extends javax.swing.JFrame {
         menuVendas = new javax.swing.JMenu();
         menuItemRelatorioVenda = new javax.swing.JMenuItem();
         menuItemRealizarVenda = new javax.swing.JMenuItem();
+        jMenuSair = new javax.swing.JMenu();
+        jMenuItemSair = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(623, 395));
@@ -68,11 +71,20 @@ public class menuFornecedor extends javax.swing.JFrame {
         getContentPane().add(jButtonExcFornecedor);
         jButtonExcFornecedor.setBounds(220, 120, 180, 90);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/d/espetos/fundoTodos.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/fundoTodos.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
         jLabel1.setBounds(-30, -50, 680, 450);
 
         menuPrincipal.setText("Menu Principal");
+
+        jMenuItem3.setText("Menu Principal");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        menuPrincipal.add(jMenuItem3);
+
         barraMenu.add(menuPrincipal);
 
         menuClientes.setText("Clientes");
@@ -115,6 +127,11 @@ public class menuFornecedor extends javax.swing.JFrame {
         menuVendas.setText("Vendas");
 
         menuItemRelatorioVenda.setText("Relatório de Vendas");
+        menuItemRelatorioVenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemRelatorioVendaActionPerformed(evt);
+            }
+        });
         menuVendas.add(menuItemRelatorioVenda);
 
         menuItemRealizarVenda.setText("Realizar Venda");
@@ -122,10 +139,32 @@ public class menuFornecedor extends javax.swing.JFrame {
 
         barraMenu.add(menuVendas);
 
+        jMenuSair.setText("Sair");
+
+        jMenuItemSair.setText("Sair");
+        jMenuItemSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemSairActionPerformed(evt);
+            }
+        });
+        jMenuSair.add(jMenuItemSair);
+
+        barraMenu.add(jMenuSair);
+
         setJMenuBar(barraMenu);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonListFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListFornecedorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonListFornecedorActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        menuInicial principal = new menuInicial();
+        principal.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void menuItemListarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemListarClientesActionPerformed
         // TODO add your handling code here:
@@ -135,9 +174,13 @@ public class menuFornecedor extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_menuItemListarEstoqueActionPerformed
 
-    private void jButtonListFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListFornecedorActionPerformed
+    private void menuItemRelatorioVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemRelatorioVendaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonListFornecedorActionPerformed
+    }//GEN-LAST:event_menuItemRelatorioVendaActionPerformed
+
+    private void jMenuItemSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSairActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jMenuItemSairActionPerformed
 
 
     /**
@@ -184,6 +227,9 @@ public class menuFornecedor extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuFornecedores;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItemSair;
+    private javax.swing.JMenu jMenuSair;
     private javax.swing.JMenu menuClientes;
     private javax.swing.JMenu menuEstoque;
     private javax.swing.JMenuItem menuItemCadastroCliente;
