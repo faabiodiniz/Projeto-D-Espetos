@@ -23,7 +23,7 @@ public class ControlCliente {
     public void Salvar(Cliente cliente){
         conexao.Conexao();
         try {
-            PreparedStatement pst = conexao.con.prepareStatement("INSERT INTO cliente (Nome, Endereco, Telefone, E-mail, CPF) values (?,?,?,?,?)");
+            PreparedStatement pst = conexao.con.prepareStatement("INSERT INTO Cliente(Nome, Endereco, Telefone, CPF, Email) values (?,?,?,?,?)");
             pst.setString(1, cliente.getNome());
             pst.setString(2, cliente.getEndereco());
             pst.setString(3, cliente.getTelefone());
