@@ -3,32 +3,31 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controle;
+package ClassesDAO;
 
-import d.espetos.Cliente;
+import Controle.ConexaoBD;
+import d.espetos.Fornecedor;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author faad2
  */
-public class ControlCliente {
+public class FornecedorDAO {
     ConexaoBD conexao = new ConexaoBD();
-    Cliente cliente = new Cliente();
+    Fornecedor fornecedor = new Fornecedor();
     
-    public void Salvar(Cliente cliente){
+    public void Salvar(Fornecedor fornecedor){
         conexao.Conexao();
         try {
-            PreparedStatement pst = conexao.con.prepareStatement("INSERT INTO Cliente(Nome, Endereco, Telefone, CPF, Email) values (?,?,?,?,?)");
-            pst.setString(1, cliente.getNome());
-            pst.setString(2, cliente.getEndereco());
-            pst.setString(3, cliente.getTelefone());
-            pst.setString(4, cliente.getEmail());
-            pst.setString(5, cliente.getCpf());
+            PreparedStatement pst = conexao.con.prepareStatement("INSERT INTO Fornecedor(Nome, Endereco, Telefone, CNPJ, Email) values (?,?,?,?,?)");
+            pst.setString(1, fornecedor.getNome());
+            pst.setString(2, fornecedor.getEndereco());
+            pst.setString(3, fornecedor.getTelefone());
+            pst.setString(4, fornecedor.getEmail());
+            pst.setString(5, fornecedor.getCnpj());
             pst.execute();
             JOptionPane.showMessageDialog(null,"Dados inseridos com sucesso");
         } catch (SQLException ex) {

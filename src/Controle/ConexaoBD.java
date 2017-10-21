@@ -43,5 +43,6 @@ public class ConexaoBD {
             JOptionPane.showMessageDialog(null, "Nao desconectou\n" + ex.getMessage());
         }
     }
+    
 }
 
