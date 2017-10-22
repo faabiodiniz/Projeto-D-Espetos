@@ -1,73 +1,75 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package d.espetos;
 
-/**
- *
- * @author faad2
- */
-public class Cliente{    
-    private String nomeCliente;
-    private String cpfCliente;
+import java.util.Date;
+       
+public class Cliente{
+    private int idCliente;
+    private final String nomeCliente;
     private String telefoneCliente;
     private String emailCliente;
     private String endereco;
+    private String bairro;
+    private int numero;
+    private Date nascimento;
+	
+    public Cliente(String nomeCliente, String telefoneCliente, String emailCliente, String endereco, String bairro,
+			int numero, Date nascimento) 
+    {
+		this.nomeCliente = nomeCliente;
+		this.telefoneCliente = telefoneCliente;
+		this.emailCliente = emailCliente;
+		this.endereco = endereco;
+		this.bairro = bairro;
+		this.numero = numero;
+		this.nascimento = nascimento;
+	}
 
-    public Cliente() {
-    }
-    
-    public Cliente(String nome, String cpf, String telefone, String email, String endereco){
-        this.cpfCliente = cpf;
-        this.emailCliente = email;
-        this.endereco = endereco;
-        this.nomeCliente = nome;
-        this.telefoneCliente = telefone;
-    }
-    
-    public String getCpf(){
-        return this.cpfCliente;
-    }
-    
-    public String getNome(){
-        return this.nomeCliente;
-    }
-    
-    public String getTelefone(){
-        return this.telefoneCliente;
-    }
-    
-    public String getEmail(){
-        return this.emailCliente;
-    }
-    
-    public String getEndereco(){
-        return this.endereco;
-    }
-    
-    public void setTelefone(String telefone){
-        this.telefoneCliente = telefone;
-    }
-    
-    public void setEndereco(String endereco){
-        this.endereco = endereco;
-    }
-    
-    public void setEmail(String email){
-        this.emailCliente = email;
-    }
+	public String getTelefoneCliente() {
+		return telefoneCliente;
+	}
 
-    public void setNomeCliente(String nomeCliente) {
-        this.nomeCliente = nomeCliente;
-    }
+	public void setTelefoneCliente(String telefoneCliente) {
+		this.telefoneCliente = telefoneCliente;
+	}
 
-    public void setCpf(String cpfCliente) {
-        this.cpfCliente = cpfCliente;
-    }
-    
-    
-    
-    
+	public String getEmailCliente() {
+		return emailCliente;
+	}
+
+	public void setEmailCliente(String emailCliente) {
+		this.emailCliente = emailCliente;
+	}
+
+	public String getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
+
+	public String getBairro() {
+		return bairro;
+	}
+
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
+	}
+
+	public int getIdCliente() {
+		return idCliente;
+	}
+
+	public String getNomeCliente() {
+		return nomeCliente;
+	}
+
+	public int getNumero() {
+		return numero;
+	}
+
+	public Date getNascimento() {
+		return nascimento;
+	}
+       
 }

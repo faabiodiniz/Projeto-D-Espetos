@@ -21,15 +21,16 @@ public class ConexaoBD {
     public ResultSet rs;
     public Connection con;
     String driver = "org.gjt.mm.mysql.Driver";
+    String serverName = "jdbc:mysql://localhost";
     String mydatabase = "d'espetos";
-    String connectionUrl = "jdbc:sqlserver://localhost:1433;" + "databaseName=" + mydatabase;
-    String username = "sa";
-    String password = "sqlserverbd";
+    String url = "jdbc:mysql://" + serverName + "/" + mydatabase;
+    String username = "root";
+    String password = "";
     
     public void Conexao(){
         try {
-            System.setProperty("jdbc.Drivers", connectionUrl);
-            con = DriverManager.getConnection(connectionUrl, username, password);
+            System.setProperty("jdbc.Drivers", serverName);
+            con = DriverManager.getConnection(serverName, username, password);
             JOptionPane.showMessageDialog(null, "Login feito!");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Login nao rolou!\n" + ex.getMessage());
@@ -43,6 +44,5 @@ public class ConexaoBD {
             JOptionPane.showMessageDialog(null, "Nao desconectou\n" + ex.getMessage());
         }
     }
-    
 }
 

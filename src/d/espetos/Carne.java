@@ -1,46 +1,57 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package d.espetos;
 
-import java.util.Calendar;
+import java.util.Date;
 
-/**
- *
- * @author faad2
- */
 public class Carne {
 
-    private final String tipoCarne;
-    private float precoCarne;
-    private float quantidadeCarne;
-    
-    
-    public Carne(String tipoCarne, float precoCarne, float quantidadeCarne){
-        this.tipoCarne = tipoCarne;
-        this.precoCarne = precoCarne;
-        this.quantidadeCarne = quantidadeCarne;
-    }
+    private int idProduto;
+    private String nomeCarne;
+    private double quantidade;
+    private Date fabricacao;
+    private Date validade;
+    private float valorCusto;
+	
+    public Carne(String nomeCarne, double quantidade, Date fabricacao, Date validade, float valorCusto) {
+		super();
+		this.nomeCarne = nomeCarne;
+		this.quantidade = quantidade;
+		this.fabricacao = fabricacao;
+		this.validade = validade;
+		this.valorCusto = valorCusto;
+	}
 
-    private void setPreco(float preco){
-        this.precoCarne = preco;
-    }
-    private void setQuantidade(float quantidade){
-        this.quantidadeCarne = quantidade;
-    }
+	public double getQuantidade() {
+		return quantidade;
+	}
+
+	public void setQuantidade(double quantidade) {
+		this.quantidade = quantidade;
+	}
+
+	public float getValorCusto() {
+		return valorCusto;
+	}
+
+	public void setValorCusto(float valorCusto) {
+		this.valorCusto = valorCusto;
+	}
+
+	public int getIdProduto() {
+		return idProduto;
+	}
+
+	public String getNomeCarne() {
+		return nomeCarne;
+	}
+
+	public Date getFabricacao() {
+		return fabricacao;
+	}
+
+	public Date getValidade() {
+		return validade;
+	}
     
-    public String getTipo(){
-        return this.tipoCarne;
-    }
     
-    public float getPreco(){
-        return this.precoCarne;
-    }
-    
-    public float getQuantidade(){
-        return this.quantidadeCarne;
-    }
     
 }

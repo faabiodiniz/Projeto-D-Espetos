@@ -55,11 +55,6 @@ public class menuFornecedor extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         jButtonCadFornecedor.setText("Cadastrar Fornecedor");
-        jButtonCadFornecedor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCadFornecedorActionPerformed(evt);
-            }
-        });
         getContentPane().add(jButtonCadFornecedor);
         jButtonCadFornecedor.setBounds(20, 120, 180, 90);
 
@@ -186,11 +181,6 @@ public class menuFornecedor extends javax.swing.JFrame {
     private void jMenuItemSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSairActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jMenuItemSairActionPerformed
-
-    private void jButtonCadFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadFornecedorActionPerformed
-        cadastroFornecedor cadFor = new cadastroFornecedor();
-        cadFor.setVisible(true);
-    }//GEN-LAST:event_jButtonCadFornecedorActionPerformed
 
 
     /**
