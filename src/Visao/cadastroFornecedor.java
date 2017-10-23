@@ -37,6 +37,10 @@ public class cadastroFornecedor extends javax.swing.JFrame {
         textFieldCadCNPJ = new javax.swing.JTextField();
         textFieldCadTel = new javax.swing.JTextField();
         textFieldCadEmail = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         labelCadFornecedor = new javax.swing.JLabel();
         buttonCadastrarFuncionario = new javax.swing.JButton();
         buttonCancelarCadastro = new javax.swing.JButton();
@@ -67,7 +71,7 @@ public class cadastroFornecedor extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel5.setText("Email: ");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(20, 140, 33, 14);
+        jLabel5.setBounds(20, 210, 33, 14);
 
         textFieldCadNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,10 +85,29 @@ public class cadastroFornecedor extends javax.swing.JFrame {
         jPanel1.add(textFieldCadTel);
         textFieldCadTel.setBounds(70, 100, 190, 20);
         jPanel1.add(textFieldCadEmail);
-        textFieldCadEmail.setBounds(70, 140, 190, 20);
+        textFieldCadEmail.setBounds(70, 210, 190, 20);
+
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        jLabel1.setText("Rua:");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(20, 140, 22, 14);
+
+        jLabel6.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        jLabel6.setText("Cidade:");
+        jPanel1.add(jLabel6);
+        jLabel6.setBounds(20, 170, 40, 14);
+
+        jLabel7.setText("Número:");
+        jPanel1.add(jLabel7);
+        jLabel7.setBounds(210, 140, 50, 14);
+
+        jLabel8.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        jLabel8.setText("Estado: ");
+        jPanel1.add(jLabel8);
+        jLabel8.setBounds(160, 170, 50, 14);
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(30, 30, 270, 180);
+        jPanel1.setBounds(30, 30, 290, 240);
 
         labelCadFornecedor.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         labelCadFornecedor.setText("Cadastrar Fornecedor");
@@ -93,11 +116,11 @@ public class cadastroFornecedor extends javax.swing.JFrame {
 
         buttonCadastrarFuncionario.setText("Cadastrar");
         getContentPane().add(buttonCadastrarFuncionario);
-        buttonCadastrarFuncionario.setBounds(70, 220, 100, 30);
+        buttonCadastrarFuncionario.setBounds(70, 280, 100, 30);
 
         buttonCancelarCadastro.setText("Cancelar");
         getContentPane().add(buttonCancelarCadastro);
-        buttonCancelarCadastro.setBounds(180, 220, 90, 30);
+        buttonCancelarCadastro.setBounds(180, 280, 90, 30);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -144,10 +167,14 @@ public class cadastroFornecedor extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonCadastrarFuncionario;
     private javax.swing.JButton buttonCancelarCadastro;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel labelCadFornecedor;
     private javax.swing.JTextField textFieldCadCNPJ;

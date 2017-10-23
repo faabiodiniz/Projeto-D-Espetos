@@ -7,27 +7,17 @@ public class Cliente{
     private String nomeCliente;
     private String telefoneCliente;
     private String emailCliente;
-    private String cpfCliente;
     
     public Cliente(){
         
     }
 	
-    public Cliente(String nomeCliente, String telefoneCliente, String emailCliente, String cpfCliente) 
+    public Cliente(String nomeCliente, String telefoneCliente, String emailCliente) 
     {
-        this.cpfCliente = cpfCliente;
 	this.nomeCliente = nomeCliente;
 	this.telefoneCliente = telefoneCliente;
 	this.emailCliente = emailCliente;
     }
-
-        public void setCpfCliente(String Cpf) {
-            this.cpfCliente = Cpf;
-        }
-
-        public String getCpfCliente(){
-            return cpfCliente;
-        }
         
         public void setNomeCliente(String nomeCliente) {
             this.nomeCliente = nomeCliente;

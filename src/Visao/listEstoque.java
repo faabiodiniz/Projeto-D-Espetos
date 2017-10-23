@@ -9,12 +9,12 @@ package Visao;
  *
  * @author faad2
  */
-public class menuFornecedor extends javax.swing.JFrame {
+public class listEstoque extends javax.swing.JFrame {
 
     /**
-     * Creates new form menuFornecedor
+     * Creates new form listClientes
      */
-    public menuFornecedor() {
+    public listEstoque() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -28,10 +28,19 @@ public class menuFornecedor extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButtonCadFornecedor = new javax.swing.JButton();
-        jButtonListFornecedor = new javax.swing.JButton();
-        jButtonExcFornecedor = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        labelTituloBusca = new javax.swing.JLabel();
+        jScrollPaneClientes = new javax.swing.JScrollPane();
+        tableListarCliente = new javax.swing.JTable();
+        textFieldBuscaNome = new javax.swing.JTextField();
+        jLabelBuscaNome = new javax.swing.JLabel();
+        jLabelBuscaCPF = new javax.swing.JLabel();
+        jTextFieldBuscaCPF = new javax.swing.JTextField();
+        jButtonBuscarCliente = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jLabelBackground = new javax.swing.JLabel();
         barraMenu = new javax.swing.JMenuBar();
         menuPrincipal = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
@@ -49,31 +58,83 @@ public class menuFornecedor extends javax.swing.JFrame {
         jMenuSair = new javax.swing.JMenu();
         jMenuItemSair = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(623, 395));
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
         getContentPane().setLayout(null);
 
-        jButtonCadFornecedor.setText("Cadastrar Fornecedor");
-        getContentPane().add(jButtonCadFornecedor);
-        jButtonCadFornecedor.setBounds(20, 120, 180, 90);
+        jPanel1.setPreferredSize(new java.awt.Dimension(830, 520));
+        jPanel1.setLayout(null);
 
-        jButtonListFornecedor.setText("Listar Fornecedores");
-        jButtonListFornecedor.addActionListener(new java.awt.event.ActionListener() {
+        labelTituloBusca.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        labelTituloBusca.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelTituloBusca.setText("ESTOQUE");
+        jPanel1.add(labelTituloBusca);
+        labelTituloBusca.setBounds(300, 0, 110, 20);
+
+        tableListarCliente.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "NOME", "TIPO", "QUANTIDADE", "PREÇO CUSTO", "PREÇO VENDA", "FABRICAÇÃO", "VALIDADE"
+            }
+        ));
+        jScrollPaneClientes.setViewportView(tableListarCliente);
+
+        jPanel1.add(jScrollPaneClientes);
+        jScrollPaneClientes.setBounds(20, 70, 700, 290);
+        jPanel1.add(textFieldBuscaNome);
+        textFieldBuscaNome.setBounds(120, 30, 220, 20);
+
+        jLabelBuscaNome.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabelBuscaNome.setText("Buscar por Nome ");
+        jPanel1.add(jLabelBuscaNome);
+        jLabelBuscaNome.setBounds(20, 30, 100, 15);
+
+        jLabelBuscaCPF.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabelBuscaCPF.setText("Buscar por CPF");
+        jPanel1.add(jLabelBuscaCPF);
+        jLabelBuscaCPF.setBounds(370, 30, 90, 14);
+        jPanel1.add(jTextFieldBuscaCPF);
+        jTextFieldBuscaCPF.setBounds(470, 30, 150, 20);
+
+        jButtonBuscarCliente.setText("Buscar");
+        jPanel1.add(jButtonBuscarCliente);
+        jButtonBuscarCliente.setBounds(640, 30, 73, 23);
+
+        jButton1.setText("Editar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonListFornecedorActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonListFornecedor);
-        jButtonListFornecedor.setBounds(420, 120, 180, 90);
+        jPanel1.add(jButton1);
+        jButton1.setBounds(280, 380, 160, 40);
 
-        jButtonExcFornecedor.setText("Excluir Fornecedor");
-        getContentPane().add(jButtonExcFornecedor);
-        jButtonExcFornecedor.setBounds(220, 120, 180, 90);
+        jButton2.setText("Cadastrar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2);
+        jButton2.setBounds(80, 380, 160, 40);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/fundoTodos.jpg"))); // NOI18N
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(-30, -50, 680, 450);
+        jButton3.setText("Remover");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton3);
+        jButton3.setBounds(470, 380, 160, 40);
+
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(20, 20, 740, 440);
+
+        jLabelBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/fundoTodos.jpg"))); // NOI18N
+        getContentPane().add(jLabelBackground);
+        jLabelBackground.setBounds(-20, -20, 830, 520);
 
         menuPrincipal.setText("Menu Principal");
 
@@ -153,12 +214,20 @@ public class menuFornecedor extends javax.swing.JFrame {
 
         setJMenuBar(barraMenu);
 
-        pack();
+        setBounds(0, 0, 806, 512);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonListFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListFornecedorActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonListFornecedorActionPerformed
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         menuInicial principal = new menuInicial();
@@ -182,7 +251,6 @@ public class menuFornecedor extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jMenuItemSairActionPerformed
 
-
     /**
      * @param args the command line arguments
      */
@@ -200,36 +268,46 @@ public class menuFornecedor extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(menuFornecedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(listEstoque.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(menuFornecedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(listEstoque.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(menuFornecedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(listEstoque.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(menuFornecedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(listEstoque.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new menuFornecedor().setVisible(true);
+                new listEstoque().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar barraMenu;
-    private javax.swing.JButton jButtonCadFornecedor;
-    private javax.swing.JButton jButtonExcFornecedor;
-    private javax.swing.JButton jButtonListFornecedor;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButtonBuscarCliente;
+    private javax.swing.JLabel jLabelBackground;
+    private javax.swing.JLabel jLabelBuscaCPF;
+    private javax.swing.JLabel jLabelBuscaNome;
     private javax.swing.JMenu jMenuFornecedores;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItemSair;
     private javax.swing.JMenu jMenuSair;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPaneClientes;
+    private javax.swing.JTextField jTextFieldBuscaCPF;
+    private javax.swing.JLabel labelTituloBusca;
     private javax.swing.JMenu menuClientes;
     private javax.swing.JMenu menuEstoque;
     private javax.swing.JMenuItem menuItemCadastroCliente;
@@ -239,5 +317,7 @@ public class menuFornecedor extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuItemRelatorioVenda;
     private javax.swing.JMenu menuPrincipal;
     private javax.swing.JMenu menuVendas;
+    private javax.swing.JTable tableListarCliente;
+    private javax.swing.JTextField textFieldBuscaNome;
     // End of variables declaration//GEN-END:variables
 }

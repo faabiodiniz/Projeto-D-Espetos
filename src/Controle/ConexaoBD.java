@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
+
 /**
  *
  * @author faad2
@@ -20,20 +21,18 @@ public class ConexaoBD {
     public Statement stm;
     public ResultSet rs;
     public Connection con;
-    String driver = "org.gjt.mm.mysql.Driver";
-    String serverName = "jdbc:mysql://localhost";
-    String mydatabase = "d'espetos";
-    String url = "jdbc:mysql://" + serverName + "/" + mydatabase;
-    String username = "root";
-    String password = "";
+    String mydatabase = "despetos";
+    String connectionUrl = "jdbc:sqlserver://localhost:1433;" + "databaseName=" + mydatabase;
+    String username = "sa";
+    String password = "sqlserverbd";
     
     public void Conexao(){
         try {
-            System.setProperty("jdbc.Drivers", serverName);
-            con = DriverManager.getConnection(serverName, username, password);
-            JOptionPane.showMessageDialog(null, "Login feito!");
+            System.setProperty("jdbc.Drivers", connectionUrl);
+            con = DriverManager.getConnection(connectionUrl, username, password);
+            JOptionPane.showMessageDialog(null, "Login no BD realizado com sucesso!");
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Login nao rolou!\n" + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Falha ao realizar login no BD!\n" + ex.getMessage());
         }
     }
     public void desconecta(){

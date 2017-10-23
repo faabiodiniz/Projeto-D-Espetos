@@ -27,90 +27,119 @@ public class CadastrarCarne extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        ComboBoxTipoCarne = new javax.swing.JComboBox<>();
+        jComboBoxTipo = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        TextFieldNomeCarne = new javax.swing.JTextField();
-        jTextField1 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        TextFieldDiaValidade = new javax.swing.JTextField();
-        jTextFieldMesValidade = new javax.swing.JTextField();
-        jTextFieldAnoValidade = new javax.swing.JTextField();
-        jTextFieldAnoFabricacao = new javax.swing.JTextField();
-        jTextFieldDiaFabricacao = new javax.swing.JTextField();
-        jTextFieldMesFabricacao = new javax.swing.JTextField();
+        jTextFieldNomeCarne = new javax.swing.JTextField();
+        jTextFieldQtdCarne = new javax.swing.JTextField();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
+        jTextField5 = new javax.swing.JTextField();
+        jTextField6 = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(500, 300));
+        setMinimumSize(new java.awt.Dimension(375, 300));
         setResizable(false);
         getContentPane().setLayout(null);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel2.setLayout(null);
 
-        jLabel1.setText("Quantidade: ");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 85, -1, -1));
+        jLabel1.setText("Nome: ");
+        jPanel2.add(jLabel1);
+        jLabel1.setBounds(30, 20, 34, 14);
 
-        jLabel2.setText("Data de Fabricação");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 178, -1, -1));
+        jLabel2.setText("Data de Validade:");
+        jPanel2.add(jLabel2);
+        jLabel2.setBounds(30, 110, 90, 14);
 
-        jLabel3.setText("Data de Validade");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 128, -1, -1));
+        jLabel3.setText("Data de vencimento: ");
+        jPanel2.add(jLabel3);
+        jLabel3.setBounds(30, 150, 120, 14);
 
-        ComboBoxTipoCarne.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        ComboBoxTipoCarne.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ComboBoxTipoCarneActionPerformed(evt);
-            }
-        });
-        jPanel1.add(ComboBoxTipoCarne, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 40, 90, 21));
+        jComboBoxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel2.add(jComboBoxTipo);
+        jComboBoxTipo.setBounds(240, 20, 56, 20);
 
         jLabel4.setText("Tipo:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 40, 32, -1));
+        jPanel2.add(jLabel4);
+        jLabel4.setBounds(210, 20, 34, 14);
 
-        jLabel5.setText("Nome: ");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 42, -1, -1));
-        jPanel1.add(TextFieldNomeCarne, new org.netbeans.lib.awtextra.AbsoluteConstraints(74, 39, 123, -1));
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(97, 82, 63, -1));
+        jLabel5.setText("Quantidade:");
+        jPanel2.add(jLabel5);
+        jLabel5.setBounds(30, 70, 80, 14);
 
         jLabel6.setText("KG");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(164, 85, -1, -1));
-        jPanel1.add(TextFieldDiaValidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 125, 23, -1));
-        jPanel1.add(jTextFieldMesValidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 125, 24, -1));
-        jPanel1.add(jTextFieldAnoValidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(186, 125, 42, -1));
-        jPanel1.add(jTextFieldAnoFabricacao, new org.netbeans.lib.awtextra.AbsoluteConstraints(198, 175, 39, -1));
-        jPanel1.add(jTextFieldDiaFabricacao, new org.netbeans.lib.awtextra.AbsoluteConstraints(127, 175, 23, -1));
-        jPanel1.add(jTextFieldMesFabricacao, new org.netbeans.lib.awtextra.AbsoluteConstraints(162, 175, 24, -1));
+        jPanel2.add(jLabel6);
+        jLabel6.setBounds(170, 70, 13, 14);
+        jPanel2.add(jTextFieldNomeCarne);
+        jTextFieldNomeCarne.setBounds(70, 20, 130, 20);
+        jPanel2.add(jTextFieldQtdCarne);
+        jTextFieldQtdCarne.setBounds(100, 70, 60, 20);
+        jPanel2.add(jTextField1);
+        jTextField1.setBounds(200, 110, 50, 20);
+        jPanel2.add(jTextField2);
+        jTextField2.setBounds(220, 150, 50, 20);
+        jPanel2.add(jTextField3);
+        jTextField3.setBounds(160, 110, 30, 20);
 
         jLabel7.setText("/");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 128, -1, -1));
+        jPanel2.add(jLabel7);
+        jLabel7.setBounds(210, 150, 10, 20);
 
         jLabel8.setText("/");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 128, -1, -1));
+        jPanel2.add(jLabel8);
+        jLabel8.setBounds(150, 110, 10, 20);
+        jPanel2.add(jTextField4);
+        jTextField4.setBounds(120, 110, 30, 20);
+        jPanel2.add(jTextField5);
+        jTextField5.setBounds(140, 150, 30, 20);
+        jPanel2.add(jTextField6);
+        jTextField6.setBounds(180, 150, 30, 20);
 
         jLabel9.setText("/");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(154, 178, -1, -1));
+        jPanel2.add(jLabel9);
+        jLabel9.setBounds(190, 110, 10, 20);
 
         jLabel10.setText("/");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 178, -1, -1));
+        jPanel2.add(jLabel10);
+        jLabel10.setBounds(170, 150, 10, 20);
 
-        getContentPane().add(jPanel1);
-        jPanel1.setBounds(30, 496, 376, 249);
+        getContentPane().add(jPanel2);
+        jPanel2.setBounds(30, 10, 320, 210);
+
+        jButton1.setText("Cadastrar");
+        getContentPane().add(jButton1);
+        jButton1.setBounds(90, 230, 90, 30);
+
+        jButton2.setText("Cancelar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2);
+        jButton2.setBounds(210, 230, 90, 30);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ComboBoxTipoCarneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxTipoCarneActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ComboBoxTipoCarneActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -148,9 +177,9 @@ public class CadastrarCarne extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> ComboBoxTipoCarne;
-    private javax.swing.JTextField TextFieldDiaValidade;
-    private javax.swing.JTextField TextFieldNomeCarne;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JComboBox<String> jComboBoxTipo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -161,12 +190,14 @@ public class CadastrarCarne extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextFieldAnoFabricacao;
-    private javax.swing.JTextField jTextFieldAnoValidade;
-    private javax.swing.JTextField jTextFieldDiaFabricacao;
-    private javax.swing.JTextField jTextFieldMesFabricacao;
-    private javax.swing.JTextField jTextFieldMesValidade;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextFieldNomeCarne;
+    private javax.swing.JTextField jTextFieldQtdCarne;
     // End of variables declaration//GEN-END:variables
 }

@@ -28,18 +28,8 @@ public class DEspetos {
             serial.setVisible(true);
         }
         
-        
-        
-        Boi  carne1;
         Calendar c = Calendar.getInstance();
         c.set(1997,03,22);
-        
-        carne1 = new Boi("Picanha", (float) 18.7,Date(10,03,2017), Date(10,03,2018), 10);
-        
-        System.out.println("Tipo de carne: " + carne1.getTipo());
-        System.out.println("Preco: " + carne1.getValorCusto());
-        System.out.println("Quantidade: " + carne1.getQuantidade());
-        System.out.println("Dia: " +c.get(Calendar.DAY_OF_MONTH));
         
     }
 

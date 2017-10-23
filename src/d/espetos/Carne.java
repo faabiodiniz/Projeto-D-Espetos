@@ -20,6 +20,9 @@ public class Carne {
 		this.valorCusto = valorCusto;
 	}
 
+    public Carne() {
+    }
+
 	public double getQuantidade() {
 		return quantidade;
 	}

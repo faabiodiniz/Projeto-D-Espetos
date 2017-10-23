@@ -186,21 +186,25 @@ public class menuInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_menuItemListarEstoqueActionPerformed
 
     private void jButtonVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVendasActionPerformed
-        // TODO add your handling code here:
+        listVendas vendas = new listVendas();
+        vendas.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButtonVendasActionPerformed
 
     private void jButtonEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEstoqueActionPerformed
-        // TODO add your handling code here:
+        listEstoque estoque = new listEstoque();
+        estoque.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButtonEstoqueActionPerformed
 
     private void jButtonClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClienteActionPerformed
-        menuCliente cliente = new menuCliente();
+        listClientes cliente = new listClientes();
         cliente.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonClienteActionPerformed
 
     private void jButtonFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFornecedorActionPerformed
-        menuFornecedor fornecedor = new menuFornecedor();
+        listFornecedor fornecedor = new listFornecedor();
         fornecedor.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonFornecedorActionPerformed

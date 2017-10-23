@@ -37,16 +37,37 @@ public class listClientes extends javax.swing.JFrame {
         jLabelBuscaCPF = new javax.swing.JLabel();
         jTextFieldBuscaCPF = new javax.swing.JTextField();
         jButtonBuscarCliente = new javax.swing.JButton();
+        jButtonEditCliente = new javax.swing.JButton();
+        jButtonCadCliente = new javax.swing.JButton();
+        jButtonRemoveCliente = new javax.swing.JButton();
         jLabelBackground = new javax.swing.JLabel();
+        barraMenu = new javax.swing.JMenuBar();
+        menuPrincipal = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        menuClientes = new javax.swing.JMenu();
+        menuItemCadastroCliente = new javax.swing.JMenuItem();
+        menuItemListarClientes = new javax.swing.JMenuItem();
+        jMenuFornecedores = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        menuEstoque = new javax.swing.JMenu();
+        menuItemListarEstoque = new javax.swing.JMenuItem();
+        menuVendas = new javax.swing.JMenu();
+        menuItemRelatorioVenda = new javax.swing.JMenuItem();
+        menuItemRealizarVenda = new javax.swing.JMenuItem();
+        jMenuSair = new javax.swing.JMenu();
+        jMenuItemSair = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
         getContentPane().setLayout(null);
 
+        jPanel1.setPreferredSize(new java.awt.Dimension(830, 520));
         jPanel1.setLayout(null);
 
         labelTituloBusca.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        labelTituloBusca.setText("Busca de Clientes");
+        labelTituloBusca.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelTituloBusca.setText("CLIENTES");
         jPanel1.add(labelTituloBusca);
         labelTituloBusca.setBounds(300, 0, 110, 20);
 
@@ -55,11 +76,11 @@ public class listClientes extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nome", "CPF", "Telefone", "E-mail"
+                "ID", "NOME", "CPF", "TELEFONE", "E-MAIL"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -69,7 +90,7 @@ public class listClientes extends javax.swing.JFrame {
         jScrollPaneClientes.setViewportView(tableListarCliente);
 
         jPanel1.add(jScrollPaneClientes);
-        jScrollPaneClientes.setBounds(20, 70, 700, 360);
+        jScrollPaneClientes.setBounds(20, 70, 700, 290);
         jPanel1.add(textFieldBuscaNome);
         textFieldBuscaNome.setBounds(120, 30, 220, 20);
 
@@ -87,7 +108,34 @@ public class listClientes extends javax.swing.JFrame {
 
         jButtonBuscarCliente.setText("Buscar");
         jPanel1.add(jButtonBuscarCliente);
-        jButtonBuscarCliente.setBounds(640, 30, 73, 23);
+        jButtonBuscarCliente.setBounds(630, 30, 90, 23);
+
+        jButtonEditCliente.setText("Editar");
+        jButtonEditCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditClienteActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButtonEditCliente);
+        jButtonEditCliente.setBounds(280, 380, 160, 40);
+
+        jButtonCadCliente.setText("Cadastrar");
+        jButtonCadCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCadClienteActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButtonCadCliente);
+        jButtonCadCliente.setBounds(80, 380, 160, 40);
+
+        jButtonRemoveCliente.setText("Remover");
+        jButtonRemoveCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRemoveClienteActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButtonRemoveCliente);
+        jButtonRemoveCliente.setBounds(470, 380, 160, 40);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(20, 20, 740, 440);
@@ -96,8 +144,121 @@ public class listClientes extends javax.swing.JFrame {
         getContentPane().add(jLabelBackground);
         jLabelBackground.setBounds(-20, -20, 830, 520);
 
+        menuPrincipal.setText("Menu Principal");
+
+        jMenuItem3.setText("Menu Principal");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        menuPrincipal.add(jMenuItem3);
+
+        barraMenu.add(menuPrincipal);
+
+        menuClientes.setText("Clientes");
+
+        menuItemCadastroCliente.setText("Cadastrar Cliente");
+        menuClientes.add(menuItemCadastroCliente);
+
+        menuItemListarClientes.setText("Listar Clientes");
+        menuItemListarClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemListarClientesActionPerformed(evt);
+            }
+        });
+        menuClientes.add(menuItemListarClientes);
+
+        barraMenu.add(menuClientes);
+
+        jMenuFornecedores.setText("Fornecedores");
+
+        jMenuItem1.setText("Cadastrar Fornecedor");
+        jMenuFornecedores.add(jMenuItem1);
+
+        jMenuItem2.setText("Listar Fornecedores");
+        jMenuFornecedores.add(jMenuItem2);
+
+        barraMenu.add(jMenuFornecedores);
+
+        menuEstoque.setText("Estoque");
+
+        menuItemListarEstoque.setText("Listar Carnes");
+        menuItemListarEstoque.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemListarEstoqueActionPerformed(evt);
+            }
+        });
+        menuEstoque.add(menuItemListarEstoque);
+
+        barraMenu.add(menuEstoque);
+
+        menuVendas.setText("Vendas");
+
+        menuItemRelatorioVenda.setText("Relatório de Vendas");
+        menuItemRelatorioVenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemRelatorioVendaActionPerformed(evt);
+            }
+        });
+        menuVendas.add(menuItemRelatorioVenda);
+
+        menuItemRealizarVenda.setText("Realizar Venda");
+        menuVendas.add(menuItemRealizarVenda);
+
+        barraMenu.add(menuVendas);
+
+        jMenuSair.setText("Sair");
+
+        jMenuItemSair.setText("Sair");
+        jMenuItemSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemSairActionPerformed(evt);
+            }
+        });
+        jMenuSair.add(jMenuItemSair);
+
+        barraMenu.add(jMenuSair);
+
+        setJMenuBar(barraMenu);
+
         setBounds(0, 0, 806, 512);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonEditClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonEditClienteActionPerformed
+
+    private void jButtonCadClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadClienteActionPerformed
+        cadastroClientes cadCliente = new cadastroClientes();
+        cadCliente.setVisible(true);
+    }//GEN-LAST:event_jButtonCadClienteActionPerformed
+
+    private void jButtonRemoveClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoveClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonRemoveClienteActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        menuInicial principal = new menuInicial();
+        principal.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void menuItemListarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemListarClientesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuItemListarClientesActionPerformed
+
+    private void menuItemListarEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemListarEstoqueActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuItemListarEstoqueActionPerformed
+
+    private void menuItemRelatorioVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemRelatorioVendaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuItemRelatorioVendaActionPerformed
+
+    private void jMenuItemSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSairActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jMenuItemSairActionPerformed
 
     /**
      * @param args the command line arguments
@@ -135,14 +296,33 @@ public class listClientes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuBar barraMenu;
     private javax.swing.JButton jButtonBuscarCliente;
+    private javax.swing.JButton jButtonCadCliente;
+    private javax.swing.JButton jButtonEditCliente;
+    private javax.swing.JButton jButtonRemoveCliente;
     private javax.swing.JLabel jLabelBackground;
     private javax.swing.JLabel jLabelBuscaCPF;
     private javax.swing.JLabel jLabelBuscaNome;
+    private javax.swing.JMenu jMenuFornecedores;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItemSair;
+    private javax.swing.JMenu jMenuSair;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPaneClientes;
     private javax.swing.JTextField jTextFieldBuscaCPF;
     private javax.swing.JLabel labelTituloBusca;
+    private javax.swing.JMenu menuClientes;
+    private javax.swing.JMenu menuEstoque;
+    private javax.swing.JMenuItem menuItemCadastroCliente;
+    private javax.swing.JMenuItem menuItemListarClientes;
+    private javax.swing.JMenuItem menuItemListarEstoque;
+    private javax.swing.JMenuItem menuItemRealizarVenda;
+    private javax.swing.JMenuItem menuItemRelatorioVenda;
+    private javax.swing.JMenu menuPrincipal;
+    private javax.swing.JMenu menuVendas;
     private javax.swing.JTable tableListarCliente;
     private javax.swing.JTextField textFieldBuscaNome;
     // End of variables declaration//GEN-END:variables
