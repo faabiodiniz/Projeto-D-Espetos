@@ -4,26 +4,35 @@ import java.util.Date;
        
 public class Cliente{
     private int idCliente;
-    private final String nomeCliente;
+    private String nomeCliente;
     private String telefoneCliente;
     private String emailCliente;
-    private String endereco;
-    private String bairro;
-    private int numero;
-    private Date nascimento;
+    private String cpfCliente;
+    
+    public Cliente(){
+        
+    }
 	
-    public Cliente(String nomeCliente, String telefoneCliente, String emailCliente, String endereco, String bairro,
-			int numero, Date nascimento) 
+    public Cliente(String nomeCliente, String telefoneCliente, String emailCliente, String cpfCliente) 
     {
-		this.nomeCliente = nomeCliente;
-		this.telefoneCliente = telefoneCliente;
-		this.emailCliente = emailCliente;
-		this.endereco = endereco;
-		this.bairro = bairro;
-		this.numero = numero;
-		this.nascimento = nascimento;
-	}
+        this.cpfCliente = cpfCliente;
+	this.nomeCliente = nomeCliente;
+	this.telefoneCliente = telefoneCliente;
+	this.emailCliente = emailCliente;
+    }
 
+        public void setCpfCliente(String Cpf) {
+            this.cpfCliente = Cpf;
+        }
+
+        public String getCpfCliente(){
+            return cpfCliente;
+        }
+        
+        public void setNomeCliente(String nomeCliente) {
+            this.nomeCliente = nomeCliente;
+        }
+    
 	public String getTelefoneCliente() {
 		return telefoneCliente;
 	}
@@ -40,22 +49,6 @@ public class Cliente{
 		this.emailCliente = emailCliente;
 	}
 
-	public String getEndereco() {
-		return endereco;
-	}
-
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
-	}
-
-	public String getBairro() {
-		return bairro;
-	}
-
-	public void setBairro(String bairro) {
-		this.bairro = bairro;
-	}
-
 	public int getIdCliente() {
 		return idCliente;
 	}
@@ -63,13 +56,4 @@ public class Cliente{
 	public String getNomeCliente() {
 		return nomeCliente;
 	}
-
-	public int getNumero() {
-		return numero;
-	}
-
-	public Date getNascimento() {
-		return nascimento;
-	}
-       
 }

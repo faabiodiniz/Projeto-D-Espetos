@@ -23,8 +23,11 @@ public class FornecedorDAO {
         conexao.Conexao();
         try {
             PreparedStatement pst = conexao.con.prepareStatement("INSERT INTO Fornecedor(Nome, Endereco, Telefone, CNPJ, Email) values (?,?,?,?,?)");
-            pst.setString(1, fornecedor.getNome());
-            pst.setString(2, fornecedor.getEndereco());
+            pst.setString(1, fornecedor.getNomeFornecedor());
+            pst.setString(2, fornecedor.getBairro());
+            pst.setString(2, fornecedor.getCidade());
+            pst.setString(2, fornecedor.getEstado());
+            pst.setInt(2, fornecedor.getNumero());
             pst.setString(3, fornecedor.getTelefone());
             pst.setString(4, fornecedor.getEmail());
             pst.setString(5, fornecedor.getCnpj());

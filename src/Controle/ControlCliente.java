@@ -23,12 +23,11 @@ public class ControlCliente {
     public void Salvar(Cliente cliente){
         conexao.Conexao();
         try {
-            PreparedStatement pst = conexao.con.prepareStatement("INSERT INTO cliente (Nome, Endereco, Telefone, E-mail, CPF) values (?,?,?,?,?)");
-            pst.setString(1, cliente.getNome());
-            pst.setString(2, cliente.getEndereco());
-            pst.setString(3, cliente.getTelefone());
-            pst.setString(4, cliente.getEmail());
-            pst.setString(5, cliente.getCpf());
+            PreparedStatement pst = conexao.con.prepareStatement("INSERT INTO cliente (Nome, Telefone, E-mail, CPF) values (?,?,?,?)");
+            pst.setString(1, cliente.getNomeCliente());
+            pst.setString(3, cliente.getTelefoneCliente());
+            pst.setString(4, cliente.getEmailCliente());
+            pst.setString(5, cliente.getCpfCliente());
             pst.execute();
             JOptionPane.showMessageDialog(null,"Dados inseridos com sucesso");
         } catch (SQLException ex) {

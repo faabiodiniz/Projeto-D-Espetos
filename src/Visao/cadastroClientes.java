@@ -41,12 +41,10 @@ public class cadastroClientes extends javax.swing.JFrame {
         jLabelCPF = new javax.swing.JLabel();
         jLabelTelefone = new javax.swing.JLabel();
         jLabelEmail = new javax.swing.JLabel();
-        jLabelEndereco = new javax.swing.JLabel();
         jTextFieldEmail = new javax.swing.JTextField();
         jTextFieldTelefone = new javax.swing.JTextField();
         jTextFieldNome = new javax.swing.JTextField();
         jTextFieldCPF = new javax.swing.JTextField();
-        jTextFieldEndereco = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jButtonCadastrar = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
@@ -65,21 +63,17 @@ public class cadastroClientes extends javax.swing.JFrame {
         jLabelCPF.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabelCPF.setText("CPF:");
         jPanelPainel.add(jLabelCPF);
-        jLabelCPF.setBounds(20, 50, 40, 14);
+        jLabelCPF.setBounds(20, 60, 40, 14);
 
         jLabelTelefone.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabelTelefone.setText("Telefone: ");
         jPanelPainel.add(jLabelTelefone);
-        jLabelTelefone.setBounds(20, 80, 60, 20);
+        jLabelTelefone.setBounds(20, 100, 60, 20);
 
         jLabelEmail.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabelEmail.setText("E-mail: ");
         jPanelPainel.add(jLabelEmail);
-        jLabelEmail.setBounds(20, 150, 50, 20);
-
-        jLabelEndereco.setText("Endereço: ");
-        jPanelPainel.add(jLabelEndereco);
-        jLabelEndereco.setBounds(20, 120, 60, 14);
+        jLabelEmail.setBounds(20, 140, 50, 20);
 
         jTextFieldEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -87,9 +81,9 @@ public class cadastroClientes extends javax.swing.JFrame {
             }
         });
         jPanelPainel.add(jTextFieldEmail);
-        jTextFieldEmail.setBounds(90, 150, 160, 20);
+        jTextFieldEmail.setBounds(90, 140, 160, 20);
         jPanelPainel.add(jTextFieldTelefone);
-        jTextFieldTelefone.setBounds(90, 80, 160, 20);
+        jTextFieldTelefone.setBounds(90, 100, 160, 20);
         jPanelPainel.add(jTextFieldNome);
         jTextFieldNome.setBounds(90, 20, 160, 20);
 
@@ -99,15 +93,7 @@ public class cadastroClientes extends javax.swing.JFrame {
             }
         });
         jPanelPainel.add(jTextFieldCPF);
-        jTextFieldCPF.setBounds(90, 50, 160, 20);
-
-        jTextFieldEndereco.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldEnderecoActionPerformed(evt);
-            }
-        });
-        jPanelPainel.add(jTextFieldEndereco);
-        jTextFieldEndereco.setBounds(90, 120, 160, 20);
+        jTextFieldCPF.setBounds(90, 60, 160, 20);
 
         getContentPane().add(jPanelPainel);
         jPanelPainel.setBounds(27, 27, 280, 180);
@@ -148,16 +134,11 @@ public class cadastroClientes extends javax.swing.JFrame {
 
     private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
         cliente.setNomeCliente(jTextFieldNome.getText());
-        cliente.setCpf(jTextFieldCPF.getText());
-        cliente.setEmail(jTextFieldEmail.getText());
-        cliente.setEndereco(jTextFieldEndereco.getText());
-        cliente.setTelefone(jTextFieldTelefone.getText());
+        cliente.setCpfCliente(jTextFieldCPF.getText());
+        cliente.setEmailCliente(jTextFieldEmail.getText());
+        cliente.setTelefoneCliente(jTextFieldTelefone.getText());
         ctrCliente.Salvar(cliente);
     }//GEN-LAST:event_jButtonCadastrarActionPerformed
-
-    private void jTextFieldEnderecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldEnderecoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldEnderecoActionPerformed
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
         this.dispose();
@@ -204,13 +185,11 @@ public class cadastroClientes extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelCPF;
     private javax.swing.JLabel jLabelEmail;
-    private javax.swing.JLabel jLabelEndereco;
     private javax.swing.JLabel jLabelNome;
     private javax.swing.JLabel jLabelTelefone;
     private javax.swing.JPanel jPanelPainel;
     private javax.swing.JTextField jTextFieldCPF;
     private javax.swing.JTextField jTextFieldEmail;
-    private javax.swing.JTextField jTextFieldEndereco;
     private javax.swing.JTextField jTextFieldNome;
     private javax.swing.JTextField jTextFieldTelefone;
     // End of variables declaration//GEN-END:variables

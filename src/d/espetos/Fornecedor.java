@@ -9,35 +9,44 @@ public class Fornecedor
 {
  
     private int idCliente;
-    private int cnpj;
-    private String nomeFantasia;
-    private String razaoSocial;
+    private String cnpj;
+    private String nomeFornecedor;
     private String email;
     private String telefone;
-    private String endereco;
     private String bairro;
     private int numero;
     private String cidade;
     private String estado;
     private VendedorRepresentante representante;
-	
+
+    public Fornecedor(){
+        
+    }
 
 
-	public Fornecedor(int cnpj, String nomeFantasia, String razaoSocial, String email, String telefone, String endereco,
+	public Fornecedor(String cnpj, String nomeFantasia, String email, String telefone, String endereco,
 			String bairro, int numero, String cidade, String estado, VendedorRepresentante representante) {
 		super();
 		this.cnpj = cnpj;
-		this.nomeFantasia = nomeFantasia;
-		this.razaoSocial = razaoSocial;
+		this.nomeFornecedor = nomeFantasia;
 		this.email = email;
 		this.telefone = telefone;
-		this.endereco = endereco;
 		this.bairro = bairro;
 		this.numero = numero;
 		this.cidade = cidade;
 		this.estado = estado;
 		this.representante = representante;
 	}
+
+    public String getNomeFornecedor() {
+        return nomeFornecedor;
+    }
+
+    public void setNomeFornecedor(String nomeFornecedor) {
+        this.nomeFornecedor = nomeFornecedor;
+    }
+        
+        
 	
 	public VendedorRepresentante getRepresentante()
 	{
@@ -60,15 +69,7 @@ public class Fornecedor
 		this.telefone = telefone;
 	}
 
-	public String getEndereco() {
-		return endereco;
-	}
-
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
-	}
-
-	public String getBairro() {
+        public String getBairro() {
 		return bairro;
 	}
 
@@ -104,21 +105,7 @@ public class Fornecedor
 		return idCliente;
 	}
 
-	public int getCnpj() {
+	public String getCnpj() {
 		return cnpj;
 	}
-
-	public String getNomeFantasia() {
-		return nomeFantasia;
-	}
-
-	public String getRazaoSocial() {
-		return razaoSocial;
-	}
-    
-    
-    
-    
-    
-
 }
