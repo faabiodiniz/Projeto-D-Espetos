@@ -14,6 +14,7 @@ public class Fornecedor
     private String email;
     private String telefone;
     private String rua;
+    private String bairro;
     private String cidade;
     private String estado;
     private String numero;
@@ -34,6 +35,14 @@ public class Fornecedor
 		this.representante = representante;
 	}
 
+    public String getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+        
     public String getRua() {
         return rua;
     }

@@ -22,15 +22,16 @@ public class FornecedorDAO {
     public void Salvar(Fornecedor fornecedor){
         conexao.Conexao();
         try {
-            PreparedStatement pst = conexao.con.prepareStatement("INSERT INTO Fornecedor(nome, telefone, CNPJ, email, rua, numeroRua, cidade, estado) values (?,?,?,?,?,?,?,?)");
+            PreparedStatement pst = conexao.con.prepareStatement("INSERT INTO Fornecedor(nome, telefone, CNPJ, email, rua, numeroRua, bairro ,cidade, estado) values (?,?,?,?,?,?,?,?,?)");
             pst.setString(1, fornecedor.getNomeFornecedor());
             pst.setString(2, fornecedor.getTelefone());
             pst.setString(4, fornecedor.getEmail());
             pst.setString(3, fornecedor.getCnpj());
             pst.setString(5, fornecedor.getRua());
             pst.setString(6, fornecedor.getNumero());
-            pst.setString(7, fornecedor.getCidade());
-            pst.setString(8, fornecedor.getEstado());
+            pst.setString(7, fornecedor.getBairro());
+            pst.setString(8, fornecedor.getCidade());
+            pst.setString(9, fornecedor.getEstado());
             pst.execute();
             JOptionPane.showMessageDialog(null,"Dados inseridos com sucesso");
         } catch (SQLException ex) {

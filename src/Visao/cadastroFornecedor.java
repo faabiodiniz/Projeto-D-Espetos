@@ -51,12 +51,14 @@ public class cadastroFornecedor extends javax.swing.JFrame {
         jTextFieldNumFor = new javax.swing.JTextField();
         jTextFieldCidFor = new javax.swing.JTextField();
         jTextFieldUfFor = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jTextFieldBairroFor = new javax.swing.JTextField();
         labelCadFornecedor = new javax.swing.JLabel();
         buttonCadastrarFuncionario = new javax.swing.JButton();
         buttonCancelarCadastro = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(363, 360));
+        setMinimumSize(new java.awt.Dimension(363, 395));
         setResizable(false);
         getContentPane().setLayout(null);
 
@@ -81,7 +83,7 @@ public class cadastroFornecedor extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel5.setText("Email: ");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(20, 210, 33, 14);
+        jLabel5.setBounds(20, 240, 33, 14);
 
         textFieldCadNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,7 +103,7 @@ public class cadastroFornecedor extends javax.swing.JFrame {
             }
         });
         jPanel1.add(textFieldCadEmail);
-        textFieldCadEmail.setBounds(70, 210, 190, 20);
+        textFieldCadEmail.setBounds(70, 240, 190, 20);
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel1.setText("Rua:");
@@ -111,27 +113,35 @@ public class cadastroFornecedor extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel6.setText("Cidade:");
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(20, 170, 40, 20);
+        jLabel6.setBounds(20, 200, 40, 20);
 
+        jLabel7.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel7.setText("Número:");
         jPanel1.add(jLabel7);
-        jLabel7.setBounds(210, 130, 50, 40);
+        jLabel7.setBounds(220, 130, 60, 40);
 
         jLabel8.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel8.setText("UF:");
         jPanel1.add(jLabel8);
-        jLabel8.setBounds(180, 170, 50, 20);
+        jLabel8.setBounds(180, 200, 50, 20);
         jPanel1.add(jTextFieldRuaFor);
-        jTextFieldRuaFor.setBounds(50, 140, 150, 20);
+        jTextFieldRuaFor.setBounds(70, 140, 150, 20);
         jPanel1.add(jTextFieldNumFor);
         jTextFieldNumFor.setBounds(270, 140, 30, 20);
         jPanel1.add(jTextFieldCidFor);
-        jTextFieldCidFor.setBounds(60, 170, 100, 20);
+        jTextFieldCidFor.setBounds(70, 200, 100, 20);
         jPanel1.add(jTextFieldUfFor);
-        jTextFieldUfFor.setBounds(210, 170, 30, 20);
+        jTextFieldUfFor.setBounds(210, 200, 30, 20);
+
+        jLabel9.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        jLabel9.setText("Bairro: ");
+        jPanel1.add(jLabel9);
+        jLabel9.setBounds(20, 170, 40, 14);
+        jPanel1.add(jTextFieldBairroFor);
+        jTextFieldBairroFor.setBounds(70, 170, 100, 20);
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(30, 30, 310, 240);
+        jPanel1.setBounds(30, 30, 310, 280);
 
         labelCadFornecedor.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         labelCadFornecedor.setText("Cadastrar Fornecedor");
@@ -145,7 +155,7 @@ public class cadastroFornecedor extends javax.swing.JFrame {
             }
         });
         getContentPane().add(buttonCadastrarFuncionario);
-        buttonCadastrarFuncionario.setBounds(70, 280, 100, 30);
+        buttonCadastrarFuncionario.setBounds(70, 320, 100, 30);
 
         buttonCancelarCadastro.setText("Cancelar");
         buttonCancelarCadastro.addActionListener(new java.awt.event.ActionListener() {
@@ -154,7 +164,7 @@ public class cadastroFornecedor extends javax.swing.JFrame {
             }
         });
         getContentPane().add(buttonCancelarCadastro);
-        buttonCancelarCadastro.setBounds(180, 280, 90, 30);
+        buttonCancelarCadastro.setBounds(180, 320, 90, 30);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -229,7 +239,9 @@ public class cadastroFornecedor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField jTextFieldBairroFor;
     private javax.swing.JTextField jTextFieldCidFor;
     private javax.swing.JTextField jTextFieldNumFor;
     private javax.swing.JTextField jTextFieldRuaFor;
