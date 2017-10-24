@@ -21,19 +21,4 @@ public class ControlCliente {
     ConexaoBD conexao = new ConexaoBD();
     Cliente cliente = new Cliente();
     
-    public void Salvar(Cliente cliente){
-        conexao.Conexao();
-        try {
-            PreparedStatement pst = conexao.con.prepareStatement("INSERT INTO cliente (Nome, Telefone, E-mail,) values (?,?,?)");
-            pst.setString(1, cliente.getNomeCliente());
-            pst.setString(3, cliente.getTelefoneCliente());
-            pst.setString(4, cliente.getEmailCliente());
-            //pst.setString(5, Fisico.getCpfCliente());
-            pst.execute();
-            JOptionPane.showMessageDialog(null,"Dados inseridos com sucesso");
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,"Falha ao inserir dados\n Erro: " +ex);
-        }
-        conexao.desconecta();
-    }
 }

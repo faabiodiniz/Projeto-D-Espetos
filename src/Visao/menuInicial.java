@@ -6,6 +6,12 @@
 package Visao;
 
 import Controle.ConexaoBD;
+import Visao.cadastroClientes;
+import Visao.cadastroFornecedor;
+import Visao.listClientes;
+import Visao.listEstoque;
+import Visao.listFornecedor;
+import Visao.listVendas;
 
 /**
  *
@@ -97,6 +103,11 @@ public class menuInicial extends javax.swing.JFrame {
         jLabelFundoMenus.setBounds(-10, -20, 750, 490);
 
         menuPrincipal.setText("Menu Principal");
+        menuPrincipal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuPrincipalActionPerformed(evt);
+            }
+        });
 
         jMenuItem3.setText("Menu Principal");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
@@ -109,8 +120,18 @@ public class menuInicial extends javax.swing.JFrame {
         barraMenu.add(menuPrincipal);
 
         menuClientes.setText("Clientes");
+        menuClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuClientesActionPerformed(evt);
+            }
+        });
 
         menuItemCadastroCliente.setText("Cadastrar Cliente");
+        menuItemCadastroCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemCadastroClienteActionPerformed(evt);
+            }
+        });
         menuClientes.add(menuItemCadastroCliente);
 
         menuItemListarClientes.setText("Listar Clientes");
@@ -126,9 +147,19 @@ public class menuInicial extends javax.swing.JFrame {
         jMenuFornecedores.setText("Fornecedores");
 
         jMenuItem1.setText("Cadastrar Fornecedor");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenuFornecedores.add(jMenuItem1);
 
         jMenuItem2.setText("Listar Fornecedores");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenuFornecedores.add(jMenuItem2);
 
         barraMenu.add(jMenuFornecedores);
@@ -156,6 +187,11 @@ public class menuInicial extends javax.swing.JFrame {
         menuVendas.add(menuItemRelatorioVenda);
 
         menuItemRealizarVenda.setText("Realizar Venda");
+        menuItemRealizarVenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemRealizarVendaActionPerformed(evt);
+            }
+        });
         menuVendas.add(menuItemRealizarVenda);
 
         barraMenu.add(menuVendas);
@@ -178,11 +214,16 @@ public class menuInicial extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuItemListarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemListarClientesActionPerformed
-        // TODO add your handling code here:
+        listClientes cliente = new listClientes();
+        cliente.setVisible(true);
+        dispose();
     }//GEN-LAST:event_menuItemListarClientesActionPerformed
 
     private void menuItemListarEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemListarEstoqueActionPerformed
         // TODO add your handling code here:
+        listEstoque estoque = new listEstoque();
+        estoque.setVisible(true);
+        dispose();
     }//GEN-LAST:event_menuItemListarEstoqueActionPerformed
 
     private void jButtonVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVendasActionPerformed
@@ -192,9 +233,9 @@ public class menuInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonVendasActionPerformed
 
     private void jButtonEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEstoqueActionPerformed
-        listEstoque estoque = new listEstoque();
-        estoque.setVisible(true);
-        dispose();
+        listEstoque cliente = new listEstoque();
+        cliente.setVisible(true);
+        dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jButtonEstoqueActionPerformed
 
     private void jButtonClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClienteActionPerformed
@@ -222,6 +263,47 @@ public class menuInicial extends javax.swing.JFrame {
         principal.setVisible(true);
         dispose();
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void menuPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPrincipalActionPerformed
+        menuInicial principal = new menuInicial();
+        principal.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_menuPrincipalActionPerformed
+
+    private void menuClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuClientesActionPerformed
+        cadastroClientes clientes = new cadastroClientes();
+        clientes.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_menuClientesActionPerformed
+
+    private void menuItemCadastroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemCadastroClienteActionPerformed
+        // TODO add your handling code here:
+        cadastroClientes clientes = new cadastroClientes();
+        clientes.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_menuItemCadastroClienteActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        cadastroFornecedor fornecedor = new cadastroFornecedor();
+        fornecedor.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+        listFornecedor fornecedor = new listFornecedor();
+        fornecedor.setVisible(true);
+        dispose();
+        
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void menuItemRealizarVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemRealizarVendaActionPerformed
+        /*// TODO add your handling code here:
+        cadastroVendas venda = new cadastroVendas();
+        venda.setVisible(true);
+        dispose();*/
+    }//GEN-LAST:event_menuItemRealizarVendaActionPerformed
 
     /**
      * @param args the command line arguments

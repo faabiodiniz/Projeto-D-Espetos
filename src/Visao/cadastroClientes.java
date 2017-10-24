@@ -1,9 +1,10 @@
 package Visao;
 
+import ClassesDAO.ClienteDAO;
 import Controle.ConexaoBD;
 import Controle.ControlCliente;
 import d.espetos.Cliente;
-import d.espetos.Fisico;
+
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -16,10 +17,9 @@ import d.espetos.Fisico;
  * @author faad2
  */
 public class cadastroClientes extends javax.swing.JFrame {
-    Fisico fisico = new Fisico();
     Cliente cliente = new Cliente();
     ConexaoBD conexao = new ConexaoBD();
-    ControlCliente ctrCliente = new ControlCliente();
+    ClienteDAO clienteDAO = new ClienteDAO();
     /**
      * Creates new form cadastroClientes
      */
@@ -135,10 +135,10 @@ public class cadastroClientes extends javax.swing.JFrame {
 
     private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
         cliente.setNomeCliente(jTextFieldNome.getText());
-        fisico.setCpfCliente(jTextFieldCPF.getText());
         cliente.setEmailCliente(jTextFieldEmail.getText());
         cliente.setTelefoneCliente(jTextFieldTelefone.getText());
-        ctrCliente.Salvar(cliente);
+        cliente.setCpf(jTextFieldCPF.getText());
+        clienteDAO.Salvar(cliente);
     }//GEN-LAST:event_jButtonCadastrarActionPerformed
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed

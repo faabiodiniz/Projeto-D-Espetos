@@ -5,12 +5,18 @@
  */
 package Visao;
 
+import ClassesDAO.FornecedorDAO;
+import Controle.ConexaoBD;
+import d.espetos.Fornecedor;
+
 /**
  *
  * @author faad2
  */
 public class cadastroFornecedor extends javax.swing.JFrame {
-
+    Fornecedor fornecedor = new Fornecedor();
+    ConexaoBD conexao = new ConexaoBD();
+    FornecedorDAO forDao = new FornecedorDAO();
     /**
      * Creates new form cadastroFornecedor
      */
@@ -41,12 +47,16 @@ public class cadastroFornecedor extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        jTextFieldRuaFor = new javax.swing.JTextField();
+        jTextFieldNumFor = new javax.swing.JTextField();
+        jTextFieldCidFor = new javax.swing.JTextField();
+        jTextFieldUfFor = new javax.swing.JTextField();
         labelCadFornecedor = new javax.swing.JLabel();
         buttonCadastrarFuncionario = new javax.swing.JButton();
         buttonCancelarCadastro = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(337, 287));
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(363, 360));
         setResizable(false);
         getContentPane().setLayout(null);
 
@@ -84,6 +94,12 @@ public class cadastroFornecedor extends javax.swing.JFrame {
         textFieldCadCNPJ.setBounds(70, 60, 190, 20);
         jPanel1.add(textFieldCadTel);
         textFieldCadTel.setBounds(70, 100, 190, 20);
+
+        textFieldCadEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldCadEmailActionPerformed(evt);
+            }
+        });
         jPanel1.add(textFieldCadEmail);
         textFieldCadEmail.setBounds(70, 210, 190, 20);
 
@@ -95,19 +111,27 @@ public class cadastroFornecedor extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel6.setText("Cidade:");
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(20, 170, 40, 14);
+        jLabel6.setBounds(20, 170, 40, 20);
 
         jLabel7.setText("Número:");
         jPanel1.add(jLabel7);
-        jLabel7.setBounds(210, 140, 50, 14);
+        jLabel7.setBounds(210, 130, 50, 40);
 
         jLabel8.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        jLabel8.setText("Estado: ");
+        jLabel8.setText("UF:");
         jPanel1.add(jLabel8);
-        jLabel8.setBounds(160, 170, 50, 14);
+        jLabel8.setBounds(180, 170, 50, 20);
+        jPanel1.add(jTextFieldRuaFor);
+        jTextFieldRuaFor.setBounds(50, 140, 150, 20);
+        jPanel1.add(jTextFieldNumFor);
+        jTextFieldNumFor.setBounds(270, 140, 30, 20);
+        jPanel1.add(jTextFieldCidFor);
+        jTextFieldCidFor.setBounds(60, 170, 100, 20);
+        jPanel1.add(jTextFieldUfFor);
+        jTextFieldUfFor.setBounds(210, 170, 30, 20);
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(30, 30, 290, 240);
+        jPanel1.setBounds(30, 30, 310, 240);
 
         labelCadFornecedor.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         labelCadFornecedor.setText("Cadastrar Fornecedor");
@@ -115,10 +139,20 @@ public class cadastroFornecedor extends javax.swing.JFrame {
         labelCadFornecedor.setBounds(40, 10, 140, 20);
 
         buttonCadastrarFuncionario.setText("Cadastrar");
+        buttonCadastrarFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCadastrarFuncionarioActionPerformed(evt);
+            }
+        });
         getContentPane().add(buttonCadastrarFuncionario);
         buttonCadastrarFuncionario.setBounds(70, 280, 100, 30);
 
         buttonCancelarCadastro.setText("Cancelar");
+        buttonCancelarCadastro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCancelarCadastroActionPerformed(evt);
+            }
+        });
         getContentPane().add(buttonCancelarCadastro);
         buttonCancelarCadastro.setBounds(180, 280, 90, 30);
 
@@ -128,6 +162,26 @@ public class cadastroFornecedor extends javax.swing.JFrame {
     private void textFieldCadNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldCadNomeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textFieldCadNomeActionPerformed
+
+    private void textFieldCadEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldCadEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textFieldCadEmailActionPerformed
+
+    private void buttonCadastrarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCadastrarFuncionarioActionPerformed
+        fornecedor.setNomeFornecedor(textFieldCadNome.getText());
+        fornecedor.setEmail(textFieldCadEmail.getText());
+        fornecedor.setTelefone(textFieldCadTel.getText());
+        fornecedor.setCnpj(textFieldCadCNPJ.getText());
+        fornecedor.setRua(jTextFieldRuaFor.getText());
+        fornecedor.setNumero(jTextFieldNumFor.getText());
+        fornecedor.setCidade(jTextFieldCidFor.getText());
+        fornecedor.setEstado(jTextFieldUfFor.getText());
+        forDao.Salvar(fornecedor);
+    }//GEN-LAST:event_buttonCadastrarFuncionarioActionPerformed
+
+    private void buttonCancelarCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelarCadastroActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_buttonCancelarCadastroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -176,6 +230,10 @@ public class cadastroFornecedor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField jTextFieldCidFor;
+    private javax.swing.JTextField jTextFieldNumFor;
+    private javax.swing.JTextField jTextFieldRuaFor;
+    private javax.swing.JTextField jTextFieldUfFor;
     private javax.swing.JLabel labelCadFornecedor;
     private javax.swing.JTextField textFieldCadCNPJ;
     private javax.swing.JTextField textFieldCadEmail;

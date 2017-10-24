@@ -7,6 +7,7 @@ public class Cliente{
     private String nomeCliente;
     private String telefoneCliente;
     private String emailCliente;
+    private String cpf;
     
     public Cliente(){
         
@@ -18,7 +19,16 @@ public class Cliente{
 	this.telefoneCliente = telefoneCliente;
 	this.emailCliente = emailCliente;
     }
+
+    public String getCpfCliente() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
         
+    
         public void setNomeCliente(String nomeCliente) {
             this.nomeCliente = nomeCliente;
         }
