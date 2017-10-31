@@ -137,6 +137,12 @@ public class cadastroFornecedor extends javax.swing.JFrame {
         jLabel9.setText("Bairro: ");
         jPanel1.add(jLabel9);
         jLabel9.setBounds(20, 170, 40, 14);
+
+        jTextFieldBairroFor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldBairroForActionPerformed(evt);
+            }
+        });
         jPanel1.add(jTextFieldBairroFor);
         jTextFieldBairroFor.setBounds(70, 170, 230, 20);
 
@@ -183,7 +189,7 @@ public class cadastroFornecedor extends javax.swing.JFrame {
         fornecedor.setTelefone(textFieldCadTel.getText());
         fornecedor.setCnpj(textFieldCadCNPJ.getText());
         fornecedor.setRua(jTextFieldRuaFor.getText());
-        fornecedor.setBairro(jTextFieldRuaFor.getText());
+        fornecedor.setBairro(jTextFieldBairroFor.getText());
         fornecedor.setNumero(jTextFieldNumFor.getText());
         fornecedor.setCidade(jTextFieldCidFor.getText());
         fornecedor.setEstado(jTextFieldUfFor.getText());
@@ -193,6 +199,10 @@ public class cadastroFornecedor extends javax.swing.JFrame {
     private void buttonCancelarCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelarCadastroActionPerformed
         this.dispose();
     }//GEN-LAST:event_buttonCancelarCadastroActionPerformed
+
+    private void jTextFieldBairroForActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldBairroForActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldBairroForActionPerformed
 
     /**
      * @param args the command line arguments
