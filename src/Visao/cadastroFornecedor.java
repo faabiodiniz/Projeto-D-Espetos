@@ -138,7 +138,7 @@ public class cadastroFornecedor extends javax.swing.JFrame {
         jPanel1.add(jLabel9);
         jLabel9.setBounds(20, 170, 40, 14);
         jPanel1.add(jTextFieldBairroFor);
-        jTextFieldBairroFor.setBounds(70, 170, 100, 20);
+        jTextFieldBairroFor.setBounds(70, 170, 230, 20);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(30, 30, 310, 280);

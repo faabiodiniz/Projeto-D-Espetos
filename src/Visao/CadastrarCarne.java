@@ -60,15 +60,15 @@ public class CadastrarCarne extends javax.swing.JFrame {
 
         jLabel1.setText("Nome: ");
         jPanel2.add(jLabel1);
-        jLabel1.setBounds(30, 20, 34, 14);
+        jLabel1.setBounds(10, 20, 50, 14);
 
         jLabel2.setText("Data de Validade:");
         jPanel2.add(jLabel2);
-        jLabel2.setBounds(30, 110, 90, 14);
+        jLabel2.setBounds(10, 110, 110, 14);
 
         jLabel3.setText("Data de vencimento: ");
         jPanel2.add(jLabel3);
-        jLabel3.setBounds(30, 150, 120, 14);
+        jLabel3.setBounds(10, 150, 120, 14);
 
         jComboBoxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jPanel2.add(jComboBoxTipo);
@@ -80,11 +80,11 @@ public class CadastrarCarne extends javax.swing.JFrame {
 
         jLabel5.setText("Quantidade:");
         jPanel2.add(jLabel5);
-        jLabel5.setBounds(30, 70, 80, 14);
+        jLabel5.setBounds(10, 70, 80, 14);
 
         jLabel6.setText("KG");
         jPanel2.add(jLabel6);
-        jLabel6.setBounds(170, 70, 13, 14);
+        jLabel6.setBounds(170, 70, 30, 14);
         jPanel2.add(jTextFieldNomeCarne);
         jTextFieldNomeCarne.setBounds(70, 20, 130, 20);
         jPanel2.add(jTextFieldQtdCarne);
