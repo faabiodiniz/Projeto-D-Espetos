@@ -24,7 +24,7 @@ public class EstoqueDAO {
     public void Salvar(Carne Carne){
         conexao.Conexao();
         try {
-            PreparedStatement pst = conexao.con.prepareStatement("INSERT INTO Cliente(Nome, Valor, Fabricacao, Validade) values (?,?,?,?)");
+            PreparedStatement pst = conexao.con.prepareStatement("INSERT INTO Carne(Nome, Valor, Fabricacao, Validade) values (?,?,?,?)");
             pst.setString(1, carne.getNomeCarne());
             pst.setDouble(3, carne.getValorCusto());
             pst.setDate(4, (Date) carne.getFabricacao());
