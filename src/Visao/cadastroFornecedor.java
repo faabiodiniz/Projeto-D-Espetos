@@ -183,6 +183,7 @@ public class cadastroFornecedor extends javax.swing.JFrame {
         fornecedor.setTelefone(textFieldCadTel.getText());
         fornecedor.setCnpj(textFieldCadCNPJ.getText());
         fornecedor.setRua(jTextFieldRuaFor.getText());
+        fornecedor.setBairro(jTextFieldRuaFor.getText());
         fornecedor.setNumero(jTextFieldNumFor.getText());
         fornecedor.setCidade(jTextFieldCidFor.getText());
         fornecedor.setEstado(jTextFieldUfFor.getText());
