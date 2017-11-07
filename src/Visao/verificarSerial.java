@@ -16,12 +16,12 @@ import javax.swing.JOptionPane;
  *
  * @author faad2
  */
-public class verificarSerial extends javax.swing.JFrame {
+public class VerificarSerial extends javax.swing.JFrame {
 
     /**
      * Creates new form verificarSerial
      */
-    public verificarSerial() {
+    public VerificarSerial() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -94,7 +94,7 @@ public class verificarSerial extends javax.swing.JFrame {
 
     private void botaoVerificarLicencaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoVerificarLicencaActionPerformed
         if(txtValidacao.getText().equals("xxxx-xxxx-xxxx")){
-            menuInicial principal = new menuInicial();
+            MenuInicial principal = new MenuInicial();
             principal.setVisible(true);
             dispose();
             try {
@@ -103,12 +103,12 @@ public class verificarSerial extends javax.swing.JFrame {
                 gravarArq.printf("Código serial utilizado: " + txtValidacao.getText());
                 arq.close();
             } catch (IOException ex) {
-                Logger.getLogger(verificarSerial.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(VerificarSerial.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         else{
             JOptionPane.showMessageDialog(null, "Código Serial invalido");
-            verificarSerial Validacao = new verificarSerial();
+            VerificarSerial Validacao = new VerificarSerial();
             Validacao.setVisible(true);
             dispose();
         }
@@ -131,20 +131,21 @@ public class verificarSerial extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(verificarSerial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VerificarSerial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(verificarSerial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VerificarSerial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(verificarSerial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VerificarSerial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(verificarSerial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VerificarSerial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new verificarSerial().setVisible(true);
+                new VerificarSerial().setVisible(true);
             }
         });
     }

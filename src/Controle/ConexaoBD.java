@@ -18,15 +18,15 @@ import javax.swing.JOptionPane;
  * @author faad2
  */
 public class ConexaoBD {
-    public Statement stm;
-    public ResultSet rs;
-    public Connection con;
+    public static Statement stm;
+    public static ResultSet rs;
+    public static Connection con;
     String mydatabase = "despetos";
     String connectionUrl = "jdbc:sqlserver://localhost:1433;" + "databaseName=" + mydatabase;
     String username = "sa";
     String password = "sqlserverbd";
     
-    public void Conexao(){
+    protected Connection conexao(){
         try {
             System.setProperty("jdbc.Drivers", connectionUrl);
             con = DriverManager.getConnection(connectionUrl, username, password);
@@ -34,8 +34,9 @@ public class ConexaoBD {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Falha ao realizar login no BD!\n" + ex.getMessage());
         }
+        return con;
     }
-    public void desconecta(){
+    protected void desconecta(){
         try {
             con.close();
             JOptionPane.showMessageDialog(null, "Desconectado com sucesso");

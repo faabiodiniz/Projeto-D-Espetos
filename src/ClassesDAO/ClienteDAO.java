@@ -16,28 +16,37 @@ import javax.swing.JOptionPane;
  *
  * @author faad2
  */
-public class ClienteDAO {
+public class ClienteDAO extends ConexaoBD{
     ConexaoBD conexao = new ConexaoBD();
     Cliente cliente = new Cliente();
+    private static ClienteDAO instance;
     
-    public void Salvar(Cliente cliente){
-        conexao.Conexao();
+    public void Salvar(String nome, String cpf, String email, String telefone){
+        instance.conexao();
         try {
             PreparedStatement pst = conexao.con.prepareStatement("INSERT INTO Cliente(nome, telefone, email, cpfcnpj) values (?,?,?,?)");
-            pst.setString(1, cliente.getNomeCliente());
-            pst.setString(2, cliente.getTelefoneCliente());
-            pst.setString(3, cliente.getEmailCliente());
-            pst.setString(4, cliente.getCpfCliente());
+            pst.setString(1, nome);
+            pst.setString(2, telefone);
+            pst.setString(3, email);
+            pst.setString(4, cpf);
             pst.execute();
             JOptionPane.showMessageDialog(null,"Dados inseridos com sucesso");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,"Falha ao inserir dados\n Erro: " +ex);
             throw new ExceptionTest();
         }
-        conexao.desconecta();
+        instance.desconecta();
     }
     
     public void ListarClientes(){
         
+    }
+    
+    public static ClienteDAO getInstance() {
+        if (instance == null) {
+            instance = new ClienteDAO();
+            con = instance.conexao();
+        }
+        return instance;
     }
 }

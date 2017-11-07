@@ -15,12 +15,14 @@ import javax.swing.JOptionPane;
  *
  * @author faad2
  */
-public class FornecedorDAO {
+public class FornecedorDAO extends ConexaoBD{
     ConexaoBD conexao = new ConexaoBD();
     Fornecedor fornecedor = new Fornecedor();
+    private static FornecedorDAO instance;
+    
     
     public void Salvar(Fornecedor fornecedor){
-        conexao.Conexao();
+        instance.conexao();
         try {
             PreparedStatement pst = conexao.con.prepareStatement("INSERT INTO Fornecedor(nome, telefone, CNPJ, email, rua, numeroRua, bairro ,cidade, estado) values (?,?,?,?,?,?,?,?,?)");
             pst.setString(1, fornecedor.getNomeFornecedor());
@@ -37,6 +39,14 @@ public class FornecedorDAO {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,"Falha ao inserir dados\n Erro: " +ex);
         }
-        conexao.desconecta();
+        instance.desconecta();
+    }
+    
+        public static FornecedorDAO getInstance() {
+        if (instance == null) {
+            instance = new FornecedorDAO();
+            con = instance.conexao();
+        }
+        return instance;
     }
 }

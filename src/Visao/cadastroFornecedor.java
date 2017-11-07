@@ -13,14 +13,14 @@ import d.espetos.Fornecedor;
  *
  * @author faad2
  */
-public class cadastroFornecedor extends javax.swing.JFrame {
+public class CadastroFornecedor extends javax.swing.JFrame {
     Fornecedor fornecedor = new Fornecedor();
     ConexaoBD conexao = new ConexaoBD();
     FornecedorDAO forDao = new FornecedorDAO();
     /**
      * Creates new form cadastroFornecedor
      */
-    public cadastroFornecedor() {
+    public CadastroFornecedor() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -137,12 +137,6 @@ public class cadastroFornecedor extends javax.swing.JFrame {
         jLabel9.setText("Bairro: ");
         jPanel1.add(jLabel9);
         jLabel9.setBounds(20, 170, 40, 14);
-
-        jTextFieldBairroFor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldBairroForActionPerformed(evt);
-            }
-        });
         jPanel1.add(jTextFieldBairroFor);
         jTextFieldBairroFor.setBounds(70, 170, 230, 20);
 
@@ -221,20 +215,21 @@ public class cadastroFornecedor extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(cadastroFornecedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroFornecedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(cadastroFornecedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroFornecedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(cadastroFornecedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroFornecedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(cadastroFornecedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroFornecedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new cadastroFornecedor().setVisible(true);
+                new CadastroFornecedor().setVisible(true);
             }
         });
     }

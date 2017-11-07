@@ -134,11 +134,11 @@ public class cadastroClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldCPFActionPerformed
 
     private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
-        cliente.setNomeCliente(jTextFieldNome.getText());
-        cliente.setEmailCliente(jTextFieldEmail.getText());
-        cliente.setTelefoneCliente(jTextFieldTelefone.getText());
-        cliente.setCpf(jTextFieldCPF.getText());
-        clienteDAO.Salvar(cliente);
+        ControlCliente.criarCliente(jTextFieldNome.getText(), jTextFieldCPF.getText(), jTextFieldEmail.getText(), jTextFieldTelefone.getText());
+        jTextFieldNome.setText("");
+        jTextFieldCPF.setText("");
+        jTextFieldEmail.setText("");
+        jTextFieldTelefone.setText("");
     }//GEN-LAST:event_jButtonCadastrarActionPerformed
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed

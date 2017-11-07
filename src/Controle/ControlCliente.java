@@ -5,6 +5,7 @@
  */
 package Controle;
 
+import ClassesDAO.ClienteDAO;
 import d.espetos.Cliente;
 import d.espetos.Fisico;
 import java.sql.PreparedStatement;
@@ -20,5 +21,16 @@ import javax.swing.JOptionPane;
 public class ControlCliente {
     ConexaoBD conexao = new ConexaoBD();
     Cliente cliente = new Cliente();
+
+    /**
+     *
+     * @param nome
+     * @param cpf
+     * @param email
+     * @param telefone
+     */
+    public static void criarCliente(String nome, String cpf, String email, String telefone){
+        ClienteDAO.getInstance().Salvar(nome, cpf, email, telefone);
+    }
     
 }

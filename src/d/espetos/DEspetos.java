@@ -5,8 +5,8 @@
  */
 package d.espetos;
 import Controle.ConexaoBD;
-import Visao.menuInicial;
-import Visao.verificarSerial;
+import Visao.MenuInicial;
+import Visao.VerificarSerial;
 import java.io.File;
 import java.util.Calendar;
 import java.util.Date;
@@ -15,16 +15,16 @@ public class DEspetos {
 
     public static void main(String[] args) {
         ConexaoBD bdConnection = new ConexaoBD();
-        bdConnection.Conexao();
+        //bdConnection.conexao();
         
         File file = new File("javaX.txt");
         Licenca licensa = new Licenca();        
         if(file.exists()){
-            menuInicial principal = new menuInicial();
+            MenuInicial principal = new MenuInicial();
             principal.setVisible(true);
         }
         else{
-            verificarSerial serial = new verificarSerial();
+            VerificarSerial serial = new VerificarSerial();
             serial.setVisible(true);
         }
         

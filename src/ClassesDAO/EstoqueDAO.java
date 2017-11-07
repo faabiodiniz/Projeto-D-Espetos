@@ -17,12 +17,13 @@ import javax.swing.JOptionPane;
  *
  * @author faad2
  */
-public class EstoqueDAO {
+public class EstoqueDAO extends ConexaoBD{
     ConexaoBD conexao = new ConexaoBD();
     Carne carne = new Carne();
+    private static EstoqueDAO instance;
     
     public void Salvar(Carne Carne){
-        conexao.Conexao();
+        instance.conexao();
         try {
             PreparedStatement pst = conexao.con.prepareStatement("INSERT INTO Carne(Nome, Valor, Fabricacao, Validade) values (?,?,?,?)");
             pst.setString(1, carne.getNomeCarne());
@@ -35,6 +36,14 @@ public class EstoqueDAO {
             JOptionPane.showMessageDialog(null,"Falha ao inserir dados\n Erro: " +ex);
             throw new ExceptionTest();
         }
-        conexao.desconecta();
+        instance.desconecta();
+    }
+    
+        public static EstoqueDAO getInstance() {
+        if (instance == null) {
+            instance = new EstoqueDAO();
+            con = instance.conexao();
+        }
+        return instance;
     }
 }

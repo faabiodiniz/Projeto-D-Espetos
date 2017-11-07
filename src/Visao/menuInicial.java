@@ -7,22 +7,22 @@ package Visao;
 
 import Controle.ConexaoBD;
 import Visao.cadastroClientes;
-import Visao.cadastroFornecedor;
-import Visao.listClientes;
-import Visao.listEstoque;
-import Visao.listFornecedor;
-import Visao.listVendas;
+import Visao.CadastroFornecedor;
+import Visao.ListClientes;
+import Visao.ListEstoque;
+import Visao.ListFornecedor;
+import Visao.ListVendas;
 
 /**
  *
  * @author faad2
  */
-public class menuInicial extends javax.swing.JFrame {
+public class MenuInicial extends javax.swing.JFrame {
     ConexaoBD conecta = new ConexaoBD();
     /**
      * Creates new form menuInicial
      */
-    public menuInicial() {
+    public MenuInicial() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -214,38 +214,38 @@ public class menuInicial extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuItemListarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemListarClientesActionPerformed
-        listClientes cliente = new listClientes();
+        ListClientes cliente = new ListClientes();
         cliente.setVisible(true);
         dispose();
     }//GEN-LAST:event_menuItemListarClientesActionPerformed
 
     private void menuItemListarEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemListarEstoqueActionPerformed
         // TODO add your handling code here:
-        listEstoque estoque = new listEstoque();
+        ListEstoque estoque = new ListEstoque();
         estoque.setVisible(true);
         dispose();
     }//GEN-LAST:event_menuItemListarEstoqueActionPerformed
 
     private void jButtonVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVendasActionPerformed
-        listVendas vendas = new listVendas();
+        ListVendas vendas = new ListVendas();
         vendas.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonVendasActionPerformed
 
     private void jButtonEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEstoqueActionPerformed
-        listEstoque cliente = new listEstoque();
+        ListEstoque cliente = new ListEstoque();
         cliente.setVisible(true);
         dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jButtonEstoqueActionPerformed
 
     private void jButtonClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClienteActionPerformed
-        listClientes cliente = new listClientes();
+        ListClientes cliente = new ListClientes();
         cliente.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonClienteActionPerformed
 
     private void jButtonFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFornecedorActionPerformed
-        listFornecedor fornecedor = new listFornecedor();
+        ListFornecedor fornecedor = new ListFornecedor();
         fornecedor.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonFornecedorActionPerformed
@@ -259,13 +259,13 @@ public class menuInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemSairActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        menuInicial principal = new menuInicial();
+        MenuInicial principal = new MenuInicial();
         principal.setVisible(true);
         dispose();
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void menuPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPrincipalActionPerformed
-        menuInicial principal = new menuInicial();
+        MenuInicial principal = new MenuInicial();
         principal.setVisible(true);
         dispose();
     }//GEN-LAST:event_menuPrincipalActionPerformed
@@ -285,14 +285,14 @@ public class menuInicial extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
-        cadastroFornecedor fornecedor = new cadastroFornecedor();
+        CadastroFornecedor fornecedor = new CadastroFornecedor();
         fornecedor.setVisible(true);
         dispose();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
-        listFornecedor fornecedor = new listFornecedor();
+        ListFornecedor fornecedor = new ListFornecedor();
         fornecedor.setVisible(true);
         dispose();
         
@@ -322,20 +322,21 @@ public class menuInicial extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(menuInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(menuInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(menuInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(menuInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new menuInicial().setVisible(true);
+                new MenuInicial().setVisible(true);
             }
         });
     }
