@@ -180,7 +180,15 @@ public class CadastroFornecedor extends javax.swing.JFrame {
 
     private void buttonCadastrarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCadastrarFuncionarioActionPerformed
         ControlFornecedor.criarFornecedor(textFieldCadNome.getText(), textFieldCadTel.getText(), textFieldCadCNPJ.getText(), textFieldCadEmail.getText(), jTextFieldRuaFor.getText(), jTextFieldNumFor.getText(), jTextFieldBairroFor.getText(), jTextFieldCidFor.getText(), jTextFieldUfFor.getText());
-
+        textFieldCadTel.setText("");
+        textFieldCadCNPJ.setText("");
+        textFieldCadNome.setText("");
+        textFieldCadEmail.setText("");
+        jTextFieldBairroFor.setText("");
+        jTextFieldCidFor.setText("");
+        jTextFieldNumFor.setText("");
+        jTextFieldRuaFor.setText("");
+        jTextFieldUfFor.setText("");
     }//GEN-LAST:event_buttonCadastrarFuncionarioActionPerformed
 
     private void buttonCancelarCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelarCadastroActionPerformed

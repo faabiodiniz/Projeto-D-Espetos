@@ -43,9 +43,11 @@ public class cadastroClientes extends javax.swing.JFrame {
         jLabelTelefone = new javax.swing.JLabel();
         jLabelEmail = new javax.swing.JLabel();
         jTextFieldEmail = new javax.swing.JTextField();
-        jTextFieldTelefone = new javax.swing.JTextField();
         jTextFieldNome = new javax.swing.JTextField();
         jTextFieldCPF = new javax.swing.JTextField();
+        jComboBoxTipoPessoa = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
+        jFormattedTextFieldTelefone = new javax.swing.JFormattedTextField();
         jLabel1 = new javax.swing.JLabel();
         jButtonCadastrar = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
@@ -62,9 +64,9 @@ public class cadastroClientes extends javax.swing.JFrame {
         jLabelNome.setBounds(20, 20, 50, 20);
 
         jLabelCPF.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        jLabelCPF.setText("CPF:");
+        jLabelCPF.setText("CPF/CNPJ:");
         jPanelPainel.add(jLabelCPF);
-        jLabelCPF.setBounds(20, 60, 40, 14);
+        jLabelCPF.setBounds(20, 60, 90, 14);
 
         jLabelTelefone.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabelTelefone.setText("Telefone: ");
@@ -83,8 +85,6 @@ public class cadastroClientes extends javax.swing.JFrame {
         });
         jPanelPainel.add(jTextFieldEmail);
         jTextFieldEmail.setBounds(90, 140, 160, 20);
-        jPanelPainel.add(jTextFieldTelefone);
-        jTextFieldTelefone.setBounds(90, 100, 160, 20);
         jPanelPainel.add(jTextFieldNome);
         jTextFieldNome.setBounds(90, 20, 160, 20);
 
@@ -96,8 +96,30 @@ public class cadastroClientes extends javax.swing.JFrame {
         jPanelPainel.add(jTextFieldCPF);
         jTextFieldCPF.setBounds(90, 60, 160, 20);
 
+        jComboBoxTipoPessoa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Físico", "Jurídico" }));
+        jPanelPainel.add(jComboBoxTipoPessoa);
+        jComboBoxTipoPessoa.setBounds(90, 180, 160, 20);
+
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        jLabel2.setText("Tipo: ");
+        jPanelPainel.add(jLabel2);
+        jLabel2.setBounds(20, 180, 50, 14);
+
+        try {
+            jFormattedTextFieldTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#########")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jFormattedTextFieldTelefone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFormattedTextFieldTelefoneActionPerformed(evt);
+            }
+        });
+        jPanelPainel.add(jFormattedTextFieldTelefone);
+        jFormattedTextFieldTelefone.setBounds(90, 100, 160, 20);
+
         getContentPane().add(jPanelPainel);
-        jPanelPainel.setBounds(27, 27, 280, 180);
+        jPanelPainel.setBounds(27, 27, 280, 220);
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel1.setText("Cadastrar Cliente");
@@ -111,7 +133,7 @@ public class cadastroClientes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButtonCadastrar);
-        jButtonCadastrar.setBounds(70, 220, 100, 30);
+        jButtonCadastrar.setBounds(70, 260, 100, 30);
 
         jButtonCancelar.setText("Cancelar");
         jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -120,9 +142,9 @@ public class cadastroClientes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButtonCancelar);
-        jButtonCancelar.setBounds(180, 220, 90, 30);
+        jButtonCancelar.setBounds(180, 260, 90, 30);
 
-        setBounds(0, 0, 355, 299);
+        setBounds(0, 0, 355, 338);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextFieldEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldEmailActionPerformed
@@ -134,16 +156,20 @@ public class cadastroClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldCPFActionPerformed
 
     private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
-        ControlCliente.criarCliente(jTextFieldNome.getText(), jTextFieldCPF.getText(), jTextFieldEmail.getText(), jTextFieldTelefone.getText());
+        ControlCliente.criarCliente(jTextFieldNome.getText(), jTextFieldCPF.getText(), jTextFieldEmail.getText(), jFormattedTextFieldTelefone.getText(), jComboBoxTipoPessoa.getSelectedItem().toString());
         jTextFieldNome.setText("");
         jTextFieldCPF.setText("");
         jTextFieldEmail.setText("");
-        jTextFieldTelefone.setText("");
+        jFormattedTextFieldTelefone.setText("");
     }//GEN-LAST:event_jButtonCadastrarActionPerformed
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButtonCancelarActionPerformed
+
+    private void jFormattedTextFieldTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextFieldTelefoneActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFormattedTextFieldTelefoneActionPerformed
 
     /**
      * @param args the command line arguments
@@ -183,7 +209,10 @@ public class cadastroClientes extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCadastrar;
     private javax.swing.JButton jButtonCancelar;
+    private javax.swing.JComboBox<String> jComboBoxTipoPessoa;
+    private javax.swing.JFormattedTextField jFormattedTextFieldTelefone;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelCPF;
     private javax.swing.JLabel jLabelEmail;
     private javax.swing.JLabel jLabelNome;
@@ -192,6 +221,5 @@ public class cadastroClientes extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldCPF;
     private javax.swing.JTextField jTextFieldEmail;
     private javax.swing.JTextField jTextFieldNome;
-    private javax.swing.JTextField jTextFieldTelefone;
     // End of variables declaration//GEN-END:variables
 }

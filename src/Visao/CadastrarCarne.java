@@ -148,7 +148,7 @@ public class CadastrarCarne extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBoxTipoActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        ControlEstoque.criarEstoque(jTextFieldNomeCarne.getText(), Double.parseDouble(jFormattedTextFieldValor.getText()), jFormattedTextFieldDataValid.getText(), jFormattedTextFieldDataVenci.getText(), Double.parseDouble(jFormattedTextFieldQtdCarne.getText()), jComboBoxTipo.getName());
+        ControlEstoque.criarEstoque(jTextFieldNomeCarne.getText(), Double.parseDouble(jFormattedTextFieldValor.getText()), jFormattedTextFieldDataValid.getText(), jFormattedTextFieldDataVenci.getText(), Double.parseDouble(jFormattedTextFieldQtdCarne.getText()), jComboBoxTipo.getSelectedItem().toString());
         jTextFieldNomeCarne.setText("");
         jFormattedTextFieldQtdCarne.setText("");
         jFormattedTextFieldDataValid.setText("");

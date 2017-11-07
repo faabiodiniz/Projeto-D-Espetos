@@ -5,10 +5,9 @@ import java.util.Date;
 public class Fisico extends Cliente
 {
 
-	public Fisico(String nomeCliente, String cpf, String telefoneCliente, String emailCliente, String endereco, String bairro,
-			int numero, Date nascimento) 
+	public Fisico(int id, String nomeCliente, String telefoneCliente, String emailCliente, String tipo, String cpf) 
 	{
-		super(nomeCliente, telefoneCliente, emailCliente);
+		super(id, nomeCliente, telefoneCliente, emailCliente, tipo, cpf);
 	}
     
 	private String cpf;

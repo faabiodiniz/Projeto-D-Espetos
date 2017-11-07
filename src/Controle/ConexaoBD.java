@@ -8,6 +8,7 @@ package Controle;
 import java.beans.Statement;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -43,6 +44,17 @@ public class ConexaoBD {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Nao desconectou\n" + ex.getMessage());
         }
+    }
+    protected ResultSet getResultSet(PreparedStatement queryStatement) throws SQLException {
+        ResultSet rs;
+        rs = queryStatement.executeQuery();
+        return rs;
+    }
+
+    protected int executeUpdate(PreparedStatement queryStatement) throws SQLException {
+        int update;
+        update = queryStatement.executeUpdate();
+        return update;
     }
 }
 

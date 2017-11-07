@@ -9,7 +9,10 @@ import Controle.ConexaoBD;
 import d.espetos.Cliente;
 import d.espetos.ExceptionTest;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -21,14 +24,15 @@ public class ClienteDAO extends ConexaoBD{
     Cliente cliente = new Cliente();
     private static ClienteDAO instance;
     
-    public void Salvar(String nome, String cpf, String email, String telefone){
+    public void Salvar(String nome, String cpf, String email, String telefone, String tipo){
         instance.conexao();
         try {
-            PreparedStatement pst = conexao.con.prepareStatement("INSERT INTO Cliente(nome, telefone, email, cpfcnpj) values (?,?,?,?)");
+            PreparedStatement pst = conexao.con.prepareStatement("INSERT INTO Cliente(nome, telefone, email, cpfcnpj, tipo) values (?,?,?,?,?)");
             pst.setString(1, nome);
             pst.setString(2, telefone);
             pst.setString(3, email);
             pst.setString(4, cpf);
+            pst.setString(5, tipo);
             pst.execute();
             JOptionPane.showMessageDialog(null,"Dados inseridos com sucesso");
         } catch (SQLException ex) {
@@ -48,5 +52,81 @@ public class ClienteDAO extends ConexaoBD{
             con = instance.conexao();
         }
         return instance;
+    }
+    
+        private Cliente buildObject(ResultSet rs) {
+        Cliente cliente = null;
+        try {
+            cliente = new Cliente(rs.getInt("codCliente"), rs.getString("nome"), rs.getString("email"), rs.getString("telefone"), rs.getString("tipo"), rs.getString("cpfcnpj"));
+        } catch (SQLException e) {
+        }
+        return cliente;
+    }
+        
+    public List<Cliente> retrieveGeneric(String query) {
+        PreparedStatement stmt;
+        List<Cliente> contatos = new ArrayList<>();
+        ResultSet rs;
+        try {
+            stmt = con.prepareStatement(query);
+            rs = this.getResultSet(stmt);
+            while (rs.next()) {
+                contatos.add(buildObject(rs));
+            }
+            rs.close();
+            stmt.close();
+        } catch (SQLException ex) {
+        }
+        return contatos;
+    }
+
+    public List<Cliente> retrieveAll() {
+        return this.retrieveGeneric("SELECT * FROM Cliente ORDER BY nome");
+    }
+
+    public List<Cliente> retrieveAllOrderById() {
+        return this.retrieveGeneric("SELECT * FROM Cliente ORDER BY id");
+    }
+
+    public List<Cliente> retrieveLike(String nome) {
+        return this.retrieveGeneric("SELECT * FROM Cliente WHERE nome LIKE '%"+nome+"%' ORDER BY nome");
+    }
+
+    public Cliente retrieveById(int id) {
+        Cliente cliente = null;
+        List<Cliente> contatos = this.retrieveGeneric("SELECT * FROM Cliente WHERE id="+id);
+        if(!contatos.isEmpty()){
+            cliente = contatos.get(0);
+        }
+        return cliente;
+    }
+
+    public boolean update(Cliente Cliente) {
+        PreparedStatement stmt;
+        try {
+            stmt = con.prepareStatement("UPDATE Cliente SET nome=?, email=? , telefone=? WHERE id = ?");
+            stmt.setString(1, cliente.getNomeCliente());
+            stmt.setString(2, cliente.getEmailCliente());
+            stmt.setString(3, cliente.getTelefoneCliente());
+            stmt.setInt(4, cliente.getIdCliente());
+            int update = this.executeUpdate(stmt);
+            if (update == 1) {
+                return true;
+            }
+            stmt.close();
+        } catch (SQLException ex) {
+        }
+        return false;
+    }
+
+    public void delete(Cliente cliente) {
+        PreparedStatement stmt;
+        try {
+            stmt = con.prepareStatement("DELETE FROM Cliente WHERE id = ?");
+            stmt.setInt(1, cliente.getIdCliente());
+            this.executeUpdate(stmt);
+            stmt.close();
+        } catch (SQLException ex) {
+        }
     }
 }

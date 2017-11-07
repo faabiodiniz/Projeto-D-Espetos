@@ -10,6 +10,7 @@ import d.espetos.Cliente;
 import d.espetos.Fisico;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -28,9 +29,37 @@ public class ControlCliente {
      * @param cpf
      * @param email
      * @param telefone
+     * @param tipo
      */
-    public static void criarCliente(String nome, String cpf, String email, String telefone){
-        ClienteDAO.getInstance().Salvar(nome, cpf, email, telefone);
+    public static void criarCliente(String nome, String cpf, String email, String telefone, String tipo){
+        ClienteDAO.getInstance().Salvar(nome, cpf, email, telefone, tipo);
+    }
+    
+        public static List<Cliente> getListOfClientes(){
+        return ClienteDAO.getInstance().retrieveAll();
+    }
+        
+    public static Cliente[] getListOfClientesAsArray(){
+        List<Cliente> list = getListOfClientes();
+        Cliente[] vetCliente = new Cliente[list.size()];
+        int i = 0;
+        for(Cliente c : list){
+            vetCliente[i++] = c;
+        }
+        return vetCliente;
+    }    
+    
+    public static List<Cliente> getListOfClientesOrderById(){
+        return ClienteDAO.getInstance().retrieveAllOrderById();
+    }
+    
+    public static Cliente getClienteById(int id){
+        Cliente cliente = ClienteDAO.getInstance().retrieveById(id);
+        return cliente;
+    }
+    
+    public static void updateCliente(Cliente c){
+        ClienteDAO.getInstance().update(c);
     }
     
 }
