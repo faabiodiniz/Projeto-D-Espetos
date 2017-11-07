@@ -7,6 +7,7 @@ package Visao;
 
 import ClassesDAO.FornecedorDAO;
 import Controle.ConexaoBD;
+import Controle.ControlFornecedor;
 import d.espetos.Fornecedor;
 
 /**
@@ -178,16 +179,8 @@ public class CadastroFornecedor extends javax.swing.JFrame {
     }//GEN-LAST:event_textFieldCadEmailActionPerformed
 
     private void buttonCadastrarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCadastrarFuncionarioActionPerformed
-        fornecedor.setNomeFornecedor(textFieldCadNome.getText());
-        fornecedor.setEmail(textFieldCadEmail.getText());
-        fornecedor.setTelefone(textFieldCadTel.getText());
-        fornecedor.setCnpj(textFieldCadCNPJ.getText());
-        fornecedor.setRua(jTextFieldRuaFor.getText());
-        fornecedor.setBairro(jTextFieldBairroFor.getText());
-        fornecedor.setNumero(jTextFieldNumFor.getText());
-        fornecedor.setCidade(jTextFieldCidFor.getText());
-        fornecedor.setEstado(jTextFieldUfFor.getText());
-        forDao.Salvar(fornecedor);
+        ControlFornecedor.criarFornecedor(textFieldCadNome.getText(), textFieldCadTel.getText(), textFieldCadCNPJ.getText(), textFieldCadEmail.getText(), jTextFieldRuaFor.getText(), jTextFieldNumFor.getText(), jTextFieldBairroFor.getText(), jTextFieldCidFor.getText(), jTextFieldUfFor.getText());
+
     }//GEN-LAST:event_buttonCadastrarFuncionarioActionPerformed
 
     private void buttonCancelarCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelarCadastroActionPerformed

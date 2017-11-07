@@ -5,6 +5,8 @@
  */
 package Visao;
 
+import Controle.ControlEstoque;
+
 /**
  *
  * @author faad2
@@ -36,21 +38,15 @@ public class CadastrarCarne extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jTextFieldNomeCarne = new javax.swing.JTextField();
-        jTextFieldQtdCarne = new javax.swing.JTextField();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        jFormattedTextFieldDataVenci = new javax.swing.JFormattedTextField();
+        jFormattedTextFieldQtdCarne = new javax.swing.JFormattedTextField();
+        jFormattedTextFieldDataValid = new javax.swing.JFormattedTextField();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        jFormattedTextFieldValor = new javax.swing.JFormattedTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(375, 300));
         setResizable(false);
         getContentPane().setLayout(null);
@@ -62,17 +58,22 @@ public class CadastrarCarne extends javax.swing.JFrame {
         jPanel2.add(jLabel1);
         jLabel1.setBounds(10, 20, 50, 14);
 
-        jLabel2.setText("Data de Validade:");
+        jLabel2.setText("Data de Fabricação:");
         jPanel2.add(jLabel2);
-        jLabel2.setBounds(10, 110, 110, 14);
+        jLabel2.setBounds(10, 130, 130, 14);
 
         jLabel3.setText("Data de vencimento: ");
         jPanel2.add(jLabel3);
-        jLabel3.setBounds(10, 150, 120, 14);
+        jLabel3.setBounds(10, 170, 120, 14);
 
-        jComboBoxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bovina", "Suina", "Frango" }));
+        jComboBoxTipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxTipoActionPerformed(evt);
+            }
+        });
         jPanel2.add(jComboBoxTipo);
-        jComboBoxTipo.setBounds(240, 20, 56, 20);
+        jComboBoxTipo.setBounds(240, 20, 70, 20);
 
         jLabel4.setText("Tipo:");
         jPanel2.add(jLabel4);
@@ -80,50 +81,51 @@ public class CadastrarCarne extends javax.swing.JFrame {
 
         jLabel5.setText("Quantidade:");
         jPanel2.add(jLabel5);
-        jLabel5.setBounds(10, 70, 80, 14);
+        jLabel5.setBounds(10, 60, 80, 14);
 
         jLabel6.setText("KG");
         jPanel2.add(jLabel6);
-        jLabel6.setBounds(170, 70, 30, 14);
+        jLabel6.setBounds(170, 60, 30, 14);
+
+        jTextFieldNomeCarne.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldNomeCarneActionPerformed(evt);
+            }
+        });
         jPanel2.add(jTextFieldNomeCarne);
         jTextFieldNomeCarne.setBounds(70, 20, 130, 20);
-        jPanel2.add(jTextFieldQtdCarne);
-        jTextFieldQtdCarne.setBounds(100, 70, 60, 20);
-        jPanel2.add(jTextField1);
-        jTextField1.setBounds(200, 110, 50, 20);
-        jPanel2.add(jTextField2);
-        jTextField2.setBounds(220, 150, 50, 20);
-        jPanel2.add(jTextField3);
-        jTextField3.setBounds(160, 110, 30, 20);
 
-        jLabel7.setText("/");
+        jFormattedTextFieldDataVenci.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
+        jPanel2.add(jFormattedTextFieldDataVenci);
+        jFormattedTextFieldDataVenci.setBounds(150, 170, 140, 20);
+
+        jFormattedTextFieldQtdCarne.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
+        jPanel2.add(jFormattedTextFieldQtdCarne);
+        jFormattedTextFieldQtdCarne.setBounds(80, 60, 80, 20);
+
+        jFormattedTextFieldDataValid.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
+        jPanel2.add(jFormattedTextFieldDataValid);
+        jFormattedTextFieldDataValid.setBounds(150, 130, 140, 20);
+
+        jLabel7.setText("Valor: ");
         jPanel2.add(jLabel7);
-        jLabel7.setBounds(210, 150, 10, 20);
+        jLabel7.setBounds(10, 90, 50, 20);
 
-        jLabel8.setText("/");
-        jPanel2.add(jLabel8);
-        jLabel8.setBounds(150, 110, 10, 20);
-        jPanel2.add(jTextField4);
-        jTextField4.setBounds(120, 110, 30, 20);
-        jPanel2.add(jTextField5);
-        jTextField5.setBounds(140, 150, 30, 20);
-        jPanel2.add(jTextField6);
-        jTextField6.setBounds(180, 150, 30, 20);
-
-        jLabel9.setText("/");
-        jPanel2.add(jLabel9);
-        jLabel9.setBounds(190, 110, 10, 20);
-
-        jLabel10.setText("/");
-        jPanel2.add(jLabel10);
-        jLabel10.setBounds(170, 150, 10, 20);
+        jFormattedTextFieldValor.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
+        jPanel2.add(jFormattedTextFieldValor);
+        jFormattedTextFieldValor.setBounds(80, 90, 150, 20);
 
         getContentPane().add(jPanel2);
         jPanel2.setBounds(30, 10, 320, 210);
 
         jButton1.setText("Cadastrar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton1);
-        jButton1.setBounds(90, 230, 90, 30);
+        jButton1.setBounds(70, 230, 110, 30);
 
         jButton2.setText("Cancelar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -132,7 +134,7 @@ public class CadastrarCarne extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(210, 230, 90, 30);
+        jButton2.setBounds(200, 230, 110, 30);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -140,6 +142,22 @@ public class CadastrarCarne extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jComboBoxTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxTipoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxTipoActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        ControlEstoque.criarEstoque(jTextFieldNomeCarne.getText(), Double.parseDouble(jFormattedTextFieldValor.getText()), jFormattedTextFieldDataValid.getText(), jFormattedTextFieldDataVenci.getText(), Double.parseDouble(jFormattedTextFieldQtdCarne.getText()), jComboBoxTipo.getName());
+        jTextFieldNomeCarne.setText("");
+        jFormattedTextFieldQtdCarne.setText("");
+        jFormattedTextFieldDataValid.setText("");
+        jFormattedTextFieldDataVenci.setText("");
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTextFieldNomeCarneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNomeCarneActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldNomeCarneActionPerformed
 
     /**
      * @param args the command line arguments
@@ -180,24 +198,18 @@ public class CadastrarCarne extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBoxTipo;
+    private javax.swing.JFormattedTextField jFormattedTextFieldDataValid;
+    private javax.swing.JFormattedTextField jFormattedTextFieldDataVenci;
+    private javax.swing.JFormattedTextField jFormattedTextFieldQtdCarne;
+    private javax.swing.JFormattedTextField jFormattedTextFieldValor;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextFieldNomeCarne;
-    private javax.swing.JTextField jTextFieldQtdCarne;
     // End of variables declaration//GEN-END:variables
 }
