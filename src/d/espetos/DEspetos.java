@@ -17,8 +17,7 @@ public class DEspetos {
         ConexaoBD bdConnection = new ConexaoBD();
         //bdConnection.conexao();
         
-        File file = new File("javaX.txt");
-        Licenca licensa = new Licenca();        
+        File file = new File("javaX.txt");        
         if(file.exists()){
             MenuInicial principal = new MenuInicial();
             principal.setVisible(true);
@@ -27,14 +26,5 @@ public class DEspetos {
             VerificarSerial serial = new VerificarSerial();
             serial.setVisible(true);
         }
-        
-        Calendar c = Calendar.getInstance();
-        c.set(1997,03,22);
-        
     }
-
-	private static Date Date(int i, int j, int k) {
-		// TODO Auto-generated method stub
-		return null;
-	}    
 }

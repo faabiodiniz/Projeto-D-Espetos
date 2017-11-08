@@ -103,6 +103,11 @@ public class ListClientes extends javax.swing.JFrame {
         jTextFieldBuscaCPF.setBounds(470, 30, 150, 20);
 
         jButtonBuscarCliente.setText("Buscar");
+        jButtonBuscarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBuscarClienteActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButtonBuscarCliente);
         jButtonBuscarCliente.setBounds(630, 30, 90, 23);
 
@@ -263,6 +268,11 @@ public class ListClientes extends javax.swing.JFrame {
         //jTextField1.setText(c.getNome());
         //jTextField2.setText(c.getEmail());
     }//GEN-LAST:event_tableListarClienteMouseClicked
+
+    private void jButtonBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarClienteActionPerformed
+        // TODO add your handling code here:
+        ControlCliente.getListOfClientesNome(textFieldBuscaNome.getText()); //Fazer funcionar a busca por nome
+    }//GEN-LAST:event_jButtonBuscarClienteActionPerformed
 
     /**
      * @param args the command line arguments

@@ -59,4 +59,13 @@ public class Cliente{
     public String getNomeCliente() {
             return nomeCliente;
     }
+
+    public String getCpfcnpj() {
+        return cpfcnpj;
+    }
+
+    public void setCpfcnpj(String cpfcnpj) {
+        this.cpfcnpj = cpfcnpj;
+    }
+    
 }

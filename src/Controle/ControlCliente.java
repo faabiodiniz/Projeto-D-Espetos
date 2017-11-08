@@ -35,8 +35,12 @@ public class ControlCliente {
         ClienteDAO.getInstance().Salvar(nome, cpf, email, telefone, tipo);
     }
     
-        public static List<Cliente> getListOfClientes(){
+    public static List<Cliente> getListOfClientes(){
         return ClienteDAO.getInstance().retrieveAll();
+    }
+    
+    public static List<Cliente> getListOfClientesNome(String nome){
+        return ClienteDAO.getInstance().retrieveLike(nome);
     }
         
     public static Cliente[] getListOfClientesAsArray(){

@@ -5,19 +5,25 @@
  */
 package d.espetos;
 
+import Visao.MenuInicial;
+import Visao.VerificarSerial;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 public class Licenca {
-    private final String licenca;
+    private static String licenca;
     private String status; //Ativo ou Desativo
-    private static String nroLicenca;
-    private int i;
     
     public Licenca(){
-        this.licenca = "";
-        this.status = "Desativo";
-    }
-    
-    public void verificarLicenca(String nroLicenca){
         
+    }
+    public Licenca(String serial, String status){
+        this.licenca = serial;
+        this.status = "Desativo";
     }
     
     public String getLicenca(){

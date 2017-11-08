@@ -57,7 +57,7 @@ public class ClienteDAO extends ConexaoBD{
         private Cliente buildObject(ResultSet rs) {
         Cliente cliente = null;
         try {
-            cliente = new Cliente(rs.getInt("codCliente"), rs.getString("nome"), rs.getString("email"), rs.getString("telefone"), rs.getString("tipo"), rs.getString("cpfcnpj"));
+            cliente = new Cliente(rs.getInt("codCliente"), rs.getString("nome"), rs.getString("telefone"), rs.getString("email"), rs.getString("tipo"), rs.getString("cpfcnpj"));
         } catch (SQLException e) {
         }
         return cliente;
@@ -81,7 +81,7 @@ public class ClienteDAO extends ConexaoBD{
     }
 
     public List<Cliente> retrieveAll() {
-        return this.retrieveGeneric("SELECT * FROM Cliente ORDER BY nome");
+        return this.retrieveGeneric("SELECT * FROM Cliente ORDER BY codCliente");
     }
 
     public List<Cliente> retrieveAllOrderById() {

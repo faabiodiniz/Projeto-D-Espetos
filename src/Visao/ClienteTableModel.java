@@ -14,7 +14,7 @@ public class ClienteTableModel extends GenericTableModel {
 
     public ClienteTableModel(List vDados) {
         // Use esse vetor de Strings para definir os titulos das colunas:
-        super(vDados, new String[]{"id", "Nome", "Email", "Telefone", "Tipo"});
+        super(vDados, new String[]{"id", "Nome", "CPF", "Email", "Telefone", "Tipo"});
     }
 
     @Override
@@ -29,6 +29,8 @@ public class ClienteTableModel extends GenericTableModel {
             case 3:
                 return String.class;
             case 4:
+                return String.class;
+            case 5:
                 return String.class;
             default:
                 throw new IndexOutOfBoundsException("columnIndex out of bounds");
@@ -45,10 +47,12 @@ public class ClienteTableModel extends GenericTableModel {
             case 1:
                 return pessoa.getNomeCliente();
             case 2:
-                return pessoa.getEmailCliente();
+                return pessoa.getCpfcnpj();
             case 3:
-                return pessoa.getTelefoneCliente();
+                return pessoa.getEmailCliente();
             case 4:
+                return pessoa.getTelefoneCliente();
+            case 5:
                 return pessoa.getTipo();
             default:
                 throw new IndexOutOfBoundsException("columnIndex out of bounds");
