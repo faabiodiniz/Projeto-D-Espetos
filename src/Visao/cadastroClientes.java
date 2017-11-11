@@ -161,6 +161,7 @@ public class cadastroClientes extends javax.swing.JFrame {
         jTextFieldCPF.setText("");
         jTextFieldEmail.setText("");
         jFormattedTextFieldTelefone.setText("");
+        //((ClienteTableModel) ListClientes.tableListarCliente.getModel()).refresh();  linha de código para atualizar a Tabela
     }//GEN-LAST:event_jButtonCadastrarActionPerformed
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed

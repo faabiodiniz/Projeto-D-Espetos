@@ -5,6 +5,9 @@
  */
 package Visao;
 
+import Controle.ControlEstoque;
+import d.espetos.Carne;
+
 /**
  *
  * @author faad2
@@ -14,9 +17,11 @@ public class ListEstoque extends javax.swing.JFrame {
     /**
      * Creates new form listClientes
      */
+    Carne[] vCarne;
     public ListEstoque() {
         initComponents();
         this.setLocationRelativeTo(null);
+        vCarne = ControlEstoque.getListOfCarneAsArray();
     }
 
     /**
@@ -31,7 +36,7 @@ public class ListEstoque extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         labelTituloBusca = new javax.swing.JLabel();
         jScrollPaneClientes = new javax.swing.JScrollPane();
-        tableListarCliente = new javax.swing.JTable();
+        tableListarCarne = new javax.swing.JTable();
         textFieldBuscaNome = new javax.swing.JTextField();
         jLabelBuscaNome = new javax.swing.JLabel();
         jLabelBuscaCPF = new javax.swing.JLabel();
@@ -71,15 +76,13 @@ public class ListEstoque extends javax.swing.JFrame {
         jPanel1.add(labelTituloBusca);
         labelTituloBusca.setBounds(300, 0, 110, 20);
 
-        tableListarCliente.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "ID", "NOME", "TIPO", "QUANTIDADE", "PREÇO CUSTO", "PREÇO VENDA", "FABRICAÇÃO", "VALIDADE"
+        tableListarCarne.setModel(new CarneTableModel(ControlEstoque.getListOfCarne()));
+        tableListarCarne.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableListarCarneMouseClicked(evt);
             }
-        ));
-        jScrollPaneClientes.setViewportView(tableListarCliente);
+        });
+        jScrollPaneClientes.setViewportView(tableListarCarne);
 
         jPanel1.add(jScrollPaneClientes);
         jScrollPaneClientes.setBounds(20, 70, 700, 290);
@@ -252,6 +255,11 @@ public class ListEstoque extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jMenuItemSairActionPerformed
 
+    private void tableListarCarneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableListarCarneMouseClicked
+        int linha = tableListarCarne.getSelectedRow();
+        Carne c = (Carne) ((CarneTableModel) tableListarCarne.getModel()).getItem(linha);
+    }//GEN-LAST:event_tableListarCarneMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -322,7 +330,7 @@ public class ListEstoque extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuItemRelatorioVenda;
     private javax.swing.JMenu menuPrincipal;
     private javax.swing.JMenu menuVendas;
-    private javax.swing.JTable tableListarCliente;
+    private javax.swing.JTable tableListarCarne;
     private javax.swing.JTextField textFieldBuscaNome;
     // End of variables declaration//GEN-END:variables
 }

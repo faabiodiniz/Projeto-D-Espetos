@@ -9,52 +9,65 @@ public class Carne {
     private double quantidade;
     private Date fabricacao;
     private Date validade;
-    private float valorCusto;
+    private double valorCusto;
 	
-    public Carne(String nomeCarne, double quantidade, Date fabricacao, Date validade, float valorCusto) {
-		super();
-		this.nomeCarne = nomeCarne;
-		this.quantidade = quantidade;
-		this.fabricacao = fabricacao;
-		this.validade = validade;
-		this.valorCusto = valorCusto;
-	}
+    public Carne(int id, String nomeCarne, double quantidade, Date fabricacao, Date validade, double valorCusto) {
+        this.nomeCarne = nomeCarne;
+        this.quantidade = quantidade;
+        this.fabricacao = fabricacao;
+        this.validade = validade;
+        this.valorCusto = valorCusto;
+        this.idProduto = id;
+    }
 
     public Carne() {
     }
 
-	public double getQuantidade() {
-		return quantidade;
-	}
+    public void setIdProduto(int idProduto) {
+        this.idProduto = idProduto;
+    }
 
-	public void setQuantidade(double quantidade) {
-		this.quantidade = quantidade;
-	}
+    public void setNomeCarne(String nomeCarne) {
+        this.nomeCarne = nomeCarne;
+    }
 
-	public float getValorCusto() {
-		return valorCusto;
-	}
+    public void setFabricacao(Date fabricacao) {
+        this.fabricacao = fabricacao;
+    }
 
-	public void setValorCusto(float valorCusto) {
-		this.valorCusto = valorCusto;
-	}
-
-	public int getIdProduto() {
-		return idProduto;
-	}
-
-	public String getNomeCarne() {
-		return nomeCarne;
-	}
-
-	public Date getFabricacao() {
-		return fabricacao;
-	}
-
-	public Date getValidade() {
-		return validade;
-	}
+    public void setValidade(Date validade) {
+        this.validade = validade;
+    }
     
-    
-    
+    public double getQuantidade() {
+            return quantidade;
+    }
+
+    public void setQuantidade(double quantidade) {
+            this.quantidade = quantidade;
+    }
+
+    public double getValorCusto() {
+            return valorCusto;
+    }
+
+    public void setValorCusto(double valorCusto) {
+            this.valorCusto = valorCusto;
+    }
+
+    public int getIdProduto() {
+            return idProduto;
+    }
+
+    public String getNomeCarne() {
+            return nomeCarne;
+    }
+
+    public Date getFabricacao() {
+            return fabricacao;
+    }
+
+    public Date getValidade() {
+            return validade;
+    }
 }
