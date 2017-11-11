@@ -6,9 +6,14 @@
 package ClassesDAO;
 
 import Controle.ConexaoBD;
+import static Controle.ConexaoBD.con;
+import d.espetos.Cliente;
 import d.espetos.Fornecedor;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -42,11 +47,93 @@ public class FornecedorDAO extends ConexaoBD{
         instance.desconecta();
     }
     
-        public static FornecedorDAO getInstance() {
-        if (instance == null) {
-            instance = new FornecedorDAO();
-            con = instance.conexao();
-        }
-        return instance;
+    public static FornecedorDAO getInstance() {
+    if (instance == null) {
+        instance = new FornecedorDAO();
+        con = instance.conexao();
     }
+    return instance;
+    }
+        
+    private Fornecedor buildObject(ResultSet rs) {
+        Fornecedor fornecedor = null;
+        try {
+            fornecedor = new Fornecedor(rs.getInt("codFornecedor"), rs.getString("cnpj"), rs.getString("nome"), rs.getString("email"), rs.getString("telefone"),  rs.getString("rua"), rs.getString("bairro"), rs.getInt("numeroRua"), rs.getString("cidade"), rs.getString("estado"));       
+        } catch (SQLException e) {
+        }
+        return fornecedor;
+    }
+        
+    public List<Fornecedor> retrieveGeneric(String query) {
+        PreparedStatement stmt;
+        List<Fornecedor> fornecedores = new ArrayList<>();
+        ResultSet rs;
+        try {
+            stmt = con.prepareStatement(query);
+            rs = this.getResultSet(stmt);
+            while (rs.next()) {
+                fornecedores.add(buildObject(rs));
+            }
+            rs.close();
+            stmt.close();
+        } catch (SQLException ex) {
+        }
+        return fornecedores;
+    }
+
+    public List<Fornecedor> retrieveAll() {
+        return this.retrieveGeneric("SELECT * FROM Fornecedor ORDER BY codFornecedor");
+    }
+
+    public List<Fornecedor> retrieveAllOrderById() {
+        return this.retrieveGeneric("SELECT * FROM Fornecedor ORDER BY id");
+    }
+
+    public List<Fornecedor> retrieveLike(String nome) {
+        return this.retrieveGeneric("SELECT * FROM Fornecedor WHERE nome LIKE '%"+nome+"%' ORDER BY nome");
+    }
+
+    public Fornecedor retrieveById(int id) {
+        Fornecedor fornecedor = null;
+        List<Fornecedor> contatos = this.retrieveGeneric("SELECT * FROM Fornecedor WHERE id="+id);
+        if(!contatos.isEmpty()){
+            fornecedor = contatos.get(0);
+        }
+        return fornecedor;
+    }
+
+    public boolean update(Fornecedor fornecedor) {
+        PreparedStatement stmt;
+        try {
+            stmt = con.prepareStatement("UPDATE Fornecedor SET nome=?, email=? , telefone=? WHERE id = ?");
+            stmt.setString(1, fornecedor.getNomeFornecedor());
+            stmt.setString(2, fornecedor.getEmail());
+            stmt.setString(3, fornecedor.getTelefone());
+            //stmt.setString(4, fornecedor.getEndereco());
+            //stmt.setString(5, fornecedor.getNumero());
+            //stmt.setString(6, fornecedor.getBairro());
+            //stmt.setString(7, fornecedor.getCidade());
+            //stmt.setString(8, fornecedor.getEstado());
+            stmt.setInt(4, fornecedor.getIdFornecedor());
+            int update = this.executeUpdate(stmt);
+            if (update == 1) {
+                return true;
+            }
+            stmt.close();
+        } catch (SQLException ex) {
+        }
+        return false;
+    }
+
+    public void delete(Fornecedor fornecedor) {
+        PreparedStatement stmt;
+        try {
+            stmt = con.prepareStatement("DELETE FROM Fornecedor WHERE id = ?");
+            stmt.setInt(1, fornecedor.getIdFornecedor());
+            this.executeUpdate(stmt);
+            stmt.close();
+        } catch (SQLException ex) {
+        }
+    }
+    
 }

@@ -69,12 +69,17 @@ public class ClienteTableModel extends GenericTableModel {
                 pessoa.setNomeCliente((String) aValue);
                 break;
             case 2:
-                pessoa.setEmailCliente((String) aValue);
+                pessoa.setCpfcnpj((String) aValue);
                 break;
             case 3:
-                pessoa.setTelefoneCliente((String) aValue);
+                pessoa.setEmailCliente((String) aValue);
+                break;
             case 4:
+                pessoa.setTelefoneCliente((String) aValue);
+                break;
+            case 5:
                 pessoa.setTipo((String) aValue);
+                break;
             default:
                 throw new IndexOutOfBoundsException("columnIndex out of bounds");
         }

@@ -8,7 +8,7 @@ package d.espetos;
 public class Fornecedor
 {
  
-    private int idCliente;
+    private int idFornecedor;
     private String cnpj;
     private String nomeFornecedor;
     private String email;
@@ -17,7 +17,7 @@ public class Fornecedor
     private String bairro;
     private String cidade;
     private String estado;
-    private String numero;
+    private int numero;
     private VendedorRepresentante representante;
 
     public Fornecedor(){
@@ -25,14 +25,18 @@ public class Fornecedor
     }
 
 
-	public Fornecedor(String cnpj, String nomeFantasia, String email, String telefone, String endereco,
-			String bairro, int numero, String cidade, String estado, VendedorRepresentante representante) {
-		super();
+	public Fornecedor(int id, String cnpj, String nomeFantasia, String email, String telefone, String rua,
+			String bairro, int numero, String cidade, String estado) {
 		this.cnpj = cnpj;
 		this.nomeFornecedor = nomeFantasia;
 		this.email = email;
 		this.telefone = telefone;
-		this.representante = representante;
+                this.idFornecedor = id;
+                this.bairro = bairro;
+                this.cidade = cidade;
+                this.estado = estado;
+                this.rua = rua;
+                this.numero = numero;
 	}
 
     public String getBairro() {
@@ -67,11 +71,11 @@ public class Fornecedor
         this.estado = estado;
     }
 
-    public String getNumero() {
+    public int getNumero() {
         return numero;
     }
 
-    public void setNumero(String numero) {
+    public void setNumero(int numero) {
         this.numero = numero;
     }
 
@@ -112,9 +116,13 @@ public class Fornecedor
 		this.telefone = telefone;
 	}
         
-	public int getIdCliente() {
-		return idCliente;
+	public int getIdFornecedor() {
+		return idFornecedor;
 	}
+        
+        public void setIdFornecedor(int id){
+            this.idFornecedor = id;
+        }
 
 	public String getCnpj() {
 		return cnpj;

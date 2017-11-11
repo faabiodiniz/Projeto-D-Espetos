@@ -5,18 +5,23 @@
  */
 package Visao;
 
+import Controle.ControlFornecedor;
+import d.espetos.Fornecedor;
+
 /**
  *
  * @author faad2
  */
 public class ListFornecedor extends javax.swing.JFrame {
 
+    Fornecedor[] vContatos;
     /**
      * Creates new form listClientes
      */
     public ListFornecedor() {
         initComponents();
         this.setLocationRelativeTo(null);
+        vContatos = ControlFornecedor.getListOfFornecedorAsArray();
     }
 
     /**
@@ -31,11 +36,9 @@ public class ListFornecedor extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         labelTituloBusca = new javax.swing.JLabel();
         jScrollPaneClientes = new javax.swing.JScrollPane();
-        tableListarCliente = new javax.swing.JTable();
+        tableListarFornecedor = new javax.swing.JTable();
         textFieldBuscaNome = new javax.swing.JTextField();
         jLabelBuscaNome = new javax.swing.JLabel();
-        jLabelBuscaCPF = new javax.swing.JLabel();
-        jTextFieldBuscaCPF = new javax.swing.JTextField();
         jButtonBuscarCliente = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -71,36 +74,27 @@ public class ListFornecedor extends javax.swing.JFrame {
         jPanel1.add(labelTituloBusca);
         labelTituloBusca.setBounds(300, 0, 110, 20);
 
-        tableListarCliente.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "ID", "CNPJ", "NOME", "ENDEREÇO", "TELEFONE", "EMAIL", "REPRESENTANTE"
+        tableListarFornecedor.setModel(new FornecedorTableModel(ControlFornecedor.getListOfFornecedor()));
+        tableListarFornecedor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableListarFornecedorMouseClicked(evt);
             }
-        ));
-        jScrollPaneClientes.setViewportView(tableListarCliente);
+        });
+        jScrollPaneClientes.setViewportView(tableListarFornecedor);
 
         jPanel1.add(jScrollPaneClientes);
         jScrollPaneClientes.setBounds(20, 70, 700, 290);
         jPanel1.add(textFieldBuscaNome);
-        textFieldBuscaNome.setBounds(120, 30, 220, 20);
+        textFieldBuscaNome.setBounds(120, 30, 430, 20);
 
         jLabelBuscaNome.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabelBuscaNome.setText("Buscar por Nome ");
         jPanel1.add(jLabelBuscaNome);
         jLabelBuscaNome.setBounds(20, 30, 100, 15);
 
-        jLabelBuscaCPF.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabelBuscaCPF.setText("Buscar por Produto");
-        jPanel1.add(jLabelBuscaCPF);
-        jLabelBuscaCPF.setBounds(350, 30, 110, 14);
-        jPanel1.add(jTextFieldBuscaCPF);
-        jTextFieldBuscaCPF.setBounds(470, 30, 150, 20);
-
         jButtonBuscarCliente.setText("Buscar");
         jPanel1.add(jButtonBuscarCliente);
-        jButtonBuscarCliente.setBounds(640, 30, 73, 23);
+        jButtonBuscarCliente.setBounds(590, 20, 100, 40);
 
         jButton1.setText("Editar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -252,6 +246,11 @@ public class ListFornecedor extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jMenuItemSairActionPerformed
 
+    private void tableListarFornecedorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableListarFornecedorMouseClicked
+        int linha = tableListarFornecedor.getSelectedRow();
+        Fornecedor f = (Fornecedor) ((FornecedorTableModel) tableListarFornecedor.getModel()).getItem(linha);
+    }//GEN-LAST:event_tableListarFornecedorMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -301,7 +300,6 @@ public class ListFornecedor extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButtonBuscarCliente;
     private javax.swing.JLabel jLabelBackground;
-    private javax.swing.JLabel jLabelBuscaCPF;
     private javax.swing.JLabel jLabelBuscaNome;
     private javax.swing.JMenu jMenuFornecedores;
     private javax.swing.JMenuItem jMenuItem1;
@@ -311,7 +309,6 @@ public class ListFornecedor extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuSair;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPaneClientes;
-    private javax.swing.JTextField jTextFieldBuscaCPF;
     private javax.swing.JLabel labelTituloBusca;
     private javax.swing.JMenu menuClientes;
     private javax.swing.JMenu menuEstoque;
@@ -322,7 +319,7 @@ public class ListFornecedor extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuItemRelatorioVenda;
     private javax.swing.JMenu menuPrincipal;
     private javax.swing.JMenu menuVendas;
-    private javax.swing.JTable tableListarCliente;
+    private javax.swing.JTable tableListarFornecedor;
     private javax.swing.JTextField textFieldBuscaNome;
     // End of variables declaration//GEN-END:variables
 }

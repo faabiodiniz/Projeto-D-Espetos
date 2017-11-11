@@ -42,9 +42,6 @@ public class ClienteDAO extends ConexaoBD{
         instance.desconecta();
     }
     
-    public void ListarClientes(){
-        
-    }
     
     public static ClienteDAO getInstance() {
         if (instance == null) {
