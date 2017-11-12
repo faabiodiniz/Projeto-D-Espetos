@@ -115,7 +115,7 @@ public class FornecedorTableModel extends GenericTableModel{
             default:
                 throw new IndexOutOfBoundsException("columnIndex out of bounds");
         }
-        ControlFornecedor.updateCliente(pessoa);
+        ControlFornecedor.updateFornecedor(pessoa);
     }
 
     @Override

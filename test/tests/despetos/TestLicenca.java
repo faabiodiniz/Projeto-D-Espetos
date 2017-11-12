@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tests;
+package tests.despetos;
 
-import d.espetos.VendedorRepresentante;
+import d.espetos.Licenca;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -13,16 +13,15 @@ import org.junit.Test;
  *
  * @author rafae
  */
-public class TestVendedorRepresentante {
+public class TestLicenca {
     
     /**
      * Teste do construtor - verificação se todos valores passados para o construtor foram corretamente atribuídos
      */
     @Test
     public void testConstrutor() {
-        VendedorRepresentante v = new VendedorRepresentante("vendedor", "v@endedor.com", "(11) 1515-1515");
-        Assert.assertEquals("Email inválido", "v@endedor.com", v.getEmail()); 
-        Assert.assertEquals("Nome inválido", "vendedor", v.getNome()); 
-        Assert.assertEquals("Telefone inválido", "(11) 1515-1515", v.getTelefone()); 
+        Assert.fail("O construtor requer o Status, mas não faz nada com o Status passado por parâmetro");
+        Licenca l = new Licenca("123", "A");
+        Assert.assertEquals("Licença inválida", "123", l.getLicenca());
     }
 }

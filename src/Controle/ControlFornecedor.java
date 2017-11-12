@@ -46,7 +46,7 @@ public class ControlFornecedor {
         return fornecedor;
     }
     
-    public static void updateCliente(Fornecedor f){
+    public static void updateFornecedor(Fornecedor f){
         FornecedorDAO.getInstance().update(f);
     }
 }

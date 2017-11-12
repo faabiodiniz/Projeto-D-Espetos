@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tests;
+package tests.ClassesDAO;
 
 import ClassesDAO.ClienteDAO;
 import Controle.ConexaoBD;
@@ -27,14 +27,9 @@ public class TestClienteDAO {
      */
     /*@Test
     public void testCadastro1() {
-        Cliente c = new Cliente();                                             
-        c.setNomeCliente("Teste um");
-        c.setCpf("111.111.111-11");
-        c.setEmail("teste@um.com");
-        c.setTelefone("(11) 1111-1111");
         ClienteDAO cdao = new ClienteDAO();
         try{
-            cdao.Salvar(c);
+            cdao.Salvar("Nome", "CPF", "Email", "Telefone", "Tipo");
         }
         catch (ExceptionTest ex) {
             Assert.fail("Os dados não foram inseridos no banco");
@@ -52,7 +47,7 @@ public class TestClienteDAO {
         } catch (SQLException ex) {
             Assert.fail("O select não pôde ser executado");
         }
-    }*/
+    }
     
     /**
      * Teste cadastrando um cliente sem passar parâmetro algum
