@@ -5,6 +5,8 @@
  */
 package Visao;
 
+import Controle.ConexaoBD;
+import Controle.ControlLicenca;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -93,7 +95,27 @@ public class VerificarSerial extends javax.swing.JFrame {
     }//GEN-LAST:event_txtValidacaoMousePressed
 
     private void botaoVerificarLicencaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoVerificarLicencaActionPerformed
-        if(txtValidacao.getText().equals("xxxx-xxxx-xxxx")){
+        if(ControlLicenca.verificaLicenca(txtValidacao.getText())){
+            try {
+                FileWriter arq = new FileWriter("javaX.txt");
+                PrintWriter gravarArq = new PrintWriter(arq);
+                gravarArq.printf("Código serial utilizado: " + txtValidacao.getText());
+                arq.close();
+                MenuInicial principal = new MenuInicial();
+                principal.setVisible(true);
+                dispose();
+                ControlLicenca.updateLicenca(txtValidacao.getText());
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(null, "Falha ao escrever Arquivo!");
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Código serial ja utilizado ou inválido!\nTente novamente");
+            VerificarSerial verSerial = new VerificarSerial();
+            verSerial.setVisible(true);
+            this.dispose();
+        }
+        /*if(txtValidacao.getText().equals("xxxx-xxxx-xxxx")){
             MenuInicial principal = new MenuInicial();
             principal.setVisible(true);
             dispose();
@@ -111,7 +133,7 @@ public class VerificarSerial extends javax.swing.JFrame {
             VerificarSerial Validacao = new VerificarSerial();
             Validacao.setVisible(true);
             dispose();
-        }
+        }*/
     }//GEN-LAST:event_botaoVerificarLicencaActionPerformed
 
     /**

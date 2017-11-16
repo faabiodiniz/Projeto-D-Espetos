@@ -79,7 +79,7 @@ public class FornecedorTableModel extends GenericTableModel{
         }
     }
 
-    @Override
+    /*@Override
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
         Fornecedor pessoa = (Fornecedor) vDados.get(rowIndex);
         switch (columnIndex) {
@@ -116,20 +116,7 @@ public class FornecedorTableModel extends GenericTableModel{
                 throw new IndexOutOfBoundsException("columnIndex out of bounds");
         }
         ControlFornecedor.updateFornecedor(pessoa);
-    }
-
-    @Override
-    public boolean isCellEditable(int rowIndex, int columnIndex) {
-        /*
-        if ((columnIndex < 3) || (columnIndex == 5)) {
-            return true;
-        }
-        */
-        if(columnIndex > 0)
-            // Permite alterar o email, mas nao o nome.
-            return true;
-        return false;
-    }
+    }*/
     
     public void refresh(){
         super.vDados.clear();

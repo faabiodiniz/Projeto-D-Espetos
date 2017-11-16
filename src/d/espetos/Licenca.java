@@ -16,17 +16,26 @@ import javax.swing.JOptionPane;
 
 public class Licenca {
     private static String licenca;
-    private String status; //Ativo ou Desativo
+    private static int status; //1 = Ativo ou 0 = Desativo
     
     public Licenca(){
         
     }
-    public Licenca(String serial, String status){
+    public Licenca(String serial, int status){
         this.licenca = serial;
-        this.status = "Desativo";
+        this.status = 0;
     }
     
     public String getLicenca(){
         return this.licenca;
     }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+    
 }

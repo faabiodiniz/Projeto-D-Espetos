@@ -22,10 +22,10 @@ public class ConexaoBD {
     public static Statement stm;
     public static ResultSet rs;
     public static Connection con;
-    String mydatabase = "despetos";
+    String mydatabase = "DEspetos";
     String connectionUrl = "jdbc:sqlserver://localhost:1433;" + "databaseName=" + mydatabase;
     String username = "sa";
-    String password = "root";
+    String password = "sqlserverbd";
     
     protected Connection conexao(){
         try {

@@ -59,7 +59,7 @@ public class ClienteTableModel extends GenericTableModel {
         }
     }
 
-    @Override
+    /*@Override
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
         Cliente pessoa = (Cliente) vDados.get(rowIndex);
         switch (columnIndex) {
@@ -84,24 +84,12 @@ public class ClienteTableModel extends GenericTableModel {
                 throw new IndexOutOfBoundsException("columnIndex out of bounds");
         }
         ControlCliente.updateCliente(pessoa);
-    }
-
-    @Override
-    public boolean isCellEditable(int rowIndex, int columnIndex) {
-        /*
-        if ((columnIndex < 3) || (columnIndex == 5)) {
-            return true;
-        }
-        */
-        if(columnIndex > 0)
-            // Permite alterar o email, mas nao o nome.
-            return true;
-        return false;
-    }
+    }*/
     
     public void refresh(){
         super.vDados.clear();
         super.vDados.addAll(ControlCliente.getListOfClientes());
         fireTableDataChanged();
     }
+    
 }

@@ -7,6 +7,7 @@ package Visao;
 
 import Controle.ControlCliente;
 import d.espetos.Cliente;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -40,8 +41,6 @@ public class ListClientes extends javax.swing.JFrame {
         tableListarCliente = new javax.swing.JTable();
         textFieldBuscaNome = new javax.swing.JTextField();
         jLabelBuscaNome = new javax.swing.JLabel();
-        jLabelBuscaCPF = new javax.swing.JLabel();
-        jTextFieldBuscaCPF = new javax.swing.JTextField();
         jButtonBuscarCliente = new javax.swing.JButton();
         jButtonEditCliente = new javax.swing.JButton();
         jButtonCadCliente = new javax.swing.JButton();
@@ -86,21 +85,14 @@ public class ListClientes extends javax.swing.JFrame {
         jScrollPaneClientes.setViewportView(tableListarCliente);
 
         jPanel1.add(jScrollPaneClientes);
-        jScrollPaneClientes.setBounds(20, 70, 700, 290);
+        jScrollPaneClientes.setBounds(20, 70, 710, 290);
         jPanel1.add(textFieldBuscaNome);
-        textFieldBuscaNome.setBounds(120, 30, 220, 20);
+        textFieldBuscaNome.setBounds(120, 30, 510, 20);
 
         jLabelBuscaNome.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabelBuscaNome.setText("Buscar por Nome ");
         jPanel1.add(jLabelBuscaNome);
         jLabelBuscaNome.setBounds(20, 30, 100, 15);
-
-        jLabelBuscaCPF.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabelBuscaCPF.setText("Buscar por CPF");
-        jPanel1.add(jLabelBuscaCPF);
-        jLabelBuscaCPF.setBounds(370, 30, 90, 14);
-        jPanel1.add(jTextFieldBuscaCPF);
-        jTextFieldBuscaCPF.setBounds(470, 30, 150, 20);
 
         jButtonBuscarCliente.setText("Buscar");
         jButtonBuscarCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -109,7 +101,7 @@ public class ListClientes extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButtonBuscarCliente);
-        jButtonBuscarCliente.setBounds(630, 30, 90, 23);
+        jButtonBuscarCliente.setBounds(640, 30, 90, 23);
 
         jButtonEditCliente.setText("Editar");
         jButtonEditCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -139,7 +131,7 @@ public class ListClientes extends javax.swing.JFrame {
         jButtonRemoveCliente.setBounds(470, 380, 160, 40);
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(20, 20, 740, 440);
+        jPanel1.setBounds(20, 20, 750, 440);
 
         jLabelBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/fundoTodos.jpg"))); // NOI18N
         getContentPane().add(jLabelBackground);
@@ -227,7 +219,14 @@ public class ListClientes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonEditClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditClienteActionPerformed
-        // TODO add your handling code here:
+        int linhaSelecionada = tableListarCliente.getSelectedRow();
+        if(linhaSelecionada == -1){
+            JOptionPane.showMessageDialog(null, "Escolha um cliente!");
+        }
+        else{
+            EditarCliente editCliente = new EditarCliente(Integer.parseInt(tableListarCliente.getValueAt(linhaSelecionada, 0).toString()),tableListarCliente.getValueAt(linhaSelecionada, 1).toString(),tableListarCliente.getValueAt(linhaSelecionada, 2).toString(),tableListarCliente.getValueAt(linhaSelecionada, 5).toString(),tableListarCliente.getValueAt(linhaSelecionada, 4).toString(),tableListarCliente.getValueAt(linhaSelecionada, 3).toString());
+            editCliente.setVisible(true);   
+        }
     }//GEN-LAST:event_jButtonEditClienteActionPerformed
 
     private void jButtonCadClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadClienteActionPerformed
@@ -317,7 +316,6 @@ public class ListClientes extends javax.swing.JFrame {
     private javax.swing.JButton jButtonEditCliente;
     private javax.swing.JButton jButtonRemoveCliente;
     private javax.swing.JLabel jLabelBackground;
-    private javax.swing.JLabel jLabelBuscaCPF;
     private javax.swing.JLabel jLabelBuscaNome;
     private javax.swing.JMenu jMenuFornecedores;
     private javax.swing.JMenuItem jMenuItem1;
@@ -327,7 +325,6 @@ public class ListClientes extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuSair;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPaneClientes;
-    private javax.swing.JTextField jTextFieldBuscaCPF;
     private javax.swing.JLabel labelTituloBusca;
     private javax.swing.JMenu menuClientes;
     private javax.swing.JMenu menuEstoque;

@@ -5,43 +5,27 @@
  */
 package Controle;
 
-import Visao.MenuInicial;
-import Visao.VerificarSerial;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import ClassesDAO.LicencaDAO;
+import static Controle.ConexaoBD.con;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import d.espetos.*;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
 
 /**
  *
  * @author faad2
  */
 public class ControlLicenca {
-    Licenca licenca = new Licenca();
-    public void verificarLicenca(String nroLicenca){
-        if(licenca.getLicenca().equals("xxxx-xxxx-xxxx")){
-            MenuInicial principal = new MenuInicial();
-            principal.setVisible(true);
-            try {
-                FileWriter arq = new FileWriter("javaX.txt");
-                PrintWriter gravarArq = new PrintWriter(arq);
-                gravarArq.printf("Código serial utilizado: " + licenca);
-                arq.close();
-            } catch (IOException ex) {
-                Logger.getLogger(VerificarSerial.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        else{
-            JOptionPane.showMessageDialog(null, "Código Serial invalido");
-            VerificarSerial Validacao = new VerificarSerial();
-            Validacao.setVisible(true);
-        }
+    public static boolean verificaLicenca(String licenca){
+        return LicencaDAO.getInstance().verificaSerial(licenca);
     }
     
-    public void criarLicenca(){
-        
+    public static void updateLicenca(String serial){
+        LicencaDAO.getInstance().update(serial);
     }
 }

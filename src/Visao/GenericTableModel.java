@@ -7,9 +7,7 @@ import javax.swing.JTable;
 import javax.swing.JViewport;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableColumn;
-/**
- * @author Prof. Dr. Plinio Vilela - vilela@ydoo.com.br
- */
+
 public abstract class GenericTableModel extends AbstractTableModel {
     protected List<Object> vDados;
     protected String[] colunas;

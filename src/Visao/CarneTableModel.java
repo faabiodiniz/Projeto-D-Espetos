@@ -58,7 +58,7 @@ public class CarneTableModel extends GenericTableModel{
         }
     }
 
-    @Override
+    /*@Override
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
         Carne carne = (Carne) vDados.get(rowIndex);
         switch (columnIndex) {
@@ -80,20 +80,7 @@ public class CarneTableModel extends GenericTableModel{
                 throw new IndexOutOfBoundsException("columnIndex out of bounds");
         }
         ControlEstoque.updateCarne(carne);
-    }
-
-    @Override
-    public boolean isCellEditable(int rowIndex, int columnIndex) {
-        /*
-        if ((columnIndex < 3) || (columnIndex == 5)) {
-            return true;
-        }
-        */
-        if(columnIndex > 0)
-            // Permite alterar o email, mas nao o nome.
-            return true;
-        return false;
-    }
+    }*/
     
     public void refresh(){
         super.vDados.clear();

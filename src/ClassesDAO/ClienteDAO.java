@@ -51,7 +51,7 @@ public class ClienteDAO extends ConexaoBD{
         return instance;
     }
     
-        private Cliente buildObject(ResultSet rs) {
+    private Cliente buildObject(ResultSet rs) {
         Cliente cliente = null;
         try {
             cliente = new Cliente(rs.getInt("codCliente"), rs.getString("nome"), rs.getString("telefone"), rs.getString("email"), rs.getString("tipo"), rs.getString("cpfcnpj"));
@@ -101,11 +101,12 @@ public class ClienteDAO extends ConexaoBD{
     public boolean update(Cliente Cliente) {
         PreparedStatement stmt;
         try {
-            stmt = con.prepareStatement("UPDATE Cliente SET nome=?, email=? , telefone=? WHERE id = ?");
+            stmt = con.prepareStatement("UPDATE Cliente SET nome=?, email=? , telefone=?, tipo=? WHERE id = ?");
             stmt.setString(1, cliente.getNomeCliente());
             stmt.setString(2, cliente.getEmailCliente());
             stmt.setString(3, cliente.getTelefoneCliente());
-            stmt.setInt(4, cliente.getIdCliente());
+            stmt.setString(4, cliente.getTipo());
+            stmt.setInt(5, cliente.getIdCliente());
             int update = this.executeUpdate(stmt);
             if (update == 1) {
                 return true;

@@ -7,7 +7,6 @@ package Controle;
 
 import ClassesDAO.ClienteDAO;
 import d.espetos.Cliente;
-import d.espetos.Fisico;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
