@@ -224,8 +224,9 @@ public class ListClientes extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Escolha um cliente!");
         }
         else{
-            EditarCliente editCliente = new EditarCliente(Integer.parseInt(tableListarCliente.getValueAt(linhaSelecionada, 0).toString()),tableListarCliente.getValueAt(linhaSelecionada, 1).toString(),tableListarCliente.getValueAt(linhaSelecionada, 2).toString(),tableListarCliente.getValueAt(linhaSelecionada, 5).toString(),tableListarCliente.getValueAt(linhaSelecionada, 4).toString(),tableListarCliente.getValueAt(linhaSelecionada, 3).toString());
-            editCliente.setVisible(true);   
+            Cliente cliente = new Cliente((Integer) tableListarCliente.getValueAt(linhaSelecionada, 0), tableListarCliente.getValueAt(linhaSelecionada, 1).toString(),tableListarCliente.getValueAt(linhaSelecionada, 4).toString(),tableListarCliente.getValueAt(linhaSelecionada, 3).toString(),tableListarCliente.getValueAt(linhaSelecionada, 5).toString(), tableListarCliente.getValueAt(linhaSelecionada, 2).toString());
+            EditarCliente editCliente = new EditarCliente(cliente);
+            editCliente.setVisible(true);
         }
     }//GEN-LAST:event_jButtonEditClienteActionPerformed
 

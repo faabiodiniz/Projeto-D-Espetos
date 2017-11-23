@@ -7,6 +7,7 @@ package Visao;
 
 import ClassesDAO.ClienteDAO;
 import d.espetos.Cliente;
+import javax.accessibility.AccessibleContext;
 
 /**
  *
@@ -14,17 +15,22 @@ import d.espetos.Cliente;
  */
 public class EditarCliente extends javax.swing.JFrame {
     private static int id;
+
+    public void setAccessibleContext(AccessibleContext accessibleContext) {
+        this.accessibleContext = accessibleContext;
+    }
     /**
      * Creates new form EditarCliente
      * @param c
      */
-    public EditarCliente(int id, String nome, String cpfcnpj, String tipo, String telefone, String email) {
+    public EditarCliente(Cliente c) {
         initComponents();
+        this.setLocationRelativeTo(null);
         this.id = id;
-        jTextFieldNomeAlter.setText(nome);
-        jTextFieldCpfAlter.setText(cpfcnpj);
-        jTextFieldEmailAlter.setText(email);
-        jFormattedTextFieldTelAlter.setText(telefone);
+        jTextFieldNomeAlter.setText(c.getNomeCliente());
+        jTextFieldCpfAlter.setText(c.getCpfcnpj());
+        jTextFieldEmailAlter.setText(c.getEmailCliente());
+        jFormattedTextFieldTelAlter.setText(c.getTelefoneCliente());
     }
 
     private EditarCliente() {
@@ -109,7 +115,7 @@ public class EditarCliente extends javax.swing.JFrame {
                             .addComponent(jFormattedTextFieldTelAlter)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jComboBoxTipoAlter, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                .addGap(0, 282, Short.MAX_VALUE))
                             .addComponent(jTextFieldEmailAlter))))
                 .addContainerGap())
         );
@@ -162,17 +168,16 @@ public class EditarCliente extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
+                        .addGap(55, 55, 55)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 35, Short.MAX_VALUE))
+                        .addGap(100, 100, 100))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -183,9 +188,9 @@ public class EditarCliente extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE))
                 .addContainerGap())
         );
 

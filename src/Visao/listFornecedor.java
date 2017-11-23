@@ -7,13 +7,14 @@ package Visao;
 
 import Controle.ControlFornecedor;
 import d.espetos.Fornecedor;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author faad2
  */
 public class ListFornecedor extends javax.swing.JFrame {
-
+    private int linhaSelecionada;
     Fornecedor[] vContatos;
     /**
      * Creates new form listClientes
@@ -212,7 +213,17 @@ public class ListFornecedor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        linhaSelecionada = tableListarFornecedor.getSelectedRow();
+        if(linhaSelecionada == -1){
+            JOptionPane.showMessageDialog(null , "Escolhe um fornecedor!");
+        }
+        else{
+            Fornecedor fornecedor = new Fornecedor((Integer)tableListarFornecedor.getValueAt(linhaSelecionada, 0), tableListarFornecedor.getValueAt(linhaSelecionada, 2).toString(), tableListarFornecedor.getValueAt(linhaSelecionada, 1).toString(), tableListarFornecedor.getValueAt(linhaSelecionada, 3).toString(), tableListarFornecedor.getValueAt(linhaSelecionada, 4).toString(), tableListarFornecedor.getValueAt(linhaSelecionada, 5).toString(), tableListarFornecedor.getValueAt(linhaSelecionada, 7).toString(), (Integer)tableListarFornecedor.getValueAt(linhaSelecionada, 6), tableListarFornecedor.getValueAt(linhaSelecionada, 8).toString(), tableListarFornecedor.getValueAt(linhaSelecionada, 9).toString());
+            EditarFornecedor editForne = new EditarFornecedor(fornecedor);
+            editForne.setVisible(true);
+        }
+        
+    // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
