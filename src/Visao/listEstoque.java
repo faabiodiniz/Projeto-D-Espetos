@@ -24,6 +24,9 @@ public class ListEstoque extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         vCarne = ControlEstoque.getListOfCarneAsArray();
+        tableListarCarne.getColumnModel().getColumn(0).setPreferredWidth(30);
+        tableListarCarne.getColumnModel().getColumn(3).setPreferredWidth(40);
+        tableListarCarne.getColumnModel().getColumn(2).setPreferredWidth(40);
         ((CarneTableModel) tableListarCarne.getModel()).refresh();
     }
 
@@ -99,7 +102,7 @@ public class ListEstoque extends javax.swing.JFrame {
         jPanel1.add(jButtonBuscarCliente);
         jButtonBuscarCliente.setBounds(623, 30, 90, 23);
 
-        jButton1.setText("Editar");
+        jButton1.setText("Editar Preço");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -108,7 +111,7 @@ public class ListEstoque extends javax.swing.JFrame {
         jPanel1.add(jButton1);
         jButton1.setBounds(280, 380, 160, 40);
 
-        jButton2.setText("Cadastrar");
+        jButton2.setText("Adicionar Carne");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -250,7 +253,7 @@ public class ListEstoque extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Selecione uma carne!");
         }
         else{
-            Carne carne = new Carne((Integer)tableListarCarne.getValueAt(linhaSelecionada, 0), tableListarCarne.getValueAt(linhaSelecionada, 1).toString(), (double) tableListarCarne.getValueAt(linhaSelecionada, 2), null, null, (double) tableListarCarne.getValueAt(linhaSelecionada, 4), tableListarCarne.getValueAt(linhaSelecionada, 5).toString(), tableListarCarne.getValueAt(linhaSelecionada, 6).toString());
+            Carne carne = new Carne((Integer)tableListarCarne.getValueAt(linhaSelecionada, 6), tableListarCarne.getValueAt(linhaSelecionada, 1).toString(), (double) (tableListarCarne.getValueAt(linhaSelecionada, 3)), tableListarCarne.getValueAt(linhaSelecionada, 7).toString());
             EditarPrecoCarne editCarne = new EditarPrecoCarne(carne);
             editCarne.setVisible(true);
         }

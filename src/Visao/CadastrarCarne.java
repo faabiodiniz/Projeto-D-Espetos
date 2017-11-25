@@ -6,18 +6,23 @@
 package Visao;
 
 import Controle.ControlEstoque;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JFormattedTextField;
 
 /**
  *
  * @author faad2
  */
 public class CadastrarCarne extends javax.swing.JFrame {
-
+    private String date1;
+    private String date2;
     /**
      * Creates new form CadastrarCarne
      */
     public CadastrarCarne() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -43,6 +48,8 @@ public class CadastrarCarne extends javax.swing.JFrame {
         jFormattedTextFieldDataValid = new javax.swing.JFormattedTextField();
         jLabel7 = new javax.swing.JLabel();
         jFormattedTextFieldValor = new javax.swing.JFormattedTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jTextFieldMarca = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
@@ -97,7 +104,7 @@ public class CadastrarCarne extends javax.swing.JFrame {
 
         jFormattedTextFieldDataVenci.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
         jPanel2.add(jFormattedTextFieldDataVenci);
-        jFormattedTextFieldDataVenci.setBounds(150, 170, 140, 20);
+        jFormattedTextFieldDataVenci.setBounds(150, 170, 160, 20);
 
         jFormattedTextFieldQtdCarne.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
         jPanel2.add(jFormattedTextFieldQtdCarne);
@@ -105,7 +112,7 @@ public class CadastrarCarne extends javax.swing.JFrame {
 
         jFormattedTextFieldDataValid.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
         jPanel2.add(jFormattedTextFieldDataValid);
-        jFormattedTextFieldDataValid.setBounds(150, 130, 140, 20);
+        jFormattedTextFieldDataValid.setBounds(150, 130, 160, 20);
 
         jLabel7.setText("Valor: ");
         jPanel2.add(jLabel7);
@@ -113,7 +120,13 @@ public class CadastrarCarne extends javax.swing.JFrame {
 
         jFormattedTextFieldValor.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
         jPanel2.add(jFormattedTextFieldValor);
-        jFormattedTextFieldValor.setBounds(80, 90, 150, 20);
+        jFormattedTextFieldValor.setBounds(80, 90, 80, 20);
+
+        jLabel8.setText("Marca:");
+        jPanel2.add(jLabel8);
+        jLabel8.setBounds(170, 90, 50, 20);
+        jPanel2.add(jTextFieldMarca);
+        jTextFieldMarca.setBounds(210, 90, 100, 20);
 
         getContentPane().add(jPanel2);
         jPanel2.setBounds(30, 10, 320, 210);
@@ -148,11 +161,16 @@ public class CadastrarCarne extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBoxTipoActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        ControlEstoque.criarEstoque(jTextFieldNomeCarne.getText(), Double.parseDouble(jFormattedTextFieldValor.getText()), jFormattedTextFieldDataValid.getText(), jFormattedTextFieldDataVenci.getText(), Double.parseDouble(jFormattedTextFieldQtdCarne.getText()), jComboBoxTipo.getSelectedItem().toString());
+        date1 = jFormattedTextFieldDataValid.getText();
+        date2 = jFormattedTextFieldDataVenci.getText();
+        date1.replace("/", "-");
+        date2.replace("/", "-");
+        ControlEstoque.criarEstoque(jTextFieldNomeCarne.getText(), Double.parseDouble(jFormattedTextFieldValor.getText()), date1, date2, Double.parseDouble(jFormattedTextFieldQtdCarne.getText()), jComboBoxTipo.getSelectedItem().toString(), jTextFieldMarca.getText());
         jTextFieldNomeCarne.setText("");
         jFormattedTextFieldQtdCarne.setText("");
         jFormattedTextFieldDataValid.setText("");
         jFormattedTextFieldDataVenci.setText("");
+        jTextFieldMarca.setText("");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextFieldNomeCarneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNomeCarneActionPerformed
@@ -209,7 +227,9 @@ public class CadastrarCarne extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JTextField jTextFieldMarca;
     private javax.swing.JTextField jTextFieldNomeCarne;
     // End of variables declaration//GEN-END:variables
 }

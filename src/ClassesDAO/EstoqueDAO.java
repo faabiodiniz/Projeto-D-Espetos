@@ -28,13 +28,15 @@ public class EstoqueDAO extends ConexaoBD{
     public void Salvar(String nome, double valor, String fabricacao, String validade, double quantidade, String tipo, String marca){
         instance.conexao();
         try {
-            PreparedStatement pst = conexao.con.prepareStatement("INSERT INTO Carne(nome, valor, dataFabricacao, dataValidade, quantidade, tipo) values (?,?,?,?,?,?)");
+            PreparedStatement pst = conexao.con.prepareStatement("INSERT INTO TipoDeCarne(nome, valor, marca, tipo) values(?,?,?,?);"
+                   + "INSERT INTO Carne(dataFabricacao, dataValidade, quantidade) values (?,?,?)");
             pst.setString(1, nome);
             pst.setDouble(2, valor);
             pst.setString(3, fabricacao);
             pst.setString(4, validade);
             pst.setDouble(5, quantidade);
-            pst.setString(6, tipo);
+            pst.setString(6, marca);
+            pst.setString(7, tipo);
             pst.execute();
             JOptionPane.showMessageDialog(null,"Dados inseridos com sucesso");
         } catch (SQLException ex) {
@@ -55,7 +57,7 @@ public class EstoqueDAO extends ConexaoBD{
     private Carne buildObject(ResultSet rs) {
         Carne carne = null;
         try {
-            carne = new Carne(rs.getInt("codCarne"), rs.getString("nome"), rs.getDouble("quantidade"), rs.getDate("dataFabricacao"),rs.getDate("dataValidade"), rs.getDouble("valor"), rs.getString("tipo"), rs.getString("marca"));       
+            carne = new Carne(rs.getInt("codCarne"), rs.getString("nome"), rs.getDouble("quantidade"), rs.getDate("dataFabricacao"),rs.getDate("dataValidade"), rs.getDouble("valor"), rs.getString("tipo"), rs.getString("marca"), rs.getInt("codTipoCarne"));       
         } catch (SQLException e) {
         }
         return carne;
@@ -79,7 +81,7 @@ public class EstoqueDAO extends ConexaoBD{
     }
 
     public List<Carne> retrieveAll() {
-        return this.retrieveGeneric("SELECT * FROM Carne ORDER BY codCarne");
+        return this.retrieveGeneric("SELECT codCarne, quantidade, dataValidade, dataFabricacao, nome, valor, marca, tipo, TipoDeCarne.codTipoCarne FROM Carne, TipoDeCarne WHERE Carne.codTipoCarne = TipoDeCarne.codTipoCarne");
     }
 
     public List<Carne> retrieveAllOrderById() {
@@ -102,17 +104,11 @@ public class EstoqueDAO extends ConexaoBD{
     public boolean update(Carne carne) {
         PreparedStatement stmt;
         try {
-            stmt = con.prepareStatement("UPDATE Carne SET nome=?, email=? , telefone=? WHERE id = ?");
-            stmt.setString(1, carne.getNomeCarne());
-            stmt.setDouble(2, carne.getQuantidade());
-            stmt.setDouble(3, carne.getValorCusto());
-            //stmt.setString(4, carne.getFabricacao());
-            //stmt.setString(5, carne.getValidade());
-            //stmt.setString(6, fornecedor.getBairro());
-            //stmt.setString(7, fornecedor.getCidade());
-            //stmt.setString(8, fornecedor.getEstado());
-            stmt.setInt(4, carne.getIdProduto());
+            stmt = con.prepareStatement("UPDATE TipoDeCarne SET valor=? WHERE codTipoCarne = ?");
+            stmt.setDouble(1, carne.getValorCusto());
+            stmt.setInt(2, carne.getCodTipo());
             int update = this.executeUpdate(stmt);
+            System.out.println("Atualizou se pá");
             if (update == 1) {
                 return true;
             }

@@ -17,7 +17,7 @@ import java.util.List;
 public class CarneTableModel extends GenericTableModel{
     public CarneTableModel(List vDados) {
         // Use esse vetor de Strings para definir os titulos das colunas:
-        super(vDados, new String[]{"id" ,"Nome", "Quantidade em Estoque(KG)", "Valor(R$)", "Data de Validade","Tipo"});
+        super(vDados, new String[]{"id" ,"Nome", "QTD (KG)", "Valor(R$)", "Data de Validade", "Marca", "Codigo Tipo", "Tipo"});
     }
 
     @Override
@@ -34,6 +34,10 @@ public class CarneTableModel extends GenericTableModel{
             case 4:
                 return Date.class;
             case 5:
+                return String.class;
+            case 6:
+                return Integer.class;
+            case 7:
                 return String.class;
             default:
                 throw new IndexOutOfBoundsException("columnIndex out of bounds");
@@ -56,6 +60,10 @@ public class CarneTableModel extends GenericTableModel{
             case 4:
                 return carne.getValidade();
             case 5:
+                return carne.getMarca();
+            case 6:
+                return carne.getCodTipo();
+            case 7:
                 return carne.getTipo();
             default:
                 throw new IndexOutOfBoundsException("columnIndex out of bounds");

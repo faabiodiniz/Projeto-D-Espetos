@@ -12,8 +12,9 @@ public class Carne {
     private double valorCusto;
     private String marca;
     private String tipo;
+    private int codTipo;
 	
-    public Carne(int id, String nomeCarne, double quantidade, Date fabricacao, Date validade, double valorCusto, String tipo ,String marca) {
+    public Carne(int id, String nomeCarne, double quantidade, Date fabricacao, Date validade, double valorCusto, String tipo ,String marca, int codTipo) {
         this.nomeCarne = nomeCarne;
         this.quantidade = quantidade;
         this.fabricacao = fabricacao;
@@ -21,6 +22,13 @@ public class Carne {
         this.valorCusto = valorCusto;
         this.idProduto = id;
         this.marca = marca;
+        this.tipo = tipo;
+        this.codTipo = codTipo;
+    }
+    public Carne(int id, String nomeCarne, double valor, String tipo){
+        this.codTipo = id;
+        this.nomeCarne = nomeCarne;
+        this.valorCusto = valor;
         this.tipo = tipo;
     }
 
@@ -89,6 +97,14 @@ public class Carne {
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
+    }
+
+    public int getCodTipo() {
+        return codTipo;
+    }
+
+    public void setCodTipo(int codTipo) {
+        this.codTipo = codTipo;
     }
     
 }

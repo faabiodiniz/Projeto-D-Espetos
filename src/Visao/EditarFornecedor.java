@@ -18,6 +18,7 @@ public class EditarFornecedor extends javax.swing.JDialog {
      */
     public EditarFornecedor(Fornecedor f) {
         initComponents();
+        this.setLocationRelativeTo(null);
         jTextFieldEditNome.setText(f.getNomeFornecedor());
         jTextFieldEditCnpj.setText(f.getCnpj());
         jTextFieldEditTel.setText(f.getTelefone());
