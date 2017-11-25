@@ -5,6 +5,7 @@
  */
 package Visao;
 
+import ClassesDAO.FornecedorDAO;
 import Controle.ControlFornecedor;
 import d.espetos.Fornecedor;
 import javax.swing.JOptionPane;
@@ -23,6 +24,9 @@ public class ListFornecedor extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         vContatos = ControlFornecedor.getListOfFornecedorAsArray();
+        tableListarFornecedor.getColumnModel().getColumn(0).setPreferredWidth(30);
+        tableListarFornecedor.getColumnModel().getColumn(1).setPreferredWidth(150);
+        ((FornecedorTableModel) tableListarFornecedor.getModel()).refresh();
     }
 
     /**
@@ -86,7 +90,7 @@ public class ListFornecedor extends javax.swing.JFrame {
         jPanel1.add(jScrollPaneClientes);
         jScrollPaneClientes.setBounds(20, 70, 700, 290);
         jPanel1.add(textFieldBuscaNome);
-        textFieldBuscaNome.setBounds(120, 30, 430, 20);
+        textFieldBuscaNome.setBounds(120, 30, 460, 20);
 
         jLabelBuscaNome.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabelBuscaNome.setText("Buscar por Nome ");
@@ -94,8 +98,13 @@ public class ListFornecedor extends javax.swing.JFrame {
         jLabelBuscaNome.setBounds(20, 30, 100, 15);
 
         jButtonBuscarCliente.setText("Buscar");
+        jButtonBuscarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBuscarClienteActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButtonBuscarCliente);
-        jButtonBuscarCliente.setBounds(590, 20, 100, 40);
+        jButtonBuscarCliente.setBounds(590, 27, 100, 23);
 
         jButton1.setText("Editar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -132,6 +141,11 @@ public class ListFornecedor extends javax.swing.JFrame {
         jLabelBackground.setBounds(-20, -20, 830, 520);
 
         menuPrincipal.setText("Menu Principal");
+        menuPrincipal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuPrincipalActionPerformed(evt);
+            }
+        });
 
         jMenuItem3.setText("Menu Principal");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
@@ -144,8 +158,18 @@ public class ListFornecedor extends javax.swing.JFrame {
         barraMenu.add(menuPrincipal);
 
         menuClientes.setText("Clientes");
+        menuClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuClientesActionPerformed(evt);
+            }
+        });
 
         menuItemCadastroCliente.setText("Cadastrar Cliente");
+        menuItemCadastroCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemCadastroClienteActionPerformed(evt);
+            }
+        });
         menuClientes.add(menuItemCadastroCliente);
 
         menuItemListarClientes.setText("Listar Clientes");
@@ -161,9 +185,19 @@ public class ListFornecedor extends javax.swing.JFrame {
         jMenuFornecedores.setText("Fornecedores");
 
         jMenuItem1.setText("Cadastrar Fornecedor");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenuFornecedores.add(jMenuItem1);
 
         jMenuItem2.setText("Listar Fornecedores");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenuFornecedores.add(jMenuItem2);
 
         barraMenu.add(jMenuFornecedores);
@@ -191,6 +225,11 @@ public class ListFornecedor extends javax.swing.JFrame {
         menuVendas.add(menuItemRelatorioVenda);
 
         menuItemRealizarVenda.setText("Realizar Venda");
+        menuItemRealizarVenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemRealizarVendaActionPerformed(evt);
+            }
+        });
         menuVendas.add(menuItemRealizarVenda);
 
         barraMenu.add(menuVendas);
@@ -232,8 +271,21 @@ public class ListFornecedor extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        linhaSelecionada = tableListarFornecedor.getSelectedRow();
+        if(linhaSelecionada == -1){
+            JOptionPane.showMessageDialog(null,"Escolha um fornecedor!");
+        }
+        else{
+            Fornecedor fornecedor = new Fornecedor((Integer)tableListarFornecedor.getValueAt(linhaSelecionada, 0), tableListarFornecedor.getValueAt(linhaSelecionada, 2).toString(), tableListarFornecedor.getValueAt(linhaSelecionada, 1).toString(), tableListarFornecedor.getValueAt(linhaSelecionada, 3).toString(), tableListarFornecedor.getValueAt(linhaSelecionada, 4).toString(), tableListarFornecedor.getValueAt(linhaSelecionada, 5).toString(), tableListarFornecedor.getValueAt(linhaSelecionada, 7).toString(), (Integer)tableListarFornecedor.getValueAt(linhaSelecionada, 6), tableListarFornecedor.getValueAt(linhaSelecionada, 8).toString(), tableListarFornecedor.getValueAt(linhaSelecionada, 9).toString());
+            FornecedorDAO.getInstance().delete(fornecedor);
+            ((FornecedorTableModel) tableListarFornecedor.getModel()).refresh();
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void tableListarFornecedorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableListarFornecedorMouseClicked
+        int linha = tableListarFornecedor.getSelectedRow();
+        Fornecedor f = (Fornecedor) ((FornecedorTableModel) tableListarFornecedor.getModel()).getItem(linha);
+    }//GEN-LAST:event_tableListarFornecedorMouseClicked
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         MenuInicial principal = new MenuInicial();
@@ -241,26 +293,67 @@ public class ListFornecedor extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
+    private void menuPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPrincipalActionPerformed
+        MenuInicial principal = new MenuInicial();
+        principal.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_menuPrincipalActionPerformed
+
+    private void menuItemCadastroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemCadastroClienteActionPerformed
+        cadastroClientes clientes = new cadastroClientes();
+        clientes.setVisible(true);
+    }//GEN-LAST:event_menuItemCadastroClienteActionPerformed
+
     private void menuItemListarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemListarClientesActionPerformed
-        // TODO add your handling code here:
+        ListClientes cliente = new ListClientes();
+        cliente.setVisible(true);
+        dispose();
     }//GEN-LAST:event_menuItemListarClientesActionPerformed
 
+    private void menuClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuClientesActionPerformed
+        cadastroClientes clientes = new cadastroClientes();
+        clientes.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_menuClientesActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        CadastroFornecedor fornecedor = new CadastroFornecedor();
+        fornecedor.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        ListFornecedor fornecedor = new ListFornecedor();
+        fornecedor.setVisible(true);
+        dispose();
+
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
     private void menuItemListarEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemListarEstoqueActionPerformed
-        // TODO add your handling code here:
+        ListEstoque estoque = new ListEstoque();
+        estoque.setVisible(true);
+        dispose();
     }//GEN-LAST:event_menuItemListarEstoqueActionPerformed
 
     private void menuItemRelatorioVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemRelatorioVendaActionPerformed
-        // TODO add your handling code here:
+        ListVendas vendas = new ListVendas();
+        vendas.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_menuItemRelatorioVendaActionPerformed
+
+    private void menuItemRealizarVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemRealizarVendaActionPerformed
+        /*// TODO add your handling code here:
+        cadastroVendas venda = new cadastroVendas();
+        venda.setVisible(true);
+        dispose();*/
+    }//GEN-LAST:event_menuItemRealizarVendaActionPerformed
 
     private void jMenuItemSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSairActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jMenuItemSairActionPerformed
 
-    private void tableListarFornecedorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableListarFornecedorMouseClicked
-        int linha = tableListarFornecedor.getSelectedRow();
-        Fornecedor f = (Fornecedor) ((FornecedorTableModel) tableListarFornecedor.getModel()).getItem(linha);
-    }//GEN-LAST:event_tableListarFornecedorMouseClicked
+    private void jButtonBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonBuscarClienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -303,6 +396,7 @@ public class ListFornecedor extends javax.swing.JFrame {
             }
         });
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar barraMenu;

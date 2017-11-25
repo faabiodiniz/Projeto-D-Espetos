@@ -25,7 +25,7 @@ public class EstoqueDAO extends ConexaoBD{
     Carne carne = new Carne();
     private static EstoqueDAO instance;
     
-    public void Salvar(String nome, double valor, String fabricacao, String validade, double quantidade, String tipo){
+    public void Salvar(String nome, double valor, String fabricacao, String validade, double quantidade, String tipo, String marca){
         instance.conexao();
         try {
             PreparedStatement pst = conexao.con.prepareStatement("INSERT INTO Carne(nome, valor, dataFabricacao, dataValidade, quantidade, tipo) values (?,?,?,?,?,?)");
@@ -55,7 +55,7 @@ public class EstoqueDAO extends ConexaoBD{
     private Carne buildObject(ResultSet rs) {
         Carne carne = null;
         try {
-            carne = new Carne(rs.getInt("codCarne"), rs.getString("nome"), rs.getDouble("quantidade"), rs.getDate("dataFabricacao"),rs.getDate("dataValidade"), rs.getDouble("valor"));       
+            carne = new Carne(rs.getInt("codCarne"), rs.getString("nome"), rs.getDouble("quantidade"), rs.getDate("dataFabricacao"),rs.getDate("dataValidade"), rs.getDouble("valor"), rs.getString("tipo"), rs.getString("marca"));       
         } catch (SQLException e) {
         }
         return carne;

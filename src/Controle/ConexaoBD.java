@@ -31,18 +31,14 @@ public class ConexaoBD {
         try {
             System.setProperty("jdbc.Drivers", connectionUrl);
             con = DriverManager.getConnection(connectionUrl, username, password);
-            JOptionPane.showMessageDialog(null, "Login no BD realizado com sucesso!");
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Falha ao realizar login no BD!\n" + ex.getMessage());
         }
         return con;
     }
     protected void desconecta(){
         try {
             con.close();
-            JOptionPane.showMessageDialog(null, "Desconectado com sucesso");
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Nao desconectou\n" + ex.getMessage());
         }
     }
     protected ResultSet getResultSet(PreparedStatement queryStatement) throws SQLException {

@@ -105,16 +105,16 @@ public class FornecedorDAO extends ConexaoBD{
     public boolean update(Fornecedor fornecedor) {
         PreparedStatement stmt;
         try {
-            stmt = con.prepareStatement("UPDATE Fornecedor SET nome=?, email=? , telefone=? WHERE id = ?");
+            stmt = con.prepareStatement("UPDATE Fornecedor SET nome=?, email=?, telefone=?, rua=?, numeroRua=?, bairro=?, cidade=?, estado=?,  WHERE codFornecedor = ?");
             stmt.setString(1, fornecedor.getNomeFornecedor());
             stmt.setString(2, fornecedor.getEmail());
             stmt.setString(3, fornecedor.getTelefone());
-            //stmt.setString(4, fornecedor.getEndereco());
-            //stmt.setString(5, fornecedor.getNumero());
-            //stmt.setString(6, fornecedor.getBairro());
-            //stmt.setString(7, fornecedor.getCidade());
-            //stmt.setString(8, fornecedor.getEstado());
-            stmt.setInt(4, fornecedor.getIdFornecedor());
+            stmt.setString(4, fornecedor.getRua());
+            stmt.setInt(5, fornecedor.getNumero());
+            stmt.setString(6, fornecedor.getBairro());
+            stmt.setString(7, fornecedor.getCidade());
+            stmt.setString(8, fornecedor.getEstado());
+            stmt.setInt(9, fornecedor.getIdFornecedor());
             int update = this.executeUpdate(stmt);
             if (update == 1) {
                 return true;
@@ -128,7 +128,7 @@ public class FornecedorDAO extends ConexaoBD{
     public void delete(Fornecedor fornecedor) {
         PreparedStatement stmt;
         try {
-            stmt = con.prepareStatement("DELETE FROM Fornecedor WHERE id = ?");
+            stmt = con.prepareStatement("DELETE FROM Fornecedor WHERE codFornecedor = ?");
             stmt.setInt(1, fornecedor.getIdFornecedor());
             this.executeUpdate(stmt);
             stmt.close();

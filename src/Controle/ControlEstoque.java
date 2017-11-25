@@ -14,8 +14,8 @@ import java.util.List;
  * @author faad2
  */
 public class ControlEstoque {
-    public static void criarEstoque(String nome, double valor, String fabricacao, String validade, double quantidade, String tipo){
-        EstoqueDAO.getInstance().Salvar(nome, valor, fabricacao, validade, quantidade, tipo);
+    public static void criarEstoque(String nome, double valor, String fabricacao, String validade, double quantidade, String tipo, String marca){
+        EstoqueDAO.getInstance().Salvar(nome, valor, fabricacao, validade, quantidade, tipo, marca);
     }
     
     public static List<Carne> getListOfCarne(){

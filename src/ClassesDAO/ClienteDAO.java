@@ -81,33 +81,30 @@ public class ClienteDAO extends ConexaoBD{
         return this.retrieveGeneric("SELECT * FROM Cliente ORDER BY codCliente");
     }
 
-    public List<Cliente> retrieveAllOrderById() {
-        return this.retrieveGeneric("SELECT * FROM Cliente ORDER BY id");
-    }
-
     public List<Cliente> retrieveLike(String nome) {
         return this.retrieveGeneric("SELECT * FROM Cliente WHERE nome LIKE '%"+nome+"%' ORDER BY nome");
     }
 
     public Cliente retrieveById(int id) {
         Cliente cliente = null;
-        List<Cliente> contatos = this.retrieveGeneric("SELECT * FROM Cliente WHERE id="+id);
+        List<Cliente> contatos = this.retrieveGeneric("SELECT * FROM Cliente WHERE codCliente="+id);
         if(!contatos.isEmpty()){
             cliente = contatos.get(0);
         }
         return cliente;
     }
 
-    public boolean update(Cliente Cliente) {
+    public boolean update(Cliente cliente) {
         PreparedStatement stmt;
         try {
-            stmt = con.prepareStatement("UPDATE Cliente SET nome=?, email=? , telefone=?, tipo=? WHERE id = ?");
+            stmt = con.prepareStatement("UPDATE Cliente SET nome=?, email=?, telefone=?, tipo=?, cpfcnpj=? WHERE codCliente = ?");
             stmt.setString(1, cliente.getNomeCliente());
             stmt.setString(2, cliente.getEmailCliente());
             stmt.setString(3, cliente.getTelefoneCliente());
             stmt.setString(4, cliente.getTipo());
-            stmt.setInt(5, cliente.getIdCliente());
-            int update = this.executeUpdate(stmt);
+            stmt.setString(5, cliente.getCpfcnpj());
+            stmt.setInt(6, cliente.getIdCliente());
+            int update = executeUpdate(stmt);
             if (update == 1) {
                 return true;
             }
@@ -120,9 +117,9 @@ public class ClienteDAO extends ConexaoBD{
     public void delete(Cliente cliente) {
         PreparedStatement stmt;
         try {
-            stmt = con.prepareStatement("DELETE FROM Cliente WHERE id = ?");
+            stmt = conexao.con.prepareStatement("DELETE FROM Cliente WHERE codCliente = ?");
             stmt.setInt(1, cliente.getIdCliente());
-            this.executeUpdate(stmt);
+            executeUpdate(stmt);
             stmt.close();
         } catch (SQLException ex) {
         }

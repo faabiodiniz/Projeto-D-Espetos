@@ -220,7 +220,6 @@ public class MenuInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_menuItemListarClientesActionPerformed
 
     private void menuItemListarEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemListarEstoqueActionPerformed
-        // TODO add your handling code here:
         ListEstoque estoque = new ListEstoque();
         estoque.setVisible(true);
         dispose();
@@ -235,7 +234,7 @@ public class MenuInicial extends javax.swing.JFrame {
     private void jButtonEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEstoqueActionPerformed
         ListEstoque cliente = new ListEstoque();
         cliente.setVisible(true);
-        dispose();        // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_jButtonEstoqueActionPerformed
 
     private void jButtonClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClienteActionPerformed
@@ -251,7 +250,9 @@ public class MenuInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonFornecedorActionPerformed
 
     private void menuItemRelatorioVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemRelatorioVendaActionPerformed
-        // TODO add your handling code here:
+        ListVendas vendas = new ListVendas();
+        vendas.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_menuItemRelatorioVendaActionPerformed
 
     private void jMenuItemSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSairActionPerformed
@@ -277,21 +278,16 @@ public class MenuInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_menuClientesActionPerformed
 
     private void menuItemCadastroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemCadastroClienteActionPerformed
-        // TODO add your handling code here:
         cadastroClientes clientes = new cadastroClientes();
         clientes.setVisible(true);
-        dispose();
     }//GEN-LAST:event_menuItemCadastroClienteActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
         CadastroFornecedor fornecedor = new CadastroFornecedor();
         fornecedor.setVisible(true);
-        dispose();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO add your handling code here:
         ListFornecedor fornecedor = new ListFornecedor();
         fornecedor.setVisible(true);
         dispose();

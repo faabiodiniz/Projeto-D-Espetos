@@ -15,8 +15,6 @@ public class DEspetos {
 
     public static void main(String[] args) {
         ConexaoBD bdConnection = new ConexaoBD();
-        //bdConnection.conexao();
-        
         File file = new File("javaX.txt");        
         if(file.exists()){
             MenuInicial principal = new MenuInicial();

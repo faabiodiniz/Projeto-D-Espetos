@@ -52,10 +52,6 @@ public class ControlCliente {
         return vetCliente;
     }    
     
-    public static List<Cliente> getListOfClientesOrderById(){
-        return ClienteDAO.getInstance().retrieveAllOrderById();
-    }
-    
     public static Cliente getClienteById(int id){
         Cliente cliente = ClienteDAO.getInstance().retrieveById(id);
         return cliente;

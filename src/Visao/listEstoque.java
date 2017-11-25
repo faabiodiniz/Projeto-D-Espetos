@@ -7,6 +7,7 @@ package Visao;
 
 import Controle.ControlEstoque;
 import d.espetos.Carne;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,10 +19,12 @@ public class ListEstoque extends javax.swing.JFrame {
      * Creates new form listClientes
      */
     Carne[] vCarne;
+    private int linhaSelecionada;
     public ListEstoque() {
         initComponents();
         this.setLocationRelativeTo(null);
         vCarne = ControlEstoque.getListOfCarneAsArray();
+        ((CarneTableModel) tableListarCarne.getModel()).refresh();
     }
 
     /**
@@ -39,8 +42,6 @@ public class ListEstoque extends javax.swing.JFrame {
         tableListarCarne = new javax.swing.JTable();
         textFieldBuscaNome = new javax.swing.JTextField();
         jLabelBuscaNome = new javax.swing.JLabel();
-        jLabelBuscaCPF = new javax.swing.JLabel();
-        jTextFieldBuscaCPF = new javax.swing.JTextField();
         jButtonBuscarCliente = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -87,23 +88,16 @@ public class ListEstoque extends javax.swing.JFrame {
         jPanel1.add(jScrollPaneClientes);
         jScrollPaneClientes.setBounds(20, 70, 700, 290);
         jPanel1.add(textFieldBuscaNome);
-        textFieldBuscaNome.setBounds(120, 30, 220, 20);
+        textFieldBuscaNome.setBounds(120, 30, 490, 20);
 
         jLabelBuscaNome.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabelBuscaNome.setText("Buscar por Nome ");
         jPanel1.add(jLabelBuscaNome);
         jLabelBuscaNome.setBounds(20, 30, 100, 15);
 
-        jLabelBuscaCPF.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabelBuscaCPF.setText("Buscar por CPF");
-        jPanel1.add(jLabelBuscaCPF);
-        jLabelBuscaCPF.setBounds(370, 30, 90, 14);
-        jPanel1.add(jTextFieldBuscaCPF);
-        jTextFieldBuscaCPF.setBounds(470, 30, 150, 20);
-
         jButtonBuscarCliente.setText("Buscar");
         jPanel1.add(jButtonBuscarCliente);
-        jButtonBuscarCliente.setBounds(640, 30, 73, 23);
+        jButtonBuscarCliente.setBounds(623, 30, 90, 23);
 
         jButton1.setText("Editar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -140,6 +134,11 @@ public class ListEstoque extends javax.swing.JFrame {
         jLabelBackground.setBounds(-20, -20, 830, 520);
 
         menuPrincipal.setText("Menu Principal");
+        menuPrincipal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuPrincipalActionPerformed(evt);
+            }
+        });
 
         jMenuItem3.setText("Menu Principal");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
@@ -152,8 +151,18 @@ public class ListEstoque extends javax.swing.JFrame {
         barraMenu.add(menuPrincipal);
 
         menuClientes.setText("Clientes");
+        menuClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuClientesActionPerformed(evt);
+            }
+        });
 
         menuItemCadastroCliente.setText("Cadastrar Cliente");
+        menuItemCadastroCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemCadastroClienteActionPerformed(evt);
+            }
+        });
         menuClientes.add(menuItemCadastroCliente);
 
         menuItemListarClientes.setText("Listar Clientes");
@@ -169,9 +178,19 @@ public class ListEstoque extends javax.swing.JFrame {
         jMenuFornecedores.setText("Fornecedores");
 
         jMenuItem1.setText("Cadastrar Fornecedor");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenuFornecedores.add(jMenuItem1);
 
         jMenuItem2.setText("Listar Fornecedores");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenuFornecedores.add(jMenuItem2);
 
         barraMenu.add(jMenuFornecedores);
@@ -199,6 +218,11 @@ public class ListEstoque extends javax.swing.JFrame {
         menuVendas.add(menuItemRelatorioVenda);
 
         menuItemRealizarVenda.setText("Realizar Venda");
+        menuItemRealizarVenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemRealizarVendaActionPerformed(evt);
+            }
+        });
         menuVendas.add(menuItemRealizarVenda);
 
         barraMenu.add(menuVendas);
@@ -221,7 +245,15 @@ public class ListEstoque extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        linhaSelecionada = tableListarCarne.getSelectedRow();
+        if(linhaSelecionada == -1){
+            JOptionPane.showMessageDialog(null, "Selecione uma carne!");
+        }
+        else{
+            Carne carne = new Carne((Integer)tableListarCarne.getValueAt(linhaSelecionada, 0), tableListarCarne.getValueAt(linhaSelecionada, 1).toString(), (double) tableListarCarne.getValueAt(linhaSelecionada, 2), null, null, (double) tableListarCarne.getValueAt(linhaSelecionada, 4), tableListarCarne.getValueAt(linhaSelecionada, 5).toString(), tableListarCarne.getValueAt(linhaSelecionada, 6).toString());
+            EditarPrecoCarne editCarne = new EditarPrecoCarne(carne);
+            editCarne.setVisible(true);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -233,32 +265,74 @@ public class ListEstoque extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void tableListarCarneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableListarCarneMouseClicked
+        int linha = tableListarCarne.getSelectedRow();
+        Carne c = (Carne) ((CarneTableModel) tableListarCarne.getModel()).getItem(linha);
+    }//GEN-LAST:event_tableListarCarneMouseClicked
+
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         MenuInicial principal = new MenuInicial();
         principal.setVisible(true);
         dispose();
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
+    private void menuPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPrincipalActionPerformed
+        MenuInicial principal = new MenuInicial();
+        principal.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_menuPrincipalActionPerformed
+
+    private void menuItemCadastroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemCadastroClienteActionPerformed
+        cadastroClientes clientes = new cadastroClientes();
+        clientes.setVisible(true);
+    }//GEN-LAST:event_menuItemCadastroClienteActionPerformed
+
     private void menuItemListarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemListarClientesActionPerformed
-        // TODO add your handling code here:
+        ListClientes cliente = new ListClientes();
+        cliente.setVisible(true);
+        dispose();
     }//GEN-LAST:event_menuItemListarClientesActionPerformed
 
+    private void menuClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuClientesActionPerformed
+        cadastroClientes clientes = new cadastroClientes();
+        clientes.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_menuClientesActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        CadastroFornecedor fornecedor = new CadastroFornecedor();
+        fornecedor.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        ListFornecedor fornecedor = new ListFornecedor();
+        fornecedor.setVisible(true);
+        dispose();
+
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
     private void menuItemListarEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemListarEstoqueActionPerformed
-        // TODO add your handling code here:
+        ListEstoque estoque = new ListEstoque();
+        estoque.setVisible(true);
+        dispose();
     }//GEN-LAST:event_menuItemListarEstoqueActionPerformed
 
     private void menuItemRelatorioVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemRelatorioVendaActionPerformed
-        // TODO add your handling code here:
+        ListVendas vendas = new ListVendas();
+        vendas.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_menuItemRelatorioVendaActionPerformed
+
+    private void menuItemRealizarVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemRealizarVendaActionPerformed
+        /*// TODO add your handling code here:
+        cadastroVendas venda = new cadastroVendas();
+        venda.setVisible(true);
+        dispose();*/
+    }//GEN-LAST:event_menuItemRealizarVendaActionPerformed
 
     private void jMenuItemSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSairActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jMenuItemSairActionPerformed
-
-    private void tableListarCarneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableListarCarneMouseClicked
-        int linha = tableListarCarne.getSelectedRow();
-        Carne c = (Carne) ((CarneTableModel) tableListarCarne.getModel()).getItem(linha);
-    }//GEN-LAST:event_tableListarCarneMouseClicked
 
     /**
      * @param args the command line arguments
@@ -309,7 +383,6 @@ public class ListEstoque extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButtonBuscarCliente;
     private javax.swing.JLabel jLabelBackground;
-    private javax.swing.JLabel jLabelBuscaCPF;
     private javax.swing.JLabel jLabelBuscaNome;
     private javax.swing.JMenu jMenuFornecedores;
     private javax.swing.JMenuItem jMenuItem1;
@@ -319,7 +392,6 @@ public class ListEstoque extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuSair;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPaneClientes;
-    private javax.swing.JTextField jTextFieldBuscaCPF;
     private javax.swing.JLabel labelTituloBusca;
     private javax.swing.JMenu menuClientes;
     private javax.swing.JMenu menuEstoque;

@@ -6,6 +6,7 @@
 package Visao;
 
 import ClassesDAO.ClienteDAO;
+import Controle.ControlCliente;
 import d.espetos.Cliente;
 import javax.accessibility.AccessibleContext;
 
@@ -26,7 +27,7 @@ public class EditarCliente extends javax.swing.JFrame {
     public EditarCliente(Cliente c) {
         initComponents();
         this.setLocationRelativeTo(null);
-        this.id = id;
+        this.id = c.getIdCliente();
         jTextFieldNomeAlter.setText(c.getNomeCliente());
         jTextFieldCpfAlter.setText(c.getCpfcnpj());
         jTextFieldEmailAlter.setText(c.getEmailCliente());
@@ -170,9 +171,9 @@ public class EditarCliente extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(55, 55, 55)
+                        .addGap(34, 34, 34)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(100, 100, 100))
+                        .addGap(144, 144, 144))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -206,7 +207,10 @@ public class EditarCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //Chamar métódo update para cliente.
+        Cliente cliente = new Cliente(id, jTextFieldNomeAlter.getText(), jFormattedTextFieldTelAlter.getText(), jTextFieldEmailAlter.getText(), jComboBoxTipoAlter.getSelectedItem().toString(),jTextFieldCpfAlter.getText());
+        System.out.println("Id: " + id);
+        System.out.println("id Cliente: " + cliente.getIdCliente() + "Nome Cliente:" + cliente.getNomeCliente() + "Tipo: " + cliente.getTipo() + "CPF: " + cliente.getCpfcnpj() + "Telefone: " + cliente.getTelefoneCliente() + "Email: " + cliente.getEmailCliente());
+        ControlCliente.updateCliente(cliente);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

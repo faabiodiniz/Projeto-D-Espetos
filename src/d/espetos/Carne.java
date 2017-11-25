@@ -10,14 +10,18 @@ public class Carne {
     private Date fabricacao;
     private Date validade;
     private double valorCusto;
+    private String marca;
+    private String tipo;
 	
-    public Carne(int id, String nomeCarne, double quantidade, Date fabricacao, Date validade, double valorCusto) {
+    public Carne(int id, String nomeCarne, double quantidade, Date fabricacao, Date validade, double valorCusto, String tipo ,String marca) {
         this.nomeCarne = nomeCarne;
         this.quantidade = quantidade;
         this.fabricacao = fabricacao;
         this.validade = validade;
         this.valorCusto = valorCusto;
         this.idProduto = id;
+        this.marca = marca;
+        this.tipo = tipo;
     }
 
     public Carne() {
@@ -70,4 +74,21 @@ public class Carne {
     public Date getValidade() {
             return validade;
     }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+    
 }
