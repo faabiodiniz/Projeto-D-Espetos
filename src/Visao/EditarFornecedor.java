@@ -5,6 +5,7 @@
  */
 package Visao;
 
+import Controle.ControlFornecedor;
 import d.espetos.Fornecedor;
 
 /**
@@ -12,7 +13,7 @@ import d.espetos.Fornecedor;
  * @author faad2
  */
 public class EditarFornecedor extends javax.swing.JDialog {
-
+    private int id;
     /**
      * Creates new form EditarFornecedor
      */
@@ -25,9 +26,10 @@ public class EditarFornecedor extends javax.swing.JDialog {
         jTextFieldEditRua.setText(f.getRua());
         jTextFieldEditNum.setText(Integer.toString(f.getNumero()));
         jTextFieldEditCidade.setText(f.getCidade());
-        jTextFieldEditUf.setText(f.getCidade());
+        jTextFieldEditUf.setText(f.getEstado());
         jTextFieldEditEmail.setText(f.getEmail());
         jTextFieldEditBairro.setText(f.getBairro());
+        this.id = f.getIdFornecedor();
     }
 
     /**
@@ -107,17 +109,15 @@ public class EditarFornecedor extends javax.swing.JDialog {
                             .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGap(22, 22, 22)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(393, 393, 393)
                                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextFieldEditUf, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(114, 114, 114))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(22, 22, 22)
-                                .addComponent(jTextFieldEditBairro)
-                                .addGap(112, 112, 112))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextFieldEditUf, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(2, 2, 2))
+                            .addComponent(jTextFieldEditBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(120, 120, 120))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -178,8 +178,18 @@ public class EditarFornecedor extends javax.swing.JDialog {
         );
 
         jButton2.setText("Cancelar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Alterar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -219,6 +229,15 @@ public class EditarFornecedor extends javax.swing.JDialog {
     private void jTextFieldEditTelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldEditTelActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldEditTelActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        Fornecedor fornecedor = new Fornecedor(id, jTextFieldEditCnpj.getText(), jTextFieldEditNome.getText(), jTextFieldEditEmail.getText(), jTextFieldEditTel.getText(), jTextFieldEditRua.getText(), jTextFieldEditBairro.getText(), Integer.parseInt(jTextFieldEditNum.getText()), jTextFieldEditCidade.getText(), jTextFieldEditUf.getText());
+        ControlFornecedor.updateFornecedor(fornecedor);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments

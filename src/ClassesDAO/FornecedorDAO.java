@@ -105,7 +105,7 @@ public class FornecedorDAO extends ConexaoBD{
     public boolean update(Fornecedor fornecedor) {
         PreparedStatement stmt;
         try {
-            stmt = con.prepareStatement("UPDATE Fornecedor SET nome=?, email=?, telefone=?, rua=?, numeroRua=?, bairro=?, cidade=?, estado=?,  WHERE codFornecedor = ?");
+            stmt = con.prepareStatement("UPDATE Fornecedor SET nome=?, email=?, telefone=?, rua=?, numeroRua=?, bairro=?, cidade=?, estado=?  WHERE codFornecedor = ?");
             stmt.setString(1, fornecedor.getNomeFornecedor());
             stmt.setString(2, fornecedor.getEmail());
             stmt.setString(3, fornecedor.getTelefone());

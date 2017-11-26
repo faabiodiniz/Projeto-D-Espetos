@@ -171,6 +171,7 @@ public class CadastrarCarne extends javax.swing.JFrame {
         jFormattedTextFieldDataValid.setText("");
         jFormattedTextFieldDataVenci.setText("");
         jTextFieldMarca.setText("");
+        jFormattedTextFieldValor.setText("");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextFieldNomeCarneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNomeCarneActionPerformed

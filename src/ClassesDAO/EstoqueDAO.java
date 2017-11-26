@@ -32,11 +32,11 @@ public class EstoqueDAO extends ConexaoBD{
                    + "INSERT INTO Carne(dataFabricacao, dataValidade, quantidade) values (?,?,?)");
             pst.setString(1, nome);
             pst.setDouble(2, valor);
-            pst.setString(3, fabricacao);
-            pst.setString(4, validade);
-            pst.setDouble(5, quantidade);
-            pst.setString(6, marca);
-            pst.setString(7, tipo);
+            pst.setString(3, marca);
+            pst.setString(4, tipo);
+            pst.setString(5, fabricacao);
+            pst.setString(6, validade);
+            pst.setDouble(7, quantidade);
             pst.execute();
             JOptionPane.showMessageDialog(null,"Dados inseridos com sucesso");
         } catch (SQLException ex) {
@@ -121,8 +121,9 @@ public class EstoqueDAO extends ConexaoBD{
     public void delete(Carne carne) {
         PreparedStatement stmt;
         try {
-            stmt = con.prepareStatement("DELETE FROM Carne WHERE id = ?");
+            stmt = con.prepareStatement("DELETE FROM Carne WHERE codCarne = ?;DELETE FROM TipoDeCarne WHERE codTipoCarne = ?");
             stmt.setInt(1, carne.getIdProduto());
+            stmt.setInt(2, carne.getCodTipo());
             this.executeUpdate(stmt);
             stmt.close();
         } catch (SQLException ex) {

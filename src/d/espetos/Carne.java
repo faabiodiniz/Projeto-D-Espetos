@@ -31,6 +31,11 @@ public class Carne {
         this.valorCusto = valor;
         this.tipo = tipo;
     }
+    
+    public Carne(int idCarne, int codTipo){
+        this.idProduto = idCarne;
+        this.codTipo = codTipo;
+    }
 
     public Carne() {
     }

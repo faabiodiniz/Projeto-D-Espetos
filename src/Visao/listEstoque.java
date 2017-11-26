@@ -5,6 +5,7 @@
  */
 package Visao;
 
+import ClassesDAO.EstoqueDAO;
 import Controle.ControlEstoque;
 import d.espetos.Carne;
 import javax.swing.JOptionPane;
@@ -265,7 +266,15 @@ public class ListEstoque extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        int linhaSelecionada = tableListarCarne.getSelectedRow();
+        if(linhaSelecionada == -1){
+            JOptionPane.showMessageDialog(null, "Escolha uma carne!");
+        }
+        else{
+            Carne carne = new Carne((Integer)tableListarCarne.getValueAt(linhaSelecionada,0), (Integer)tableListarCarne.getValueAt(linhaSelecionada, 6));
+            EstoqueDAO.getInstance().delete(carne);
+            ((CarneTableModel) tableListarCarne.getModel()).refresh();
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void tableListarCarneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableListarCarneMouseClicked
