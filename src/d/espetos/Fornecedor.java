@@ -18,7 +18,6 @@ public class Fornecedor
     private String cidade;
     private String estado;
     private int numero;
-    private VendedorRepresentante representante;
 
     public Fornecedor(){
         
@@ -92,39 +91,32 @@ public class Fornecedor
     public void setNomeFornecedor(String nomeFornecedor) {
         this.nomeFornecedor = nomeFornecedor;
     }
-        
-        
-	
-	public VendedorRepresentante getRepresentante()
-	{
-            return representante;
-	}
 
-	public String getEmail() {
-		return email;
-	}
+    public String getEmail() {
+            return email;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public void setEmail(String email) {
+            this.email = email;
+    }
 
-	public String getTelefone() {
-		return telefone;
-	}
+    public String getTelefone() {
+            return telefone;
+    }
 
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
-	}
-        
-	public int getIdFornecedor() {
-		return idFornecedor;
-	}
-        
-        public void setIdFornecedor(int id){
-            this.idFornecedor = id;
-        }
+    public void setTelefone(String telefone) {
+            this.telefone = telefone;
+    }
 
-	public String getCnpj() {
-		return cnpj;
-	}
+    public int getIdFornecedor() {
+            return idFornecedor;
+    }
+
+    public void setIdFornecedor(int id){
+        this.idFornecedor = id;
+    }
+
+    public String getCnpj() {
+            return cnpj;
+    }
 }
