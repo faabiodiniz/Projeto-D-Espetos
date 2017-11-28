@@ -25,7 +25,7 @@ public class ConexaoBD {
     String mydatabase = "DEspetos";
     String connectionUrl = "jdbc:sqlserver://localhost:1433;" + "databaseName=" + mydatabase;
     String username = "sa";
-    String password = "sqlserverbd";
+    String password = "root";
     
     protected Connection conexao(){
         try {
