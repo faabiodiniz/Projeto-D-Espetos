@@ -8,7 +8,6 @@ package tests.despetos;
 import d.espetos.Carne;
 import d.espetos.Estoque;
 import d.espetos.Fornecedor;
-import d.espetos.VendedorRepresentante;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

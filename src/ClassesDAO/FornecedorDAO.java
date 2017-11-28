@@ -117,6 +117,7 @@ public class FornecedorDAO extends ConexaoBD{
             stmt.setInt(9, fornecedor.getIdFornecedor());
             int update = this.executeUpdate(stmt);
             if (update == 1) {
+                JOptionPane.showMessageDialog(null,"Dados alterados com sucesso");
                 return true;
             }
             stmt.close();

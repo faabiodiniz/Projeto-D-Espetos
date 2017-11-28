@@ -48,6 +48,7 @@ public class ListClientes extends javax.swing.JFrame {
         jButtonEditCliente = new javax.swing.JButton();
         jButtonCadCliente = new javax.swing.JButton();
         jButtonRemoveCliente = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jLabelBackground = new javax.swing.JLabel();
         barraMenu = new javax.swing.JMenuBar();
         menuPrincipal = new javax.swing.JMenu();
@@ -90,7 +91,7 @@ public class ListClientes extends javax.swing.JFrame {
         jPanel1.add(jScrollPaneClientes);
         jScrollPaneClientes.setBounds(20, 70, 710, 290);
         jPanel1.add(textFieldBuscaNome);
-        textFieldBuscaNome.setBounds(120, 30, 510, 20);
+        textFieldBuscaNome.setBounds(120, 30, 400, 20);
 
         jLabelBuscaNome.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabelBuscaNome.setText("Buscar por Nome ");
@@ -104,7 +105,7 @@ public class ListClientes extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButtonBuscarCliente);
-        jButtonBuscarCliente.setBounds(640, 30, 90, 23);
+        jButtonBuscarCliente.setBounds(530, 30, 90, 23);
 
         jButtonEditCliente.setText("Editar");
         jButtonEditCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -132,6 +133,15 @@ public class ListClientes extends javax.swing.JFrame {
         });
         jPanel1.add(jButtonRemoveCliente);
         jButtonRemoveCliente.setBounds(470, 380, 160, 40);
+
+        jButton1.setText("Atualizar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1);
+        jButton1.setBounds(630, 30, 100, 23);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(20, 20, 750, 440);
@@ -257,7 +267,8 @@ public class ListClientes extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Escolha um cliente!");
         }
         else{
-            Cliente cliente = new Cliente((Integer) tableListarCliente.getValueAt(linhaSelecionada, 0), tableListarCliente.getValueAt(linhaSelecionada, 1).toString(),tableListarCliente.getValueAt(linhaSelecionada, 4).toString(),tableListarCliente.getValueAt(linhaSelecionada, 3).toString(),tableListarCliente.getValueAt(linhaSelecionada, 5).toString(), tableListarCliente.getValueAt(linhaSelecionada, 2).toString());
+            //Cliente cliente = new Cliente((Integer) tableListarCliente.getValueAt(linhaSelecionada, 0), tableListarCliente.getValueAt(linhaSelecionada, 1).toString(),tableListarCliente.getValueAt(linhaSelecionada, 4).toString(),tableListarCliente.getValueAt(linhaSelecionada, 3).toString(),tableListarCliente.getValueAt(linhaSelecionada, 5).toString(), tableListarCliente.getValueAt(linhaSelecionada, 2).toString());
+            Cliente cliente = (Cliente) ((ClienteTableModel) tableListarCliente.getModel()).getItem(linhaSelecionada);
             EditarCliente editCliente = new EditarCliente(cliente);
             editCliente.setVisible(true);
         }
@@ -353,6 +364,10 @@ public class ListClientes extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jMenuItemSairActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        ((ClienteTableModel) tableListarCliente.getModel()).refresh();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -391,6 +406,7 @@ public class ListClientes extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar barraMenu;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonBuscarCliente;
     private javax.swing.JButton jButtonCadCliente;
     private javax.swing.JButton jButtonEditCliente;

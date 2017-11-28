@@ -48,6 +48,7 @@ public class ListFornecedor extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
         jLabelBackground = new javax.swing.JLabel();
         barraMenu = new javax.swing.JMenuBar();
         menuPrincipal = new javax.swing.JMenu();
@@ -90,7 +91,7 @@ public class ListFornecedor extends javax.swing.JFrame {
         jPanel1.add(jScrollPaneClientes);
         jScrollPaneClientes.setBounds(20, 70, 700, 290);
         jPanel1.add(textFieldBuscaNome);
-        textFieldBuscaNome.setBounds(120, 30, 460, 20);
+        textFieldBuscaNome.setBounds(120, 30, 400, 20);
 
         jLabelBuscaNome.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabelBuscaNome.setText("Buscar por Nome ");
@@ -104,7 +105,7 @@ public class ListFornecedor extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButtonBuscarCliente);
-        jButtonBuscarCliente.setBounds(590, 27, 100, 23);
+        jButtonBuscarCliente.setBounds(530, 30, 80, 23);
 
         jButton1.setText("Editar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -132,6 +133,15 @@ public class ListFornecedor extends javax.swing.JFrame {
         });
         jPanel1.add(jButton3);
         jButton3.setBounds(470, 380, 160, 40);
+
+        jButton4.setText("Atualizar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton4);
+        jButton4.setBounds(620, 30, 90, 23);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(20, 20, 740, 440);
@@ -254,7 +264,7 @@ public class ListFornecedor extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         linhaSelecionada = tableListarFornecedor.getSelectedRow();
         if(linhaSelecionada == -1){
-            JOptionPane.showMessageDialog(null , "Escolhe um fornecedor!");
+            JOptionPane.showMessageDialog(null , "Escolha um fornecedor!");
         }
         else{
             Fornecedor fornecedor = new Fornecedor((Integer)tableListarFornecedor.getValueAt(linhaSelecionada, 0), tableListarFornecedor.getValueAt(linhaSelecionada, 2).toString(), tableListarFornecedor.getValueAt(linhaSelecionada, 1).toString(), tableListarFornecedor.getValueAt(linhaSelecionada, 3).toString(), tableListarFornecedor.getValueAt(linhaSelecionada, 4).toString(), tableListarFornecedor.getValueAt(linhaSelecionada, 5).toString(), tableListarFornecedor.getValueAt(linhaSelecionada, 7).toString(), (Integer)tableListarFornecedor.getValueAt(linhaSelecionada, 6), tableListarFornecedor.getValueAt(linhaSelecionada, 8).toString(), tableListarFornecedor.getValueAt(linhaSelecionada, 9).toString());
@@ -355,6 +365,10 @@ public class ListFornecedor extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonBuscarClienteActionPerformed
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        ((FornecedorTableModel) tableListarFornecedor.getModel()).refresh();
+    }//GEN-LAST:event_jButton4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -403,6 +417,7 @@ public class ListFornecedor extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButtonBuscarCliente;
     private javax.swing.JLabel jLabelBackground;
     private javax.swing.JLabel jLabelBuscaNome;

@@ -4,6 +4,7 @@ import ClassesDAO.ClienteDAO;
 import Controle.ConexaoBD;
 import Controle.ControlCliente;
 import d.espetos.Cliente;
+import javax.swing.JOptionPane;
 
 
 /*
@@ -156,11 +157,16 @@ public class cadastroClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldCPFActionPerformed
 
     private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
-        ControlCliente.criarCliente(jTextFieldNome.getText(), jTextFieldCPF.getText(), jTextFieldEmail.getText(), jFormattedTextFieldTelefone.getText(), jComboBoxTipoPessoa.getSelectedItem().toString());
-        jTextFieldNome.setText("");
-        jTextFieldCPF.setText("");
-        jTextFieldEmail.setText("");
-        jFormattedTextFieldTelefone.setText("");
+        if(jTextFieldNome.getText().length() == 0){
+            JOptionPane.showMessageDialog(null, "Nome deve ser inserido");
+        }
+        else{
+            ControlCliente.criarCliente(jTextFieldNome.getText(), jTextFieldCPF.getText(), jTextFieldEmail.getText(), jFormattedTextFieldTelefone.getText(), jComboBoxTipoPessoa.getSelectedItem().toString());
+            jTextFieldNome.setText("");
+            jTextFieldCPF.setText("");
+            jTextFieldEmail.setText("");
+            jFormattedTextFieldTelefone.setText("");
+        }
         //((ClienteTableModel) ListClientes.tableListarCliente.getModel()).refresh();  linha de código para atualizar a Tabela
     }//GEN-LAST:event_jButtonCadastrarActionPerformed
 

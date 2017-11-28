@@ -110,6 +110,7 @@ public class EstoqueDAO extends ConexaoBD{
             int update = this.executeUpdate(stmt);
             System.out.println("Atualizou se pá");
             if (update == 1) {
+                JOptionPane.showMessageDialog(null,"Dados alterados com sucesso");
                 return true;
             }
             stmt.close();

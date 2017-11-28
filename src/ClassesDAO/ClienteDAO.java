@@ -85,15 +85,6 @@ public class ClienteDAO extends ConexaoBD{
         return this.retrieveGeneric("SELECT * FROM Cliente WHERE nome LIKE '%"+nome+"%' ORDER BY nome");
     }
 
-    public Cliente retrieveById(int id) {
-        Cliente cliente = null;
-        List<Cliente> contatos = this.retrieveGeneric("SELECT * FROM Cliente WHERE codCliente="+id);
-        if(!contatos.isEmpty()){
-            cliente = contatos.get(0);
-        }
-        return cliente;
-    }
-
     public boolean update(Cliente cliente) {
         PreparedStatement stmt;
         try {
@@ -106,6 +97,7 @@ public class ClienteDAO extends ConexaoBD{
             stmt.setInt(6, cliente.getIdCliente());
             int update = executeUpdate(stmt);
             if (update == 1) {
+                JOptionPane.showMessageDialog(null,"Dados alterados com sucesso com sucesso");
                 return true;
             }
             stmt.close();

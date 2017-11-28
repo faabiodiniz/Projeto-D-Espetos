@@ -26,7 +26,7 @@ public class TestEstoque {
     public void testConstrutor() {
         DateFormat sourceFormat = new SimpleDateFormat("dd/MM/yyyy");
         try {
-            Carne c = new Carne(1, "Picanha", 22f, sourceFormat.parse("10/10/2017"), sourceFormat.parse("10/10/2020"), 15.32f);
+            Carne c = new Carne(1, "Picanha", 22f, sourceFormat.parse("10/10/2017"), sourceFormat.parse("10/10/2020"), 15.32f, "Bovina", "Friboi", 1);
             Estoque e = new Estoque(c, 20, 32.3f);
             Assert.assertEquals("Carne - Código inválido", 1, e.getC().getIdProduto());
             Assert.assertEquals("Carne - Fabricação inválida", "10/10/2017", sourceFormat.format(e.getC().getFabricacao()));
@@ -48,8 +48,8 @@ public class TestEstoque {
     public void testSetGetC() {
         DateFormat sourceFormat = new SimpleDateFormat("dd/MM/yyyy");
         try {
-            Carne c1 = new Carne(2, "Bonetp", 25.32f, sourceFormat.parse("09/03/2015"), sourceFormat.parse("13/10/2019"), 19f);
-            Carne c = new Carne(1, "Picanha", 22f, sourceFormat.parse("10/10/2017"), sourceFormat.parse("10/10/2020"), 15.32f);
+            Carne c1 = new Carne(1, "Picanha", 22f, sourceFormat.parse("10/10/2017"), sourceFormat.parse("10/10/2020"), 15.32f, "Bovina", "Friboi", 1);
+            Carne c = new Carne(1, "Picanha", 22f, sourceFormat.parse("10/10/2017"), sourceFormat.parse("10/10/2020"), 15.32f, "Bovina", "Friboi", 1);
             Estoque e = new Estoque(c1, 20, 32.3f);
             e.setC(c);
             Assert.assertEquals("Carne - Código inválido", 1, e.getC().getIdProduto());
@@ -70,7 +70,7 @@ public class TestEstoque {
     public void testQuantidadeConstrutor() {
         DateFormat sourceFormat = new SimpleDateFormat("dd/MM/yyyy");
         try {
-            Carne c = new Carne(1, "Picanha", 22f, sourceFormat.parse("10/10/2017"), sourceFormat.parse("10/10/2020"), 15.32f);
+            Carne c = new Carne(1, "Picanha", 22f, sourceFormat.parse("10/10/2017"), sourceFormat.parse("10/10/2020"), 15.32f, "Bovina", "Friboi", 1);
             Estoque e = new Estoque(c, -1, 32.3f);
             Assert.assertEquals("O construtor aceitou quantidade negativa", 0, e.getQuantidade());
             Estoque e1 = new Estoque(c, 0, 32.3f);
@@ -87,7 +87,7 @@ public class TestEstoque {
     public void testQuantidadeSetter() {
         DateFormat sourceFormat = new SimpleDateFormat("dd/MM/yyyy");
         try {
-            Carne c = new Carne(1, "Picanha", 22f, sourceFormat.parse("10/10/2017"), sourceFormat.parse("10/10/2020"), 15.32f);
+            Carne c = new Carne(1, "Picanha", 22f, sourceFormat.parse("10/10/2017"), sourceFormat.parse("10/10/2020"), 15.32f, "Bovina", "Friboi", 1);
             Estoque e = new Estoque(c, 15, 32.3f);
             e.setQuantidade(-1);
             Assert.assertEquals("O Setter aceitou quantidade negativa", 15, e.getQuantidade());
@@ -105,7 +105,7 @@ public class TestEstoque {
     public void testValorVendaConstrutor() {
         DateFormat sourceFormat = new SimpleDateFormat("dd/MM/yyyy");
         try {
-            Carne c = new Carne(1, "Picanha", 22f, sourceFormat.parse("10/10/2017"), sourceFormat.parse("10/10/2020"), 15.32f);
+            Carne c = new Carne(1, "Picanha", 22f, sourceFormat.parse("10/10/2017"), sourceFormat.parse("10/10/2020"), 15.32f, "Bovina", "Friboi", 1);
             Estoque e = new Estoque(c, 15, -1f);
             Assert.assertNotEquals("O construtor aceitou valor de venda negativo", -1f, e.getValorVenda(), 0.001);
             Estoque e1 = new Estoque(c, 15, 0f);
@@ -122,7 +122,7 @@ public class TestEstoque {
     public void testValorVendaSetter() {
         DateFormat sourceFormat = new SimpleDateFormat("dd/MM/yyyy");
         try {
-            Carne c = new Carne(1, "Picanha", 22f, sourceFormat.parse("10/10/2017"), sourceFormat.parse("10/10/2020"), 15.32f);
+            Carne c = new Carne(1, "Picanha", 22f, sourceFormat.parse("10/10/2017"), sourceFormat.parse("10/10/2020"), 15.32f, "Bovina", "Friboi", 1);
             Estoque e = new Estoque(c, 15, 15f);
             e.setValorVenda(-1f);
             Assert.assertNotEquals("O Setter aceitou valor de venda negativo", -1f, e.getValorVenda(), 0.001);

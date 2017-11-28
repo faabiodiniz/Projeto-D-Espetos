@@ -19,6 +19,12 @@ public class Carne {
         this.quantidade = quantidade;
         this.fabricacao = fabricacao;
         this.validade = validade;
+        if (valorCusto < 0){
+            throw new ExceptionTest();
+        }
+        else{
+            this.valorCusto = valorCusto;
+        }
         this.valorCusto = valorCusto;
         this.idProduto = id;
         this.marca = marca;

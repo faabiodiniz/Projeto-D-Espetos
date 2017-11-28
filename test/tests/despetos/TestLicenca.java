@@ -21,7 +21,7 @@ public class TestLicenca {
     @Test
     public void testConstrutor() {
         Assert.fail("O construtor requer o Status, mas não faz nada com o Status passado por parâmetro");
-        Licenca l = new Licenca("123", "A");
+        Licenca l = new Licenca("123", 1);
         Assert.assertEquals("Licença inválida", "123", l.getLicenca());
     }
 }
