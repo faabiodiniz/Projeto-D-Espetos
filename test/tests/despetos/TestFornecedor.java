@@ -5,12 +5,8 @@
  */
 package tests.despetos;
 
-import d.espetos.Carne;
-import d.espetos.Estoque;
+import d.espetos.ExceptionTest;
 import d.espetos.Fornecedor;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -45,12 +41,21 @@ public class TestFornecedor {
      */
     @Test
     public void testNomeConstrutor() {
-        Fornecedor f = new Fornecedor(1, "53772816000108", "", "forn@mail.com", "(12) 1212-2121", "Rua", 
-                "Bairro 1", 32, "Paulista", "São Paulo");
-        Assert.assertNotEquals("O construtor permitiu o nome ser vazio", "", f.getNomeFornecedor());
-        Fornecedor f1 = new Fornecedor(1, "53772816000108", null, "forn@mail.com", "(12) 1212-2121", "Rua", 
-                "Bairro 1", 32, "Paulista", "São Paulo");
-        Assert.assertNotEquals("O construtor permitiu o nome ser null", null, f1.getNomeFornecedor());
+        try {
+            Fornecedor f = new Fornecedor(1, "53772816000108", "", "forn@mail.com", "(12) 1212-2121", "Rua", 
+                    "Bairro 1", 32, "Paulista", "São Paulo");
+            Assert.fail("O construtor permitiu o nome ser vazio");
+        } catch (ExceptionTest ex) {
+            
+        }
+        
+        try {
+            Fornecedor f1 = new Fornecedor(1, "53772816000108", null, "forn@mail.com", "(12) 1212-2121", "Rua", 
+                    "Bairro 1", 32, "Paulista", "São Paulo");
+            Assert.fail("O construtor permitiu o nome ser null");
+        } catch (ExceptionTest ex) {
+            
+        }
     }
     
     /**
@@ -58,11 +63,22 @@ public class TestFornecedor {
      */
     @Test
     public void testNomeSetter() {
-        Fornecedor f = new Fornecedor(1, "53772816000108", "Nome", "forn@mail.com", "(12) 1212-2121", "Rua", 
+        try {
+            Fornecedor f = new Fornecedor(1, "53772816000108", "Nome", "forn@mail.com", "(12) 1212-2121", "Rua", 
                 "Bairro 1", 32, "Paulista", "São Paulo");
-        f.setNomeFornecedor("");
-        Assert.assertEquals("O Setter permitiu o nome ser vazio", "Nome", f.getNomeFornecedor());
-        f.setNomeFornecedor(null);
-        Assert.assertEquals("O Setter permitiu o nome ser null", "Nome", f.getNomeFornecedor());
+            f.setNomeFornecedor("");
+            Assert.fail("O Setter permitiu o nome ser vazio");
+        } catch (ExceptionTest ex) {
+            
+        }
+        
+        try {
+            Fornecedor f = new Fornecedor(1, "53772816000108", "Nome", "forn@mail.com", "(12) 1212-2121", "Rua", 
+                "Bairro 1", 32, "Paulista", "São Paulo");
+            f.setNomeFornecedor(null);
+            Assert.fail("O Setter permitiu o nome ser null");
+        } catch (ExceptionTest ex) {
+            
+        }
     }
 }

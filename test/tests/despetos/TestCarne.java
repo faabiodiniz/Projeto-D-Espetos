@@ -6,6 +6,7 @@
 package tests.despetos;
 
 import d.espetos.Carne;
+import d.espetos.ExceptionTest;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -49,12 +50,21 @@ public class TestCarne {
     public void testQuantidadeConstrutor() {
         DateFormat sourceFormat = new SimpleDateFormat("dd/MM/yyyy");
         try {
-            Carne c = new Carne(1, "Picanha", 22f, sourceFormat.parse("10/10/2017"), sourceFormat.parse("10/10/2020"), 15.32f, "Bovina", "Friboi", 1);
-            Assert.assertEquals("O construtor aceitou quantidade negativa", 0f, c.getQuantidade(), 0.001);
-            Carne c1 = new Carne(1, "Picanha", 22f, sourceFormat.parse("10/10/2017"), sourceFormat.parse("10/10/2020"), 15.32f, "Bovina", "Friboi", 1);
-            Assert.assertEquals("O construtor não aceitou quantidade 0 (deveria aceitar)", 0f, c1.getQuantidade(), 0.001);
+            Carne c = new Carne(1, "Picanha", -1f, sourceFormat.parse("10/10/2017"), sourceFormat.parse("10/10/2020"), 15.32f, "Bovina", "Friboi", 1);
+            Assert.fail("O construtor aceitou quantidade negativa");
         } catch (ParseException ex) {
             Assert.fail("Exceção na conversão da data");
+        }
+        catch (ExceptionTest ex){
+            
+        }
+        
+        try {
+            Carne c1 = new Carne(1, "Picanha", 0f, sourceFormat.parse("10/10/2017"), sourceFormat.parse("10/10/2020"), 15.32f, "Bovina", "Friboi", 1);
+        } catch (ParseException ex) {
+            Assert.fail("Exceção na conversão da data");
+        } catch (ExceptionTest ex){
+            Assert.fail("O construtor não aceitou quantidade 0 (deveria aceitar)");
         }
     }
     
@@ -67,11 +77,20 @@ public class TestCarne {
         try {
             Carne c = new Carne(1, "Picanha", 22f, sourceFormat.parse("10/10/2017"), sourceFormat.parse("10/10/2020"), 15.32f, "Bovina", "Friboi", 1);
             c.setQuantidade(-1);
-            Assert.assertEquals("O Setter aceitou quantidade negativa", 22f, c.getQuantidade(), 0.001);
-            c.setQuantidade(0);
-            Assert.assertEquals("O Setter não aceitou quantidade 0 (deveria aceitar)", 0f, c.getQuantidade(), 0.001);
+            Assert.fail("O Setter aceitou quantidade negativa");
         } catch (ParseException ex) {
             Assert.fail("Exceção na conversão da data");
+        }
+        catch (ExceptionTest ex){
+            
+        }
+        try {
+            Carne c = new Carne(1, "Picanha", 22f, sourceFormat.parse("10/10/2017"), sourceFormat.parse("10/10/2020"), 15.32f, "Bovina", "Friboi", 1);
+            c.setQuantidade(0);
+        } catch (ParseException ex) {
+            Assert.fail("Exceção na conversão da data");
+        } catch (ExceptionTest ex){
+            Assert.fail("O Setter não aceitou quantidade 0 (deveria aceitar)");
         }
     }
     
@@ -84,16 +103,23 @@ public class TestCarne {
         try {
             Date fabricacao = sourceFormat.parse("10/10/2017");
             Date validade = sourceFormat.parse("10/10/2015");
-            Carne c = new Carne(1, "Picanha", 22f, sourceFormat.parse("10/10/2017"), sourceFormat.parse("10/10/2020"), 15.32f, "Bovina", "Friboi", 1);
-            
-            Assert.assertNotEquals("O construtor aceitou uma válidade anterior à fabricação", "10/10/2015", sourceFormat.format(c.getValidade()));
-            
-            validade = sourceFormat.parse("10/10/2017");
-            c.setValidade(validade);
-            Assert.assertNotEquals("O construtor aceitou uma válidade igual à fabricação", "10/10/2017", sourceFormat.format(c.getValidade()));
-            
+            Carne c = new Carne(1, "Picanha", 22f, fabricacao, validade, 15.32f, "Bovina", "Friboi", 1);      
+            Assert.fail("O construtor aceitou uma válidade anterior à fabricação");
         } catch (ParseException ex) {
             Assert.fail("Exceção na conversão da data");
+        } catch (ExceptionTest ex){
+            
+        }
+        
+        try {
+            Date fabricacao = sourceFormat.parse("10/10/2017");
+            Date validade = sourceFormat.parse("10/10/2017");
+            Carne c1 = new Carne(1, "Picanha", 22f, fabricacao, validade, 15.32f, "Bovina", "Friboi", 1);     
+            Assert.fail("O construtor aceitou uma válidade igual à fabricação");
+        } catch (ParseException ex) {
+            Assert.fail("Exceção na conversão da data");
+        } catch (ExceptionTest ex){
+            
         }
     }
     
@@ -106,18 +132,26 @@ public class TestCarne {
         try {
             Date fabricacao = sourceFormat.parse("10/10/2017");
             Date validade = sourceFormat.parse("10/10/2018");
-            Carne c = new Carne(1, "Picanha", 22f, sourceFormat.parse("10/10/2017"), sourceFormat.parse("10/10/2020"), 15.32f, "Bovina", "Friboi", 1);
+            Carne c = new Carne(1, "Picanha", 22f, fabricacao, validade, 15.32f, "Bovina", "Friboi", 1);
             
             validade = sourceFormat.parse("10/10/2015");
-            c.setValidade(validade);
-            Assert.assertNotEquals("O Setter aceitou uma válidade anterior à fabricação", "10/10/2015", sourceFormat.format(c.getValidade()));
-            
-            validade = sourceFormat.parse("10/10/2017");
-            c.setValidade(validade);
-            Assert.assertNotEquals("O Setter aceitou uma válidade igual à fabricação", "10/10/2017", sourceFormat.format(c.getValidade()));
-            
+            c.setValidade(validade);       
+            Assert.fail("O Setter aceitou uma válidade anterior à fabricação");
         } catch (ParseException ex) {
             Assert.fail("Exceção na conversão da data");
+        } catch (ExceptionTest ex){
+            
+        }
+        
+        try {
+            Date fabricacao = sourceFormat.parse("10/10/2017");
+            Date validade = sourceFormat.parse("10/10/2018");
+            Carne c = new Carne(1, "Picanha", 22f, fabricacao, validade, 15.32f, "Bovina", "Friboi", 1);
+            Assert.fail("O Setter aceitou uma válidade igual à fabricação");
+        } catch (ParseException ex) {
+            Assert.fail("Exceção na conversão da data");
+        } catch (ExceptionTest ex){
+            
         }
     }
     
@@ -128,10 +162,12 @@ public class TestCarne {
     public void testValorCustoConstrutor() {
         DateFormat sourceFormat = new SimpleDateFormat("dd/MM/yyyy");
         try {
-            Carne c = new Carne(1, "Picanha", 22f, sourceFormat.parse("10/10/2017"), sourceFormat.parse("10/10/2020"), -15.32f, "Bovina", "Friboi", 1);
-            Assert.assertEquals("O construtor aceitou valor de custo negativo", 0f, c.getValorCusto(), 0.001);
+            Carne c = new Carne(1, "Picanha", 22f, sourceFormat.parse("10/10/2017"), sourceFormat.parse("10/10/2020"), -1f, "Bovina", "Friboi", 1);
+            Assert.fail("O construtor aceitou valor de custo negativo");
         } catch (ParseException ex) {
             Assert.fail("Exceção na conversão da data");
+        } catch (ExceptionTest ex){
+            
         }
     }
     
@@ -144,9 +180,11 @@ public class TestCarne {
         try {
             Carne c = new Carne(1, "Picanha", 22f, sourceFormat.parse("10/10/2017"), sourceFormat.parse("10/10/2020"), 15.32f, "Bovina", "Friboi", 1);
             c.setValorCusto(-1f);
-            Assert.assertEquals("O Setter aceitou valor de custo negativo", 15.32f, c.getValorCusto(), 0.001);
+            Assert.fail("O Setter aceitou valor de custo negativo");
         } catch (ParseException ex) {
             Assert.fail("Exceção na conversão da data");
+        } catch (ExceptionTest ex){
+            
         }
     }
     
@@ -157,12 +195,21 @@ public class TestCarne {
     public void testNomeConstrutor() {
         DateFormat sourceFormat = new SimpleDateFormat("dd/MM/yyyy");
         try {
-            Carne c = new Carne(1, "Picanha", 22f, sourceFormat.parse("10/10/2017"), sourceFormat.parse("10/10/2020"), 15.32f, "Bovina", "Friboi", 1);
-            Assert.assertNotEquals("O construtor aceitou um nome vazio", "", c.getNomeCarne());
-            Carne c1 = new Carne(1, "Picanha", 22f, sourceFormat.parse("10/10/2017"), sourceFormat.parse("10/10/2020"), 15.32f, "Bovina", "Friboi", 1);
-            Assert.assertNotEquals("O construtor aceitou um nome null", null, c1.getNomeCarne());
+            Carne c = new Carne(1, "", 22f, sourceFormat.parse("10/10/2017"), sourceFormat.parse("10/10/2020"), 15.32f, "Bovina", "Friboi", 1);
+            Assert.fail("O construtor aceitou um nome vazio");
         } catch (ParseException ex) {
             Assert.fail("Exceção na conversão da data");
+        } catch (ExceptionTest ex){
+            
+        }
+        
+        try {
+            Carne c1 = new Carne(1, null, 22f, sourceFormat.parse("10/10/2017"), sourceFormat.parse("10/10/2020"), 15.32f, "Bovina", "Friboi", 1);
+            Assert.fail("O construtor aceitou um nome null");
+        } catch (ParseException ex) {
+            Assert.fail("Exceção na conversão da data");
+        } catch (ExceptionTest ex){
+            
         }
     }
     
@@ -175,11 +222,21 @@ public class TestCarne {
         try {
             Carne c = new Carne(1, "Picanha", 22f, sourceFormat.parse("10/10/2017"), sourceFormat.parse("10/10/2020"), 15.32f, "Bovina", "Friboi", 1);
             c.setNomeCarne("");
-            Assert.assertNotEquals("O Setter aceitou um nome vazio", "", c.getNomeCarne());
-            c.setNomeCarne(null);
-            Assert.assertNotEquals("O Setter aceitou um nome vazio", null, c.getNomeCarne());
+            Assert.fail("O Setter aceitou um nome vazio");
         } catch (ParseException ex) {
             Assert.fail("Exceção na conversão da data");
+        } catch (ExceptionTest ex){
+            
+        }
+        
+        try {
+            Carne c = new Carne(1, "Picanha", 22f, sourceFormat.parse("10/10/2017"), sourceFormat.parse("10/10/2020"), 15.32f, "Bovina", "Friboi", 1);
+            c.setNomeCarne(null);
+            Assert.fail("O Setter aceitou um nome null");
+        } catch (ParseException ex) {
+            Assert.fail("Exceção na conversão da data");
+        } catch (ExceptionTest ex){
+            
         }
     }
     
@@ -190,12 +247,21 @@ public class TestCarne {
     public void testDatasConstrutor() {
         DateFormat sourceFormat = new SimpleDateFormat("dd/MM/yyyy");
         try {
-            Carne c = new Carne(1, "Picanha", 22f, sourceFormat.parse("10/10/2017"), sourceFormat.parse("10/10/2020"), 15.32f, "Bovina", "Friboi", 1);
-            Assert.assertNotEquals("O construtor aceitou um data de fabricação nula", null, c.getFabricacao());
-            Carne c1 = new Carne(1, "Picanha", 22f, sourceFormat.parse("10/10/2017"), sourceFormat.parse("10/10/2020"), 15.32f, "Bovina", "Friboi", 1);
-            Assert.assertNotEquals("O construtor aceitou um data de validade nula", null, c1.getValidade());
+            Carne c = new Carne(1, "Picanha", 22f, null, sourceFormat.parse("10/10/2020"), 15.32f, "Bovina", "Friboi", 1);
+            Assert.fail("O construtor aceitou um data de fabricação nula");
         } catch (ParseException ex) {
             Assert.fail("Exceção na conversão da data");
+        } catch (ExceptionTest ex){
+            
+        }
+        
+        try {
+            Carne c1 = new Carne(1, "Picanha", 22f, sourceFormat.parse("10/10/2017"), null, 15.32f, "Bovina", "Friboi", 1);
+            Assert.fail("O construtor aceitou um data de validade nula");
+        } catch (ParseException ex) {
+            Assert.fail("Exceção na conversão da data");
+        } catch (ExceptionTest ex){
+            
         }
     }
     
@@ -209,11 +275,22 @@ public class TestCarne {
             Carne c = new Carne(1, "Picanha", 22f, sourceFormat.parse("10/10/2017"), sourceFormat.parse("10/10/2020"), 15.32f, "Bovina", "Friboi", 1);
             
             c.setFabricacao(null);
-            Assert.assertNotEquals("O Setter aceitou um data de fabricação nula", null, c.getFabricacao());
-            c.setValidade(null);
-            Assert.assertNotEquals("O Setter aceitou um data de validade nula", null, c.getValidade());
+            Assert.fail("O Setter aceitou um data de fabricação nula");
         } catch (ParseException ex) {
             Assert.fail("Exceção na conversão da data");
+        } catch (ExceptionTest ex){
+            
+        }
+        
+        try {
+            Carne c = new Carne(1, "Picanha", 22f, sourceFormat.parse("10/10/2017"), sourceFormat.parse("10/10/2020"), 15.32f, "Bovina", "Friboi", 1);
+            
+            c.setValidade(null);
+            Assert.fail("O Setter aceitou um data de validade nula");
+        } catch (ParseException ex) {
+            Assert.fail("Exceção na conversão da data");
+        } catch (ExceptionTest ex){
+            
         }
     }
 }

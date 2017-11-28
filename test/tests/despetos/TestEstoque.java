@@ -7,6 +7,7 @@ package tests.despetos;
 
 import d.espetos.Carne;
 import d.espetos.Estoque;
+import d.espetos.ExceptionTest;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -72,11 +73,20 @@ public class TestEstoque {
         try {
             Carne c = new Carne(1, "Picanha", 22f, sourceFormat.parse("10/10/2017"), sourceFormat.parse("10/10/2020"), 15.32f, "Bovina", "Friboi", 1);
             Estoque e = new Estoque(c, -1, 32.3f);
-            Assert.assertEquals("O construtor aceitou quantidade negativa", 0, e.getQuantidade());
-            Estoque e1 = new Estoque(c, 0, 32.3f);
-            Assert.assertEquals("O construtor não aceitou quantidade 0 (deveria aceitar)", 0, e1.getQuantidade());
+            Assert.fail("O construtor aceitou quantidade negativa");
         } catch (ParseException ex) {
             Assert.fail("Exceção na conversão da data");
+        } catch (ExceptionTest ex){
+            
+        }
+        
+        try {
+            Carne c = new Carne(1, "Picanha", 22f, sourceFormat.parse("10/10/2017"), sourceFormat.parse("10/10/2020"), 15.32f, "Bovina", "Friboi", 1);
+            Estoque e1 = new Estoque(c, 0, 32.3f);
+        } catch (ParseException ex) {
+            Assert.fail("Exceção na conversão da data");
+        } catch (ExceptionTest ex){
+            Assert.fail("O construtor não aceitou quantidade 0 (deveria aceitar)");
         }
     } 
     
@@ -90,11 +100,21 @@ public class TestEstoque {
             Carne c = new Carne(1, "Picanha", 22f, sourceFormat.parse("10/10/2017"), sourceFormat.parse("10/10/2020"), 15.32f, "Bovina", "Friboi", 1);
             Estoque e = new Estoque(c, 15, 32.3f);
             e.setQuantidade(-1);
-            Assert.assertEquals("O Setter aceitou quantidade negativa", 15, e.getQuantidade());
-            e.setQuantidade(0);
-            Assert.assertEquals("O Setter não aceitou quantidade 0 (deveria aceitar)", 0, e.getQuantidade());
+            Assert.fail("O Setter aceitou quantidade negativa");
         } catch (ParseException ex) {
             Assert.fail("Exceção na conversão da data");
+        } catch (ExceptionTest ex){
+            
+        }
+        
+        try {
+            Carne c = new Carne(1, "Picanha", 22f, sourceFormat.parse("10/10/2017"), sourceFormat.parse("10/10/2020"), 15.32f, "Bovina", "Friboi", 1);
+            Estoque e = new Estoque(c, 15, 32.3f);
+            e.setQuantidade(0);
+        } catch (ParseException ex) {
+            Assert.fail("Exceção na conversão da data");
+        } catch (ExceptionTest ex){
+            Assert.fail("O Setter não aceitou quantidade 0 (deveria aceitar)");
         }
     } 
     
@@ -107,11 +127,21 @@ public class TestEstoque {
         try {
             Carne c = new Carne(1, "Picanha", 22f, sourceFormat.parse("10/10/2017"), sourceFormat.parse("10/10/2020"), 15.32f, "Bovina", "Friboi", 1);
             Estoque e = new Estoque(c, 15, -1f);
-            Assert.assertNotEquals("O construtor aceitou valor de venda negativo", -1f, e.getValorVenda(), 0.001);
-            Estoque e1 = new Estoque(c, 15, 0f);
-            Assert.assertNotEquals("O construtor aceitou valor de venda negativo", 0f, e1.getValorVenda(), 0.001);
+            Assert.fail("O construtor aceitou valor de venda negativo");
         } catch (ParseException ex) {
             Assert.fail("Exceção na conversão da data");
+        } catch (ExceptionTest ex){
+            
+        }
+        
+        try {
+            Carne c = new Carne(1, "Picanha", 22f, sourceFormat.parse("10/10/2017"), sourceFormat.parse("10/10/2020"), 15.32f, "Bovina", "Friboi", 1);
+            Estoque e1 = new Estoque(c, 15, 0f);
+            Assert.fail("O construtor aceitou valor de venda 0");
+        } catch (ParseException ex) {
+            Assert.fail("Exceção na conversão da data");
+        } catch (ExceptionTest ex){
+            
         }
     } 
     
@@ -125,9 +155,16 @@ public class TestEstoque {
             Carne c = new Carne(1, "Picanha", 22f, sourceFormat.parse("10/10/2017"), sourceFormat.parse("10/10/2020"), 15.32f, "Bovina", "Friboi", 1);
             Estoque e = new Estoque(c, 15, 15f);
             e.setValorVenda(-1f);
-            Assert.assertNotEquals("O Setter aceitou valor de venda negativo", -1f, e.getValorVenda(), 0.001);
+            Assert.fail("O Setter aceitou valor de venda negativo");
+        } catch (ParseException ex) {
+            Assert.fail("Exceção na conversão da data");
+        }
+        
+        try {
+            Carne c = new Carne(1, "Picanha", 22f, sourceFormat.parse("10/10/2017"), sourceFormat.parse("10/10/2020"), 15.32f, "Bovina", "Friboi", 1);
+            Estoque e = new Estoque(c, 15, 15f);
             e.setValorVenda(0f);
-            Assert.assertNotEquals("O Setter aceitou valor de venda negativo", 0f, e.getValorVenda(), 0.001);
+            Assert.fail("O Setter aceitou valor de venda 0");
         } catch (ParseException ex) {
             Assert.fail("Exceção na conversão da data");
         }

@@ -6,6 +6,7 @@
 package tests.despetos;
 
 import d.espetos.Cliente;
+import d.espetos.ExceptionTest;
 import org.junit.*;
 
 /**
@@ -33,23 +34,41 @@ public class TestCliente {
      */
     @Test
     public void testNomeConstrutor() {
-        Cliente c = new Cliente(1, "", "(11) 1111-1222", "con@tr.com", "Físico", "123.456.789-10");
-        Assert.assertNotEquals("O construtor permitiu o nome ser vazio", "", c.getNomeCliente());
+        try {
+            Cliente c = new Cliente(1, "", "(11) 1111-1222", "con@tr.com", "Físico", "123.456.789-10");
+            Assert.fail("O construtor permitiu o nome ser vazio");
+        } catch (ExceptionTest ex){
+            
+        }
         
-        Cliente c1 = new Cliente(1, null, "(11) 1111-1222", "con@tr.com", "Físico", "123.456.789-10");
-        Assert.assertNotEquals("O construtor permitiu o nome ser nulo", null, c1.getNomeCliente());
-    }
+        try {
+            Cliente c1 = new Cliente(1, null, "(11) 1111-1222", "con@tr.com", "Físico", "123.456.789-10");
+            Assert.fail("O construtor permitiu o nome ser nulo");
+        } catch (ExceptionTest ex){
+            
+        }
+    } 
     
     /**
      * Teste de nome - o nome não pode ser vazio ou null
      */
     @Test
     public void testNomeSetter() {
-        Cliente c = new Cliente(1, "construtor", "(11) 1111-1222", "con@tr.com", "Físico", "123.456.789-10");
-        c.setNomeCliente("");
-        Assert.assertNotEquals("O Setter permitiu o nome ser vazio", "", c.getNomeCliente());
-        c.setNomeCliente(null);
-        Assert.assertNotEquals("O Setter permitiu o nome ser nulo", null, c.getNomeCliente());
+        try {
+            Cliente c = new Cliente(1, "construtor", "(11) 1111-1222", "con@tr.com", "Físico", "123.456.789-10");
+            c.setNomeCliente("");
+            Assert.fail("O Setter permitiu o nome ser vazio");
+        } catch (ExceptionTest ex){
+            
+        }
+        
+        try {
+            Cliente c = new Cliente(1, "construtor", "(11) 1111-1222", "con@tr.com", "Físico", "123.456.789-10");
+            c.setNomeCliente(null);
+            Assert.fail("O Setter permitiu o nome ser nulo");
+        } catch (ExceptionTest ex){
+            
+        }
     }
     
     /**
@@ -57,12 +76,26 @@ public class TestCliente {
      */
     @Test
     public void testTipoConstrutor() {
-        Cliente c = new Cliente(1, "construtor", "(11) 1111-1222", "con@tr.com", "asdda", "123.456.789-10");
-        Assert.assertNotEquals("O construtor aceitou um tipo diferente de 'Físico' ou 'Jurídico'", "asdda", c.getTipo());
-        Cliente c2 = new Cliente(1, "construtor", "(11) 1111-1222", "con@tr.com", "", "123.456.789-10");
-        Assert.assertNotEquals("O construtor aceitou um tipo diferente de 'Físico' ou 'Jurídico'", "", c2.getTipo());
-        Cliente c3 = new Cliente(1, "construtor", "(11) 1111-1222", "con@tr.com", null, "123.456.789-10");
-        Assert.assertNotEquals("O construtor aceitou um tipo diferente de 'Físico' ou 'Jurídico'", null, c3.getTipo());
+        try {
+            Cliente c = new Cliente(1, "construtor", "(11) 1111-1222", "con@tr.com", "asdda", "123.456.789-10");
+            Assert.fail("O construtor aceitou um tipo diferente de 'Físico' ou 'Jurídico' - test1");
+        } catch (ExceptionTest ex){
+            
+        }
+        
+        try {
+            Cliente c2 = new Cliente(1, "construtor", "(11) 1111-1222", "con@tr.com", "", "123.456.789-10");
+            Assert.fail("O construtor aceitou um tipo diferente de 'Físico' ou 'Jurídico' - test2");
+        } catch (ExceptionTest ex){
+            
+        }
+        
+        try {
+            Cliente c2 = new Cliente(1, "construtor", "(11) 1111-1222", "con@tr.com", null, "123.456.789-10");
+            Assert.fail("O construtor aceitou um tipo diferente de 'Físico' ou 'Jurídico' - test3");
+        } catch (ExceptionTest ex){
+            
+        }
     }
     
     /**
@@ -70,12 +103,28 @@ public class TestCliente {
      */
     @Test
     public void testTipoSetter() {
-        Cliente c = new Cliente(1, "construtor", "(11) 1111-1222", "con@tr.com", "Fisico", "123.456.789-10");
-        c.setTipo("asdda");
-        Assert.assertNotEquals("O construtor aceitou um tipo diferente de 'Físico' ou 'Jurídico'", "asdda", c.getTipo());
-        c.setTipo("");
-        Assert.assertNotEquals("O construtor aceitou um tipo diferente de 'Físico' ou 'Jurídico'", "", c.getTipo());
-        c.setTipo(null);
-        Assert.assertNotEquals("O construtor aceitou um tipo diferente de 'Físico' ou 'Jurídico'", null, c.getTipo());
+        try {
+            Cliente c = new Cliente(1, "construtor", "(11) 1111-1222", "con@tr.com", "Fisico", "123.456.789-10");
+            c.setTipo("asdda");
+            Assert.fail("O setter aceitou um tipo diferente de 'Físico' ou 'Jurídico' - test1");
+        } catch (ExceptionTest ex){
+            
+        }
+        
+        try {
+            Cliente c = new Cliente(1, "construtor", "(11) 1111-1222", "con@tr.com", "Fisico", "123.456.789-10");
+            c.setTipo("");
+            Assert.fail("O setter aceitou um tipo diferente de 'Físico' ou 'Jurídico' - test2");
+        } catch (ExceptionTest ex){
+            
+        }
+        
+        try {
+            Cliente c = new Cliente(1, "construtor", "(11) 1111-1222", "con@tr.com", "Fisico", "123.456.789-10");
+            c.setTipo(null);
+            Assert.fail("O setter aceitou um tipo diferente de 'Físico' ou 'Jurídico' - test3");
+        } catch (ExceptionTest ex){
+            
+        }
     }
 }
