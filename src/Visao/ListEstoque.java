@@ -261,8 +261,12 @@ public class ListEstoque extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Selecione uma carne!");
         }
         else{
-            SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-            Carne carne = new Carne((Integer) tableListarCarne.getValueAt(linhaSelecionada, 0), tableListarCarne.getValueAt(linhaSelecionada, 1).toString(), Double.parseDouble(tableListarCarne.getValueAt(linhaSelecionada, 2).toString()), df.parse(tableListarCarne.getValueAt(linhaSelecionada, 4).toString()), df.parse(tableListarCarne.getValueAt(linhaSelecionada, 5).toString(), Double.parseDouble(tableListarCarne.getValueAt(linhaSelecionada, 3).toString()), tableListarCarne.getValueAt(linhaSelecionada, 7), tableListarCarne.getValueAt(linhaSelecionada, 5), (Integer) tableListarCarne.getValueAt(linhaSelecionada, 6));
+            Carne carne = new Carne();
+            carne.setCodTipo((Integer) tableListarCarne.getValueAt(linhaSelecionada, 7));
+            carne.setMarca(tableListarCarne.getValueAt(linhaSelecionada, 6).toString());
+            carne.setNomeCarne(tableListarCarne.getValueAt(linhaSelecionada, 1).toString());
+            carne.setValorCusto(Double.parseDouble(tableListarCarne.getValueAt(linhaSelecionada, 3).toString()));
+            carne.setTipo(tableListarCarne.getValueAt(linhaSelecionada, 8).toString());
             EditarPrecoCarneDialog editCarne = new EditarPrecoCarneDialog(carne, this, true);
             editCarne.setVisible(true);
         }

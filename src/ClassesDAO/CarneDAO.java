@@ -68,7 +68,6 @@ public class CarneDAO extends ConexaoBD{
         try {
             carne = new Carne(rs.getInt("codTipoCarne"),  rs.getDouble("quantidade"), rs.getString("nome"),rs.getDouble("valor"), rs.getString("tipo"), rs.getString("marca"));       
         } catch (SQLException e) {
-            System.out.println("Erro: " + e);
         }
         return carne;
     }
@@ -98,14 +97,12 @@ public class CarneDAO extends ConexaoBD{
             stmt = con.prepareStatement(query);
             rs = this.getResultSet(stmt);
             while (rs.next()) {
-                System.out.println("Entrou no while");
                 System.out.println("Carne: " + buildObjectView(rs).getNomeCarne());
                 carnes.add(buildObjectView(rs));
             }
             rs.close();
             stmt.close();
         } catch (SQLException ex) {
-            System.out.println("erro: " + ex);
         }
         return carnes;
     }
@@ -161,7 +158,6 @@ public class CarneDAO extends ConexaoBD{
     }
 
     public List<Carne> retrieveView() {
-        System.out.println("passou no retrieveView!");
         return this.retrieveGenericView("SELECT * FROM view_CarnesDisponiveis");
     }
 

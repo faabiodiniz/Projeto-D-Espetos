@@ -215,8 +215,13 @@ public class EditarPrecoCarneDialog extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Carne carne = new Carne(codTipo ,jTextFieldNome.getText(), Double.parseDouble(jTextFieldPreNovo.getText()), jTextFieldTipo.getText());
-        CarneDAO.getInstance().update(carne);
+        Carne carne1 = new Carne();
+        carne1.setCodTipo(codTipo);
+        carne1.setMarca(txtMarca.getText());
+        carne1.setNomeCarne(jTextFieldNome.getText());
+        carne1.setValorCusto(Double.parseDouble(jTextFieldPreNovo.getText()));
+        carne1.setTipo(jTextFieldTipo.getText());
+        CarneDAO.getInstance().update(carne1);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
