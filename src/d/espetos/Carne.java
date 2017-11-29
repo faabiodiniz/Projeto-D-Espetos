@@ -25,17 +25,18 @@ public class Carne {
         else{
             this.valorCusto = valorCusto;
         }
-        this.valorCusto = valorCusto;
         this.idProduto = id;
         this.marca = marca;
         this.tipo = tipo;
         this.codTipo = codTipo;
     }
-    public Carne(int id, String nomeCarne, double valor, String tipo){
-        this.codTipo = id;
-        this.nomeCarne = nomeCarne;
-        this.valorCusto = valor;
-        this.tipo = tipo;
+    public Carne(int id, double quantidade,String nomeCarne, double valor, String tipo, String marca){
+        this.setCodTipo(id);
+        this.setNomeCarne(nomeCarne);
+        this.setValorCusto(valor);
+        this.setTipo(tipo);
+        this.setMarca(marca);
+        this.setQuantidade(quantidade);
     }
     
     public Carne(int idCarne, int codTipo){

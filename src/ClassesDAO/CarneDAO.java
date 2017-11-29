@@ -62,6 +62,16 @@ public class CarneDAO extends ConexaoBD{
         }
         return carne;
     }
+    
+    private Carne buildObjectView(ResultSet rs){
+        Carne carne = null;
+        try {
+            carne = new Carne(rs.getInt("codTipoCarne"),  rs.getDouble("quantidade"), rs.getString("nome"),rs.getDouble("valor"), rs.getString("tipo"), rs.getString("marca"));       
+        } catch (SQLException e) {
+            System.out.println("Erro: " + e);
+        }
+        return carne;
+    }
         
     public List<Carne> retrieveGeneric(String query) {
         PreparedStatement stmt;
@@ -76,6 +86,26 @@ public class CarneDAO extends ConexaoBD{
             rs.close();
             stmt.close();
         } catch (SQLException ex) {
+        }
+        return carnes;
+    }
+    
+        public List<Carne> retrieveGenericView(String query) {
+        PreparedStatement stmt;
+        List<Carne> carnes = new ArrayList<>();
+        ResultSet rs;
+        try {
+            stmt = con.prepareStatement(query);
+            rs = this.getResultSet(stmt);
+            while (rs.next()) {
+                System.out.println("Entrou no while");
+                System.out.println("Carne: " + buildObjectView(rs).getNomeCarne());
+                carnes.add(buildObjectView(rs));
+            }
+            rs.close();
+            stmt.close();
+        } catch (SQLException ex) {
+            System.out.println("erro: " + ex);
         }
         return carnes;
     }
@@ -108,7 +138,6 @@ public class CarneDAO extends ConexaoBD{
             stmt.setDouble(1, carne.getValorCusto());
             stmt.setInt(2, carne.getCodTipo());
             int update = this.executeUpdate(stmt);
-            System.out.println("Atualizou se pá");
             if (update == 1) {
                 JOptionPane.showMessageDialog(null,"Dados alterados com sucesso");
                 return true;
@@ -132,6 +161,8 @@ public class CarneDAO extends ConexaoBD{
     }
 
     public List<Carne> retrieveView() {
-        return this.retrieveGeneric("SELECT * FROM view_Carnesdisponiveis ORDER BY nome");
+        System.out.println("passou no retrieveView!");
+        return this.retrieveGenericView("SELECT * FROM view_CarnesDisponiveis");
     }
+
 }

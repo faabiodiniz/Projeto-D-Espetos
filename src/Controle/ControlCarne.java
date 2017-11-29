@@ -50,8 +50,9 @@ public class ControlCarne {
     public static void updateCarne(Carne c){
         CarneDAO.getInstance().update(c);
     }
-
-    public static List<Carne> getListOfCarnesDisponiveis() {
+    
+    public static List<Carne> getListOfCarnesView(){
+        System.out.println("Passou no getView!");
         return CarneDAO.getInstance().retrieveView();
     }
     

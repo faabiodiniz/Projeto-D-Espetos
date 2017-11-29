@@ -46,7 +46,7 @@ public class CadastroVendas extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jPanelPainel3 = new javax.swing.JPanel();
         jLabelCPF3 = new javax.swing.JLabel();
-        jTextFieldCPF4 = new javax.swing.JTextField();
+        jTextFieldCodProduto = new javax.swing.JTextField();
         jPanelPainel4 = new javax.swing.JPanel();
         jLabelCPF4 = new javax.swing.JLabel();
         jTextFieldCPF5 = new javax.swing.JTextField();
@@ -72,7 +72,7 @@ public class CadastroVendas extends javax.swing.JFrame {
             }
         });
         jPanelPainel.add(jTextFieldCPF1);
-        jTextFieldCPF1.setBounds(50, 10, 160, 22);
+        jTextFieldCPF1.setBounds(50, 10, 160, 20);
 
         getContentPane().add(jPanelPainel);
         jPanelPainel.setBounds(27, 27, 230, 40);
@@ -93,7 +93,7 @@ public class CadastroVendas extends javax.swing.JFrame {
 
         jLabel2.setText("NOME CLIENTE");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(20, 70, 100, 16);
+        jLabel2.setBounds(20, 70, 100, 14);
         getContentPane().add(jLabelNome);
         jLabelNome.setBounds(120, 70, 240, 20);
 
@@ -112,7 +112,7 @@ public class CadastroVendas extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTableItemsPedido);
 
-        jTableCarnesDisponiveis.setModel(new Visao.CarnesDisponiveisTableModel(ControlCarne.getListOfCarnesDisponiveis()));
+        jTableCarnesDisponiveis.setModel(new CarnesDisponiveisTableModel(ControlCarne.getListOfCarnesView()));
         jScrollPane2.setViewportView(jTableCarnesDisponiveis);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -158,7 +158,7 @@ public class CadastroVendas extends javax.swing.JFrame {
             }
         });
         jPanelPainel2.add(jTextFieldCPF3);
-        jTextFieldCPF3.setBounds(30, 30, 160, 22);
+        jTextFieldCPF3.setBounds(30, 30, 160, 20);
 
         jPanelPainel1.add(jPanelPainel2);
         jPanelPainel2.setBounds(20, 430, 230, 60);
@@ -187,13 +187,14 @@ public class CadastroVendas extends javax.swing.JFrame {
         jPanelPainel3.add(jLabelCPF3);
         jLabelCPF3.setBounds(10, 10, 130, 15);
 
-        jTextFieldCPF4.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldCodProduto.setEditable(false);
+        jTextFieldCodProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldCPF4ActionPerformed(evt);
+                jTextFieldCodProdutoActionPerformed(evt);
             }
         });
-        jPanelPainel3.add(jTextFieldCPF4);
-        jTextFieldCPF4.setBounds(40, 30, 70, 22);
+        jPanelPainel3.add(jTextFieldCodProduto);
+        jTextFieldCodProduto.setBounds(40, 30, 70, 20);
 
         jPanelPainel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanelPainel4.setLayout(null);
@@ -209,7 +210,7 @@ public class CadastroVendas extends javax.swing.JFrame {
             }
         });
         jPanelPainel4.add(jTextFieldCPF5);
-        jTextFieldCPF5.setBounds(30, 30, 160, 22);
+        jTextFieldCPF5.setBounds(30, 30, 160, 20);
 
         jPanelPainel3.add(jPanelPainel4);
         jPanelPainel4.setBounds(20, 430, 230, 60);
@@ -225,7 +226,7 @@ public class CadastroVendas extends javax.swing.JFrame {
             }
         });
         jPanelPainel3.add(jTextField1);
-        jTextField1.setBounds(160, 30, 60, 22);
+        jTextField1.setBounds(160, 30, 60, 20);
 
         jLabel4.setText("KG");
         jPanelPainel3.add(jLabel4);
@@ -253,9 +254,9 @@ public class CadastroVendas extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldCPF3ActionPerformed
 
-    private void jTextFieldCPF4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCPF4ActionPerformed
+    private void jTextFieldCodProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCodProdutoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldCPF4ActionPerformed
+    }//GEN-LAST:event_jTextFieldCodProdutoActionPerformed
 
     private void jTextFieldCPF5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCPF5ActionPerformed
         // TODO add your handling code here:
@@ -331,7 +332,7 @@ public class CadastroVendas extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextFieldCPF1;
     private javax.swing.JTextField jTextFieldCPF3;
-    private javax.swing.JTextField jTextFieldCPF4;
     private javax.swing.JTextField jTextFieldCPF5;
+    private javax.swing.JTextField jTextFieldCodProduto;
     // End of variables declaration//GEN-END:variables
 }

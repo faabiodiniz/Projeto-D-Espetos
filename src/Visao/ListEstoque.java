@@ -8,6 +8,8 @@ package Visao;
 import ClassesDAO.CarneDAO;
 import Controle.ControlCarne;
 import d.espetos.Carne;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -259,7 +261,8 @@ public class ListEstoque extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Selecione uma carne!");
         }
         else{
-            Carne carne = new Carne((Integer)tableListarCarne.getValueAt(linhaSelecionada, 6), tableListarCarne.getValueAt(linhaSelecionada, 1).toString(), (double) (tableListarCarne.getValueAt(linhaSelecionada, 3)), tableListarCarne.getValueAt(linhaSelecionada, 7).toString());
+            SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+            Carne carne = new Carne((Integer) tableListarCarne.getValueAt(linhaSelecionada, 0), tableListarCarne.getValueAt(linhaSelecionada, 1).toString(), Double.parseDouble(tableListarCarne.getValueAt(linhaSelecionada, 2).toString()), df.parse(tableListarCarne.getValueAt(linhaSelecionada, 4).toString()), df.parse(tableListarCarne.getValueAt(linhaSelecionada, 5).toString(), Double.parseDouble(tableListarCarne.getValueAt(linhaSelecionada, 3).toString()), tableListarCarne.getValueAt(linhaSelecionada, 7), tableListarCarne.getValueAt(linhaSelecionada, 5), (Integer) tableListarCarne.getValueAt(linhaSelecionada, 6));
             EditarPrecoCarneDialog editCarne = new EditarPrecoCarneDialog(carne, this, true);
             editCarne.setVisible(true);
         }

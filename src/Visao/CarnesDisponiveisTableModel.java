@@ -16,7 +16,7 @@ import java.util.List;
 public class CarnesDisponiveisTableModel extends GenericTableModel {
     public CarnesDisponiveisTableModel(List vDados) {
         // Use esse vetor de Strings para definir os titulos das colunas:
-        super(vDados, new String[]{"id", "Nome", "Quantidade(KG)", "Marca", "Tipo", "Valor"});
+        super(vDados, new String[]{"id", "Nome", "QTD(KG)", "Marca", "Tipo", "Valor"});
     }
 
     @Override
@@ -62,7 +62,7 @@ public class CarnesDisponiveisTableModel extends GenericTableModel {
     }
     public void refresh(){
         super.vDados.clear();
-        super.vDados.addAll(ControlCarne.getListOfCarnesDisponiveis());
+        super.vDados.addAll(ControlCarne.getListOfCarne());
         fireTableDataChanged();
     }
 }

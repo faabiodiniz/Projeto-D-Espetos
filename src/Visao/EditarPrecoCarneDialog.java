@@ -15,13 +15,14 @@ import java.text.DecimalFormat;
  */
 public class EditarPrecoCarneDialog extends javax.swing.JDialog {
     private int codTipo;
-
+    private double quantidade;
     /**
      * Creates new form EditarPrecoCarneDialog
      */
     public EditarPrecoCarneDialog(Carne carne, java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        quantidade = carne.getQuantidade();
         this.setLocationRelativeTo(null);
         try {
             jTextFieldNome.setText(carne.getNomeCarne().trim());
@@ -214,7 +215,7 @@ public class EditarPrecoCarneDialog extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Carne carne = new Carne(codTipo, jTextFieldNome.getText(), Double.parseDouble(jTextFieldPreNovo.getText()), jTextFieldTipo.getText());
+        Carne carne = new Carne(codTipo ,jTextFieldNome.getText(), Double.parseDouble(jTextFieldPreNovo.getText()), jTextFieldTipo.getText());
         CarneDAO.getInstance().update(carne);
     }//GEN-LAST:event_jButton1ActionPerformed
 

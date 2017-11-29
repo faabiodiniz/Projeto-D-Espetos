@@ -21,19 +21,14 @@ public class VendaDAO extends ConexaoBD
     public void Salvar(Venda venda){
         instance.conexao();
         try {
-            System.out.println("chegou no venda");
             PreparedStatement pst = conexao.con.prepareStatement("INSERT INTO Venda(codCliente, dataCompra, dataEntrega, desconto) values (?,?,?,?);" + "INSERT INTO FormaDePagamento(valor, identificador) values (?,?)");
-            System.out.println("Criou a quary");
-            System.out.println("ID cliente: " + venda.getCliente().getIdCliente());
             pst.setInt(1, venda.getCliente().getIdCliente());
-            System.out.println("ID cliente: " + venda.getCliente().getIdCliente());
             pst.setDate(2, (java.sql.Date) venda.getDataCompra());
             pst.setDate(3, (java.sql.Date) venda.getDataEntrega());
             pst.setDouble(4, venda.getDesconto());
             pst.setDouble(5, venda.getPagamento().getValorPago());
             pst.setInt(6, venda.getPagamento().getIdentificador());
             pst.execute();
-            System.out.println("passou pelo execute");
             
             JOptionPane.showMessageDialog(null,"Dados inseridos com sucesso");
         } catch (SQLException ex) {
@@ -75,7 +70,6 @@ public class VendaDAO extends ConexaoBD
         Venda venda = null;
         try {
             venda = new Venda(rs.getInt("codVenda"), rs.getDouble("valor"), rs.getDouble("desconto"), rs.getDate("dataEntrega"), rs.getDate("dataCompra") , rs.getString("nome"));
-            System.out.println("Nome cliente = " + venda.getNomeCliente());
         } catch (SQLException e) {
             
         }
