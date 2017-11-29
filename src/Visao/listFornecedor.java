@@ -168,11 +168,6 @@ public class ListFornecedor extends javax.swing.JFrame {
         barraMenu.add(menuPrincipal);
 
         menuClientes.setText("Clientes");
-        menuClientes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuClientesActionPerformed(evt);
-            }
-        });
 
         menuItemCadastroCliente.setText("Cadastrar Cliente");
         menuItemCadastroCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -297,6 +292,14 @@ public class ListFornecedor extends javax.swing.JFrame {
         Fornecedor f = (Fornecedor) ((FornecedorTableModel) tableListarFornecedor.getModel()).getItem(linha);
     }//GEN-LAST:event_tableListarFornecedorMouseClicked
 
+    private void jButtonBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonBuscarClienteActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        ((FornecedorTableModel) tableListarFornecedor.getModel()).refresh();
+    }//GEN-LAST:event_jButton4ActionPerformed
+
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         MenuInicial principal = new MenuInicial();
         principal.setVisible(true);
@@ -310,7 +313,7 @@ public class ListFornecedor extends javax.swing.JFrame {
     }//GEN-LAST:event_menuPrincipalActionPerformed
 
     private void menuItemCadastroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemCadastroClienteActionPerformed
-        cadastroClientes clientes = new cadastroClientes();
+        CadClienteDialog clientes = new CadClienteDialog(this, true);
         clientes.setVisible(true);
     }//GEN-LAST:event_menuItemCadastroClienteActionPerformed
 
@@ -319,12 +322,6 @@ public class ListFornecedor extends javax.swing.JFrame {
         cliente.setVisible(true);
         dispose();
     }//GEN-LAST:event_menuItemListarClientesActionPerformed
-
-    private void menuClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuClientesActionPerformed
-        cadastroClientes clientes = new cadastroClientes();
-        clientes.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_menuClientesActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         CadastroFornecedor fornecedor = new CadastroFornecedor();
@@ -345,7 +342,7 @@ public class ListFornecedor extends javax.swing.JFrame {
     }//GEN-LAST:event_menuItemListarEstoqueActionPerformed
 
     private void menuItemRelatorioVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemRelatorioVendaActionPerformed
-        ListVendas vendas = new ListVendas();
+        ListVenda vendas = new ListVenda();
         vendas.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_menuItemRelatorioVendaActionPerformed
@@ -360,14 +357,6 @@ public class ListFornecedor extends javax.swing.JFrame {
     private void jMenuItemSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSairActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jMenuItemSairActionPerformed
-
-    private void jButtonBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarClienteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonBuscarClienteActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        ((FornecedorTableModel) tableListarFornecedor.getModel()).refresh();
-    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments

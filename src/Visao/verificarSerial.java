@@ -43,8 +43,10 @@ public class VerificarSerial extends javax.swing.JFrame {
         imgFundoValidacao = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(607, 350));
+        setPreferredSize(new java.awt.Dimension(607, 333));
         setResizable(false);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().setLayout(null);
 
         botaoVerificarLicenca.setText("Verificar licença");
         botaoVerificarLicenca.addActionListener(new java.awt.event.ActionListener() {
@@ -52,7 +54,8 @@ public class VerificarSerial extends javax.swing.JFrame {
                 botaoVerificarLicencaActionPerformed(evt);
             }
         });
-        getContentPane().add(botaoVerificarLicenca, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 193, 170, -1));
+        getContentPane().add(botaoVerificarLicenca);
+        botaoVerificarLicenca.setBounds(230, 190, 170, 23);
 
         txtValidacao.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtValidacao.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -70,14 +73,17 @@ public class VerificarSerial extends javax.swing.JFrame {
                 txtValidacaoActionPerformed(evt);
             }
         });
-        getContentPane().add(txtValidacao, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 160, 170, 30));
+        getContentPane().add(txtValidacao);
+        txtValidacao.setBounds(230, 150, 170, 30);
 
         txtIdentificador.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         txtIdentificador.setText("Digite Sua licença");
-        getContentPane().add(txtIdentificador, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, -1, -1));
+        getContentPane().add(txtIdentificador);
+        txtIdentificador.setBounds(230, 130, 101, 15);
 
         imgFundoValidacao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/FundoLicença - 1.jpg"))); // NOI18N
-        getContentPane().add(imgFundoValidacao, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 340));
+        getContentPane().add(imgFundoValidacao);
+        imgFundoValidacao.setBounds(0, 0, 620, 340);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

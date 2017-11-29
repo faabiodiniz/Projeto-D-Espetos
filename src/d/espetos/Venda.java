@@ -12,16 +12,27 @@ public class Venda
     private Date dataEntrega;
     private Date dataCompra;
     private FormaPagamento pagamento;
-    private float desconto;
+    private double desconto;
+    private double valor;
+    private int codVenda;
+    private String nomeCliente;
 
-    public Venda(Cliente cliente, Pedido pedido, FormaPagamento pagamento, float desconto) {
+    public Venda(Cliente cliente, Pedido pedido, FormaPagamento pagamento, double desconto, Date entrega, Date compra) {
         this.cliente = cliente;
         this.pedido = pedido;
         this.pagamento = pagamento;
         this.desconto = desconto;
+        this.dataCompra = compra;
+        this.dataEntrega = entrega;
     }
 
-    public Venda(int codVenda, double valor, double desconto, Date dataCompra, Date dataEntrega, int codCliente) {
+    public Venda(int codVenda, double valor, double desconto, Date dataCompra, Date dataEntrega, String nomeCliente) {
+        this.idVenda = codVenda;
+        this.nomeCliente = nomeCliente;
+        this.dataCompra = dataCompra;
+        this.dataEntrega = dataEntrega;
+        this.valor = valor;
+        this.desconto = desconto;
     }
     
     public Venda(){
@@ -56,7 +67,7 @@ public class Venda
         this.pagamento = pagamento;
     }
 
-    public float getDesconto() {
+    public double getDesconto() {
         return desconto;
     }
 
@@ -78,6 +89,30 @@ public class Venda
 
     public void setDataCompra(Date dataCompra) {
         this.dataCompra = dataCompra;
+    }
+
+    public double getValor() {
+        return valor;
+    }
+
+    public void setValor(double valor) {
+        this.valor = valor;
+    }
+
+    public int getCodVenda() {
+        return codVenda;
+    }
+
+    public void setCodVenda(int codVenda) {
+        this.codVenda = codVenda;
+    }
+
+    public String getNomeCliente() {
+        return nomeCliente;
+    }
+
+    public void setNomeCliente(String nomeCliente) {
+        this.nomeCliente = nomeCliente;
     }
     
     

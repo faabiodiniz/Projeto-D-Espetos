@@ -5,7 +5,7 @@
  */
 package Visao;
 
-import Controle.ControlEstoque;
+import Controle.ControlCarne;
 import d.espetos.Carne;
 import java.util.Date;
 import java.util.List;
@@ -96,7 +96,7 @@ public class CarneTableModel extends GenericTableModel{
     
     public void refresh(){
         super.vDados.clear();
-        super.vDados.addAll(ControlEstoque.getListOfCarne());
+        super.vDados.addAll(ControlCarne.getListOfCarne());
         fireTableDataChanged();
     }
 }

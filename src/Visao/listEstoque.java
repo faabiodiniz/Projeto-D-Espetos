@@ -5,8 +5,8 @@
  */
 package Visao;
 
-import ClassesDAO.EstoqueDAO;
-import Controle.ControlEstoque;
+import ClassesDAO.CarneDAO;
+import Controle.ControlCarne;
 import d.espetos.Carne;
 import javax.swing.JOptionPane;
 
@@ -24,7 +24,7 @@ public class ListEstoque extends javax.swing.JFrame {
     public ListEstoque() {
         initComponents();
         this.setLocationRelativeTo(null);
-        vCarne = ControlEstoque.getListOfCarneAsArray();
+        vCarne = ControlCarne.getListOfCarneAsArray();
         tableListarCarne.getColumnModel().getColumn(0).setPreferredWidth(30);
         tableListarCarne.getColumnModel().getColumn(3).setPreferredWidth(40);
         tableListarCarne.getColumnModel().getColumn(2).setPreferredWidth(40);
@@ -82,7 +82,7 @@ public class ListEstoque extends javax.swing.JFrame {
         jPanel1.add(labelTituloBusca);
         labelTituloBusca.setBounds(300, 0, 110, 20);
 
-        tableListarCarne.setModel(new CarneTableModel(ControlEstoque.getListOfCarne()));
+        tableListarCarne.setModel(new CarneTableModel(ControlCarne.getListOfCarne()));
         tableListarCarne.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tableListarCarneMouseClicked(evt);
@@ -165,11 +165,6 @@ public class ListEstoque extends javax.swing.JFrame {
         barraMenu.add(menuPrincipal);
 
         menuClientes.setText("Clientes");
-        menuClientes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuClientesActionPerformed(evt);
-            }
-        });
 
         menuItemCadastroCliente.setText("Cadastrar Cliente");
         menuItemCadastroCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -282,7 +277,7 @@ public class ListEstoque extends javax.swing.JFrame {
         }
         else{
             Carne carne = new Carne((Integer)tableListarCarne.getValueAt(linhaSelecionada,0), (Integer)tableListarCarne.getValueAt(linhaSelecionada, 6));
-            EstoqueDAO.getInstance().delete(carne);
+            CarneDAO.getInstance().delete(carne);
             ((CarneTableModel) tableListarCarne.getModel()).refresh();
         }
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -291,6 +286,10 @@ public class ListEstoque extends javax.swing.JFrame {
         int linha = tableListarCarne.getSelectedRow();
         Carne c = (Carne) ((CarneTableModel) tableListarCarne.getModel()).getItem(linha);
     }//GEN-LAST:event_tableListarCarneMouseClicked
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        ((CarneTableModel) tableListarCarne.getModel()).refresh();
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         MenuInicial principal = new MenuInicial();
@@ -305,7 +304,7 @@ public class ListEstoque extends javax.swing.JFrame {
     }//GEN-LAST:event_menuPrincipalActionPerformed
 
     private void menuItemCadastroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemCadastroClienteActionPerformed
-        cadastroClientes clientes = new cadastroClientes();
+        CadClienteDialog clientes = new CadClienteDialog(this, true);
         clientes.setVisible(true);
     }//GEN-LAST:event_menuItemCadastroClienteActionPerformed
 
@@ -314,12 +313,6 @@ public class ListEstoque extends javax.swing.JFrame {
         cliente.setVisible(true);
         dispose();
     }//GEN-LAST:event_menuItemListarClientesActionPerformed
-
-    private void menuClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuClientesActionPerformed
-        cadastroClientes clientes = new cadastroClientes();
-        clientes.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_menuClientesActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         CadastroFornecedor fornecedor = new CadastroFornecedor();
@@ -340,7 +333,7 @@ public class ListEstoque extends javax.swing.JFrame {
     }//GEN-LAST:event_menuItemListarEstoqueActionPerformed
 
     private void menuItemRelatorioVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemRelatorioVendaActionPerformed
-        ListVendas vendas = new ListVendas();
+        ListVenda vendas = new ListVenda();
         vendas.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_menuItemRelatorioVendaActionPerformed
@@ -355,10 +348,6 @@ public class ListEstoque extends javax.swing.JFrame {
     private void jMenuItemSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSairActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jMenuItemSairActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        ((CarneTableModel) tableListarCarne.getModel()).refresh();
-    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments

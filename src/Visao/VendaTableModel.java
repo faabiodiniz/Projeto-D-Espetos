@@ -5,32 +5,37 @@
  */
 package Visao;
 
-import ClassesDAO.VendaDAO;
 import Controle.ControlVenda;
-import d.espetos.Carne;
-import d.espetos.ItemPedido;
+import d.espetos.Venda;
 import java.util.Date;
 import java.util.List;
 
-public class ItemPedidoTableModel extends GenericTableModel{
-    public ItemPedidoTableModel(List vDados) {
+/**
+ *
+ * @author faad2
+ */
+public class VendaTableModel extends GenericTableModel{
+    
+    public VendaTableModel(List vDados) {
         // Use esse vetor de Strings para definir os titulos das colunas:
-        super(vDados, new String[]{"Nome", "QTD (KG)", "Valor(R$)", "Marca", "Tipo"});
+        super(vDados, new String[]{"id", "Nome Cliente", "Valor", "Desconto", "Data de Compra", "Data de Entrega"});
     }
 
     @Override
     public Class<?> getColumnClass(int columnIndex) {
         switch (columnIndex) {
             case 0:
-                return String.class;
+                return Integer.class;
             case 1:
-                return Double.class;
+                return String.class;
             case 2:
                 return Double.class;
             case 3:
-                return String.class;
+                return Double.class;
             case 4:
-                return String.class;
+                return Date.class;
+            case 5:
+                return Date.class;
             default:
                 throw new IndexOutOfBoundsException("columnIndex out of bounds");
         }
@@ -38,19 +43,21 @@ public class ItemPedidoTableModel extends GenericTableModel{
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        ItemPedido item = (ItemPedido) vDados.get(rowIndex);
+        Venda venda = (Venda) vDados.get(rowIndex);
         
         switch (columnIndex) {
             case 0:
-                return item.getC().getNomeCarne();
+                return venda.getIdVenda();
             case 1:
-                return item.getQuantidade();
+                return venda.getNomeCliente();
             case 2:
-                return item.getC().getValorCusto();
+                return venda.getValor();
             case 3:
-                return item.getC().getMarca();
+                return venda.getDesconto();
             case 4:
-                return item.getC().getTipo();
+                return venda.getDataCompra();
+            case 5:
+                return venda.getDataEntrega();
             default:
                 throw new IndexOutOfBoundsException("columnIndex out of bounds");
         }
@@ -58,32 +65,34 @@ public class ItemPedidoTableModel extends GenericTableModel{
 
     /*@Override
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
-        Carne carne = (Carne) vDados.get(rowIndex);
+        Cliente pessoa = (Cliente) vDados.get(rowIndex);
         switch (columnIndex) {
             case 0:
                 break;
             case 1:
-                carne.setNomeCarne((String) aValue);
+                pessoa.setNomeCliente((String) aValue);
                 break;
             case 2:
-                carne.setQuantidade((double) aValue);
+                pessoa.setCpfcnpj((String) aValue);
                 break;
             case 3:
-                carne.setValorCusto((double) aValue);
+                pessoa.setEmailCliente((String) aValue);
                 break;
             case 4:
-                carne.setValidade((Date) aValue);
+                pessoa.setTelefoneCliente((String) aValue);
+                break;
+            case 5:
+                pessoa.setTipo((String) aValue);
                 break;
             default:
                 throw new IndexOutOfBoundsException("columnIndex out of bounds");
         }
-        ControlEstoque.updateCarne(carne);
+        ControlCliente.updateCliente(pessoa);
     }*/
     
-    /*public void refresh(){
-        
+    public void refresh(){
         super.vDados.clear();
-        super.vDados.addAll();
+        super.vDados.addAll(ControlVenda.getListOfVendas());
         fireTableDataChanged();
-    }*/
+    }
 }

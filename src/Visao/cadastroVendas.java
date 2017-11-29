@@ -1,7 +1,15 @@
 package Visao;
 
+import ClassesDAO.ClienteDAO;
+import Controle.ControlCarne;
+import Controle.ControlCliente;
+import d.espetos.Carne;
+import d.espetos.Cliente;
+import java.util.List;
+
 public class CadastroVendas extends javax.swing.JFrame {
 
+    Carne[] vCarnes;
     public CadastroVendas() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -22,16 +30,18 @@ public class CadastroVendas extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jButtonCadastrar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        jLabelNome = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableItemsPedido = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTableCarnesDisponiveis = new javax.swing.JTable();
         jPanelPainel1 = new javax.swing.JPanel();
         jLabelCPF1 = new javax.swing.JLabel();
         jPanelPainel2 = new javax.swing.JPanel();
         jLabelCPF2 = new javax.swing.JLabel();
         jTextFieldCPF3 = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
+        jLabelPreço = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jPanelPainel3 = new javax.swing.JPanel();
@@ -40,6 +50,9 @@ public class CadastroVendas extends javax.swing.JFrame {
         jPanelPainel4 = new javax.swing.JPanel();
         jLabelCPF4 = new javax.swing.JLabel();
         jTextFieldCPF5 = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -78,21 +91,50 @@ public class CadastroVendas extends javax.swing.JFrame {
         getContentPane().add(jButtonCadastrar);
         jButtonCadastrar.setBounds(270, 30, 100, 30);
 
-        jLabel2.setText("NOME");
+        jLabel2.setText("NOME CLIENTE");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(20, 100, 70, 14);
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(100, 100, 260, 20);
-
-        jLabel4.setText("TELEFONE");
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(394, 100, 60, 14);
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(460, 100, 140, 20);
+        jLabel2.setBounds(20, 70, 100, 14);
+        getContentPane().add(jLabelNome);
+        jLabelNome.setBounds(120, 70, 240, 20);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jTableItemsPedido.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTableItemsPedido);
+
+        jTableCarnesDisponiveis.setModel(new Visao.CarnesDisponiveisTableModel(ControlCarne.getListOfCarnesDisponiveis()));
+        jScrollPane2.setViewportView(jTableCarnesDisponiveis);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE))
+                .addGap(173, 173, 173))
+        );
+
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(20, 150, 680, 250);
+        jPanel1.setBounds(20, 130, 680, 270);
 
         jPanelPainel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanelPainel1.setLayout(null);
@@ -121,10 +163,10 @@ public class CadastroVendas extends javax.swing.JFrame {
         jPanelPainel1.add(jPanelPainel2);
         jPanelPainel2.setBounds(20, 430, 230, 60);
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel7.setText("R$ 199,99");
-        jPanelPainel1.add(jLabel7);
-        jLabel7.setBounds(20, 20, 90, 30);
+        jLabelPreço.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabelPreço.setText("R$ 00,00");
+        jPanelPainel1.add(jLabelPreço);
+        jLabelPreço.setBounds(20, 20, 90, 30);
 
         getContentPane().add(jPanelPainel1);
         jPanelPainel1.setBounds(290, 430, 140, 60);
@@ -133,7 +175,7 @@ public class CadastroVendas extends javax.swing.JFrame {
         getContentPane().add(jButton1);
         jButton1.setBounds(590, 450, 100, 30);
 
-        jButton2.setText("REGISTRAR");
+        jButton2.setText("Adicionar");
         getContentPane().add(jButton2);
         jButton2.setBounds(460, 450, 100, 30);
 
@@ -143,7 +185,7 @@ public class CadastroVendas extends javax.swing.JFrame {
         jLabelCPF3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabelCPF3.setText("CÓDIGO DO PRODUTO");
         jPanelPainel3.add(jLabelCPF3);
-        jLabelCPF3.setBounds(50, 10, 130, 15);
+        jLabelCPF3.setBounds(10, 10, 130, 15);
 
         jTextFieldCPF4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -151,7 +193,7 @@ public class CadastroVendas extends javax.swing.JFrame {
             }
         });
         jPanelPainel3.add(jTextFieldCPF4);
-        jTextFieldCPF4.setBounds(30, 30, 160, 20);
+        jTextFieldCPF4.setBounds(40, 30, 70, 20);
 
         jPanelPainel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanelPainel4.setLayout(null);
@@ -172,14 +214,35 @@ public class CadastroVendas extends javax.swing.JFrame {
         jPanelPainel3.add(jPanelPainel4);
         jPanelPainel4.setBounds(20, 430, 230, 60);
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel3.setText("QUANTIDADE");
+        jPanelPainel3.add(jLabel3);
+        jLabel3.setBounds(160, 10, 90, 15);
+
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+        jPanelPainel3.add(jTextField1);
+        jTextField1.setBounds(160, 30, 60, 20);
+
+        jLabel4.setText("KG");
+        jPanelPainel3.add(jLabel4);
+        jLabel4.setBounds(230, 30, 30, 20);
+
         getContentPane().add(jPanelPainel3);
-        jPanelPainel3.setBounds(20, 430, 230, 60);
+        jPanelPainel3.setBounds(20, 430, 260, 60);
 
         setBounds(0, 0, 746, 554);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
-
+        List<Cliente> vList = ClienteDAO.getInstance().retrieveLikeCpf(jTextFieldCPF1.getText());
+        jLabelNome.setText(vList.get(0).getNomeCliente());
+        for(Cliente c : vList){
+            System.out.println("Cliente: " + c.getNomeCliente() + "cpf: " + c.getCpfcnpj());
+        }
     }//GEN-LAST:event_jButtonCadastrarActionPerformed
 
     private void jTextFieldCPF1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCPF1ActionPerformed
@@ -197,6 +260,10 @@ public class CadastroVendas extends javax.swing.JFrame {
     private void jTextFieldCPF5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCPF5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldCPF5ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -244,19 +311,24 @@ public class CadastroVendas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabelCPF;
     private javax.swing.JLabel jLabelCPF1;
     private javax.swing.JLabel jLabelCPF2;
     private javax.swing.JLabel jLabelCPF3;
     private javax.swing.JLabel jLabelCPF4;
+    private javax.swing.JLabel jLabelNome;
+    private javax.swing.JLabel jLabelPreço;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelPainel;
     private javax.swing.JPanel jPanelPainel1;
     private javax.swing.JPanel jPanelPainel2;
     private javax.swing.JPanel jPanelPainel3;
     private javax.swing.JPanel jPanelPainel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTableCarnesDisponiveis;
+    private javax.swing.JTable jTableItemsPedido;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextFieldCPF1;
     private javax.swing.JTextField jTextFieldCPF3;
     private javax.swing.JTextField jTextFieldCPF4;

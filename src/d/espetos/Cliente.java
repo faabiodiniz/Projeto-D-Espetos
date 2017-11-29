@@ -16,7 +16,7 @@ public class Cliente{
 	
     public Cliente(int id, String nomeCliente, String telefoneCliente, String emailCliente, String tipo, String cpf) 
     {
-        this.idCliente = id;
+        this.setIdCliente(id);
 	this.nomeCliente = nomeCliente;
 	this.telefoneCliente = telefoneCliente;
 	this.emailCliente = emailCliente;
@@ -67,5 +67,10 @@ public class Cliente{
     public void setCpfcnpj(String cpfcnpj) {
         this.cpfcnpj = cpfcnpj;
     }
+
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
+    }
+    
     
 }

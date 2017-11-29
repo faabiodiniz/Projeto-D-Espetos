@@ -5,18 +5,24 @@
  */
 package Visao;
 
+import Controle.ControlVenda;
+import d.espetos.Venda;
+
 /**
  *
  * @author faad2
  */
-public class ListVendas extends javax.swing.JFrame {
+public class ListVenda extends javax.swing.JFrame {
 
     /**
-     * Creates new form listClientes
+     * Creates new form ListVenda
      */
-    public ListVendas() {
+    Venda[] vContatos;
+    public ListVenda() {
         initComponents();
+        vContatos = ControlVenda.getListOfVendasAsArray();
         this.setLocationRelativeTo(null);
+        
     }
 
     /**
@@ -29,16 +35,10 @@ public class ListVendas extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        labelTituloBusca = new javax.swing.JLabel();
-        jScrollPaneClientes = new javax.swing.JScrollPane();
-        tableListarCliente = new javax.swing.JTable();
-        textFieldBuscaNome = new javax.swing.JTextField();
-        jLabelBuscaNome = new javax.swing.JLabel();
-        jButtonBuscarCliente = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jLabelBackground = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         barraMenu = new javax.swing.JMenuBar();
         menuPrincipal = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
@@ -56,84 +56,46 @@ public class ListVendas extends javax.swing.JFrame {
         jMenuSair = new javax.swing.JMenu();
         jMenuItemSair = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(723, 520));
         setResizable(false);
         getContentPane().setLayout(null);
 
-        jPanel1.setPreferredSize(new java.awt.Dimension(830, 520));
-        jPanel1.setLayout(null);
+        jTable1.setModel(new VendaTableModel(ControlVenda.getListOfVendas()));
+        jScrollPane1.setViewportView(jTable1);
 
-        labelTituloBusca.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        labelTituloBusca.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelTituloBusca.setText("VENDAS");
-        jPanel1.add(labelTituloBusca);
-        labelTituloBusca.setBounds(300, 0, 110, 20);
-
-        tableListarCliente.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "CODIGO", "CLIENTE", "CPF", "VALOR TOTAL", "DATA"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jScrollPaneClientes.setViewportView(tableListarCliente);
-
-        jPanel1.add(jScrollPaneClientes);
-        jScrollPaneClientes.setBounds(20, 70, 700, 290);
-        jPanel1.add(textFieldBuscaNome);
-        textFieldBuscaNome.setBounds(130, 30, 470, 20);
-
-        jLabelBuscaNome.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabelBuscaNome.setText("Buscar por Nome ");
-        jPanel1.add(jLabelBuscaNome);
-        jLabelBuscaNome.setBounds(20, 30, 100, 15);
-
-        jButtonBuscarCliente.setText("Buscar");
-        jPanel1.add(jButtonBuscarCliente);
-        jButtonBuscarCliente.setBounds(613, 30, 100, 23);
-
-        jButton1.setText("Editar");
+        jButton1.setText("Realizar Venda");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1);
-        jButton1.setBounds(280, 380, 160, 40);
 
-        jButton2.setText("Cadastrar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton2);
-        jButton2.setBounds(80, 380, 160, 40);
-
-        jButton3.setText("Remover");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton3);
-        jButton3.setBounds(470, 380, 160, 40);
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 680, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(286, 286, 286)
+                .addComponent(jButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(20, 20, 740, 440);
+        jPanel1.setBounds(20, 20, 680, 430);
 
-        jLabelBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/fundoTodos.jpg"))); // NOI18N
-        getContentPane().add(jLabelBackground);
-        jLabelBackground.setBounds(-20, -20, 830, 520);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/fundoTodos.jpg"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(-10, -30, 780, 530);
 
         menuPrincipal.setText("Menu Principal");
         menuPrincipal.addActionListener(new java.awt.event.ActionListener() {
@@ -153,11 +115,6 @@ public class ListVendas extends javax.swing.JFrame {
         barraMenu.add(menuPrincipal);
 
         menuClientes.setText("Clientes");
-        menuClientes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuClientesActionPerformed(evt);
-            }
-        });
 
         menuItemCadastroCliente.setText("Cadastrar Cliente");
         menuItemCadastroCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -243,21 +200,14 @@ public class ListVendas extends javax.swing.JFrame {
 
         setJMenuBar(barraMenu);
 
-        setBounds(0, 0, 806, 512);
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        CadastroVendas cadVendas = new CadastroVendas();
+        cadVendas.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        CadastroVendas cadVenda = new CadastroVendas();
-        cadVenda.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         MenuInicial principal = new MenuInicial();
@@ -272,7 +222,7 @@ public class ListVendas extends javax.swing.JFrame {
     }//GEN-LAST:event_menuPrincipalActionPerformed
 
     private void menuItemCadastroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemCadastroClienteActionPerformed
-        cadastroClientes clientes = new cadastroClientes();
+        CadClienteDialog clientes = new CadClienteDialog(this, true);
         clientes.setVisible(true);
     }//GEN-LAST:event_menuItemCadastroClienteActionPerformed
 
@@ -281,12 +231,6 @@ public class ListVendas extends javax.swing.JFrame {
         cliente.setVisible(true);
         dispose();
     }//GEN-LAST:event_menuItemListarClientesActionPerformed
-
-    private void menuClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuClientesActionPerformed
-        cadastroClientes clientes = new cadastroClientes();
-        clientes.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_menuClientesActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         CadastroFornecedor fornecedor = new CadastroFornecedor();
@@ -307,7 +251,7 @@ public class ListVendas extends javax.swing.JFrame {
     }//GEN-LAST:event_menuItemListarEstoqueActionPerformed
 
     private void menuItemRelatorioVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemRelatorioVendaActionPerformed
-        ListVendas vendas = new ListVendas();
+        ListVenda vendas = new ListVenda();
         vendas.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_menuItemRelatorioVendaActionPerformed
@@ -340,23 +284,20 @@ public class ListVendas extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ListVendas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListVenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ListVendas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListVenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ListVendas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListVenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ListVendas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListVenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ListVendas().setVisible(true);
+                new ListVenda().setVisible(true);
             }
         });
     }
@@ -364,11 +305,7 @@ public class ListVendas extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar barraMenu;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButtonBuscarCliente;
-    private javax.swing.JLabel jLabelBackground;
-    private javax.swing.JLabel jLabelBuscaNome;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenuFornecedores;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
@@ -376,8 +313,8 @@ public class ListVendas extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemSair;
     private javax.swing.JMenu jMenuSair;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPaneClientes;
-    private javax.swing.JLabel labelTituloBusca;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JMenu menuClientes;
     private javax.swing.JMenu menuEstoque;
     private javax.swing.JMenuItem menuItemCadastroCliente;
@@ -387,7 +324,5 @@ public class ListVendas extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuItemRelatorioVenda;
     private javax.swing.JMenu menuPrincipal;
     private javax.swing.JMenu menuVendas;
-    private javax.swing.JTable tableListarCliente;
-    private javax.swing.JTextField textFieldBuscaNome;
     // End of variables declaration//GEN-END:variables
 }

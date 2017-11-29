@@ -32,9 +32,9 @@ public class Pedido
 		return vList;
 	}
 	
-	public void addItem(ItemPedido item)
+	public void addItem(Carne c)
 	{
-		vList.add(item);
+		//vList.add(c);
 	}
 	
 	

@@ -11,7 +11,7 @@ import Visao.CadastroFornecedor;
 import Visao.ListClientes;
 import Visao.ListEstoque;
 import Visao.ListFornecedor;
-import Visao.ListVendas;
+import Visao.ListVenda;
 
 /**
  *
@@ -120,11 +120,6 @@ public class MenuInicial extends javax.swing.JFrame {
         barraMenu.add(menuPrincipal);
 
         menuClientes.setText("Clientes");
-        menuClientes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuClientesActionPerformed(evt);
-            }
-        });
 
         menuItemCadastroCliente.setText("Cadastrar Cliente");
         menuItemCadastroCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -226,7 +221,7 @@ public class MenuInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_menuItemListarEstoqueActionPerformed
 
     private void jButtonVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVendasActionPerformed
-        ListVendas vendas = new ListVendas();
+        ListVenda vendas = new ListVenda();
         vendas.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonVendasActionPerformed
@@ -250,7 +245,7 @@ public class MenuInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonFornecedorActionPerformed
 
     private void menuItemRelatorioVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemRelatorioVendaActionPerformed
-        ListVendas vendas = new ListVendas();
+        ListVenda vendas = new ListVenda();
         vendas.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_menuItemRelatorioVendaActionPerformed
@@ -271,14 +266,8 @@ public class MenuInicial extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_menuPrincipalActionPerformed
 
-    private void menuClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuClientesActionPerformed
-        cadastroClientes clientes = new cadastroClientes();
-        clientes.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_menuClientesActionPerformed
-
     private void menuItemCadastroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemCadastroClienteActionPerformed
-        cadastroClientes clientes = new cadastroClientes();
+        CadClienteDialog clientes = new CadClienteDialog(this, true);
         clientes.setVisible(true);
     }//GEN-LAST:event_menuItemCadastroClienteActionPerformed
 

@@ -20,10 +20,10 @@ import javax.swing.JOptionPane;
  *
  * @author faad2
  */
-public class EstoqueDAO extends ConexaoBD{
+public class CarneDAO extends ConexaoBD{
     ConexaoBD conexao = new ConexaoBD();
     Carne carne = new Carne();
-    private static EstoqueDAO instance;
+    private static CarneDAO instance;
     
     public void Salvar(String nome, double valor, String fabricacao, String validade, double quantidade, String tipo, String marca){
         instance.conexao();
@@ -46,9 +46,9 @@ public class EstoqueDAO extends ConexaoBD{
         instance.desconecta();
     }
     
-    public static EstoqueDAO getInstance() {
+    public static CarneDAO getInstance() {
         if (instance == null) {
-            instance = new EstoqueDAO();
+            instance = new CarneDAO();
             con = instance.conexao();
         }
         return instance;
@@ -129,5 +129,9 @@ public class EstoqueDAO extends ConexaoBD{
             stmt.close();
         } catch (SQLException ex) {
         }
+    }
+
+    public List<Carne> retrieveView() {
+        return this.retrieveGeneric("SELECT * FROM view_Carnesdisponiveis ORDER BY nome");
     }
 }

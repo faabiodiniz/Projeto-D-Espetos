@@ -5,7 +5,7 @@
  */
 package Visao;
 
-import Controle.ControlEstoque;
+import Controle.ControlCarne;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JFormattedTextField;
@@ -165,7 +165,7 @@ public class CadastrarCarne extends javax.swing.JFrame {
         date2 = jFormattedTextFieldDataVenci.getText();
         date1.replace("/", "-");
         date2.replace("/", "-");
-        ControlEstoque.criarEstoque(jTextFieldNomeCarne.getText(), Double.parseDouble(jFormattedTextFieldValor.getText()), date1, date2, Double.parseDouble(jFormattedTextFieldQtdCarne.getText()), jComboBoxTipo.getSelectedItem().toString(), jTextFieldMarca.getText());
+        ControlCarne.criarEstoque(jTextFieldNomeCarne.getText(), Double.parseDouble(jFormattedTextFieldValor.getText()), date1, date2, Double.parseDouble(jFormattedTextFieldQtdCarne.getText()), jComboBoxTipo.getSelectedItem().toString(), jTextFieldMarca.getText());
         jTextFieldNomeCarne.setText("");
         jFormattedTextFieldQtdCarne.setText("");
         jFormattedTextFieldDataValid.setText("");

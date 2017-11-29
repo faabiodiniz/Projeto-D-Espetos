@@ -15,21 +15,24 @@ public class ItemPedido extends Pedido
 {
 
 	private Carne c;
-	private int quantidade;
+	private double quantidade;
 	private float valorVenda;
 		
-	public ItemPedido(Cliente cliente, ArrayList<ItemPedido> vList, Carne c, int quantidade, float valorVenda) {
+	public ItemPedido(Cliente cliente, ArrayList<ItemPedido> vList, Carne c, double quantidade, float valorVenda) {
 		super(cliente, vList);
 		this.c = c;
 		this.quantidade = quantidade;
 		this.valorVenda = valorVenda;
 	}
 
+        //public ItemPedido() {
+        //}
+
 	public Carne getC() {
 		return c;
 	}
 
-	public int getQuantidade() {
+	public double getQuantidade() {
 		return quantidade;
 	}
 	

@@ -7,11 +7,9 @@ import d.espetos.ItemPedido;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
-import static javax.swing.UIManager.getInt;
 
 public class VendaDAO extends ConexaoBD
 {
@@ -23,14 +21,19 @@ public class VendaDAO extends ConexaoBD
     public void Salvar(Venda venda){
         instance.conexao();
         try {
-            PreparedStatement pst = conexao.con.prepareStatement("INSERT INTO Venda(codCliente, dataCompra, dataEntrega, desconto) values (?,?,?,?);" + "INSERTO INTO FormaDePagamento(valor, identificador) values (?,?)");
+            System.out.println("chegou no venda");
+            PreparedStatement pst = conexao.con.prepareStatement("INSERT INTO Venda(codCliente, dataCompra, dataEntrega, desconto) values (?,?,?,?);" + "INSERT INTO FormaDePagamento(valor, identificador) values (?,?)");
+            System.out.println("Criou a quary");
+            System.out.println("ID cliente: " + venda.getCliente().getIdCliente());
             pst.setInt(1, venda.getCliente().getIdCliente());
-            pst.setDate(2, (java.sql.Date) (Date) venda.getDataCompra());
-            pst.setDate(3, (java.sql.Date) (Date) venda.getDataEntrega());
+            System.out.println("ID cliente: " + venda.getCliente().getIdCliente());
+            pst.setDate(2, (java.sql.Date) venda.getDataCompra());
+            pst.setDate(3, (java.sql.Date) venda.getDataEntrega());
             pst.setDouble(4, venda.getDesconto());
             pst.setDouble(5, venda.getPagamento().getValorPago());
             pst.setInt(6, venda.getPagamento().getIdentificador());
             pst.execute();
+            System.out.println("passou pelo execute");
             
             JOptionPane.showMessageDialog(null,"Dados inseridos com sucesso");
         } catch (SQLException ex) {
@@ -51,7 +54,7 @@ public class VendaDAO extends ConexaoBD
                 pst.setInt(1, i.getC().getIdProduto());
                 pst.setInt(2, venda.getIdVenda());
                 pst.setDouble(3, i.getValorVenda());
-                pst.setInt(4, i.getQuantidade());
+                pst.setDouble(4, i.getQuantidade());
             } catch (SQLException ex)
             {
             throw new ExceptionTest();
@@ -71,8 +74,10 @@ public class VendaDAO extends ConexaoBD
     private Venda buildObject(ResultSet rs) {
         Venda venda = null;
         try {
-            venda = new Venda(rs.getInt("codVenda"), rs.getDouble("valor"), rs.getDouble("desconto"), rs.getDate("dataCompra"), rs.getDate("dataEntrega"), rs.getInt("codCliente"));
+            venda = new Venda(rs.getInt("codVenda"), rs.getDouble("valor"), rs.getDouble("desconto"), rs.getDate("dataEntrega"), rs.getDate("dataCompra") , rs.getString("nome"));
+            System.out.println("Nome cliente = " + venda.getNomeCliente());
         } catch (SQLException e) {
+            
         }
         return venda;
     }
@@ -95,7 +100,7 @@ public class VendaDAO extends ConexaoBD
     }
 
     public List<Venda> retrieveAll() {
-        return this.retrieveGeneric("SELECT * FROM Venda ORDER BY codVenda");
+        return this.retrieveGeneric("SELECT Venda.codVenda, Venda.valor, Venda.desconto, Venda.dataCompra, Venda.dataEntrega, Cliente.nome FROM Venda, Cliente WHERE Venda.codCliente = Cliente.codCliente");
     }
 
     //recuperar pelo codigo de cliente//

@@ -5,7 +5,7 @@
  */
 package Visao;
 
-import ClassesDAO.EstoqueDAO;
+import ClassesDAO.CarneDAO;
 import d.espetos.Carne;
 
 /**
@@ -172,7 +172,7 @@ public class EditarPrecoCarne extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Carne carne = new Carne(codTipo, jTextFieldNome.getText(), Double.parseDouble(jTextFieldPreNovo.getText()), jTextFieldTipo.getText());
-        EstoqueDAO.getInstance().update(carne);
+        CarneDAO.getInstance().update(carne);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

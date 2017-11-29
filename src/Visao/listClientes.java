@@ -24,7 +24,7 @@ public class ListClientes extends javax.swing.JFrame {
     public ListClientes() {
         initComponents();
         this.setLocationRelativeTo(null);
-        vContatos = ControlCliente.getListOfClientesAsArray();
+        //vContatos = ControlCliente.getListOfClientesAsArray();
         tableListarCliente.getColumnModel().getColumn(0).setPreferredWidth(30);
         ((ClienteTableModel) tableListarCliente.getModel()).refresh();
     }
@@ -48,7 +48,7 @@ public class ListClientes extends javax.swing.JFrame {
         jButtonEditCliente = new javax.swing.JButton();
         jButtonCadCliente = new javax.swing.JButton();
         jButtonRemoveCliente = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        jButtonAtualizar = new javax.swing.JButton();
         jLabelBackground = new javax.swing.JLabel();
         barraMenu = new javax.swing.JMenuBar();
         menuPrincipal = new javax.swing.JMenu();
@@ -134,14 +134,14 @@ public class ListClientes extends javax.swing.JFrame {
         jPanel1.add(jButtonRemoveCliente);
         jButtonRemoveCliente.setBounds(470, 380, 160, 40);
 
-        jButton1.setText("Atualizar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonAtualizar.setText("Atualizar");
+        jButtonAtualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonAtualizarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1);
-        jButton1.setBounds(630, 30, 100, 23);
+        jPanel1.add(jButtonAtualizar);
+        jButtonAtualizar.setBounds(630, 30, 100, 23);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(20, 20, 750, 440);
@@ -168,11 +168,6 @@ public class ListClientes extends javax.swing.JFrame {
         barraMenu.add(menuPrincipal);
 
         menuClientes.setText("Clientes");
-        menuClientes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuClientesActionPerformed(evt);
-            }
-        });
 
         menuItemCadastroCliente.setText("Cadastrar Cliente");
         menuItemCadastroCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -275,8 +270,10 @@ public class ListClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonEditClienteActionPerformed
 
     private void jButtonCadClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadClienteActionPerformed
-        cadastroClientes cadCliente = new cadastroClientes();
+        CadClienteDialog cadCliente = new CadClienteDialog(this, true);
         cadCliente.setVisible(true);
+        System.out.println("voltou aqui");
+        ((ClienteTableModel) tableListarCliente.getModel()).refresh();
     }//GEN-LAST:event_jButtonCadClienteActionPerformed
 
     private void jButtonRemoveClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoveClienteActionPerformed
@@ -301,6 +298,10 @@ public class ListClientes extends javax.swing.JFrame {
         ((ClienteTableModel) tableListarCliente.getModel()).refresh();
     }//GEN-LAST:event_jButtonBuscarClienteActionPerformed
 
+    private void jButtonAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtualizarActionPerformed
+        ((ClienteTableModel) tableListarCliente.getModel()).refresh();
+    }//GEN-LAST:event_jButtonAtualizarActionPerformed
+
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         MenuInicial principal = new MenuInicial();
         principal.setVisible(true);
@@ -314,7 +315,7 @@ public class ListClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_menuPrincipalActionPerformed
 
     private void menuItemCadastroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemCadastroClienteActionPerformed
-        cadastroClientes clientes = new cadastroClientes();
+        CadClienteDialog clientes = new CadClienteDialog(this, true);
         clientes.setVisible(true);
     }//GEN-LAST:event_menuItemCadastroClienteActionPerformed
 
@@ -323,12 +324,6 @@ public class ListClientes extends javax.swing.JFrame {
         cliente.setVisible(true);
         dispose();
     }//GEN-LAST:event_menuItemListarClientesActionPerformed
-
-    private void menuClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuClientesActionPerformed
-        cadastroClientes clientes = new cadastroClientes();
-        clientes.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_menuClientesActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         CadastroFornecedor fornecedor = new CadastroFornecedor();
@@ -349,13 +344,14 @@ public class ListClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_menuItemListarEstoqueActionPerformed
 
     private void menuItemRelatorioVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemRelatorioVendaActionPerformed
-        ListVendas vendas = new ListVendas();
+        ListVenda vendas = new ListVenda();
         vendas.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_menuItemRelatorioVendaActionPerformed
 
     private void menuItemRealizarVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemRealizarVendaActionPerformed
-        /*cadastroVendas venda = new cadastroVendas();
+        /*// TODO add your handling code here:
+        cadastroVendas venda = new cadastroVendas();
         venda.setVisible(true);
         dispose();*/
     }//GEN-LAST:event_menuItemRealizarVendaActionPerformed
@@ -363,10 +359,6 @@ public class ListClientes extends javax.swing.JFrame {
     private void jMenuItemSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSairActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jMenuItemSairActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        ((ClienteTableModel) tableListarCliente.getModel()).refresh();
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -406,7 +398,7 @@ public class ListClientes extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar barraMenu;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButtonAtualizar;
     private javax.swing.JButton jButtonBuscarCliente;
     private javax.swing.JButton jButtonCadCliente;
     private javax.swing.JButton jButtonEditCliente;

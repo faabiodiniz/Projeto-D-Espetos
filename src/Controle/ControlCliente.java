@@ -7,13 +7,7 @@ package Controle;
 
 import ClassesDAO.ClienteDAO;
 import d.espetos.Cliente;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
-
 /**
  *
  * @author faad2
@@ -51,6 +45,11 @@ public class ControlCliente {
         }
         return vetCliente;
     }    
+    
+    public static Cliente getClienteById(int id){
+        Cliente cliente = ClienteDAO.getInstance().retrieveById(id);
+        return cliente;
+    }
     
     public static void updateCliente(Cliente c){
         ClienteDAO.getInstance().update(c);
