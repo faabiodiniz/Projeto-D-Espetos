@@ -264,8 +264,9 @@ public class ListClientes extends javax.swing.JFrame {
         else{
             //Cliente cliente = new Cliente((Integer) tableListarCliente.getValueAt(linhaSelecionada, 0), tableListarCliente.getValueAt(linhaSelecionada, 1).toString(),tableListarCliente.getValueAt(linhaSelecionada, 4).toString(),tableListarCliente.getValueAt(linhaSelecionada, 3).toString(),tableListarCliente.getValueAt(linhaSelecionada, 5).toString(), tableListarCliente.getValueAt(linhaSelecionada, 2).toString());
             Cliente cliente = (Cliente) ((ClienteTableModel) tableListarCliente.getModel()).getItem(linhaSelecionada);
-            EditarCliente editCliente = new EditarCliente(cliente);
+            EditarClienteDialog editCliente = new EditarClienteDialog(cliente, this, true);
             editCliente.setVisible(true);
+            ((ClienteTableModel) tableListarCliente.getModel()).refresh();
         }
     }//GEN-LAST:event_jButtonEditClienteActionPerformed
 

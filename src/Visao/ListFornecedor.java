@@ -262,9 +262,56 @@ public class ListFornecedor extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null , "Escolha um fornecedor!");
         }
         else{
-            Fornecedor fornecedor = new Fornecedor((Integer)tableListarFornecedor.getValueAt(linhaSelecionada, 0), tableListarFornecedor.getValueAt(linhaSelecionada, 2).toString(), tableListarFornecedor.getValueAt(linhaSelecionada, 1).toString(), tableListarFornecedor.getValueAt(linhaSelecionada, 3).toString(), tableListarFornecedor.getValueAt(linhaSelecionada, 4).toString(), tableListarFornecedor.getValueAt(linhaSelecionada, 5).toString(), tableListarFornecedor.getValueAt(linhaSelecionada, 7).toString(), (Integer)tableListarFornecedor.getValueAt(linhaSelecionada, 6), tableListarFornecedor.getValueAt(linhaSelecionada, 8).toString(), tableListarFornecedor.getValueAt(linhaSelecionada, 9).toString());
-            EditarFornecedor editForne = new EditarFornecedor(fornecedor);
+            String cnpj = "";
+            String nome = "";
+            String email = "";
+            String telefone = "";
+            String rua = "";
+            String bairro = "";
+            int numero = 0;
+            String cidade = "";
+            String estado = "";
+            try {
+                cnpj = tableListarFornecedor.getValueAt(linhaSelecionada, 2).toString().trim();
+            } catch (NullPointerException ex) {
+            }
+            try {
+                nome = tableListarFornecedor.getValueAt(linhaSelecionada, 1).toString().trim();
+            } catch (NullPointerException ex) {
+            }
+            try {
+                email = tableListarFornecedor.getValueAt(linhaSelecionada, 3).toString().trim();
+            } catch (NullPointerException ex) {
+            }
+            try {
+                telefone = tableListarFornecedor.getValueAt(linhaSelecionada, 4).toString().trim();
+            } catch  (NullPointerException ex) {
+            }
+            try {
+                rua = tableListarFornecedor.getValueAt(linhaSelecionada, 5).toString().trim();
+            } catch  (NullPointerException ex) {
+            }
+            try {
+                bairro = tableListarFornecedor.getValueAt(linhaSelecionada, 7).toString().trim();
+            } catch  (NullPointerException ex) {
+            }
+            try {
+                numero = (Integer)tableListarFornecedor.getValueAt(linhaSelecionada, 6);
+            } catch  (NullPointerException ex) {
+            }
+            try {
+                cidade = tableListarFornecedor.getValueAt(linhaSelecionada, 8).toString().trim();
+            } catch  (NullPointerException ex) {
+            }
+            try {
+                estado = tableListarFornecedor.getValueAt(linhaSelecionada, 9).toString().trim();
+            } catch  (NullPointerException ex) {
+            }
+            
+            Fornecedor fornecedor = new Fornecedor((Integer)tableListarFornecedor.getValueAt(linhaSelecionada, 0), cnpj, nome, email, telefone, rua, bairro, numero, cidade, estado);
+            EditarFornecedorDialog editForne = new EditarFornecedorDialog(fornecedor, this, true);
             editForne.setVisible(true);
+            ((FornecedorTableModel) tableListarFornecedor.getModel()).refresh();
         }
         
     // TODO add your handling code here:
