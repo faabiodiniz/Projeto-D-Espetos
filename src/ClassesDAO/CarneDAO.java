@@ -8,7 +8,6 @@ package ClassesDAO;
 import Controle.ConexaoBD;
 import d.espetos.Carne;
 import d.espetos.ExceptionTest;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -97,7 +96,6 @@ public class CarneDAO extends ConexaoBD{
             stmt = con.prepareStatement(query);
             rs = this.getResultSet(stmt);
             while (rs.next()) {
-                System.out.println("Carne: " + buildObjectView(rs).getNomeCarne());
                 carnes.add(buildObjectView(rs));
             }
             rs.close();

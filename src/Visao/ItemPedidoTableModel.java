@@ -5,17 +5,26 @@
  */
 package Visao;
 
-import ClassesDAO.VendaDAO;
-import Controle.ControlVenda;
-import d.espetos.Carne;
 import d.espetos.ItemPedido;
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
+import javax.swing.table.AbstractTableModel;
 
-public class ItemPedidoTableModel extends GenericTableModel{
-    public ItemPedidoTableModel(List vDados) {
-        // Use esse vetor de Strings para definir os titulos das colunas:
-        super(vDados, new String[]{"Nome", "QTD (KG)", "Valor(R$)", "Marca", "Tipo"});
+public class ItemPedidoTableModel extends AbstractTableModel{
+    private List<ItemPedido> vDados;
+    private String[] colunas = {"Nome" , "QTD(KG)" ,"Valor","Tipo"};
+
+    public ItemPedidoTableModel(){
+        vDados = new ArrayList<ItemPedido>();
+    }
+    
+    public void addRow(ItemPedido ip){
+        this.vDados.add(ip);
+        this.fireTableDataChanged();
+    }
+ 
+    public String getColumnName(int num){
+        return this.colunas[num];
     }
 
     @Override
@@ -55,6 +64,10 @@ public class ItemPedidoTableModel extends GenericTableModel{
                 throw new IndexOutOfBoundsException("columnIndex out of bounds");
         }
     }
+    public void removeRow(int linha){
+        this.vDados.remove(linha);
+        this.fireTableRowsDeleted(linha, linha);
+    }
 
     /*@Override
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
@@ -86,4 +99,14 @@ public class ItemPedidoTableModel extends GenericTableModel{
         super.vDados.addAll();
         fireTableDataChanged();
     }*/
+
+    @Override
+    public int getRowCount() {
+        return vDados.size();
+    }
+
+    @Override
+    public int getColumnCount() {
+        return colunas.length;    
+    }
 }

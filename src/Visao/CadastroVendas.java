@@ -2,17 +2,19 @@ package Visao;
 
 import ClassesDAO.ClienteDAO;
 import Controle.ControlCarne;
-import Controle.ControlCliente;
 import d.espetos.Carne;
 import d.espetos.Cliente;
+import d.espetos.ItemPedido;
+import java.util.ArrayList;
 import java.util.List;
 
 public class CadastroVendas extends javax.swing.JFrame {
-
+    private int linha;
     Carne[] vCarnes;
     public CadastroVendas() {
         initComponents();
         this.setLocationRelativeTo(null);
+        
     }
 
     /**
@@ -99,20 +101,15 @@ public class CadastroVendas extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jTableItemsPedido.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
+        jTableItemsPedido.setModel(new ItemPedidoTableModel());
         jScrollPane1.setViewportView(jTableItemsPedido);
 
         jTableCarnesDisponiveis.setModel(new CarnesDisponiveisTableModel(ControlCarne.getListOfCarnesView()));
+        jTableCarnesDisponiveis.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableCarnesDisponiveisMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTableCarnesDisponiveis);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -120,21 +117,18 @@ public class CadastroVendas extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 513, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE))
-                .addGap(173, 173, 173))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(20, 130, 680, 270);
+        jPanel1.setBounds(20, 130, 880, 380);
 
         jPanelPainel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanelPainel1.setLayout(null);
@@ -166,18 +160,23 @@ public class CadastroVendas extends javax.swing.JFrame {
         jLabelPreço.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabelPreço.setText("R$ 00,00");
         jPanelPainel1.add(jLabelPreço);
-        jLabelPreço.setBounds(20, 20, 90, 30);
+        jLabelPreço.setBounds(30, 20, 90, 30);
 
         getContentPane().add(jPanelPainel1);
-        jPanelPainel1.setBounds(290, 430, 140, 60);
+        jPanelPainel1.setBounds(310, 540, 140, 60);
 
         jButton1.setText("FINALIZAR");
         getContentPane().add(jButton1);
-        jButton1.setBounds(590, 450, 100, 30);
+        jButton1.setBounds(570, 560, 100, 30);
 
-        jButton2.setText("Adicionar");
+        jButton2.setText("ADICIONAR");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton2);
-        jButton2.setBounds(460, 450, 100, 30);
+        jButton2.setBounds(460, 560, 100, 30);
 
         jPanelPainel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanelPainel3.setLayout(null);
@@ -188,6 +187,7 @@ public class CadastroVendas extends javax.swing.JFrame {
         jLabelCPF3.setBounds(10, 10, 130, 15);
 
         jTextFieldCodProduto.setEditable(false);
+        jTextFieldCodProduto.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextFieldCodProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldCodProdutoActionPerformed(evt);
@@ -233,17 +233,14 @@ public class CadastroVendas extends javax.swing.JFrame {
         jLabel4.setBounds(230, 30, 30, 20);
 
         getContentPane().add(jPanelPainel3);
-        jPanelPainel3.setBounds(20, 430, 260, 60);
+        jPanelPainel3.setBounds(30, 540, 260, 60);
 
-        setBounds(0, 0, 746, 554);
+        setBounds(0, 0, 930, 657);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
         List<Cliente> vList = ClienteDAO.getInstance().retrieveLikeCpf(jTextFieldCPF1.getText());
         jLabelNome.setText(vList.get(0).getNomeCliente());
-        for(Cliente c : vList){
-            System.out.println("Cliente: " + c.getNomeCliente() + "cpf: " + c.getCpfcnpj());
-        }
     }//GEN-LAST:event_jButtonCadastrarActionPerformed
 
     private void jTextFieldCPF1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCPF1ActionPerformed
@@ -255,7 +252,8 @@ public class CadastroVendas extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldCPF3ActionPerformed
 
     private void jTextFieldCodProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCodProdutoActionPerformed
-        // TODO add your handling code here:
+        linha = jTableCarnesDisponiveis.getSelectedRow();
+        jTextFieldCodProduto.setText(jTableCarnesDisponiveis.getValueAt(linha, 0).toString());
     }//GEN-LAST:event_jTextFieldCodProdutoActionPerformed
 
     private void jTextFieldCPF5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCPF5ActionPerformed
@@ -265,6 +263,16 @@ public class CadastroVendas extends javax.swing.JFrame {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jTableCarnesDisponiveisMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableCarnesDisponiveisMouseClicked
+        linha = jTableCarnesDisponiveis.getSelectedRow();
+        jTextFieldCodProduto.setText(jTableCarnesDisponiveis.getValueAt(linha, 0).toString());        
+    }//GEN-LAST:event_jTableCarnesDisponiveisMouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        List<ItemPedido> list = new ArrayList<>();
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

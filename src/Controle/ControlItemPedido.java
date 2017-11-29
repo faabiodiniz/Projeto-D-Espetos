@@ -5,10 +5,16 @@
  */
 package Controle;
 
+import d.espetos.ItemPedido;
+import java.util.List;
+
 /**
  *
  * @author faad2
  */
 public class ControlItemPedido {
-    
+     /*public static List<ItemPedido> getListOfItensPedidos(){
+         
+         return 0;
+    }*/
 }
