@@ -5,23 +5,19 @@
  */
 package Visao;
 
-import ClassesDAO.FornecedorDAO;
-import Controle.ConexaoBD;
 import Controle.ControlFornecedor;
-import d.espetos.Fornecedor;
 
 /**
  *
- * @author faad2
+ * @author rafae
  */
-public class CadastroFornecedor extends javax.swing.JFrame {
-    Fornecedor fornecedor = new Fornecedor();
-    ConexaoBD conexao = new ConexaoBD();
-    FornecedorDAO forDao = new FornecedorDAO();
+public class CadFornecedorDialog extends javax.swing.JDialog {
+
     /**
-     * Creates new form cadastroFornecedor
+     * Creates new form CadFornecedorDialog
      */
-    public CadastroFornecedor() {
+    public CadFornecedorDialog(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -59,9 +55,6 @@ public class CadastroFornecedor extends javax.swing.JFrame {
         buttonCancelarCadastro = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(363, 395));
-        setResizable(false);
-        getContentPane().setLayout(null);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel1.setLayout(null);
@@ -92,11 +85,11 @@ public class CadastroFornecedor extends javax.swing.JFrame {
             }
         });
         jPanel1.add(textFieldCadNome);
-        textFieldCadNome.setBounds(70, 20, 190, 20);
+        textFieldCadNome.setBounds(70, 20, 240, 22);
         jPanel1.add(textFieldCadCNPJ);
-        textFieldCadCNPJ.setBounds(70, 60, 190, 20);
+        textFieldCadCNPJ.setBounds(70, 60, 240, 22);
         jPanel1.add(textFieldCadTel);
-        textFieldCadTel.setBounds(70, 100, 190, 20);
+        textFieldCadTel.setBounds(70, 100, 240, 22);
 
         textFieldCadEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,7 +97,7 @@ public class CadastroFornecedor extends javax.swing.JFrame {
             }
         });
         jPanel1.add(textFieldCadEmail);
-        textFieldCadEmail.setBounds(70, 240, 190, 20);
+        textFieldCadEmail.setBounds(70, 240, 240, 22);
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel1.setText("Rua:");
@@ -119,35 +112,30 @@ public class CadastroFornecedor extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel7.setText("Número:");
         jPanel1.add(jLabel7);
-        jLabel7.setBounds(220, 130, 60, 40);
+        jLabel7.setBounds(230, 130, 60, 40);
 
         jLabel8.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel8.setText("UF:");
         jPanel1.add(jLabel8);
-        jLabel8.setBounds(180, 200, 50, 20);
+        jLabel8.setBounds(240, 200, 50, 20);
         jPanel1.add(jTextFieldRuaFor);
-        jTextFieldRuaFor.setBounds(70, 140, 150, 20);
+        jTextFieldRuaFor.setBounds(70, 140, 150, 22);
         jPanel1.add(jTextFieldNumFor);
-        jTextFieldNumFor.setBounds(270, 140, 30, 20);
+        jTextFieldNumFor.setBounds(280, 140, 30, 22);
         jPanel1.add(jTextFieldCidFor);
-        jTextFieldCidFor.setBounds(70, 200, 100, 20);
+        jTextFieldCidFor.setBounds(70, 200, 150, 22);
         jPanel1.add(jTextFieldUfFor);
-        jTextFieldUfFor.setBounds(210, 200, 30, 20);
+        jTextFieldUfFor.setBounds(270, 200, 40, 22);
 
         jLabel9.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel9.setText("Bairro: ");
         jPanel1.add(jLabel9);
         jLabel9.setBounds(20, 170, 40, 14);
         jPanel1.add(jTextFieldBairroFor);
-        jTextFieldBairroFor.setBounds(70, 170, 230, 20);
-
-        getContentPane().add(jPanel1);
-        jPanel1.setBounds(30, 30, 310, 280);
+        jTextFieldBairroFor.setBounds(70, 170, 230, 22);
 
         labelCadFornecedor.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         labelCadFornecedor.setText("Cadastrar Fornecedor");
-        getContentPane().add(labelCadFornecedor);
-        labelCadFornecedor.setBounds(40, 10, 140, 20);
 
         buttonCadastrarFuncionario.setText("Cadastrar");
         buttonCadastrarFuncionario.addActionListener(new java.awt.event.ActionListener() {
@@ -155,8 +143,6 @@ public class CadastroFornecedor extends javax.swing.JFrame {
                 buttonCadastrarFuncionarioActionPerformed(evt);
             }
         });
-        getContentPane().add(buttonCadastrarFuncionario);
-        buttonCadastrarFuncionario.setBounds(70, 320, 100, 30);
 
         buttonCancelarCadastro.setText("Cancelar");
         buttonCancelarCadastro.addActionListener(new java.awt.event.ActionListener() {
@@ -164,8 +150,41 @@ public class CadastroFornecedor extends javax.swing.JFrame {
                 buttonCancelarCadastroActionPerformed(evt);
             }
         });
-        getContentPane().add(buttonCancelarCadastro);
-        buttonCancelarCadastro.setBounds(180, 320, 90, 30);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(61, 61, 61)
+                        .addComponent(buttonCadastrarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(buttonCancelarCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(labelCadFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(100, 100, 100))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addComponent(labelCadFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(buttonCadastrarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonCancelarCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -195,10 +214,6 @@ public class CadastroFornecedor extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_buttonCancelarCadastroActionPerformed
 
-    private void jTextFieldBairroForActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldBairroForActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldBairroForActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -216,21 +231,27 @@ public class CadastroFornecedor extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CadastroFornecedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadFornecedorDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CadastroFornecedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadFornecedorDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CadastroFornecedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadFornecedorDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CadastroFornecedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadFornecedorDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
 
-        /* Create and display the form */
+        /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CadastroFornecedor().setVisible(true);
+                CadFornecedorDialog dialog = new CadFornecedorDialog(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }

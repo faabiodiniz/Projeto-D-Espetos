@@ -5,30 +5,20 @@
  */
 package Visao;
 
-import ClassesDAO.CarneDAO;
-import Controle.ControlCarne;
-import d.espetos.Carne;
-import javax.swing.JOptionPane;
+import Controle.ConexaoBD;
 
 /**
  *
  * @author faad2
  */
-public class ListEstoque extends javax.swing.JFrame {
-
+public class MenuInicial extends javax.swing.JFrame {
+    ConexaoBD conecta = new ConexaoBD();
     /**
-     * Creates new form listClientes
+     * Creates new form menuInicial
      */
-    Carne[] vCarne;
-    private int linhaSelecionada;
-    public ListEstoque() {
+    public MenuInicial() {
         initComponents();
         this.setLocationRelativeTo(null);
-        vCarne = ControlCarne.getListOfCarneAsArray();
-        tableListarCarne.getColumnModel().getColumn(0).setPreferredWidth(30);
-        tableListarCarne.getColumnModel().getColumn(3).setPreferredWidth(40);
-        tableListarCarne.getColumnModel().getColumn(2).setPreferredWidth(40);
-        ((CarneTableModel) tableListarCarne.getModel()).refresh();
     }
 
     /**
@@ -40,18 +30,11 @@ public class ListEstoque extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        labelTituloBusca = new javax.swing.JLabel();
-        jScrollPaneClientes = new javax.swing.JScrollPane();
-        tableListarCarne = new javax.swing.JTable();
-        textFieldBuscaNome = new javax.swing.JTextField();
-        jLabelBuscaNome = new javax.swing.JLabel();
-        jButtonBuscarCliente = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jLabelBackground = new javax.swing.JLabel();
+        jButtonVendas = new javax.swing.JButton();
+        jButtonEstoque = new javax.swing.JButton();
+        jButtonFornecedor = new javax.swing.JButton();
+        jButtonCliente = new javax.swing.JButton();
+        jLabelFundoMenus = new javax.swing.JLabel();
         barraMenu = new javax.swing.JMenuBar();
         menuPrincipal = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
@@ -73,79 +56,45 @@ public class ListEstoque extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(null);
 
-        jPanel1.setPreferredSize(new java.awt.Dimension(830, 520));
-        jPanel1.setLayout(null);
-
-        labelTituloBusca.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        labelTituloBusca.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelTituloBusca.setText("ESTOQUE");
-        jPanel1.add(labelTituloBusca);
-        labelTituloBusca.setBounds(300, 0, 110, 20);
-
-        tableListarCarne.setModel(new CarneTableModel(ControlCarne.getListOfCarne()));
-        tableListarCarne.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tableListarCarneMouseClicked(evt);
-            }
-        });
-        jScrollPaneClientes.setViewportView(tableListarCarne);
-
-        jPanel1.add(jScrollPaneClientes);
-        jScrollPaneClientes.setBounds(20, 70, 700, 290);
-        jPanel1.add(textFieldBuscaNome);
-        textFieldBuscaNome.setBounds(120, 30, 390, 20);
-
-        jLabelBuscaNome.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabelBuscaNome.setText("Buscar por Nome ");
-        jPanel1.add(jLabelBuscaNome);
-        jLabelBuscaNome.setBounds(20, 30, 100, 15);
-
-        jButtonBuscarCliente.setText("Buscar");
-        jPanel1.add(jButtonBuscarCliente);
-        jButtonBuscarCliente.setBounds(520, 30, 90, 23);
-
-        jButton1.setText("Editar Preço");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonVendas.setText("Vendas");
+        jButtonVendas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonVendasActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1);
-        jButton1.setBounds(280, 380, 160, 40);
+        getContentPane().add(jButtonVendas);
+        jButtonVendas.setBounds(200, 180, 140, 80);
 
-        jButton2.setText("Adicionar Carne");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonEstoque.setText("Estoque");
+        jButtonEstoque.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButtonEstoqueActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2);
-        jButton2.setBounds(80, 380, 160, 40);
+        getContentPane().add(jButtonEstoque);
+        jButtonEstoque.setBounds(370, 180, 140, 80);
 
-        jButton3.setText("Remover");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jButtonFornecedor.setText("Fornecedores");
+        jButtonFornecedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jButtonFornecedorActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3);
-        jButton3.setBounds(470, 380, 160, 40);
+        getContentPane().add(jButtonFornecedor);
+        jButtonFornecedor.setBounds(540, 180, 140, 80);
 
-        jButton4.setText("Atualizar");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        jButtonCliente.setText("Clientes");
+        jButtonCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                jButtonClienteActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton4);
-        jButton4.setBounds(623, 30, 90, 23);
+        getContentPane().add(jButtonCliente);
+        jButtonCliente.setBounds(30, 180, 140, 80);
 
-        getContentPane().add(jPanel1);
-        jPanel1.setBounds(20, 20, 740, 440);
-
-        jLabelBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/fundoTodos.jpg"))); // NOI18N
-        getContentPane().add(jLabelBackground);
-        jLabelBackground.setBounds(-20, -20, 830, 520);
+        jLabelFundoMenus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/fundoTodos.jpg"))); // NOI18N
+        getContentPane().add(jLabelFundoMenus);
+        jLabelFundoMenus.setBounds(-10, -20, 750, 490);
 
         menuPrincipal.setText("Menu Principal");
         menuPrincipal.addActionListener(new java.awt.event.ActionListener() {
@@ -250,46 +199,54 @@ public class ListEstoque extends javax.swing.JFrame {
 
         setJMenuBar(barraMenu);
 
-        setBounds(0, 0, 806, 512);
+        setBounds(0, 0, 735, 517);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        linhaSelecionada = tableListarCarne.getSelectedRow();
-        if(linhaSelecionada == -1){
-            JOptionPane.showMessageDialog(null, "Selecione uma carne!");
-        }
-        else{
-            Carne carne = new Carne((Integer)tableListarCarne.getValueAt(linhaSelecionada, 6), tableListarCarne.getValueAt(linhaSelecionada, 1).toString(), (double) (tableListarCarne.getValueAt(linhaSelecionada, 3)), tableListarCarne.getValueAt(linhaSelecionada, 7).toString());
-            EditarPrecoCarne editCarne = new EditarPrecoCarne(carne);
-            editCarne.setVisible(true);
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void menuItemListarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemListarClientesActionPerformed
+        ListClientes cliente = new ListClientes();
+        cliente.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_menuItemListarClientesActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        CadastrarCarne cadCarne = new CadastrarCarne();
-        cadCarne.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void menuItemListarEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemListarEstoqueActionPerformed
+        ListEstoque estoque = new ListEstoque();
+        estoque.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_menuItemListarEstoqueActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        int linhaSelecionada = tableListarCarne.getSelectedRow();
-        if(linhaSelecionada == -1){
-            JOptionPane.showMessageDialog(null, "Escolha uma carne!");
-        }
-        else{
-            Carne carne = new Carne((Integer)tableListarCarne.getValueAt(linhaSelecionada,0), (Integer)tableListarCarne.getValueAt(linhaSelecionada, 6));
-            CarneDAO.getInstance().delete(carne);
-            ((CarneTableModel) tableListarCarne.getModel()).refresh();
-        }
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void jButtonVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVendasActionPerformed
+        ListVenda vendas = new ListVenda();
+        vendas.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButtonVendasActionPerformed
 
-    private void tableListarCarneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableListarCarneMouseClicked
-        int linha = tableListarCarne.getSelectedRow();
-        Carne c = (Carne) ((CarneTableModel) tableListarCarne.getModel()).getItem(linha);
-    }//GEN-LAST:event_tableListarCarneMouseClicked
+    private void jButtonEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEstoqueActionPerformed
+        ListEstoque cliente = new ListEstoque();
+        cliente.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButtonEstoqueActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        ((CarneTableModel) tableListarCarne.getModel()).refresh();
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void jButtonClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClienteActionPerformed
+        ListClientes cliente = new ListClientes();
+        cliente.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButtonClienteActionPerformed
+
+    private void jButtonFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFornecedorActionPerformed
+        ListFornecedor fornecedor = new ListFornecedor();
+        fornecedor.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButtonFornecedorActionPerformed
+
+    private void menuItemRelatorioVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemRelatorioVendaActionPerformed
+        ListVenda vendas = new ListVenda();
+        vendas.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_menuItemRelatorioVendaActionPerformed
+
+    private void jMenuItemSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSairActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jMenuItemSairActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         MenuInicial principal = new MenuInicial();
@@ -308,14 +265,8 @@ public class ListEstoque extends javax.swing.JFrame {
         clientes.setVisible(true);
     }//GEN-LAST:event_menuItemCadastroClienteActionPerformed
 
-    private void menuItemListarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemListarClientesActionPerformed
-        ListClientes cliente = new ListClientes();
-        cliente.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_menuItemListarClientesActionPerformed
-
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        CadastroFornecedor fornecedor = new CadastroFornecedor();
+        CadFornecedorDialog fornecedor = new CadFornecedorDialog(this, true);
         fornecedor.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
@@ -323,20 +274,8 @@ public class ListEstoque extends javax.swing.JFrame {
         ListFornecedor fornecedor = new ListFornecedor();
         fornecedor.setVisible(true);
         dispose();
-
+        
     }//GEN-LAST:event_jMenuItem2ActionPerformed
-
-    private void menuItemListarEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemListarEstoqueActionPerformed
-        ListEstoque estoque = new ListEstoque();
-        estoque.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_menuItemListarEstoqueActionPerformed
-
-    private void menuItemRelatorioVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemRelatorioVendaActionPerformed
-        ListVenda vendas = new ListVenda();
-        vendas.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_menuItemRelatorioVendaActionPerformed
 
     private void menuItemRealizarVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemRealizarVendaActionPerformed
         /*// TODO add your handling code here:
@@ -344,10 +283,6 @@ public class ListEstoque extends javax.swing.JFrame {
         venda.setVisible(true);
         dispose();*/
     }//GEN-LAST:event_menuItemRealizarVendaActionPerformed
-
-    private void jMenuItemSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSairActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_jMenuItemSairActionPerformed
 
     /**
      * @param args the command line arguments
@@ -366,49 +301,38 @@ public class ListEstoque extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ListEstoque.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ListEstoque.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ListEstoque.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ListEstoque.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ListEstoque().setVisible(true);
+                new MenuInicial().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar barraMenu;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButtonBuscarCliente;
-    private javax.swing.JLabel jLabelBackground;
-    private javax.swing.JLabel jLabelBuscaNome;
+    private javax.swing.JButton jButtonCliente;
+    private javax.swing.JButton jButtonEstoque;
+    private javax.swing.JButton jButtonFornecedor;
+    private javax.swing.JButton jButtonVendas;
+    private javax.swing.JLabel jLabelFundoMenus;
     private javax.swing.JMenu jMenuFornecedores;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItemSair;
     private javax.swing.JMenu jMenuSair;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPaneClientes;
-    private javax.swing.JLabel labelTituloBusca;
     private javax.swing.JMenu menuClientes;
     private javax.swing.JMenu menuEstoque;
     private javax.swing.JMenuItem menuItemCadastroCliente;
@@ -418,7 +342,5 @@ public class ListEstoque extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuItemRelatorioVenda;
     private javax.swing.JMenu menuPrincipal;
     private javax.swing.JMenu menuVendas;
-    private javax.swing.JTable tableListarCarne;
-    private javax.swing.JTextField textFieldBuscaNome;
     // End of variables declaration//GEN-END:variables
 }

@@ -105,7 +105,7 @@ public class ListFornecedor extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButtonBuscarCliente);
-        jButtonBuscarCliente.setBounds(530, 30, 80, 23);
+        jButtonBuscarCliente.setBounds(530, 30, 80, 25);
 
         jButton1.setText("Editar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -141,7 +141,7 @@ public class ListFornecedor extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton4);
-        jButton4.setBounds(620, 30, 90, 23);
+        jButton4.setBounds(620, 30, 90, 25);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(20, 20, 740, 440);
@@ -271,8 +271,9 @@ public class ListFornecedor extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        CadastroFornecedor cadFor = new CadastroFornecedor();
+        CadFornecedorDialog cadFor = new CadFornecedorDialog(this, true);
         cadFor.setVisible(true);
+        ((FornecedorTableModel) tableListarFornecedor.getModel()).refresh();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -324,7 +325,7 @@ public class ListFornecedor extends javax.swing.JFrame {
     }//GEN-LAST:event_menuItemListarClientesActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        CadastroFornecedor fornecedor = new CadastroFornecedor();
+        CadFornecedorDialog fornecedor = new CadFornecedorDialog(this,true);
         fornecedor.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 

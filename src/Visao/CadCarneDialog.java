@@ -6,21 +6,20 @@
 package Visao;
 
 import Controle.ControlCarne;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import javax.swing.JFormattedTextField;
 
 /**
  *
- * @author faad2
+ * @author rafae
  */
-public class CadastrarCarne extends javax.swing.JFrame {
+public class CadCarneDialog extends javax.swing.JDialog {
     private String date1;
     private String date2;
+
     /**
-     * Creates new form CadastrarCarne
+     * Creates new form CadCarneDialog
      */
-    public CadastrarCarne() {
+    public CadCarneDialog(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -54,24 +53,21 @@ public class CadastrarCarne extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(375, 300));
-        setResizable(false);
-        getContentPane().setLayout(null);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel2.setLayout(null);
 
         jLabel1.setText("Nome: ");
         jPanel2.add(jLabel1);
-        jLabel1.setBounds(10, 20, 50, 14);
+        jLabel1.setBounds(10, 20, 50, 16);
 
         jLabel2.setText("Data de Fabricação:");
         jPanel2.add(jLabel2);
-        jLabel2.setBounds(10, 130, 130, 14);
+        jLabel2.setBounds(10, 130, 130, 16);
 
         jLabel3.setText("Data de vencimento: ");
         jPanel2.add(jLabel3);
-        jLabel3.setBounds(10, 170, 120, 14);
+        jLabel3.setBounds(10, 170, 130, 16);
 
         jComboBoxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bovina", "Suina", "Frango" }));
         jComboBoxTipo.addActionListener(new java.awt.event.ActionListener() {
@@ -80,19 +76,19 @@ public class CadastrarCarne extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jComboBoxTipo);
-        jComboBoxTipo.setBounds(240, 20, 70, 20);
+        jComboBoxTipo.setBounds(240, 20, 70, 22);
 
         jLabel4.setText("Tipo:");
         jPanel2.add(jLabel4);
-        jLabel4.setBounds(210, 20, 34, 14);
+        jLabel4.setBounds(210, 20, 34, 16);
 
         jLabel5.setText("Quantidade:");
         jPanel2.add(jLabel5);
-        jLabel5.setBounds(10, 60, 80, 14);
+        jLabel5.setBounds(10, 60, 80, 16);
 
         jLabel6.setText("KG");
         jPanel2.add(jLabel6);
-        jLabel6.setBounds(170, 60, 30, 14);
+        jLabel6.setBounds(170, 60, 30, 16);
 
         jTextFieldNomeCarne.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,11 +96,11 @@ public class CadastrarCarne extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jTextFieldNomeCarne);
-        jTextFieldNomeCarne.setBounds(70, 20, 130, 20);
+        jTextFieldNomeCarne.setBounds(70, 20, 130, 22);
 
         jFormattedTextFieldDataVenci.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
         jPanel2.add(jFormattedTextFieldDataVenci);
-        jFormattedTextFieldDataVenci.setBounds(150, 170, 160, 20);
+        jFormattedTextFieldDataVenci.setBounds(150, 170, 160, 22);
 
         jFormattedTextFieldQtdCarne.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
         jPanel2.add(jFormattedTextFieldQtdCarne);
@@ -112,7 +108,7 @@ public class CadastrarCarne extends javax.swing.JFrame {
 
         jFormattedTextFieldDataValid.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
         jPanel2.add(jFormattedTextFieldDataValid);
-        jFormattedTextFieldDataValid.setBounds(150, 130, 160, 20);
+        jFormattedTextFieldDataValid.setBounds(150, 130, 160, 22);
 
         jLabel7.setText("Valor: ");
         jPanel2.add(jLabel7);
@@ -120,16 +116,13 @@ public class CadastrarCarne extends javax.swing.JFrame {
 
         jFormattedTextFieldValor.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
         jPanel2.add(jFormattedTextFieldValor);
-        jFormattedTextFieldValor.setBounds(80, 90, 80, 20);
+        jFormattedTextFieldValor.setBounds(80, 90, 80, 22);
 
         jLabel8.setText("Marca:");
         jPanel2.add(jLabel8);
         jLabel8.setBounds(170, 90, 50, 20);
         jPanel2.add(jTextFieldMarca);
-        jTextFieldMarca.setBounds(210, 90, 100, 20);
-
-        getContentPane().add(jPanel2);
-        jPanel2.setBounds(30, 10, 320, 210);
+        jTextFieldMarca.setBounds(210, 90, 100, 22);
 
         jButton1.setText("Cadastrar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -137,8 +130,6 @@ public class CadastrarCarne extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(70, 230, 110, 30);
 
         jButton2.setText("Cancelar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -146,26 +137,53 @@ public class CadastrarCarne extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2);
-        jButton2.setBounds(200, 230, 110, 30);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 379, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 29, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(40, 40, 40)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(20, 20, 20)
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGap(0, 30, Short.MAX_VALUE)))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 290, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 20, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(10, 10, 10)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(0, 20, Short.MAX_VALUE)))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jComboBoxTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxTipoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxTipoActionPerformed
 
+    private void jTextFieldNomeCarneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNomeCarneActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldNomeCarneActionPerformed
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         date1 = jFormattedTextFieldDataValid.getText();
         date2 = jFormattedTextFieldDataVenci.getText();
-        date1.replace("/", "-");
-        date2.replace("/", "-");
-        ControlCarne.criarEstoque(jTextFieldNomeCarne.getText(), Double.parseDouble(jFormattedTextFieldValor.getText()), date1, date2, Double.parseDouble(jFormattedTextFieldQtdCarne.getText()), jComboBoxTipo.getSelectedItem().toString(), jTextFieldMarca.getText());
+        ControlCarne.criarEstoque(jTextFieldNomeCarne.getText(), Double.parseDouble(jFormattedTextFieldValor.getText()), date1.replace("/", "-"), date2.replace("/", "-"), Double.parseDouble(jFormattedTextFieldQtdCarne.getText()), jComboBoxTipo.getSelectedItem().toString(), jTextFieldMarca.getText());
         jTextFieldNomeCarne.setText("");
         jFormattedTextFieldQtdCarne.setText("");
         jFormattedTextFieldDataValid.setText("");
@@ -174,9 +192,9 @@ public class CadastrarCarne extends javax.swing.JFrame {
         jFormattedTextFieldValor.setText("");
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jTextFieldNomeCarneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNomeCarneActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldNomeCarneActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -195,20 +213,28 @@ public class CadastrarCarne extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CadastrarCarne.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadCarneDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CadastrarCarne.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadCarneDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CadastrarCarne.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadCarneDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CadastrarCarne.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadCarneDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
-        /* Create and display the form */
+        /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
-                new CadastrarCarne().setVisible(true);
+                CadCarneDialog dialog = new CadCarneDialog(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }

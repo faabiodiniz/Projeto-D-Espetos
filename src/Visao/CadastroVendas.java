@@ -72,7 +72,7 @@ public class CadastroVendas extends javax.swing.JFrame {
             }
         });
         jPanelPainel.add(jTextFieldCPF1);
-        jTextFieldCPF1.setBounds(50, 10, 160, 20);
+        jTextFieldCPF1.setBounds(50, 10, 160, 22);
 
         getContentPane().add(jPanelPainel);
         jPanelPainel.setBounds(27, 27, 230, 40);
@@ -93,7 +93,7 @@ public class CadastroVendas extends javax.swing.JFrame {
 
         jLabel2.setText("NOME CLIENTE");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(20, 70, 100, 14);
+        jLabel2.setBounds(20, 70, 100, 16);
         getContentPane().add(jLabelNome);
         jLabelNome.setBounds(120, 70, 240, 20);
 
@@ -158,7 +158,7 @@ public class CadastroVendas extends javax.swing.JFrame {
             }
         });
         jPanelPainel2.add(jTextFieldCPF3);
-        jTextFieldCPF3.setBounds(30, 30, 160, 20);
+        jTextFieldCPF3.setBounds(30, 30, 160, 22);
 
         jPanelPainel1.add(jPanelPainel2);
         jPanelPainel2.setBounds(20, 430, 230, 60);
@@ -193,7 +193,7 @@ public class CadastroVendas extends javax.swing.JFrame {
             }
         });
         jPanelPainel3.add(jTextFieldCPF4);
-        jTextFieldCPF4.setBounds(40, 30, 70, 20);
+        jTextFieldCPF4.setBounds(40, 30, 70, 22);
 
         jPanelPainel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanelPainel4.setLayout(null);
@@ -209,7 +209,7 @@ public class CadastroVendas extends javax.swing.JFrame {
             }
         });
         jPanelPainel4.add(jTextFieldCPF5);
-        jTextFieldCPF5.setBounds(30, 30, 160, 20);
+        jTextFieldCPF5.setBounds(30, 30, 160, 22);
 
         jPanelPainel3.add(jPanelPainel4);
         jPanelPainel4.setBounds(20, 430, 230, 60);
@@ -225,7 +225,7 @@ public class CadastroVendas extends javax.swing.JFrame {
             }
         });
         jPanelPainel3.add(jTextField1);
-        jTextField1.setBounds(160, 30, 60, 20);
+        jTextField1.setBounds(160, 30, 60, 22);
 
         jLabel4.setText("KG");
         jPanelPainel3.add(jLabel4);
