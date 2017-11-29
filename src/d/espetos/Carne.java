@@ -15,20 +15,15 @@ public class Carne {
     private int codTipo;
 	
     public Carne(int id, String nomeCarne, double quantidade, Date fabricacao, Date validade, double valorCusto, String tipo ,String marca, int codTipo) {
-        this.nomeCarne = nomeCarne;
-        this.quantidade = quantidade;
-        this.fabricacao = fabricacao;
-        this.validade = validade;
-        if (valorCusto < 0){
-            throw new ExceptionTest();
-        }
-        else{
-            this.valorCusto = valorCusto;
-        }
-        this.idProduto = id;
-        this.marca = marca;
-        this.tipo = tipo;
-        this.codTipo = codTipo;
+        this.setNomeCarne(nomeCarne);
+        this.setQuantidade(quantidade);
+        this.setFabricacao(fabricacao);
+        this.setValidade(validade);
+        this.setValorCusto(valorCusto);
+        this.setIdProduto(id);
+        this.setMarca(marca);
+        this.setTipo(tipo);
+        this.setCodTipo(codTipo);
     }
     public Carne(int id, double quantidade,String nomeCarne, double valor, String tipo, String marca){
         this.setCodTipo(id);
@@ -40,8 +35,8 @@ public class Carne {
     }
     
     public Carne(int idCarne, int codTipo){
-        this.idProduto = idCarne;
-        this.codTipo = codTipo;
+        this.setIdProduto(idCarne);
+        this.setCodTipo(codTipo);
     }
 
     public Carne() {
@@ -52,47 +47,67 @@ public class Carne {
     }
 
     public void setNomeCarne(String nomeCarne) {
+        if ((nomeCarne == null) || (nomeCarne.equals(""))) {
+            throw new ExceptionTest();
+        }
         this.nomeCarne = nomeCarne;
     }
 
     public void setFabricacao(Date fabricacao) {
+        if (fabricacao == null) {
+            throw new ExceptionTest();
+        }
         this.fabricacao = fabricacao;
     }
 
     public void setValidade(Date validade) {
+        if (validade == null) {
+            throw new ExceptionTest();
+        }
+        if (this.getFabricacao() != null) {
+            if ((validade.before(this.getFabricacao())) || (validade.compareTo(this.getFabricacao()) == 0)) {
+                throw new ExceptionTest();
+            }
+        }
         this.validade = validade;
     }
     
     public double getQuantidade() {
-            return quantidade;
+        return quantidade;
     }
 
     public void setQuantidade(double quantidade) {
-            this.quantidade = quantidade;
+        if (quantidade < 0) {
+            throw new ExceptionTest();
+        }
+        this.quantidade = quantidade;
     }
 
     public double getValorCusto() {
-            return valorCusto;
+        return valorCusto;
     }
 
     public void setValorCusto(double valorCusto) {
-            this.valorCusto = valorCusto;
+        if (valorCusto < 0) {
+            throw new ExceptionTest();
+        }
+        this.valorCusto = valorCusto;
     }
 
     public int getIdProduto() {
-            return idProduto;
+        return idProduto;
     }
 
     public String getNomeCarne() {
-            return nomeCarne;
+        return nomeCarne;
     }
 
     public Date getFabricacao() {
-            return fabricacao;
+        return fabricacao;
     }
 
     public Date getValidade() {
-            return validade;
+        return validade;
     }
 
     public String getMarca() {

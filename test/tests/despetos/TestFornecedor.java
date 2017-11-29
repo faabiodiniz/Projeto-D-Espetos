@@ -21,7 +21,6 @@ public class TestFornecedor {
      */
     @Test
     public void testConstrutor() {
-        Assert.fail("No banco, o vendedor representante possui um fornecedor, e não o contrário");
         Fornecedor f = new Fornecedor(1, "53772816000108", "Nome", "forn@mail.com", "(12) 1212-2121", "Rua", 
                 "Bairro 1", 32, "Paulista", "São Paulo");
 

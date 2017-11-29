@@ -24,19 +24,19 @@ public class Fornecedor
     }
 
 
-	public Fornecedor(int id, String cnpj, String nomeFantasia, String email, String telefone, String rua,
-			String bairro, int numero, String cidade, String estado) {
-		this.cnpj = cnpj;
-		this.nomeFornecedor = nomeFantasia;
-		this.email = email;
-		this.telefone = telefone;
-                this.idFornecedor = id;
-                this.bairro = bairro;
-                this.cidade = cidade;
-                this.estado = estado;
-                this.rua = rua;
-                this.numero = numero;
-	}
+    public Fornecedor(int id, String cnpj, String nomeFantasia, String email, String telefone, String rua,
+                    String bairro, int numero, String cidade, String estado) {
+        this.setCnpj(cnpj);
+        this.setNomeFornecedor(nomeFantasia);
+        this.setEmail(email);
+        this.setTelefone(telefone);
+        this.setIdFornecedor(id);
+        this.setBairro(bairro);
+        this.setCidade(cidade);
+        this.setEstado(estado);
+        this.setRua(rua);
+        this.setNumero(numero);
+    }
 
     public String getBairro() {
         return bairro;
@@ -77,39 +77,40 @@ public class Fornecedor
     public void setNumero(int numero) {
         this.numero = numero;
     }
-
     
     public void setCnpj(String cnpj) {
         this.cnpj = cnpj;
     }
-        
 
     public String getNomeFornecedor() {
         return nomeFornecedor;
     }
     
     public void setNomeFornecedor(String nomeFornecedor) {
+        if ((nomeFornecedor == null) || (nomeFornecedor.equals(""))) {
+            throw new ExceptionTest();
+        }
         this.nomeFornecedor = nomeFornecedor;
     }
 
     public String getEmail() {
-            return email;
+        return email;
     }
 
     public void setEmail(String email) {
-            this.email = email;
+        this.email = email;
     }
 
     public String getTelefone() {
-            return telefone;
+        return telefone;
     }
 
     public void setTelefone(String telefone) {
-            this.telefone = telefone;
+        this.telefone = telefone;
     }
 
     public int getIdFornecedor() {
-            return idFornecedor;
+        return idFornecedor;
     }
 
     public void setIdFornecedor(int id){
@@ -117,6 +118,6 @@ public class Fornecedor
     }
 
     public String getCnpj() {
-            return cnpj;
+        return cnpj;
     }
 }

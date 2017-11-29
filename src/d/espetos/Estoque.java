@@ -8,37 +8,39 @@ public class Estoque
     private float valorVenda;
 	
     public Estoque(Carne c, int quantidade, float valorVenda) {
-		super();
-		this.c = c;
-		this.quantidade = quantidade;
-		this.valorVenda = valorVenda;
-	}
+        super();
+        this.setC(c);
+        this.setQuantidade(quantidade);
+        this.setValorVenda(valorVenda);
+    }
 
-	public Carne getC() {
-		return c;
-	}
+    public Carne getC() {
+        return c;
+    }
 
-	public void setC(Carne c) {
-		this.c = c;
-	}
+    public void setC(Carne c) {
+        this.c = c;
+    }
 
-	public int getQuantidade() {
-		return quantidade;
-	}
+    public int getQuantidade() {
+        return quantidade;
+    }
 
-	public void setQuantidade(int quantidade) {
-		this.quantidade = quantidade;
-	}
+    public void setQuantidade(int quantidade) {
+        if (quantidade < 0) {
+            throw new ExceptionTest();
+        }
+        this.quantidade = quantidade;
+    }
 
-	public float getValorVenda() {
-		return valorVenda;
-	}
+    public float getValorVenda() {
+        return valorVenda;
+    }
 
-	public void setValorVenda(float valorVenda) {
-		this.valorVenda = valorVenda;
-	}
-
-    
-
-    
+    public void setValorVenda(float valorVenda) {
+        if (valorVenda <= 0) {
+            throw new ExceptionTest();
+        }
+        this.valorVenda = valorVenda;
+    }
 }

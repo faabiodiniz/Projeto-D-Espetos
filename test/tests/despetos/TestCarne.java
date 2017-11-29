@@ -147,6 +147,8 @@ public class TestCarne {
             Date fabricacao = sourceFormat.parse("10/10/2017");
             Date validade = sourceFormat.parse("10/10/2018");
             Carne c = new Carne(1, "Picanha", 22f, fabricacao, validade, 15.32f, "Bovina", "Friboi", 1);
+            validade = sourceFormat.parse("10/10/2017");
+            c.setValidade(validade);       
             Assert.fail("O Setter aceitou uma válidade igual à fabricação");
         } catch (ParseException ex) {
             Assert.fail("Exceção na conversão da data");

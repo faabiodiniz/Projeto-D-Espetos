@@ -5,14 +5,6 @@
  */
 package d.espetos;
 
-import Visao.MenuInicial;
-import Visao.VerificarSerial;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 
 public class Licenca {
     private static String licenca;
@@ -21,9 +13,9 @@ public class Licenca {
     public Licenca(){
         
     }
-    public Licenca(String serial, int status){
+    public Licenca(String serial, int status) {
         this.licenca = serial;
-        this.status = 0;
+        this.setStatus(status);
     }
     
     public String getLicenca(){
@@ -35,6 +27,9 @@ public class Licenca {
     }
 
     public void setStatus(int status) {
+        if ((status != 0) || (status != 1)) {
+            throw new ExceptionTest();
+        }
         this.status = status;
     }
     

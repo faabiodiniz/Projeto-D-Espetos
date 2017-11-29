@@ -158,6 +158,8 @@ public class TestEstoque {
             Assert.fail("O Setter aceitou valor de venda negativo");
         } catch (ParseException ex) {
             Assert.fail("Exceção na conversão da data");
+        } catch (ExceptionTest ex) {
+            
         }
         
         try {
@@ -167,6 +169,8 @@ public class TestEstoque {
             Assert.fail("O Setter aceitou valor de venda 0");
         } catch (ParseException ex) {
             Assert.fail("Exceção na conversão da data");
+        } catch (ExceptionTest ex) {
+            
         }
     } 
 }

@@ -17,11 +17,11 @@ public class Cliente{
     public Cliente(int id, String nomeCliente, String telefoneCliente, String emailCliente, String tipo, String cpf) 
     {
         this.setIdCliente(id);
-	this.nomeCliente = nomeCliente;
-	this.telefoneCliente = telefoneCliente;
-	this.emailCliente = emailCliente;
-        this.tipo = tipo;
-        this.cpfcnpj = cpf;
+	this.setNomeCliente(nomeCliente);
+        this.setTelefoneCliente(telefoneCliente);
+        this.setEmailCliente(emailCliente);
+        this.setTipo(tipo);
+        this.setCpfcnpj(cpf);
     }
 
     public String getTipo() {
@@ -29,35 +29,41 @@ public class Cliente{
     }
 
     public void setTipo(String tipo) {
+        if ((tipo == null) || ((!tipo.equals("Jurídico")) && (!tipo.equals("Físico")))){
+            throw new ExceptionTest();
+        }
         this.tipo = tipo;
     }
 
     public void setNomeCliente(String nomeCliente) {
+        if ((nomeCliente == null) || (nomeCliente.equals(""))){
+            throw new ExceptionTest();
+        }
         this.nomeCliente = nomeCliente;
     }
 
     public String getTelefoneCliente() {
-            return telefoneCliente;
+        return telefoneCliente;
     }
 
     public void setTelefoneCliente(String telefoneCliente) {
-            this.telefoneCliente = telefoneCliente;
+        this.telefoneCliente = telefoneCliente;
     }
 
     public String getEmailCliente() {
-            return emailCliente;
+        return emailCliente;
     }
 
     public void setEmailCliente(String emailCliente) {
-            this.emailCliente = emailCliente;
+        this.emailCliente = emailCliente;
     }
 
     public int getIdCliente() {
-            return idCliente;
+        return idCliente;
     }
 
     public String getNomeCliente() {
-            return nomeCliente;
+        return nomeCliente;
     }
 
     public String getCpfcnpj() {
