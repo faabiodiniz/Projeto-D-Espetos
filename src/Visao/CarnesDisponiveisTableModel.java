@@ -27,13 +27,13 @@ public class CarnesDisponiveisTableModel extends GenericTableModel {
             case 1:
                 return String.class;
             case 2:
-                return Double.class;
+                return String.class;
             case 3:
                 return String.class;
             case 4:
                 return String.class;
             case 5:
-                return Double.class;
+                return String.class;
             default:
                 throw new IndexOutOfBoundsException("columnIndex out of bounds");
         }
@@ -49,13 +49,13 @@ public class CarnesDisponiveisTableModel extends GenericTableModel {
             case 1:
                 return carne.getNomeCarne();
             case 2:
-                return carne.getQuantidade();
+                return ControlCarne.format(carne.getQuantidade()).trim();
             case 3:
                 return carne.getMarca();
             case 4:
                 return carne.getTipo();
             case 5:
-                return carne.getValorCusto();
+                return ControlCarne.format(carne.getValorCusto()).trim();
             default:
                 throw new IndexOutOfBoundsException("columnIndex out of bounds");
         }

@@ -5,6 +5,7 @@
  */
 package Visao;
 
+import Controle.ControlItemPedido;
 import d.espetos.ItemPedido;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,10 +13,10 @@ import javax.swing.table.AbstractTableModel;
 
 public class ItemPedidoTableModel extends AbstractTableModel{
     private List<ItemPedido> vDados;
-    private String[] colunas = {"Nome" , "QTD(KG)" ,"Valor","Tipo"};
+    private String[] colunas = {"Nome" , "QTD(KG)" ,"Valor", "marca","Tipo"};
 
     public ItemPedidoTableModel(){
-        vDados = new ArrayList<ItemPedido>();
+        vDados = new ArrayList<>();
     }
     
     public void addRow(ItemPedido ip){
@@ -23,6 +24,7 @@ public class ItemPedidoTableModel extends AbstractTableModel{
         this.fireTableDataChanged();
     }
  
+    @Override
     public String getColumnName(int num){
         return this.colunas[num];
     }
@@ -35,7 +37,7 @@ public class ItemPedidoTableModel extends AbstractTableModel{
             case 1:
                 return Double.class;
             case 2:
-                return Double.class;
+                return String.class;
             case 3:
                 return String.class;
             case 4:
@@ -51,15 +53,15 @@ public class ItemPedidoTableModel extends AbstractTableModel{
         
         switch (columnIndex) {
             case 0:
-                return item.getC().getNomeCarne();
+                return item.getC().getNomeCarne().trim();
             case 1:
                 return item.getQuantidade();
             case 2:
-                return item.getC().getValorCusto();
+                return ControlItemPedido.format(item.getValorVenda()).trim();
             case 3:
-                return item.getC().getMarca();
+                return item.getC().getMarca().trim();
             case 4:
-                return item.getC().getTipo();
+                return item.getC().getTipo().trim();
             default:
                 throw new IndexOutOfBoundsException("columnIndex out of bounds");
         }
@@ -91,13 +93,6 @@ public class ItemPedidoTableModel extends AbstractTableModel{
                 throw new IndexOutOfBoundsException("columnIndex out of bounds");
         }
         ControlEstoque.updateCarne(carne);
-    }*/
-    
-    /*public void refresh(){
-        
-        super.vDados.clear();
-        super.vDados.addAll();
-        fireTableDataChanged();
     }*/
 
     @Override

@@ -56,4 +56,8 @@ public class ControlCarne {
         return CarneDAO.getInstance().retrieveView();
     }
     
+    public static String format(double x){
+        return String.format("%.2f", x);
+    }
+    
 }

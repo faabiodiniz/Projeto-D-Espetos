@@ -16,17 +16,18 @@ public class ItemPedido extends Pedido
 
 	private Carne c;
 	private double quantidade;
-	private float valorVenda;
+	private double valorVenda;
 		
-	public ItemPedido(Cliente cliente, ArrayList<ItemPedido> vList, Carne c, double quantidade, float valorVenda) {
+	public ItemPedido(Cliente cliente, ArrayList<ItemPedido> vList, Carne c, double quantidade, double valorVenda) {
 		super(cliente, vList);
 		this.c = c;
 		this.quantidade = quantidade;
 		this.valorVenda = valorVenda;
 	}
 
-        //public ItemPedido() {
-        //}
+        public ItemPedido(Cliente cliente, ArrayList<ItemPedido> vList) {
+            super(cliente, vList);
+        }
 
 	public Carne getC() {
 		return c;
@@ -40,11 +41,11 @@ public class ItemPedido extends Pedido
 		this.quantidade = quantidade;
 	}
 	
-	public float getValorVenda() {
+	public double getValorVenda() {
 		return valorVenda;
 	}
 	
-	public void setValorVenda(float valorVenda) {
+	public void setValorVenda(double valorVenda) {
 		this.valorVenda = valorVenda;
 	}
 	

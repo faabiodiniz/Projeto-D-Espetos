@@ -17,4 +17,7 @@ public class ControlItemPedido {
          
          return 0;
     }*/
+    public static String format(double x) {
+        return String.format("%.2f", x);
+    }
 }
