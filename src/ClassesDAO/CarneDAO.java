@@ -13,6 +13,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -23,26 +25,40 @@ public class CarneDAO extends ConexaoBD{
     ConexaoBD conexao = new ConexaoBD();
     Carne carne = new Carne();
     private static CarneDAO instance;
+    List<Carne> listCarne;
+    private int ultCodCarne;
     
-    public void Salvar(String nome, double valor, String fabricacao, String validade, double quantidade, String tipo, String marca){
+    public void Salvar(String nome, double valor, String fabricacao, String validade, double quantidade, String tipo, String marca, int codTipoCarne){
         instance.conexao();
         try {
-            PreparedStatement pst = conexao.con.prepareStatement("INSERT INTO TipoDeCarne(nome, valor, marca, tipo) values(?,?,?,?);"
-                   + "INSERT INTO Carne(dataFabricacao, dataValidade, quantidade) values (?,?,?)");
+            PreparedStatement pst = conexao.con.prepareStatement("INSERT INTO TipoDeCarne(nome, valor, marca, tipo) values(?,?,?,?);");
             pst.setString(1, nome);
             pst.setDouble(2, valor);
             pst.setString(3, marca);
             pst.setString(4, tipo);
-            pst.setString(5, fabricacao);
-            pst.setString(6, validade);
-            pst.setDouble(7, quantidade);
             pst.execute();
+            listCarne = getIdVenda();
+            ultCodCarne = listCarne.get(0).getCodTipo();
+            salvarCarne(fabricacao, validade, quantidade, ultCodCarne);
             JOptionPane.showMessageDialog(null,"Dados inseridos com sucesso");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,"Falha ao inserir dados\n Erro: " +ex);
             throw new ExceptionTest();
         }
         instance.desconecta();
+    }
+    
+    public void salvarCarne(String fabricacao, String validade, double quantidade, int codTipoCarne){
+        instance.conexao();
+        try {
+            PreparedStatement pst = conexao.con.prepareStatement("INSERT INTO Carne(dataFabricacao, dataValidade, quantidade, codTipoCarne) values (?,?,?,?)");
+            pst.setString(1, fabricacao);
+            pst.setString(2, validade);
+            pst.setDouble(3, quantidade);
+            pst.setInt(4, codTipoCarne);
+            pst.execute();
+        } catch (SQLException ex) {
+        }
     }
     
     public static CarneDAO getInstance() {
@@ -76,6 +92,7 @@ public class CarneDAO extends ConexaoBD{
         List<Carne> carnes = new ArrayList<>();
         ResultSet rs;
         try {
+            instance.conexao();
             stmt = con.prepareStatement(query);
             rs = this.getResultSet(stmt);
             while (rs.next()) {
@@ -128,6 +145,7 @@ public class CarneDAO extends ConexaoBD{
 
     public boolean update(Carne carne) {
         PreparedStatement stmt;
+        instance.conexao();
         try {
             stmt = con.prepareStatement("UPDATE TipoDeCarne SET valor=? WHERE codTipoCarne = ?");
             stmt.setDouble(1, carne.getValorCusto());
@@ -140,11 +158,13 @@ public class CarneDAO extends ConexaoBD{
             stmt.close();
         } catch (SQLException ex) {
         }
+        instance.desconecta();
         return false;
     }
 
     public void delete(Carne carne) {
         PreparedStatement stmt;
+        instance.conexao();
         try {
             stmt = con.prepareStatement("DELETE FROM Carne WHERE codCarne = ?;DELETE FROM TipoDeCarne WHERE codTipoCarne = ?");
             stmt.setInt(1, carne.getIdProduto());
@@ -153,10 +173,45 @@ public class CarneDAO extends ConexaoBD{
             stmt.close();
         } catch (SQLException ex) {
         }
+        instance.desconecta();
     }
 
     public List<Carne> retrieveView() {
         return this.retrieveGenericView("SELECT * FROM view_CarnesDisponiveis");
     }
+    
+        private Carne buildObjectIdCarne(ResultSet rs) {
+        Carne carne = null;
+        try {
+            carne = new Carne();
+            carne.setCodTipo(rs.getInt("codTipoCarne"));
+        } catch (SQLException e) {
+            
+        }
+        return carne;
+    } 
 
+    public List<Carne> retrieveId(String query) {
+        instance.conexao();
+        PreparedStatement stmt;
+        List<Carne> carnes = new ArrayList<>();
+        ResultSet rs;
+        try {
+            instance.conexao();
+            stmt = con.prepareStatement(query);
+            rs = this.getResultSet(stmt);
+            while (rs.next()) {
+                carnes.add(buildObjectIdCarne(rs));
+            }
+            rs.close();
+            stmt.close();
+        } catch (SQLException ex) {
+        }
+        instance.desconecta();
+        return carnes;
+    }
+        
+    public List<Carne> getIdVenda() {
+        return this.retrieveId("SELECT codTipoCarne from TipoDeCarne ORDER BY codTipoCarne DESC;");
+    }
 }

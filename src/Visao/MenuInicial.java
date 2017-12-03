@@ -202,18 +202,6 @@ public class MenuInicial extends javax.swing.JFrame {
         setBounds(0, 0, 735, 517);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void menuItemListarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemListarClientesActionPerformed
-        ListClientes cliente = new ListClientes();
-        cliente.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_menuItemListarClientesActionPerformed
-
-    private void menuItemListarEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemListarEstoqueActionPerformed
-        ListEstoque estoque = new ListEstoque();
-        estoque.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_menuItemListarEstoqueActionPerformed
-
     private void jButtonVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVendasActionPerformed
         ListVenda vendas = new ListVenda();
         vendas.setVisible(true);
@@ -238,16 +226,6 @@ public class MenuInicial extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButtonFornecedorActionPerformed
 
-    private void menuItemRelatorioVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemRelatorioVendaActionPerformed
-        ListVenda vendas = new ListVenda();
-        vendas.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_menuItemRelatorioVendaActionPerformed
-
-    private void jMenuItemSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSairActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_jMenuItemSairActionPerformed
-
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         MenuInicial principal = new MenuInicial();
         principal.setVisible(true);
@@ -265,6 +243,12 @@ public class MenuInicial extends javax.swing.JFrame {
         clientes.setVisible(true);
     }//GEN-LAST:event_menuItemCadastroClienteActionPerformed
 
+    private void menuItemListarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemListarClientesActionPerformed
+        ListClientes cliente = new ListClientes();
+        cliente.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_menuItemListarClientesActionPerformed
+
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         CadFornecedorDialog fornecedor = new CadFornecedorDialog(this, true);
         fornecedor.setVisible(true);
@@ -274,15 +258,28 @@ public class MenuInicial extends javax.swing.JFrame {
         ListFornecedor fornecedor = new ListFornecedor();
         fornecedor.setVisible(true);
         dispose();
-        
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
+    private void menuItemListarEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemListarEstoqueActionPerformed
+        ListEstoque estoque = new ListEstoque();
+        estoque.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_menuItemListarEstoqueActionPerformed
+
+    private void menuItemRelatorioVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemRelatorioVendaActionPerformed
+        ListVenda vendas = new ListVenda();
+        vendas.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_menuItemRelatorioVendaActionPerformed
+
     private void menuItemRealizarVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemRealizarVendaActionPerformed
-        /*// TODO add your handling code here:
-        cadastroVendas venda = new cadastroVendas();
-        venda.setVisible(true);
-        dispose();*/
+        CadastroVendas cadVendas = new CadastroVendas();
+        cadVendas.setVisible(true);
     }//GEN-LAST:event_menuItemRealizarVendaActionPerformed
+
+    private void jMenuItemSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSairActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jMenuItemSairActionPerformed
 
     /**
      * @param args the command line arguments

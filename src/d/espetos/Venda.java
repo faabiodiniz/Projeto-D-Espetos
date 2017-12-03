@@ -9,15 +9,16 @@ public class Venda
     private int idVenda;
     private Cliente cliente;
     private Pedido pedido;
-    private Date dataEntrega;
-    private Date dataCompra;
+    private java.sql.Date dataEntrega;
+    private java.sql.Date dataCompra;
     private FormaPagamento pagamento;
     private double desconto;
     private double valor;
     private int codVenda;
-    private String nomeCliente;
+    private int codCliente;
+    String nomeCliente;
 
-    public Venda(Cliente cliente, Pedido pedido, FormaPagamento pagamento, double desconto, Date entrega, Date compra) {
+    public Venda(Cliente cliente, Pedido pedido, FormaPagamento pagamento, double desconto, java.sql.Date entrega, java.sql.Date compra) {
         this.cliente = cliente;
         this.pedido = pedido;
         this.pagamento = pagamento;
@@ -26,13 +27,14 @@ public class Venda
         this.dataEntrega = entrega;
     }
 
-    public Venda(int codVenda, double valor, double desconto, Date dataCompra, Date dataEntrega, String nomeCliente) {
+    public Venda(int codVenda, double valor, double desconto, java.sql.Date dataCompra, java.sql.Date dataEntrega, String nomeCliente,int idCodCliente) {
         this.idVenda = codVenda;
-        this.nomeCliente = nomeCliente;
+        this.codCliente = idCodCliente;
         this.dataCompra = dataCompra;
         this.dataEntrega = dataEntrega;
         this.valor = valor;
         this.desconto = desconto;
+        this.nomeCliente = nomeCliente;
     }
     
     public Venda(){
@@ -71,23 +73,23 @@ public class Venda
         return desconto;
     }
 
-    public void setDesconto(float desconto) {
+    public void setDesconto(double desconto) {
         this.desconto = desconto;
     }
 
-    public Date getDataEntrega() {
+    public java.sql.Date getDataEntrega() {
         return dataEntrega;
     }
 
-    public void setDataEntrega(Date dataEntrega) {
+    public void setDataEntrega(java.sql.Date dataEntrega) {
         this.dataEntrega = dataEntrega;
     }
 
-    public Date getDataCompra() {
+    public java.sql.Date getDataCompra() {
         return dataCompra;
     }
 
-    public void setDataCompra(Date dataCompra) {
+    public void setDataCompra(java.sql.Date dataCompra) {
         this.dataCompra = dataCompra;
     }
 
@@ -114,7 +116,8 @@ public class Venda
     public void setNomeCliente(String nomeCliente) {
         this.nomeCliente = nomeCliente;
     }
-    
-    
 
+    public void setIdVenda(int aInt) {
+        this.idVenda = aInt;
+    }
 }

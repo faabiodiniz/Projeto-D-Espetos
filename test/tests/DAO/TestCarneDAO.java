@@ -23,7 +23,7 @@ public class TestCarneDAO {
     public void testCadastroSelectDelete() {
         /* Execute uma vez com a linha do Salvar, e depois execute uma segunda com ela comentada para saber se funcionou */
         int aux = 0, i;
-        CarneDAO.getInstance().Salvar("Carne carnuda carnosa", 23.2lf, "22/01/1999", "22/10/2000", 10lf, 2); // Esta linha
+        CarneDAO.getInstance().Salvar(1, "Carne carnuda carnosa", 23.2lf, "22/01/1999", "22/10/2000", 10lf, "Carnao", "Friboi",2); // Esta linha
         List<Carne> carnes = CarneDAO.getInstance().retrieveLike("Carne carnuda carnosa");
         for (i = 0; i < carnes.size(); i++) {
             if ((carnes.get(i).getNomeCarne().trim().equals("Carne carnuda carnosa"))) {

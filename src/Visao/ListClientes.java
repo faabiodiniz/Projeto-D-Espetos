@@ -91,7 +91,7 @@ public class ListClientes extends javax.swing.JFrame {
         jPanel1.add(jScrollPaneClientes);
         jScrollPaneClientes.setBounds(20, 70, 710, 290);
         jPanel1.add(textFieldBuscaNome);
-        textFieldBuscaNome.setBounds(120, 30, 400, 22);
+        textFieldBuscaNome.setBounds(120, 30, 400, 20);
 
         jLabelBuscaNome.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabelBuscaNome.setText("Buscar por Nome ");
@@ -105,7 +105,7 @@ public class ListClientes extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButtonBuscarCliente);
-        jButtonBuscarCliente.setBounds(530, 30, 90, 25);
+        jButtonBuscarCliente.setBounds(530, 30, 90, 23);
 
         jButtonEditCliente.setText("Editar");
         jButtonEditCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -141,7 +141,7 @@ public class ListClientes extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButtonAtualizar);
-        jButtonAtualizar.setBounds(630, 30, 100, 25);
+        jButtonAtualizar.setBounds(630, 30, 100, 23);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(20, 20, 750, 440);
@@ -335,7 +335,6 @@ public class ListClientes extends javax.swing.JFrame {
         ListFornecedor fornecedor = new ListFornecedor();
         fornecedor.setVisible(true);
         dispose();
-
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void menuItemListarEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemListarEstoqueActionPerformed
@@ -351,10 +350,8 @@ public class ListClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_menuItemRelatorioVendaActionPerformed
 
     private void menuItemRealizarVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemRealizarVendaActionPerformed
-        /*// TODO add your handling code here:
-        cadastroVendas venda = new cadastroVendas();
-        venda.setVisible(true);
-        dispose();*/
+        CadastroVendas cadVendas = new CadastroVendas();
+        cadVendas.setVisible(true);
     }//GEN-LAST:event_menuItemRealizarVendaActionPerformed
 
     private void jMenuItemSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSairActionPerformed

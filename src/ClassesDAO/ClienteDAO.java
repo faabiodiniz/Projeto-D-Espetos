@@ -65,7 +65,7 @@ public class ClienteDAO extends ConexaoBD{
         List<Cliente> contatos = new ArrayList<>();
         ResultSet rs;
         try {
-            conexao();
+            instance.conexao();
             stmt = con.prepareStatement(query);
             rs = this.getResultSet(stmt);
             while (rs.next()) {
@@ -76,6 +76,7 @@ public class ClienteDAO extends ConexaoBD{
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
+        instance.desconecta();
         return contatos;
     }
 
@@ -101,6 +102,7 @@ public class ClienteDAO extends ConexaoBD{
 
     public boolean update(Cliente cliente) {
         PreparedStatement stmt;
+        instance.conexao();
         try {
             stmt = con.prepareStatement("UPDATE Cliente SET nome=?, email=?, telefone=?, tipo=?, cpfcnpj=? WHERE codCliente = ?");
             stmt.setString(1, cliente.getNomeCliente());
@@ -116,11 +118,13 @@ public class ClienteDAO extends ConexaoBD{
             stmt.close();
         } catch (SQLException ex) {
         }
+        instance.desconecta();
         return false;
     }
 
     public void delete(Cliente cliente) {
         PreparedStatement stmt;
+        instance.conexao();
         try {
             stmt = conexao.con.prepareStatement("DELETE FROM Cliente WHERE codCliente = ?");
             stmt.setInt(1, cliente.getIdCliente());
@@ -128,5 +132,6 @@ public class ClienteDAO extends ConexaoBD{
             stmt.close();
         } catch (SQLException ex) {
         }
+        instance.desconecta();
     }
 }

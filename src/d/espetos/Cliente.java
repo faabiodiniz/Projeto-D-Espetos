@@ -29,7 +29,7 @@ public class Cliente{
     }
 
     public void setTipo(String tipo) {
-        if ((tipo == null) || ((!tipo.equals("Jurídico")) && (!tipo.equals("Físico  ")))){
+        if ((tipo == null) || ((!tipo.equals("Jurídico")) && (!tipo.equals("Físico  ")) && (!tipo.equals("Físico")))){
             throw new ExceptionTest();
         }
         this.tipo = tipo;

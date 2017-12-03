@@ -69,6 +69,7 @@ public class FornecedorDAO extends ConexaoBD{
         List<Fornecedor> fornecedores = new ArrayList<>();
         ResultSet rs;
         try {
+            instance.conexao();
             stmt = con.prepareStatement(query);
             rs = this.getResultSet(stmt);
             while (rs.next()) {
@@ -78,6 +79,7 @@ public class FornecedorDAO extends ConexaoBD{
             stmt.close();
         } catch (SQLException ex) {
         }
+        instance.desconecta();
         return fornecedores;
     }
 
@@ -104,6 +106,7 @@ public class FornecedorDAO extends ConexaoBD{
 
     public boolean update(Fornecedor fornecedor) {
         PreparedStatement stmt;
+        instance.conexao();
         try {
             stmt = con.prepareStatement("UPDATE Fornecedor SET nome=?, email=?, telefone=?, rua=?, numeroRua=?, bairro=?, cidade=?, estado=?  WHERE codFornecedor = ?");
             stmt.setString(1, fornecedor.getNomeFornecedor());
@@ -123,11 +126,13 @@ public class FornecedorDAO extends ConexaoBD{
             stmt.close();
         } catch (SQLException ex) {
         }
+        instance.desconecta();
         return false;
     }
 
     public void delete(Fornecedor fornecedor) {
         PreparedStatement stmt;
+        instance.conexao();
         try {
             stmt = con.prepareStatement("DELETE FROM Fornecedor WHERE codFornecedor = ?");
             stmt.setInt(1, fornecedor.getIdFornecedor());
@@ -135,6 +140,7 @@ public class FornecedorDAO extends ConexaoBD{
             stmt.close();
         } catch (SQLException ex) {
         }
+        instance.desconecta();
     }
     
 }

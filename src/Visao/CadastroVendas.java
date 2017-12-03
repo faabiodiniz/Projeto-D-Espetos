@@ -3,11 +3,19 @@ package Visao;
 import ClassesDAO.ClienteDAO;
 import Controle.ControlCarne;
 import Controle.ControlItemPedido;
+import Controle.ControlVenda;
 import d.espetos.Carne;
 import d.espetos.Cliente;
 import d.espetos.ItemPedido;
+import d.espetos.Venda;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.table.DefaultTableCellRenderer;
 
@@ -18,6 +26,9 @@ public class CadastroVendas extends javax.swing.JFrame {
     private double valor;
     private double valorTotal = 0.00;
     private int linhaAtual = 0;
+    private double desconto;
+    private java.sql.Date dataCompra;
+    private java.sql.Date dataEntrega;
     List<ItemPedido> list = new ArrayList<>();
     public CadastroVendas() {
         initComponents();
@@ -69,6 +80,12 @@ public class CadastroVendas extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jTextFieldQtd = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jTextFieldDesconto = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jTextFielddataCompra = new javax.swing.JFormattedTextField();
+        jTextFieldDataEntrega = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -142,7 +159,7 @@ public class CadastroVendas extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(20, 130, 880, 380);
+        jPanel1.setBounds(20, 90, 880, 380);
 
         jPanelPainel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanelPainel1.setLayout(null);
@@ -174,23 +191,28 @@ public class CadastroVendas extends javax.swing.JFrame {
         jLabelPreco.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabelPreco.setText("R$ 00,00");
         jPanelPainel1.add(jLabelPreco);
-        jLabelPreco.setBounds(30, 20, 90, 30);
+        jLabelPreco.setBounds(30, 20, 140, 30);
 
         getContentPane().add(jPanelPainel1);
-        jPanelPainel1.setBounds(310, 540, 140, 60);
+        jPanelPainel1.setBounds(310, 540, 190, 60);
 
         jButton1.setText("FINALIZAR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton1);
-        jButton1.setBounds(570, 560, 100, 30);
+        jButton1.setBounds(780, 540, 110, 50);
 
-        jButton2.setText("ADICIONAR");
+        jButton2.setText("ADICIONAR À COMPRA");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(460, 560, 100, 30);
+        jButton2.setBounds(460, 480, 190, 40);
 
         jPanelPainel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanelPainel3.setLayout(null);
@@ -249,6 +271,59 @@ public class CadastroVendas extends javax.swing.JFrame {
         getContentPane().add(jPanelPainel3);
         jPanelPainel3.setBounds(30, 540, 260, 60);
 
+        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel5.setText("DESCONTO");
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel6.setText("R$");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextFieldDesconto, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jLabel5)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldDesconto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanel2);
+        jPanel2.setBounds(510, 540, 110, 60);
+
+        jTextFielddataCompra.setBorder(javax.swing.BorderFactory.createTitledBorder("Data de Compra"));
+        jTextFielddataCompra.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
+        jTextFielddataCompra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFielddataCompraActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jTextFielddataCompra);
+        jTextFielddataCompra.setBounds(660, 520, 110, 40);
+
+        jTextFieldDataEntrega.setBorder(javax.swing.BorderFactory.createTitledBorder("Data de Entrega"));
+        jTextFieldDataEntrega.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
+        getContentPane().add(jTextFieldDataEntrega);
+        jTextFieldDataEntrega.setBounds(660, 570, 110, 40);
+
         setBounds(0, 0, 930, 657);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -287,23 +362,43 @@ public class CadastroVendas extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         linha = jTableCarnesDisponiveis.getSelectedRow();
         Carne c = (Carne) ((CarnesDisponiveisTableModel) jTableCarnesDisponiveis.getModel()).getItem(linha);
-        System.out.println("Criou o objeto carne");
         Cliente cliente = new Cliente();
-        System.out.println("Criou o objeto cliente");
-        valor = c.getValorCusto() * Double.parseDouble(jTextFieldQtd.getText());
         cliente.setIdCliente(codCliente);
-        System.out.println("setou o id do cliente e valor da compra para: " + valor);
+        valor = c.getValorCusto() * Double.parseDouble(jTextFieldQtd.getText());
         ItemPedido itemPed = new ItemPedido(cliente, (ArrayList<ItemPedido>) list, c, Double.parseDouble(jTextFieldQtd.getText().toString()), valor);
-        System.out.println("criou objeto em item pedido: ");
         list.add(itemPed);
-        for(ItemPedido i : list){
-            System.out.println("Carne desejada: " + i.getC().getNomeCarne().trim() + "Valor: " + i.getValorVenda());
-        }
         ((ItemPedidoTableModel) jTableItemsPedido.getModel()).addRow(itemPed);
         valorTotal += Double.parseDouble(jTableItemsPedido.getValueAt(linhaAtual, 2).toString().replace(",", "."));
         jLabelPreco.setText("R$ " + ControlItemPedido.format(valorTotal));
         linhaAtual++;
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        for(int i = 0; i < list.size(); i++){
+            System.out.println("Item: " + i+1);
+            System.out.println("Codigo do cliente: " + list.get(i).getCliente().getIdCliente());
+            System.out.println("Codigo tipo da carne: " + list.get(i).getC().getCodTipo());
+            System.out.println("Valor do item: " + list.get(i).getValorVenda());
+            System.out.println("Quantidade do item pedido: " + list.get(i).getQuantidade());
+        }
+        desconto = Double.parseDouble(jTextFieldDesconto.getText());
+        Venda v = new Venda();
+        Cliente c = new Cliente();
+        c.setIdCliente(codCliente);
+        v.setDataCompra(dataCompra);
+        v.setDataEntrega(dataEntrega);
+        v.setDesconto(desconto);
+        v.setValor(valorTotal - v.getDesconto());
+        v.setCliente(c);
+        ControlVenda.criarVenda(codCliente, jTextFielddataCompra.getText().replace("/","-"), jTextFieldDataEntrega.getText().replace("/","-"), desconto);
+        FormaDePagamento formaPag = new FormaDePagamento(this, true, v, list);
+        formaPag.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTextFielddataCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFielddataCompraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFielddataCompraActionPerformed
 
     /**
      * @param args the command line arguments
@@ -351,6 +446,8 @@ public class CadastroVendas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabelCPF;
     private javax.swing.JLabel jLabelCPF1;
     private javax.swing.JLabel jLabelCPF2;
@@ -359,6 +456,7 @@ public class CadastroVendas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelNome;
     private javax.swing.JLabel jLabelPreco;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanelPainel;
     private javax.swing.JPanel jPanelPainel1;
     private javax.swing.JPanel jPanelPainel2;
@@ -372,6 +470,9 @@ public class CadastroVendas extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldCPF3;
     private javax.swing.JTextField jTextFieldCPF5;
     private javax.swing.JTextField jTextFieldCodProduto;
+    private javax.swing.JFormattedTextField jTextFieldDataEntrega;
+    private javax.swing.JTextField jTextFieldDesconto;
     private javax.swing.JTextField jTextFieldQtd;
+    private javax.swing.JFormattedTextField jTextFielddataCompra;
     // End of variables declaration//GEN-END:variables
 }

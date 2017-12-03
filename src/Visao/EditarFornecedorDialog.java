@@ -7,6 +7,7 @@ package Visao;
 
 import Controle.ControlFornecedor;
 import d.espetos.Fornecedor;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -248,6 +249,8 @@ public class EditarFornecedorDialog extends javax.swing.JDialog {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         Fornecedor fornecedor = new Fornecedor(id, jTextFieldEditCnpj.getText(), jTextFieldEditNome.getText(), jTextFieldEditEmail.getText(), jTextFieldEditTel.getText(), jTextFieldEditRua.getText(), jTextFieldEditBairro.getText(), Integer.parseInt(jTextFieldEditNum.getText()), jTextFieldEditCidade.getText(), jTextFieldEditUf.getText());
         ControlFornecedor.updateFornecedor(fornecedor);
+        JOptionPane.showMessageDialog(null, "Dados alterados com sucesso!");
+        this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**

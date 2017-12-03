@@ -60,9 +60,9 @@ public class LicencaDAO extends ConexaoBD{
         return licenca;
     }
     public static boolean verificaSerial(String nroLicenca){
+        instance.conexao();
         PreparedStatement stmt;
         try {
-            instance.conexao();
             stmt = con.prepareStatement("SELECT * FROM Serial WHERE Licenca=?");
             stmt.setString(1, nroLicenca);
             ResultSet rs = stmt.executeQuery();
@@ -76,10 +76,12 @@ public class LicencaDAO extends ConexaoBD{
         } catch (SQLException ex) {
             return false;
         }
+        
     }
     
     public boolean update(String serial) {
         PreparedStatement stmt;
+        instance.conexao();
         try {
             stmt = con.prepareStatement("UPDATE Serial SET Status=1 WHERE Licenca = ?");
             stmt.setString(1, serial);
@@ -90,6 +92,7 @@ public class LicencaDAO extends ConexaoBD{
             stmt.close();
         } catch (SQLException ex) {
         }
+        instance.desconecta();
         return false;
     }
 }

@@ -8,6 +8,7 @@ package Visao;
 import ClassesDAO.CarneDAO;
 import d.espetos.Carne;
 import java.text.DecimalFormat;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -222,6 +223,8 @@ public class EditarPrecoCarneDialog extends javax.swing.JDialog {
         carne1.setValorCusto(Double.parseDouble(jTextFieldPreNovo.getText()));
         carne1.setTipo(jTextFieldTipo.getText());
         CarneDAO.getInstance().update(carne1);
+        JOptionPane.showMessageDialog(null, "Dados alterados com sucesso!");
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

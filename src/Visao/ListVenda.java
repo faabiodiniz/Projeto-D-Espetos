@@ -7,6 +7,8 @@ package Visao;
 
 import Controle.ControlVenda;
 import d.espetos.Venda;
+import javax.swing.JLabel;
+import javax.swing.table.DefaultTableCellRenderer;
 
 /**
  *
@@ -22,7 +24,12 @@ public class ListVenda extends javax.swing.JFrame {
         initComponents();
         vContatos = ControlVenda.getListOfVendasAsArray();
         this.setLocationRelativeTo(null);
-        
+        jTable1.getColumnModel().getColumn(0).setPreferredWidth(30);
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment( JLabel.CENTER );
+        jTable1.getColumnModel().getColumn(2).setCellRenderer( centerRenderer );
+        jTable1.getColumnModel().getColumn(3).setCellRenderer( centerRenderer );
+        jTable1.getColumnModel().getColumn(1).setCellRenderer( centerRenderer );
     }
 
     /**
@@ -77,7 +84,7 @@ public class ListVenda extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 680, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(286, 286, 286)
+                .addGap(279, 279, 279)
                 .addComponent(jButton1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -206,7 +213,7 @@ public class ListVenda extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         CadastroVendas cadVendas = new CadastroVendas();
         cadVendas.setVisible(true);
-        this.dispose();
+        ((VendaTableModel) jTable1.getModel()).refresh();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
@@ -257,10 +264,8 @@ public class ListVenda extends javax.swing.JFrame {
     }//GEN-LAST:event_menuItemRelatorioVendaActionPerformed
 
     private void menuItemRealizarVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemRealizarVendaActionPerformed
-        /*// TODO add your handling code here:
-        cadastroVendas venda = new cadastroVendas();
-        venda.setVisible(true);
-        dispose();*/
+        CadastroVendas cadVendas = new CadastroVendas();
+        cadVendas.setVisible(true);
     }//GEN-LAST:event_menuItemRealizarVendaActionPerformed
 
     private void jMenuItemSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSairActionPerformed

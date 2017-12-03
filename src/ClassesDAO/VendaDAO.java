@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 
@@ -18,43 +19,56 @@ public class VendaDAO extends ConexaoBD
     Venda venda = new Venda();
     private static VendaDAO instance;
     
-    public void Salvar(Venda venda){
+    public void Salvar(int idCliente, String dataCompra, String dataEntrega, double desconto){
         instance.conexao();
         try {
-            PreparedStatement pst = conexao.con.prepareStatement("INSERT INTO Venda(codCliente, dataCompra, dataEntrega, desconto) values (?,?,?,?);" + "INSERT INTO FormaDePagamento(valor, identificador) values (?,?)");
-            pst.setInt(1, venda.getCliente().getIdCliente());
-            pst.setDate(2, (java.sql.Date) venda.getDataCompra());
-            pst.setDate(3, (java.sql.Date) venda.getDataEntrega());
-            pst.setDouble(4, venda.getDesconto());
-            pst.setDouble(5, venda.getPagamento().getValorPago());
-            pst.setInt(6, venda.getPagamento().getIdentificador());
+            PreparedStatement pst = conexao.con.prepareStatement("INSERT INTO Venda(codCliente, dataCompra, dataEntrega, desconto) values (?,?,?,?)");
+            pst.setInt(1, idCliente);
+            pst.setString(2, dataCompra);
+            pst.setString(3, dataEntrega);
+            pst.setDouble(4, desconto);
+            pst.execute();            
+        } catch (SQLException ex) {
+        }
+        instance.desconecta();
+    }
+    
+    public void SalvarItens(int idVenda, double quantidade, double valor, int codTipoCarne)
+    {
+        instance.conexao();
+        try 
+        {
+            PreparedStatement pst = conexao.con.prepareStatement("EXEC insertItemVenda @quantidade = ?, @valor = ?, @codTipoCarne = ?, @codVenda = ?;");
+            pst.setInt(4, idVenda);
+            pst.setInt(3, codTipoCarne);
+            pst.setDouble(1, quantidade);
+            pst.setDouble(2, valor);
+            pst.execute();
+        } catch (SQLException ex)
+        {
+        }
+    }
+    
+    public void formaDePagamento(double valor, int identificador, double valorParcela, int qtdParcelas, String nome, String data, String conta, String agencia, int codVenda){
+        instance.conexao();
+        try {
+            PreparedStatement pst = conexao.con.prepareStatement("EXEC insertPagamento @valor = ?, @identificador = ?, @valorParcela = ?, @qtdParcelas = ?, @nome = ?, @data = ?, @conta = ?, @agencia = ?, @codVenda = ?");
+            pst.setDouble(1, valor);
+            pst.setInt(2, identificador);
+            pst.setDouble(3, valorParcela);
+            pst.setInt(4, qtdParcelas);
+            pst.setString(5, nome);
+            pst.setString(6, data);
+            pst.setString(7, conta);
+            pst.setString(8, agencia);
+            pst.setInt(9, codVenda);
             pst.execute();
             
             JOptionPane.showMessageDialog(null,"Dados inseridos com sucesso");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,"Falha ao inserir dados\n Erro: " +ex);
-            throw new ExceptionTest();
         }
         instance.desconecta();
-    }
-    
-    public void SalvarItens(Venda venda)
-    {
-        instance.conexao();
-        for(ItemPedido i : venda.getPedido().getvList())
-        {
-            try 
-            {
-                PreparedStatement pst = conexao.con.prepareStatement("INSERT INTO ItemDaVenda(codCarne, codVenda, valor, quantidade) values (?, ?, ?, ?)");
-                pst.setInt(1, i.getC().getIdProduto());
-                pst.setInt(2, venda.getIdVenda());
-                pst.setDouble(3, i.getValorVenda());
-                pst.setDouble(4, i.getQuantidade());
-            } catch (SQLException ex)
-            {
-            throw new ExceptionTest();
-            }
-        }
     }
     
     
@@ -65,11 +79,21 @@ public class VendaDAO extends ConexaoBD
         }
         return instance;
     }
-    
+
+    private Venda buildObjectIdVenda(ResultSet rs) {
+        Venda venda = null;
+        try {
+            venda = new Venda();
+            venda.setIdVenda(rs.getInt("codVenda"));
+        } catch (SQLException e) {
+            
+        }
+        return venda;
+    }    
     private Venda buildObject(ResultSet rs) {
         Venda venda = null;
         try {
-            venda = new Venda(rs.getInt("codVenda"), rs.getDouble("valor"), rs.getDouble("desconto"), rs.getDate("dataEntrega"), rs.getDate("dataCompra") , rs.getString("nome"));
+            venda = new Venda(rs.getInt("codVenda"), rs.getDouble("valor"), rs.getDouble("desconto"), rs.getDate("dataEntrega"), rs.getDate("dataCompra") , rs.getString("nome"), rs.getInt("codCliente"));
         } catch (SQLException e) {
             
         }
@@ -77,10 +101,12 @@ public class VendaDAO extends ConexaoBD
     }
         
     public List<Venda> retrieveGeneric(String query) {
+        instance.conexao();
         PreparedStatement stmt;
         List<Venda> vendas = new ArrayList<>();
         ResultSet rs;
         try {
+            instance.conexao();
             stmt = con.prepareStatement(query);
             rs = this.getResultSet(stmt);
             while (rs.next()) {
@@ -90,11 +116,12 @@ public class VendaDAO extends ConexaoBD
             stmt.close();
         } catch (SQLException ex) {
         }
+        instance.desconecta();
         return vendas;
     }
 
     public List<Venda> retrieveAll() {
-        return this.retrieveGeneric("SELECT Venda.codVenda, Venda.valor, Venda.desconto, Venda.dataCompra, Venda.dataEntrega, Cliente.nome FROM Venda, Cliente WHERE Venda.codCliente = Cliente.codCliente");
+        return this.retrieveGeneric("SELECT Venda.codVenda, Venda.valor, Venda.desconto, Venda.dataCompra, Venda.dataEntrega, Cliente.nome, Cliente.codCliente FROM Venda, Cliente WHERE Venda.codCliente = Cliente.codCliente");
     }
 
     //recuperar pelo codigo de cliente//
@@ -114,4 +141,27 @@ public class VendaDAO extends ConexaoBD
         return venda;
     }
 
+    public List<Venda> retrieveId(String query) {
+        instance.conexao();
+        PreparedStatement stmt;
+        List<Venda> vendas = new ArrayList<>();
+        ResultSet rs;
+        try {
+            instance.conexao();
+            stmt = con.prepareStatement(query);
+            rs = this.getResultSet(stmt);
+            while (rs.next()) {
+                vendas.add(buildObjectIdVenda(rs));
+            }
+            rs.close();
+            stmt.close();
+        } catch (SQLException ex) {
+        }
+        instance.desconecta();
+        return vendas;
+    }
+        
+    public List<Venda> getIdVenda() {
+        return this.retrieveId("SELECT codVenda from Venda ORDER BY codVenda DESC;");
+    }
 }

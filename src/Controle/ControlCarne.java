@@ -7,8 +7,6 @@ package Controle;
 
 import ClassesDAO.CarneDAO;
 import d.espetos.Carne;
-import java.util.Collection;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -17,7 +15,7 @@ import java.util.List;
  */
 public class ControlCarne {
     public static void criarEstoque(String nome, double valor, String fabricacao, String validade, double quantidade, String tipo, String marca){
-        CarneDAO.getInstance().Salvar(nome, valor, fabricacao, validade, quantidade, tipo, marca);
+        CarneDAO.getInstance().Salvar(nome, valor, fabricacao, validade, quantidade, tipo, marca, 0);
     }
     
     public static List<Carne> getListOfCarne(){

@@ -105,7 +105,7 @@ public class ListFornecedor extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButtonBuscarCliente);
-        jButtonBuscarCliente.setBounds(530, 30, 80, 25);
+        jButtonBuscarCliente.setBounds(530, 30, 80, 23);
 
         jButton1.setText("Editar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -141,7 +141,7 @@ public class ListFornecedor extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton4);
-        jButton4.setBounds(620, 30, 90, 25);
+        jButton4.setBounds(620, 30, 90, 23);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(20, 20, 740, 440);
@@ -331,8 +331,8 @@ public class ListFornecedor extends javax.swing.JFrame {
         else{
             Fornecedor fornecedor = new Fornecedor((Integer)tableListarFornecedor.getValueAt(linhaSelecionada, 0), tableListarFornecedor.getValueAt(linhaSelecionada, 2).toString(), tableListarFornecedor.getValueAt(linhaSelecionada, 1).toString(), tableListarFornecedor.getValueAt(linhaSelecionada, 3).toString(), tableListarFornecedor.getValueAt(linhaSelecionada, 4).toString(), tableListarFornecedor.getValueAt(linhaSelecionada, 5).toString(), tableListarFornecedor.getValueAt(linhaSelecionada, 7).toString(), (Integer)tableListarFornecedor.getValueAt(linhaSelecionada, 6), tableListarFornecedor.getValueAt(linhaSelecionada, 8).toString(), tableListarFornecedor.getValueAt(linhaSelecionada, 9).toString());
             FornecedorDAO.getInstance().delete(fornecedor);
-            ((FornecedorTableModel) tableListarFornecedor.getModel()).refresh();
         }
+        ((FornecedorTableModel) tableListarFornecedor.getModel()).refresh();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void tableListarFornecedorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableListarFornecedorMouseClicked
@@ -372,7 +372,7 @@ public class ListFornecedor extends javax.swing.JFrame {
     }//GEN-LAST:event_menuItemListarClientesActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        CadFornecedorDialog fornecedor = new CadFornecedorDialog(this,true);
+        CadFornecedorDialog fornecedor = new CadFornecedorDialog(this, true);
         fornecedor.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
@@ -380,7 +380,6 @@ public class ListFornecedor extends javax.swing.JFrame {
         ListFornecedor fornecedor = new ListFornecedor();
         fornecedor.setVisible(true);
         dispose();
-
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void menuItemListarEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemListarEstoqueActionPerformed
@@ -396,10 +395,8 @@ public class ListFornecedor extends javax.swing.JFrame {
     }//GEN-LAST:event_menuItemRelatorioVendaActionPerformed
 
     private void menuItemRealizarVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemRealizarVendaActionPerformed
-        /*// TODO add your handling code here:
-        cadastroVendas venda = new cadastroVendas();
-        venda.setVisible(true);
-        dispose();*/
+        CadastroVendas cadVendas = new CadastroVendas();
+        cadVendas.setVisible(true);
     }//GEN-LAST:event_menuItemRealizarVendaActionPerformed
 
     private void jMenuItemSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSairActionPerformed
