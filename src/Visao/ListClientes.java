@@ -293,12 +293,15 @@ public class ListClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_tableListarClienteMouseClicked
 
     private void jButtonBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarClienteActionPerformed
-        if(textFieldBuscaNome.getText() != null && textFieldBuscaNome.getText() != ""){
-            
+        if(textFieldBuscaNome.getText() == null || textFieldBuscaNome.getText().length() == 0){
+            vList = ControlCliente.getListOfClientes();
+            tableListarCliente.setModel(new ClienteTableModel(vList));
+            tableListarCliente.getColumnModel().getColumn(0).setPreferredWidth(30);
         }else{
-            
+            vList = ControlCliente.getListOfClientesNome(textFieldBuscaNome.getText());
+            tableListarCliente.setModel(new ClienteTableModel(vList));
+            tableListarCliente.getColumnModel().getColumn(0).setPreferredWidth(30);
         }
-        ((ClienteTableModel) tableListarCliente.getModel()).refresh();
     }//GEN-LAST:event_jButtonBuscarClienteActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed

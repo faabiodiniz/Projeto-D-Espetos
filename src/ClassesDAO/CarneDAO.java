@@ -131,7 +131,7 @@ public class CarneDAO extends ConexaoBD{
     }
 
     public List<Carne> retrieveLike(String nome) {
-        return this.retrieveGeneric("SELECT * FROM Fornecedor WHERE nome LIKE '%"+nome+"%' ORDER BY nome");
+        return this.retrieveGeneric("SELECT codCarne, quantidade, dataValidade, dataFabricacao, nome, valor, marca, tipo, TipoDeCarne.codTipoCarne FROM Carne, TipoDeCarne WHERE soundex(nome) = soundex('"+nome+"') AND TipoDeCarne.codTipoCarne = Carne.codTipoCarne ORDER BY codCarne");
     }
 
     public Carne retrieveById(int id) {

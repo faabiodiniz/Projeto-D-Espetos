@@ -223,7 +223,6 @@ public class EditarPrecoCarneDialog extends javax.swing.JDialog {
         carne1.setValorCusto(Double.parseDouble(jTextFieldPreNovo.getText()));
         carne1.setTipo(jTextFieldTipo.getText());
         CarneDAO.getInstance().update(carne1);
-        JOptionPane.showMessageDialog(null, "Dados alterados com sucesso!");
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 

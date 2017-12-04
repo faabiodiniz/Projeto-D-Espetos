@@ -30,7 +30,7 @@ public class Cliente{
 
     public void setTipo(String tipo) {
         if ((tipo == null) || ((!tipo.equals("Jurídico")) && (!tipo.equals("Físico  ")) && (!tipo.equals("Físico")))){
-            throw new ExceptionCampoVazio("tipo");
+            this.setTipo("Físico");
         }
         else
             this.tipo = tipo;
@@ -38,7 +38,7 @@ public class Cliente{
 
     public void setNomeCliente(String nomeCliente) {
         if ((nomeCliente == null) || (nomeCliente.equals("")) || nomeCliente.length() == 0){
-            throw new ExceptionCampoVazio("nome");
+            this.nomeCliente = "";
         }
         else
             this.nomeCliente = nomeCliente;
@@ -50,7 +50,7 @@ public class Cliente{
 
     public void setTelefoneCliente(String telefoneCliente) {
         if(telefoneCliente == null || telefoneCliente.length() == 0){
-            throw new ExceptionCampoVazio("telefone");
+            this.telefoneCliente = "";
         }
         else
             this.telefoneCliente = telefoneCliente;
@@ -62,7 +62,7 @@ public class Cliente{
 
     public void setEmailCliente(String emailCliente) {
         if(emailCliente == null){
-            throw new ExceptionCampoVazio("E-mail");
+            this.emailCliente = "";
         }
         else
             this.emailCliente = emailCliente;
@@ -82,7 +82,7 @@ public class Cliente{
 
     public void setCpfcnpj(String cpfcnpj) {
         if(cpfcnpj == null){
-            throw new ExceptionCampoVazio("CPF/CNPJ");
+            this.setCpfcnpj("");
         }
         else{
             this.cpfcnpj = cpfcnpj;    

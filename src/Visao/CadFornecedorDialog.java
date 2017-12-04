@@ -6,6 +6,7 @@
 package Visao;
 
 import Controle.ControlFornecedor;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -198,16 +199,21 @@ public class CadFornecedorDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_textFieldCadEmailActionPerformed
 
     private void buttonCadastrarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCadastrarFuncionarioActionPerformed
-        ControlFornecedor.criarFornecedor(textFieldCadNome.getText(), textFieldCadTel.getText(), textFieldCadCNPJ.getText(), textFieldCadEmail.getText(), jTextFieldRuaFor.getText(), jTextFieldNumFor.getText(), jTextFieldBairroFor.getText(), jTextFieldCidFor.getText(), jTextFieldUfFor.getText());
-        textFieldCadTel.setText("");
-        textFieldCadCNPJ.setText("");
-        textFieldCadNome.setText("");
-        textFieldCadEmail.setText("");
-        jTextFieldBairroFor.setText("");
-        jTextFieldCidFor.setText("");
-        jTextFieldNumFor.setText("");
-        jTextFieldRuaFor.setText("");
-        jTextFieldUfFor.setText("");
+        if(textFieldCadNome.getText().length() == 0 || textFieldCadCNPJ.getText().length() == 0 || textFieldCadEmail.getText().length() == 0 || textFieldCadTel.getText().length() == 0 || jTextFieldBairroFor.getText().length() == 0 || jTextFieldCidFor.getText().length() == 0 || jTextFieldNumFor.getText().length() == 0 || jTextFieldNumFor.getText().length() == 0 || jTextFieldRuaFor.getText().length() == 0 || jTextFieldUfFor.getText().length() == 0){
+            JOptionPane.showMessageDialog(null, "Todos os dados devem ser preenchidos");
+        }
+        else{
+            ControlFornecedor.criarFornecedor(textFieldCadNome.getText(), textFieldCadTel.getText(), textFieldCadCNPJ.getText(), textFieldCadEmail.getText(), jTextFieldRuaFor.getText(), jTextFieldNumFor.getText(), jTextFieldBairroFor.getText(), jTextFieldCidFor.getText(), jTextFieldUfFor.getText());
+            textFieldCadTel.setText("");
+            textFieldCadCNPJ.setText("");
+            textFieldCadNome.setText("");
+            textFieldCadEmail.setText("");
+            jTextFieldBairroFor.setText("");
+            jTextFieldCidFor.setText("");
+            jTextFieldNumFor.setText("");
+            jTextFieldRuaFor.setText("");
+            jTextFieldUfFor.setText("");    
+        } 
     }//GEN-LAST:event_buttonCadastrarFuncionarioActionPerformed
 
     private void buttonCancelarCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelarCadastroActionPerformed

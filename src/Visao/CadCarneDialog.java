@@ -6,6 +6,7 @@
 package Visao;
 
 import Controle.ControlCarne;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -181,15 +182,20 @@ public class CadCarneDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_jTextFieldNomeCarneActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        date1 = jFormattedTextFieldDataValid.getText();
-        date2 = jFormattedTextFieldDataVenci.getText();
-        ControlCarne.criarEstoque(jTextFieldNomeCarne.getText(), Double.parseDouble(jFormattedTextFieldValor.getText()), date1.replace("/", "-"), date2.replace("/", "-"), Double.parseDouble(jFormattedTextFieldQtdCarne.getText()), jComboBoxTipo.getSelectedItem().toString(), jTextFieldMarca.getText());
-        jTextFieldNomeCarne.setText("");
-        jFormattedTextFieldQtdCarne.setText("");
-        jFormattedTextFieldDataValid.setText("");
-        jFormattedTextFieldDataVenci.setText("");
-        jTextFieldMarca.setText("");
-        jFormattedTextFieldValor.setText("");
+        if(jTextFieldMarca.getText().length() == 0 || jTextFieldNomeCarne.getText().length() == 0 || jFormattedTextFieldDataValid.getText().length() == 0 || jFormattedTextFieldDataVenci.getText().length() == 0 || jFormattedTextFieldQtdCarne.getText().length() == 0 || jFormattedTextFieldValor.getText().length() == 0 ){
+            JOptionPane.showMessageDialog(null, "Todos os dados devem estar preenchidos");
+        }
+        else{
+            date1 = jFormattedTextFieldDataValid.getText();
+            date2 = jFormattedTextFieldDataVenci.getText();
+            ControlCarne.criarEstoque(jTextFieldNomeCarne.getText(), Double.parseDouble(jFormattedTextFieldValor.getText()), date1.replace("/", "-"), date2.replace("/", "-"), Double.parseDouble(jFormattedTextFieldQtdCarne.getText()), jComboBoxTipo.getSelectedItem().toString(), jTextFieldMarca.getText());
+            jTextFieldNomeCarne.setText("");
+            jFormattedTextFieldQtdCarne.setText("");
+            jFormattedTextFieldDataValid.setText("");
+            jFormattedTextFieldDataVenci.setText("");
+            jTextFieldMarca.setText("");
+            jFormattedTextFieldValor.setText("");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

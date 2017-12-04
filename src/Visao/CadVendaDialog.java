@@ -16,6 +16,7 @@ import d.espetos.Venda;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
 
 /**
@@ -39,6 +40,7 @@ public class CadVendaDialog extends javax.swing.JDialog {
     public CadVendaDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setLocationRelativeTo(null);
         jLabelPreco.setText("R$ " + ControlItemPedido.format(valorTotal));
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment( JLabel.CENTER );
@@ -46,6 +48,7 @@ public class CadVendaDialog extends javax.swing.JDialog {
         jTableItemsPedido.getColumnModel().getColumn(1).setCellRenderer( centerRenderer );
         jTableCarnesDisponiveis.getColumnModel().getColumn(2).setCellRenderer( centerRenderer );
         jTableCarnesDisponiveis.getColumnModel().getColumn(5).setCellRenderer( centerRenderer );
+        jTextFieldDesconto.setText("0.0");
     }
 
     /**
@@ -301,10 +304,10 @@ public class CadVendaDialog extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 880, Short.MAX_VALUE)
+            .addGap(0, 894, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGap(0, 7, Short.MAX_VALUE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                             .addGap(20, 20, 20)
@@ -335,14 +338,14 @@ public class CadVendaDialog extends javax.swing.JDialog {
                                 .addComponent(jTextFieldDataEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGap(10, 10, 10)
                             .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 7, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 606, Short.MAX_VALUE)
+            .addGap(0, 620, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGap(0, 7, Short.MAX_VALUE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(3, 3, 3)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -369,7 +372,7 @@ public class CadVendaDialog extends javax.swing.JDialog {
                                 .addComponent(jPanelPainel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 7, Short.MAX_VALUE)))
         );
 
         pack();
@@ -413,26 +416,26 @@ public class CadVendaDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        for(int i = 0; i < list.size(); i++){
-            System.out.println("Item: " + i+1);
-            System.out.println("Codigo do cliente: " + list.get(i).getCliente().getIdCliente());
-            System.out.println("Codigo tipo da carne: " + list.get(i).getC().getCodTipo());
-            System.out.println("Valor do item: " + list.get(i).getValorVenda());
-            System.out.println("Quantidade do item pedido: " + list.get(i).getQuantidade());
+        if(jLabelNome.getText().length() == 0){
+            JOptionPane.showMessageDialog(null, "Selecione um cliente");
+        }else if(list.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Selecione produtos para a compra");
         }
-        desconto = Double.parseDouble(jTextFieldDesconto.getText());
-        Venda v = new Venda();
-        Cliente c = new Cliente();
-        c.setIdCliente(codCliente);
-        v.setDataCompra(dataCompra);
-        v.setDataEntrega(dataEntrega);
-        v.setDesconto(desconto);
-        v.setValor(valorTotal - v.getDesconto());
-        v.setCliente(c);
-        ControlVenda.criarVenda(codCliente, jTextFielddataCompra.getText().replace("/","-"), jTextFieldDataEntrega.getText().replace("/","-"), desconto);
-        FormaPagamentoDialog formaPag = new FormaPagamentoDialog(this, true, v, list);
-        formaPag.setVisible(true);
-        this.dispose();
+        else{
+            desconto = Double.parseDouble(jTextFieldDesconto.getText());
+            Venda v = new Venda();
+            Cliente c = new Cliente();
+            c.setIdCliente(codCliente);
+            v.setDataCompra(dataCompra);
+            v.setDataEntrega(dataEntrega);
+            v.setDesconto(desconto);
+            v.setValor(valorTotal - v.getDesconto());
+            v.setCliente(c);
+            ControlVenda.criarVenda(codCliente, jTextFielddataCompra.getText().replace("/","-"), jTextFieldDataEntrega.getText().replace("/","-"), desconto);
+            FormaPagamentoDialog formaPag = new FormaPagamentoDialog(this, true, v, list);
+            formaPag.setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextFieldCodProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCodProdutoActionPerformed

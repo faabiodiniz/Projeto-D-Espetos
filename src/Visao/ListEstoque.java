@@ -9,7 +9,9 @@ import ClassesDAO.CarneDAO;
 import Controle.ControlCarne;
 import d.espetos.Carne;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -23,6 +25,7 @@ public class ListEstoque extends javax.swing.JFrame {
      */
     Carne[] vCarne;
     private int linhaSelecionada;
+    List<Carne> vList = new ArrayList<>();
     public ListEstoque() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -51,8 +54,6 @@ public class ListEstoque extends javax.swing.JFrame {
         jButtonBuscarCliente = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
         jLabelBackground = new javax.swing.JLabel();
         barraMenu = new javax.swing.JMenuBar();
         menuPrincipal = new javax.swing.JMenu();
@@ -95,7 +96,7 @@ public class ListEstoque extends javax.swing.JFrame {
         jPanel1.add(jScrollPaneClientes);
         jScrollPaneClientes.setBounds(20, 70, 700, 290);
         jPanel1.add(textFieldBuscaNome);
-        textFieldBuscaNome.setBounds(120, 30, 390, 20);
+        textFieldBuscaNome.setBounds(120, 30, 500, 20);
 
         jLabelBuscaNome.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabelBuscaNome.setText("Buscar por Nome ");
@@ -103,8 +104,13 @@ public class ListEstoque extends javax.swing.JFrame {
         jLabelBuscaNome.setBounds(20, 30, 100, 15);
 
         jButtonBuscarCliente.setText("Buscar");
+        jButtonBuscarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBuscarClienteActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButtonBuscarCliente);
-        jButtonBuscarCliente.setBounds(520, 30, 90, 23);
+        jButtonBuscarCliente.setBounds(630, 30, 90, 23);
 
         jButton1.setText("Editar Preço");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -113,7 +119,7 @@ public class ListEstoque extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton1);
-        jButton1.setBounds(280, 380, 160, 40);
+        jButton1.setBounds(410, 380, 160, 40);
 
         jButton2.setText("Adicionar Carne");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -122,25 +128,7 @@ public class ListEstoque extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton2);
-        jButton2.setBounds(80, 380, 160, 40);
-
-        jButton3.setText("Remover");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton3);
-        jButton3.setBounds(470, 380, 160, 40);
-
-        jButton4.setText("Atualizar");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton4);
-        jButton4.setBounds(623, 30, 90, 23);
+        jButton2.setBounds(190, 380, 160, 40);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(20, 20, 740, 440);
@@ -252,7 +240,7 @@ public class ListEstoque extends javax.swing.JFrame {
 
         setJMenuBar(barraMenu);
 
-        setBounds(0, 0, 806, 512);
+        setBounds(0, 0, 806, 538);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -279,26 +267,10 @@ public class ListEstoque extends javax.swing.JFrame {
         ((CarneTableModel) tableListarCarne.getModel()).refresh();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        int linhaSelecionada = tableListarCarne.getSelectedRow();
-        if(linhaSelecionada == -1){
-            JOptionPane.showMessageDialog(null, "Escolha uma carne!");
-        }
-        else{
-            Carne carne = new Carne((Integer)tableListarCarne.getValueAt(linhaSelecionada,0), (Integer)tableListarCarne.getValueAt(linhaSelecionada, 7));
-            CarneDAO.getInstance().delete(carne);
-            ((CarneTableModel) tableListarCarne.getModel()).refresh();
-        }
-    }//GEN-LAST:event_jButton3ActionPerformed
-
     private void tableListarCarneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableListarCarneMouseClicked
         int linha = tableListarCarne.getSelectedRow();
         Carne c = (Carne) ((CarneTableModel) tableListarCarne.getModel()).getItem(linha);
     }//GEN-LAST:event_tableListarCarneMouseClicked
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        ((CarneTableModel) tableListarCarne.getModel()).refresh();
-    }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         MenuInicial principal = new MenuInicial();
@@ -355,6 +327,22 @@ public class ListEstoque extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jMenuItemSairActionPerformed
 
+    private void jButtonBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarClienteActionPerformed
+        if(textFieldBuscaNome.getText() == null || textFieldBuscaNome.getText().length() == 0){
+            vList = ControlCarne.getListOfCarne();
+            tableListarCarne.setModel(new CarneTableModel(vList));
+            tableListarCarne.getColumnModel().getColumn(0).setPreferredWidth(30);
+            tableListarCarne.getColumnModel().getColumn(3).setPreferredWidth(40);
+            tableListarCarne.getColumnModel().getColumn(2).setPreferredWidth(40);
+        }else{
+            vList = ControlCarne.getListOfCarneNome(textFieldBuscaNome.getText());
+            tableListarCarne.setModel(new CarneTableModel(vList));
+            tableListarCarne.getColumnModel().getColumn(0).setPreferredWidth(30);
+            tableListarCarne.getColumnModel().getColumn(3).setPreferredWidth(40);
+            tableListarCarne.getColumnModel().getColumn(2).setPreferredWidth(40);
+        }
+    }//GEN-LAST:event_jButtonBuscarClienteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -401,8 +389,6 @@ public class ListEstoque extends javax.swing.JFrame {
     private javax.swing.JMenuBar barraMenu;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButtonBuscarCliente;
     private javax.swing.JLabel jLabelBackground;
     private javax.swing.JLabel jLabelBuscaNome;

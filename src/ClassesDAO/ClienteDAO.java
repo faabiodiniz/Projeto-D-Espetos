@@ -65,7 +65,7 @@ public class ClienteDAO extends ConexaoBD{
         List<Cliente> contatos = new ArrayList<>();
         ResultSet rs;
         try {
-            instance.conexao();
+            conexao();
             stmt = con.prepareStatement(query);
             rs = this.getResultSet(stmt);
             while (rs.next()) {
@@ -74,7 +74,6 @@ public class ClienteDAO extends ConexaoBD{
             rs.close();
             stmt.close();
         } catch (SQLException ex) {
-            ex.printStackTrace();
         }
         instance.desconecta();
         return contatos;
@@ -85,7 +84,7 @@ public class ClienteDAO extends ConexaoBD{
     }
 
     public List<Cliente> retrieveLike(String nome) {
-        return this.retrieveGeneric("SELECT * FROM Cliente WHERE nome LIKE '%"+nome+"%' ORDER BY nome");
+        return this.retrieveGeneric("SELECT * FROM Cliente WHERE soundex(nome) = soundex('"+nome+"')ORDER BY codCliente");
     }
     public List<Cliente> retrieveLikeCpf(String cpf) {
         return this.retrieveGeneric("SELECT * FROM Cliente WHERE cpfcnpj LIKE '%"+cpf+"%'");

@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
 
 public class CadastroVendas extends javax.swing.JFrame {
@@ -40,6 +41,7 @@ public class CadastroVendas extends javax.swing.JFrame {
         jTableItemsPedido.getColumnModel().getColumn(1).setCellRenderer( centerRenderer );
         jTableCarnesDisponiveis.getColumnModel().getColumn(2).setCellRenderer( centerRenderer );
         jTableCarnesDisponiveis.getColumnModel().getColumn(5).setCellRenderer( centerRenderer );
+        jTextFieldDesconto.setText("0.0");
     }
 
     /**
@@ -374,26 +376,26 @@ public class CadastroVendas extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        for(int i = 0; i < list.size(); i++){
-            System.out.println("Item: " + i+1);
-            System.out.println("Codigo do cliente: " + list.get(i).getCliente().getIdCliente());
-            System.out.println("Codigo tipo da carne: " + list.get(i).getC().getCodTipo());
-            System.out.println("Valor do item: " + list.get(i).getValorVenda());
-            System.out.println("Quantidade do item pedido: " + list.get(i).getQuantidade());
+        if(jLabelNome.getText().length() == 0){
+            JOptionPane.showMessageDialog(null, "Selecione um cliente");
+        }else if(list.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Selecione produtos para a compra");
         }
-        desconto = Double.parseDouble(jTextFieldDesconto.getText());
-        Venda v = new Venda();
-        Cliente c = new Cliente();
-        c.setIdCliente(codCliente);
-        v.setDataCompra(dataCompra);
-        v.setDataEntrega(dataEntrega);
-        v.setDesconto(desconto);
-        v.setValor(valorTotal - v.getDesconto());
-        v.setCliente(c);
-        ControlVenda.criarVenda(codCliente, jTextFielddataCompra.getText().replace("/","-"), jTextFieldDataEntrega.getText().replace("/","-"), desconto);
-        FormaDePagamento formaPag = new FormaDePagamento(this, true, v, list);
-        formaPag.setVisible(true);
-        this.dispose();
+        else{
+            desconto = Double.parseDouble(jTextFieldDesconto.getText());
+            Venda v = new Venda();
+            Cliente c = new Cliente();
+            c.setIdCliente(codCliente);
+            v.setDataCompra(dataCompra);
+            v.setDataEntrega(dataEntrega);
+            v.setDesconto(desconto);
+            v.setValor(valorTotal - v.getDesconto());
+            v.setCliente(c);
+            ControlVenda.criarVenda(codCliente, jTextFielddataCompra.getText().replace("/","-"), jTextFieldDataEntrega.getText().replace("/","-"), desconto);
+            FormaDePagamento formaPag = new FormaDePagamento(this, true, v, list);
+            formaPag.setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextFielddataCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFielddataCompraActionPerformed

@@ -57,21 +57,4 @@ public class TestCarneDAO {
             Assert.fail("Erro na conversão de data");
         }
     }
-    
-    /**
-     * Teste do cadastro
-     */
-    @Test
-    public void testTipoCarneCadastroSelectDelete() {
-        int aux = 0, i;
-        CarneDAO.getInstance().Salvar("Carne carnosa", 30f, "Perdigao", "Frango"); // Esta linha
-        List<Carne> carnes = CarneDAO.getInstance().retrieveLike("Carne carnosa");
-        if (carnes.isEmpty()) {
-            Assert.fail("Carne não encontrada no Banco de Dados");
-        }
-        CarneDAO.getInstance().delete(carnes.get(0));
-        if (!carnes.isEmpty()) {
-            Assert.fail("Carne não deletada no Banco de Dados");
-        }
-    }
 }

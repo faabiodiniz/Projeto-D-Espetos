@@ -61,6 +61,7 @@ public class FormaPagamentoDialog extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jRadioButtonDeposito = new javax.swing.JRadioButton();
         jTextFieldNome = new javax.swing.JTextField();
@@ -84,6 +85,7 @@ public class FormaPagamentoDialog extends javax.swing.JDialog {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        buttonGroup1.add(jRadioButtonDeposito);
         jRadioButtonDeposito.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jRadioButtonDeposito.setText("Depósito");
 
@@ -144,7 +146,7 @@ public class FormaPagamentoDialog extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -155,6 +157,7 @@ public class FormaPagamentoDialog extends javax.swing.JDialog {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        buttonGroup1.add(jRadioButtonCartao);
         jRadioButtonCartao.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jRadioButtonCartao.setText("Cartão de Crédito");
 
@@ -347,6 +350,7 @@ public class FormaPagamentoDialog extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButtonFinalizarVenda;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;

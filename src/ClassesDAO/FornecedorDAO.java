@@ -78,6 +78,7 @@ public class FornecedorDAO extends ConexaoBD{
             rs.close();
             stmt.close();
         } catch (SQLException ex) {
+            System.out.println("erro: " + ex);
         }
         desconecta();
         return fornecedores;
@@ -92,7 +93,7 @@ public class FornecedorDAO extends ConexaoBD{
     }
 
     public List<Fornecedor> retrieveLike(String nome) {
-        return this.retrieveGeneric("SELECT * FROM Fornecedor WHERE nome LIKE '%"+nome+"%' ORDER BY nome");
+        return this.retrieveGeneric("SELECT * FROM Fornecedor WHERE soundex(nome) = soundex('"+nome+"') ORDER BY codFornecedor");
     }
 
     public Fornecedor retrieveById(int id) {
@@ -127,7 +128,6 @@ public class FornecedorDAO extends ConexaoBD{
             }
             stmt.close();
         } catch (SQLException ex) {
-            System.out.println("erro: " + ex);
         }
         return false;
     }

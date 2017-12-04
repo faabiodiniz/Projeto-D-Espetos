@@ -181,8 +181,8 @@ public class CadClienteDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_jFormattedTextFieldTelefoneActionPerformed
 
     private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
-        if(jTextFieldNome.getText().length() == 0){
-            JOptionPane.showMessageDialog(null, "Nome deve ser inserido");
+        if(jTextFieldNome.getText().length() == 0 || jTextFieldCPF.getText().length() == 0 || jTextFieldEmail.getText().length() == 0 || jFormattedTextFieldTelefone.getText().length() == 0){
+            JOptionPane.showMessageDialog(null, "Todos os dados devem estar preenchidos");
         }
         else{
             ControlCliente.criarCliente(jTextFieldNome.getText(), jTextFieldCPF.getText(), jTextFieldEmail.getText(), jFormattedTextFieldTelefone.getText(), jComboBoxTipoPessoa.getSelectedItem().toString());
@@ -191,7 +191,6 @@ public class CadClienteDialog extends javax.swing.JDialog {
             jTextFieldEmail.setText("");
             jFormattedTextFieldTelefone.setText("");
         }
-        //((ClienteTableModel) ListClientes.tableListarCliente.getModel()).refresh();  linha de código para atualizar a Tabela
     }//GEN-LAST:event_jButtonCadastrarActionPerformed
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed

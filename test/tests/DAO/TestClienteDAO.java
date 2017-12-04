@@ -22,7 +22,7 @@ public class TestClienteDAO {
     public void testCadastroSelectDelete() {
         /* Execute uma vez com a linha do Salvar, e depois execute uma segunda com ela comentada para saber se funcionou */
         int aux = 0, i;
-        ClienteDAO.getInstance().Salvar("testeeee", "252.252.252-22", "issoeumteste@test.com", null, "Jurídico"); // Esta linha
+        ClienteDAO.getInstance().Salvar("testeeee", "252.252.252-22", "issoeumteste@test.com", "(13)938746548", "Jurídico"); // Esta linha
         List<Cliente> clientes = ClienteDAO.getInstance().retrieveLike("testeeee");
         for (i = 0; i < clientes.size(); i++) {
             if ((clientes.get(i).getNomeCliente().trim().equals("testeeee")) && (clientes.get(i).getCpfcnpj().trim().equals("252.252.252-22"))) {

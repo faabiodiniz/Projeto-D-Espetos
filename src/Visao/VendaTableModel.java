@@ -54,7 +54,7 @@ public class VendaTableModel extends GenericTableModel{
             case 2:
                 return ControlItemPedido.format(venda.getValor());
             case 3:
-                return venda.getDesconto();
+                return ControlItemPedido.format(venda.getDesconto());
             case 4:
                 return venda.getDataCompra();
             case 5:
