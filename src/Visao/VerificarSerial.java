@@ -55,7 +55,7 @@ public class VerificarSerial extends javax.swing.JFrame {
             }
         });
         getContentPane().add(botaoVerificarLicenca);
-        botaoVerificarLicenca.setBounds(230, 190, 170, 23);
+        botaoVerificarLicenca.setBounds(230, 190, 170, 25);
 
         txtValidacao.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtValidacao.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
