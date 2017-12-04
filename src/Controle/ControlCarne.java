@@ -50,7 +50,6 @@ public class ControlCarne {
     }
     
     public static List<Carne> getListOfCarnesView(){
-        System.out.println("Passou no getView!");
         return CarneDAO.getInstance().retrieveView();
     }
     

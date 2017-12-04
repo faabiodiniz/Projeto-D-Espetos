@@ -8,6 +8,8 @@ package Visao;
 import ClassesDAO.ClienteDAO;
 import Controle.ControlCliente;
 import d.espetos.Cliente;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -20,13 +22,14 @@ public class ListClientes extends javax.swing.JFrame {
      * Creates new form listClientes
      */
     Cliente[] vContatos;
-    
+    List<Cliente> vList = new ArrayList<>();
     public ListClientes() {
         initComponents();
         this.setLocationRelativeTo(null);
         //vContatos = ControlCliente.getListOfClientesAsArray();
         tableListarCliente.getColumnModel().getColumn(0).setPreferredWidth(30);
         ((ClienteTableModel) tableListarCliente.getModel()).refresh();
+        
     }
 
     /**
@@ -269,7 +272,6 @@ public class ListClientes extends javax.swing.JFrame {
     private void jButtonCadClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadClienteActionPerformed
         CadClienteDialog cadCliente = new CadClienteDialog(this, true);
         cadCliente.setVisible(true);
-        System.out.println("voltou aqui");
         ((ClienteTableModel) tableListarCliente.getModel()).refresh();
     }//GEN-LAST:event_jButtonCadClienteActionPerformed
 
@@ -291,7 +293,11 @@ public class ListClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_tableListarClienteMouseClicked
 
     private void jButtonBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarClienteActionPerformed
-        ControlCliente.getListOfClientesNome(textFieldBuscaNome.getText());
+        if(textFieldBuscaNome.getText() != null && textFieldBuscaNome.getText() != ""){
+            
+        }else{
+            
+        }
         ((ClienteTableModel) tableListarCliente.getModel()).refresh();
     }//GEN-LAST:event_jButtonBuscarClienteActionPerformed
 

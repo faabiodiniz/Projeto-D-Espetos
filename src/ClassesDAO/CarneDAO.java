@@ -31,13 +31,13 @@ public class CarneDAO extends ConexaoBD{
     public void Salvar(String nome, double valor, String fabricacao, String validade, double quantidade, String tipo, String marca, int codTipoCarne){
         instance.conexao();
         try {
-            PreparedStatement pst = conexao.con.prepareStatement("INSERT INTO TipoDeCarne(nome, valor, marca, tipo) values(?,?,?,?);");
+            PreparedStatement pst = conexao.con.prepareStatement("EXEC InsertTipoDeCarne @nome=?,@valor=?,@marca=?,@tipo=?;");
             pst.setString(1, nome);
             pst.setDouble(2, valor);
             pst.setString(3, marca);
             pst.setString(4, tipo);
             pst.execute();
-            listCarne = getIdVenda();
+            listCarne = getIdVenda(nome, marca, tipo);
             ultCodCarne = listCarne.get(0).getCodTipo();
             salvarCarne(fabricacao, validade, quantidade, ultCodCarne);
             JOptionPane.showMessageDialog(null,"Dados inseridos com sucesso");
@@ -211,7 +211,7 @@ public class CarneDAO extends ConexaoBD{
         return carnes;
     }
         
-    public List<Carne> getIdVenda() {
-        return this.retrieveId("SELECT codTipoCarne from TipoDeCarne ORDER BY codTipoCarne DESC;");
+    public List<Carne> getIdVenda(String nome, String marca, String tipo) {
+        return this.retrieveId("select codTipoCarne from TipoDeCarne where SOUNDEX(nome) = soundex('"+nome+"') and soundex(marca) = soundex('"+marca+"') and soundex(tipo) = soundex('"+tipo+"');");
     }
 }

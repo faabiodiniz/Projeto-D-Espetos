@@ -221,7 +221,6 @@ public class EditarClienteDialog extends javax.swing.JDialog {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Cliente cliente = new Cliente(id, jTextFieldNomeAlter.getText(), jFormattedTextFieldTelAlter.getText(), jTextFieldEmailAlter.getText(), jComboBoxTipoAlter.getSelectedItem().toString(),jTextFieldCpfAlter.getText());
         ControlCliente.updateCliente(cliente);
-        JOptionPane.showMessageDialog(null, "Dados alterados com sucesso!");
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 

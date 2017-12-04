@@ -30,16 +30,18 @@ public class Cliente{
 
     public void setTipo(String tipo) {
         if ((tipo == null) || ((!tipo.equals("Jurídico")) && (!tipo.equals("Físico  ")) && (!tipo.equals("Físico")))){
-            throw new ExceptionTest();
+            throw new ExceptionCampoVazio("tipo");
         }
-        this.tipo = tipo;
+        else
+            this.tipo = tipo;
     }
 
     public void setNomeCliente(String nomeCliente) {
-        if ((nomeCliente == null) || (nomeCliente.equals(""))){
-            throw new ExceptionTest();
+        if ((nomeCliente == null) || (nomeCliente.equals("")) || nomeCliente.length() == 0){
+            throw new ExceptionCampoVazio("nome");
         }
-        this.nomeCliente = nomeCliente;
+        else
+            this.nomeCliente = nomeCliente;
     }
 
     public String getTelefoneCliente() {
@@ -47,7 +49,11 @@ public class Cliente{
     }
 
     public void setTelefoneCliente(String telefoneCliente) {
-        this.telefoneCliente = telefoneCliente;
+        if(telefoneCliente == null || telefoneCliente.length() == 0){
+            throw new ExceptionCampoVazio("telefone");
+        }
+        else
+            this.telefoneCliente = telefoneCliente;
     }
 
     public String getEmailCliente() {
@@ -55,7 +61,11 @@ public class Cliente{
     }
 
     public void setEmailCliente(String emailCliente) {
-        this.emailCliente = emailCliente;
+        if(emailCliente == null){
+            throw new ExceptionCampoVazio("E-mail");
+        }
+        else
+            this.emailCliente = emailCliente;
     }
 
     public int getIdCliente() {
@@ -71,7 +81,13 @@ public class Cliente{
     }
 
     public void setCpfcnpj(String cpfcnpj) {
-        this.cpfcnpj = cpfcnpj;
+        if(cpfcnpj == null){
+            throw new ExceptionCampoVazio("CPF/CNPJ");
+        }
+        else{
+            this.cpfcnpj = cpfcnpj;    
+        }
+        
     }
 
     public void setIdCliente(int idCliente) {
