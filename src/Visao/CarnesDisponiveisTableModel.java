@@ -47,13 +47,13 @@ public class CarnesDisponiveisTableModel extends GenericTableModel {
             case 0:
                 return carne.getCodTipo();
             case 1:
-                return carne.getNomeCarne();
+                return carne.getNomeCarne().trim();
             case 2:
                 return ControlCarne.format(carne.getQuantidade()).trim();
             case 3:
-                return carne.getMarca();
+                return carne.getMarca().trim();
             case 4:
-                return carne.getTipo();
+                return carne.getTipo().trim();
             case 5:
                 return ControlCarne.format(carne.getValorCusto()).trim();
             default:

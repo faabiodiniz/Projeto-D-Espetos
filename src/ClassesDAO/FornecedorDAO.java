@@ -69,7 +69,7 @@ public class FornecedorDAO extends ConexaoBD{
         List<Fornecedor> fornecedores = new ArrayList<>();
         ResultSet rs;
         try {
-            instance.conexao();
+            conexao();
             stmt = con.prepareStatement(query);
             rs = this.getResultSet(stmt);
             while (rs.next()) {
@@ -79,7 +79,7 @@ public class FornecedorDAO extends ConexaoBD{
             stmt.close();
         } catch (SQLException ex) {
         }
-        instance.desconecta();
+        desconecta();
         return fornecedores;
     }
 
@@ -106,9 +106,10 @@ public class FornecedorDAO extends ConexaoBD{
 
     public boolean update(Fornecedor fornecedor) {
         PreparedStatement stmt;
-        instance.conexao();
+        System.out.println("id do fornecedor: "+ fornecedor.getIdFornecedor()+"Cnpj Editado: " + fornecedor.getCnpj());
         try {
-            stmt = con.prepareStatement("UPDATE Fornecedor SET nome=?, email=?, telefone=?, rua=?, numeroRua=?, bairro=?, cidade=?, estado=?  WHERE codFornecedor = ?");
+            conexao();
+            stmt = con.prepareStatement("UPDATE Fornecedor SET nome=?, email=?, telefone=?, rua=?, numeroRua=?, bairro=?, cidade=?, estado=?, cnpj=?  WHERE codFornecedor = ?");
             stmt.setString(1, fornecedor.getNomeFornecedor());
             stmt.setString(2, fornecedor.getEmail());
             stmt.setString(3, fornecedor.getTelefone());
@@ -117,22 +118,23 @@ public class FornecedorDAO extends ConexaoBD{
             stmt.setString(6, fornecedor.getBairro());
             stmt.setString(7, fornecedor.getCidade());
             stmt.setString(8, fornecedor.getEstado());
-            stmt.setInt(9, fornecedor.getIdFornecedor());
-            int update = this.executeUpdate(stmt);
+            stmt.setString(9, fornecedor.getCnpj());
+            stmt.setInt(10, fornecedor.getIdFornecedor());
+            int update = executeUpdate(stmt);
             if (update == 1) {
                 JOptionPane.showMessageDialog(null,"Dados alterados com sucesso");
                 return true;
             }
             stmt.close();
         } catch (SQLException ex) {
+            System.out.println("erro: " + ex);
         }
-        instance.desconecta();
         return false;
     }
 
     public void delete(Fornecedor fornecedor) {
         PreparedStatement stmt;
-        instance.conexao();
+        conexao();
         try {
             stmt = con.prepareStatement("DELETE FROM Fornecedor WHERE codFornecedor = ?");
             stmt.setInt(1, fornecedor.getIdFornecedor());
@@ -140,7 +142,7 @@ public class FornecedorDAO extends ConexaoBD{
             stmt.close();
         } catch (SQLException ex) {
         }
-        instance.desconecta();
+        desconecta();
     }
     
 }

@@ -48,7 +48,6 @@ public class ListClientes extends javax.swing.JFrame {
         jButtonEditCliente = new javax.swing.JButton();
         jButtonCadCliente = new javax.swing.JButton();
         jButtonRemoveCliente = new javax.swing.JButton();
-        jButtonAtualizar = new javax.swing.JButton();
         jLabelBackground = new javax.swing.JLabel();
         barraMenu = new javax.swing.JMenuBar();
         menuPrincipal = new javax.swing.JMenu();
@@ -90,8 +89,14 @@ public class ListClientes extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPaneClientes);
         jScrollPaneClientes.setBounds(20, 70, 710, 290);
+
+        textFieldBuscaNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldBuscaNomeActionPerformed(evt);
+            }
+        });
         jPanel1.add(textFieldBuscaNome);
-        textFieldBuscaNome.setBounds(120, 30, 400, 20);
+        textFieldBuscaNome.setBounds(130, 30, 490, 20);
 
         jLabelBuscaNome.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabelBuscaNome.setText("Buscar por Nome ");
@@ -105,7 +110,7 @@ public class ListClientes extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButtonBuscarCliente);
-        jButtonBuscarCliente.setBounds(530, 30, 90, 23);
+        jButtonBuscarCliente.setBounds(640, 30, 90, 23);
 
         jButtonEditCliente.setText("Editar");
         jButtonEditCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -133,15 +138,6 @@ public class ListClientes extends javax.swing.JFrame {
         });
         jPanel1.add(jButtonRemoveCliente);
         jButtonRemoveCliente.setBounds(470, 380, 160, 40);
-
-        jButtonAtualizar.setText("Atualizar");
-        jButtonAtualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAtualizarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButtonAtualizar);
-        jButtonAtualizar.setBounds(630, 30, 100, 23);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(20, 20, 750, 440);
@@ -299,10 +295,6 @@ public class ListClientes extends javax.swing.JFrame {
         ((ClienteTableModel) tableListarCliente.getModel()).refresh();
     }//GEN-LAST:event_jButtonBuscarClienteActionPerformed
 
-    private void jButtonAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtualizarActionPerformed
-        ((ClienteTableModel) tableListarCliente.getModel()).refresh();
-    }//GEN-LAST:event_jButtonAtualizarActionPerformed
-
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         MenuInicial principal = new MenuInicial();
         principal.setVisible(true);
@@ -358,6 +350,10 @@ public class ListClientes extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jMenuItemSairActionPerformed
 
+    private void textFieldBuscaNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldBuscaNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textFieldBuscaNomeActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -396,7 +392,6 @@ public class ListClientes extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar barraMenu;
-    private javax.swing.JButton jButtonAtualizar;
     private javax.swing.JButton jButtonBuscarCliente;
     private javax.swing.JButton jButtonCadCliente;
     private javax.swing.JButton jButtonEditCliente;

@@ -35,15 +35,15 @@ public class FornecedorTableModel extends GenericTableModel{
             case 5:
                 return String.class;
             case 6:
-                return String.class;
-            case 7:
                 return Integer.class;
+            case 7:
+                return String.class;
             case 8:
-            return String.class;
+                return String.class;
             case 9:
-            return String.class;
+                return String.class;
             case 10:
-            return String.class;
+                return String.class;
             default:
                 throw new IndexOutOfBoundsException("columnIndex out of bounds");
         }
@@ -57,23 +57,23 @@ public class FornecedorTableModel extends GenericTableModel{
             case 0:
                 return fornecedor.getIdFornecedor();
             case 1:
-                return fornecedor.getNomeFornecedor();
+                return fornecedor.getNomeFornecedor().trim();
             case 2:
-                return fornecedor.getCnpj();
+                return fornecedor.getCnpj().trim();
             case 3:
-                return fornecedor.getEmail();
+                return fornecedor.getEmail().trim();
             case 4:
-                return fornecedor.getTelefone();
+                return fornecedor.getTelefone().trim();
             case 5:
-                return fornecedor.getRua();
+                return fornecedor.getRua().trim();
             case 6:
                 return fornecedor.getNumero();
             case 7:
-                return fornecedor.getBairro();
+                return fornecedor.getBairro().trim();
             case 8:
-                return fornecedor.getCidade();
+                return fornecedor.getCidade().trim();
             case 9:
-                return fornecedor.getEstado();
+                return fornecedor.getEstado().trim();
             default:
                 throw new IndexOutOfBoundsException("columnIndex out of bounds");
         }

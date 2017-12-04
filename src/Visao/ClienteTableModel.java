@@ -45,15 +45,15 @@ public class ClienteTableModel extends GenericTableModel {
             case 0:
                 return pessoa.getIdCliente();
             case 1:
-                return pessoa.getNomeCliente();
+                return pessoa.getNomeCliente().trim();
             case 2:
-                return pessoa.getCpfcnpj();
+                return pessoa.getCpfcnpj().trim();
             case 3:
-                return pessoa.getEmailCliente();
+                return pessoa.getEmailCliente().trim();
             case 4:
-                return pessoa.getTelefoneCliente();
+                return pessoa.getTelefoneCliente().trim();
             case 5:
-                return pessoa.getTipo();
+                return pessoa.getTipo().trim();
             default:
                 throw new IndexOutOfBoundsException("columnIndex out of bounds");
         }

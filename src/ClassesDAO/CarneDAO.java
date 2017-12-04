@@ -150,7 +150,7 @@ public class CarneDAO extends ConexaoBD{
             stmt = con.prepareStatement("UPDATE TipoDeCarne SET valor=? WHERE codTipoCarne = ?");
             stmt.setDouble(1, carne.getValorCusto());
             stmt.setInt(2, carne.getCodTipo());
-            int update = this.executeUpdate(stmt);
+            int update = executeUpdate(stmt);
             if (update == 1) {
                 JOptionPane.showMessageDialog(null,"Dados alterados com sucesso");
                 return true;

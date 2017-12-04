@@ -269,6 +269,7 @@ public class ListEstoque extends javax.swing.JFrame {
             carne.setTipo(tableListarCarne.getValueAt(linhaSelecionada, 8).toString());
             EditarPrecoCarneDialog editCarne = new EditarPrecoCarneDialog(carne, this, true);
             editCarne.setVisible(true);
+            ((CarneTableModel) tableListarCarne.getModel()).refresh();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

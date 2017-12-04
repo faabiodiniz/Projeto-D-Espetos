@@ -54,7 +54,7 @@ public class CarneTableModel extends GenericTableModel{
             case 0:
                 return carne.getIdProduto();
             case 1:
-                return carne.getNomeCarne();
+                return carne.getNomeCarne().trim();
             case 2:
                 return carne.getQuantidade();
             case 3:
@@ -64,11 +64,11 @@ public class CarneTableModel extends GenericTableModel{
             case 5:
                 return carne.getValidade();
             case 6:
-                return carne.getMarca();
+                return carne.getMarca().trim();
             case 7:
                 return carne.getCodTipo();
             case 8:
-                return carne.getTipo();
+                return carne.getTipo().trim();
             default:
                 throw new IndexOutOfBoundsException("columnIndex out of bounds");
         }
