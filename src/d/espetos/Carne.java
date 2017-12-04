@@ -48,25 +48,22 @@ public class Carne {
 
     public void setNomeCarne(String nomeCarne) {
         if ((nomeCarne == null) || (nomeCarne.equals(""))) {
-            throw new ExceptionTest();
+            this.nomeCarne = "";
         }
         this.nomeCarne = nomeCarne;
     }
 
     public void setFabricacao(Date fabricacao) {
         if (fabricacao == null) {
-            throw new ExceptionTest();
         }
         this.fabricacao = fabricacao;
     }
 
     public void setValidade(Date validade) {
         if (validade == null) {
-            throw new ExceptionTest();
         }
         if (this.getFabricacao() != null) {
             if ((validade.before(this.getFabricacao())) || (validade.compareTo(this.getFabricacao()) == 0)) {
-                throw new ExceptionTest();
             }
         }
         this.validade = validade;
@@ -78,7 +75,7 @@ public class Carne {
 
     public void setQuantidade(double quantidade) {
         if (quantidade < 0) {
-            throw new ExceptionTest();
+            this.quantidade = 0;
         }
         this.quantidade = quantidade;
     }
@@ -89,7 +86,7 @@ public class Carne {
 
     public void setValorCusto(double valorCusto) {
         if (valorCusto < 0) {
-            throw new ExceptionTest();
+            this.valorCusto = 0;
         }
         this.valorCusto = valorCusto;
     }

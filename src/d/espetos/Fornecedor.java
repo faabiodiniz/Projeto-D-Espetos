@@ -88,6 +88,7 @@ public class Fornecedor
     
     public void setNomeFornecedor(String nomeFornecedor) {
         if ((nomeFornecedor == null) || (nomeFornecedor.equals(""))) {
+            this.nomeFornecedor = "";
         }
         this.nomeFornecedor = nomeFornecedor;
     }
