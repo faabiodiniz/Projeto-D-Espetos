@@ -22,6 +22,12 @@ public class CadClienteDialog extends javax.swing.JDialog {
         initComponents();
         this.setLocationRelativeTo(null);
     }
+    
+    public CadClienteDialog(javax.swing.JDialog parent, boolean modal){
+        super(parent, modal);
+        initComponents();
+        this.setLocationRelativeTo(null);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.

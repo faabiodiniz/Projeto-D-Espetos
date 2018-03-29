@@ -47,9 +47,9 @@ public class CadCarneDialog extends javax.swing.JDialog {
         jFormattedTextFieldQtdCarne = new javax.swing.JFormattedTextField();
         jFormattedTextFieldDataValid = new javax.swing.JFormattedTextField();
         jLabel7 = new javax.swing.JLabel();
-        jFormattedTextFieldValor = new javax.swing.JFormattedTextField();
         jLabel8 = new javax.swing.JLabel();
         jTextFieldMarca = new javax.swing.JTextField();
+        jFormattedTextFieldValor = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
@@ -60,15 +60,15 @@ public class CadCarneDialog extends javax.swing.JDialog {
 
         jLabel1.setText("Nome: ");
         jPanel2.add(jLabel1);
-        jLabel1.setBounds(10, 20, 50, 16);
+        jLabel1.setBounds(10, 20, 50, 14);
 
         jLabel2.setText("Data de Fabricação:");
         jPanel2.add(jLabel2);
-        jLabel2.setBounds(10, 130, 130, 16);
+        jLabel2.setBounds(10, 130, 130, 14);
 
         jLabel3.setText("Data de vencimento: ");
         jPanel2.add(jLabel3);
-        jLabel3.setBounds(10, 170, 130, 16);
+        jLabel3.setBounds(10, 170, 130, 14);
 
         jComboBoxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bovina", "Suina", "Frango" }));
         jComboBoxTipo.addActionListener(new java.awt.event.ActionListener() {
@@ -77,19 +77,19 @@ public class CadCarneDialog extends javax.swing.JDialog {
             }
         });
         jPanel2.add(jComboBoxTipo);
-        jComboBoxTipo.setBounds(240, 20, 70, 22);
+        jComboBoxTipo.setBounds(240, 20, 70, 20);
 
         jLabel4.setText("Tipo:");
         jPanel2.add(jLabel4);
-        jLabel4.setBounds(210, 20, 34, 16);
+        jLabel4.setBounds(210, 20, 34, 14);
 
         jLabel5.setText("Quantidade:");
         jPanel2.add(jLabel5);
-        jLabel5.setBounds(10, 60, 80, 16);
+        jLabel5.setBounds(10, 60, 80, 14);
 
         jLabel6.setText("KG");
         jPanel2.add(jLabel6);
-        jLabel6.setBounds(170, 60, 30, 16);
+        jLabel6.setBounds(170, 60, 30, 14);
 
         jTextFieldNomeCarne.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,11 +97,11 @@ public class CadCarneDialog extends javax.swing.JDialog {
             }
         });
         jPanel2.add(jTextFieldNomeCarne);
-        jTextFieldNomeCarne.setBounds(70, 20, 130, 22);
+        jTextFieldNomeCarne.setBounds(70, 20, 130, 20);
 
         jFormattedTextFieldDataVenci.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
         jPanel2.add(jFormattedTextFieldDataVenci);
-        jFormattedTextFieldDataVenci.setBounds(150, 170, 160, 22);
+        jFormattedTextFieldDataVenci.setBounds(150, 170, 160, 20);
 
         jFormattedTextFieldQtdCarne.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
         jPanel2.add(jFormattedTextFieldQtdCarne);
@@ -109,21 +109,19 @@ public class CadCarneDialog extends javax.swing.JDialog {
 
         jFormattedTextFieldDataValid.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
         jPanel2.add(jFormattedTextFieldDataValid);
-        jFormattedTextFieldDataValid.setBounds(150, 130, 160, 22);
+        jFormattedTextFieldDataValid.setBounds(150, 130, 160, 20);
 
         jLabel7.setText("Valor: ");
         jPanel2.add(jLabel7);
         jLabel7.setBounds(10, 90, 50, 20);
 
-        jFormattedTextFieldValor.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
-        jPanel2.add(jFormattedTextFieldValor);
-        jFormattedTextFieldValor.setBounds(80, 90, 80, 22);
-
         jLabel8.setText("Marca:");
         jPanel2.add(jLabel8);
         jLabel8.setBounds(170, 90, 50, 20);
         jPanel2.add(jTextFieldMarca);
-        jTextFieldMarca.setBounds(210, 90, 100, 22);
+        jTextFieldMarca.setBounds(210, 90, 100, 20);
+        jPanel2.add(jFormattedTextFieldValor);
+        jFormattedTextFieldValor.setBounds(60, 90, 80, 20);
 
         jButton1.setText("Cadastrar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -252,7 +250,7 @@ public class CadCarneDialog extends javax.swing.JDialog {
     private javax.swing.JFormattedTextField jFormattedTextFieldDataValid;
     private javax.swing.JFormattedTextField jFormattedTextFieldDataVenci;
     private javax.swing.JFormattedTextField jFormattedTextFieldQtdCarne;
-    private javax.swing.JFormattedTextField jFormattedTextFieldValor;
+    private javax.swing.JTextField jFormattedTextFieldValor;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

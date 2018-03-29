@@ -88,6 +88,7 @@ public class CadastroVendas extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jTextFielddataCompra = new javax.swing.JFormattedTextField();
         jTextFieldDataEntrega = new javax.swing.JFormattedTextField();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -326,13 +327,41 @@ public class CadastroVendas extends javax.swing.JFrame {
         getContentPane().add(jTextFieldDataEntrega);
         jTextFieldDataEntrega.setBounds(660, 570, 110, 40);
 
+        jButton3.setText("Cancelar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton3);
+        jButton3.setBounds(780, 490, 110, 30);
+
         setBounds(0, 0, 930, 657);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
-        List<Cliente> vList = ClienteDAO.getInstance().retrieveLikeCpf(jTextFieldCPF1.getText());
-        jLabelNome.setText(vList.get(0).getNomeCliente());
-        codCliente = vList.get(0).getIdCliente();
+        if(jTextFieldCPF1.getText().length() == 0){
+            
+        }
+        else{
+                List<Cliente> vList = ClienteDAO.getInstance().retrieveLikeCpf(jTextFieldCPF1.getText());
+
+            if(vList.isEmpty()){
+                int k = JOptionPane.showConfirmDialog(null, "Cliente não cadastrado, Deseja cadastrar um cliente?");
+                if(k == 0){
+                    CadClienteDialog cadCliente = new CadClienteDialog(this, true);
+                    cadCliente.setVisible(true);
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Retornando ao menu inicial");
+                    MenuInicial menu = new MenuInicial();
+                    this.dispose();
+                }
+            }else{
+                jLabelNome.setText(vList.get(0).getNomeCliente());
+                codCliente = vList.get(0).getIdCliente();
+            }
+        } 
     }//GEN-LAST:event_jButtonCadastrarActionPerformed
 
     private void jTextFieldCPF1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCPF1ActionPerformed
@@ -402,6 +431,10 @@ public class CadastroVendas extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFielddataCompraActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -443,6 +476,7 @@ public class CadastroVendas extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButtonCadastrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

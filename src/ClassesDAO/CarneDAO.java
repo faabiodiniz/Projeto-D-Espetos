@@ -110,6 +110,7 @@ public class CarneDAO extends ConexaoBD{
         List<Carne> carnes = new ArrayList<>();
         ResultSet rs;
         try {
+            conexao();
             stmt = con.prepareStatement(query);
             rs = this.getResultSet(stmt);
             while (rs.next()) {
